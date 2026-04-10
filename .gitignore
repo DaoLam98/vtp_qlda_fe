@@ -1,0 +1,22 @@
+# Thư mục thư viện (Quan trọng nhất)
+node_modules/
+
+# Thư mục build đầu ra
+dist/
+tmp/
+out-tsc/
+bazel-out/
+
+# Các file log
+npm-debug.log
+yarn-error.log
+package-lock.json (tùy chọn, thường thì nên giữ lại file này)
+
+# Thư mục cấu hình IDE
+.vscode/
+.idea/
+.editorconfig
+
+# Các file hệ thống
+.DS_Store
+Thumbs.db
