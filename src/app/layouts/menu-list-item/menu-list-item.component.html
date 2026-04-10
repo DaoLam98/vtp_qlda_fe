@@ -1,0 +1,19 @@
+<a
+  (click)="onItemSelected(item)" [matTooltipDisabled]="navService.isExpanded$ | async"
+  class="menu-list-item" mat-list-item
+  matTooltip="{{ (item ? item.displayName : '') | translate }}" matTooltipPosition="after"
+>
+  <i class="routeIcon {{item ? item.iconName : ''}}"></i>
+  <div *ngIf="item ? !item.isOnlyIcon : false" class="menu-text">{{ (item ? item.displayName : '') | translate }}</div>
+  <div *ngIf="item && item.children && item.children.length && !item.isOnlyIcon" fxFlex>
+    <div fxFlex></div>
+    <mat-icon [@indicatorRotate]="(item && item.expanded) ? 'expanded': 'collapsed'">
+      expand_more
+    </mat-icon>
+  </div>
+</a>
+
+<div *ngIf="item && item.expanded && !item.isOnlyIcon">
+  <app-menu-list-item *ngFor="let child of (item ? item.children : [])" [depth]="(depth ? depth : 0)+1" [item]="child">
+  </app-menu-list-item>
+</div>

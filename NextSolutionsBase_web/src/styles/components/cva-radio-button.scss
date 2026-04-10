@@ -1,0 +1,80 @@
+.cva-radiobutton {
+  .required-label-outside {
+    color: red;
+  }
+
+  div:first-child {
+    align-items: center;
+  }
+
+  .label {
+    display: inline-block;
+    margin-bottom: 0;
+  }
+
+  .mdc-label{
+    display: inline-block;
+    margin-bottom: 0;
+  }
+
+  .mat-radio-group {
+    &.example-radio-group {
+      display: flex;
+      flex-direction: column;
+      margin: 15px 0;
+    }
+
+    mat-radio-button {
+      &.example-radio-button {
+        margin-right: 15px;
+      }
+
+      label.mat-radio-label {
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        vertical-align: middle;
+        width: 100%;
+      }
+    }
+  }
+
+  mat-hint {
+    color: red!important;
+    width: 100%;
+  }
+
+  &.labelOutside {
+    label {
+      height: 48px;
+      display: flex;
+      place-content: center;
+    }
+
+    mat-radio-group {
+      height: 48px;
+      align-items: center;
+      margin: 0 0 15px 0 !important;
+    }
+  }
+  .mat-mdc-radio-button.mat-accent {
+    --mdc-radio-disabled-selected-icon-color: black;
+    --mdc-radio-disabled-unselected-icon-color: black;
+    --mdc-radio-unselected-hover-icon-color: #212121;
+    --mdc-radio-unselected-focus-icon-color: #212121;
+    --mdc-radio-unselected-icon-color: rgba(0, 0, 0, .54);
+    --mdc-radio-unselected-pressed-icon-color: rgba(0, 0, 0, .54);
+    --mdc-radio-selected-focus-icon-color: #ee0033;
+    --mdc-radio-selected-hover-icon-color: #ee0033;
+    --mdc-radio-selected-icon-color: #ee0033;
+    --mdc-radio-selected-pressed-icon-color: #ee0033;
+    --mat-radio-ripple-color: black;
+    --mat-radio-checked-ripple-color: #ee0033;
+    --mat-radio-disabled-label-color: rgba(0, 0, 0, .38);
+    --mat-radio-label-text-color: rgba(0, 0, 0, .87);
+  }
+}

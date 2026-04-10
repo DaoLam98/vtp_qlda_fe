@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/modules/mdm/translate-key/translation-key-add-edit-detail/translation-key-add-edit-detail.component.scss"],
+  "sourcesContent": [":host {\r\n  cva-smart-table ::ng-deep {\r\n    .table-responsive table {\r\n      tr {\r\n        height: 47px !important;\r\n      }\r\n      thead tr th {\r\n        span[style=\"color: red;\"] {\r\n          margin-left: 5px;\r\n        }\r\n      }\r\n    }\r\n  }\r\n} \r\n"],
+  "mappings": "AAGM,MAAA,gBAAA,UAAA,CAAA,iBAAA,MAAA,GACE,OAAA,eAGA,MAAA,gBAAA,UAAA,CAJF,iBAIE,MAAA,MAAA,GAAA,GAAA,IAAA,CAAA,qBACE,YAAA",
+  "names": []
+}

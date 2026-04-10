@@ -1,0 +1,215 @@
+<div fxLayout='row wrap' style="justify-content: space-between; align-items: center">
+  <cva-breadcrumb style="flex: 1"></cva-breadcrumb>
+
+  <div fxLayout="row wrap" class="vertical-divider">
+    <div class="btn-sec" style="display: flex; gap: 11px; margin-left: 33px;">
+      <!-- Quay lại -->
+      <button
+        (click)="back()"
+        class="outline Update-btn"
+        mat-button
+        type="submit"
+      >
+        <i class="fas fa-arrow-left"></i> {{ 'btnBack' | translate }}
+      </button>
+
+      @if (isView) {
+        <!-- Kích hoạt -->
+        <button
+          *ngIf="hasApprovePermission"
+          [disabled]="checkIsActive"
+          mat-button
+          type="submit"
+          class="primary Update-btn"
+          (click)='onUpdateStatus("approve")'
+        >
+          <i class="far fa-check-circle"></i> {{ 'btnActive'|translate }}
+        </button>
+
+        <!-- Hủy kích hoạt -->
+        <button
+          *ngIf="hasRejectPermission"
+          [disabled]="!checkIsActive"
+          mat-button
+          type="submit"
+          class="primary Update-btn"
+          (click)='onUpdateStatus("reject")'
+        >
+          <i class="fas fa-ban"></i> {{ 'btnInactive'|translate }}
+        </button>
+      }
+    </div>
+  </div>
+</div>
+
+<form [formGroup]="addEditForm" class="form edit-form">
+  <div class="content" style="padding: 24px 14px">
+    <fieldset>
+      <legend></legend>
+      <div class="fieldSetContent row-wrap-padding" fxLayout="row wrap">
+        <cva-input
+          [disabled]="isView"
+          [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+          [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+          [label]="moduleName+'.table.header.name'"
+          [placeholder]="'common.placeholder.input'"
+          formControlName="name"
+          fxFlex="25%"
+          fxFlex.lg="25%"
+          fxFlex.md="50%"
+          fxFlex.sm="50%"
+          fxFlex.xs="100%"
+          fxLayout="column"
+          name="name"
+        >
+        </cva-input>
+
+        <cva-input
+          [disabled]="isView"
+          [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+          [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+          [label]="moduleName+'.table.header.code'"
+          [placeholder]="'common.placeholder.input'"
+          formControlName="code"
+          fxFlex="25%"
+          fxFlex.lg="25%"
+          fxFlex.md="50%"
+          fxFlex.sm="50%"
+          fxFlex.xs="100%"
+          fxLayout="column"
+          name="code"
+        >
+        </cva-input>
+
+        <cva-input
+          [disabled]="isView"
+          [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+          [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+          [label]="moduleName+'.table.header.parentName'"
+          [placeholder]="'common.placeholder.input'"
+          formControlName="parentName"
+          fxFlex="25%"
+          fxFlex.lg="25%"
+          fxFlex.md="50%"
+          fxFlex.sm="50%"
+          fxFlex.xs="100%"
+          fxLayout="column"
+          name="parentName"
+        >
+        </cva-input>
+
+        @if (isView) {
+          <!-- Trạng thái -->
+          <cva-input
+            name="status"
+            formControlName="status"
+            [label]="'common.table.header.status'"
+            [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+            [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+            [placeholder]="'common.placeholder.input'"
+            [disabled]="isView"
+            fxLayout="column"
+            fxFlex="25%"
+            fxFlex.xs="100%"
+            fxFlex.sm="50%"
+            fxFlex.md="50%"
+            fxFlex.lg="25%"
+          >
+          </cva-input>
+        }
+
+        <cva-input
+          [disabled]="isView"
+          [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+          [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+          [label]="moduleName+'.table.header.description'"
+          [maxLength]="255"
+          [placeholder]="'common.placeholder.input'"
+          formControlName="description"
+          fxFlex="50%"
+          fxFlex.lg="50%"
+          fxFlex.md="50%"
+          fxFlex.sm="50%"
+          fxFlex.xs="100%"
+          fxLayout="column"
+          name="description"
+        >
+        </cva-input>
+
+        @if (isView) {
+          <!-- Người tạo -->
+          <cva-input
+            name="createdBy"
+            formControlName="createdBy"
+            [label]="'common.table.header.createdBy'"
+            [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+            [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+            [placeholder]="'common.placeholder.input'"
+            [disabled]="isView"
+            fxLayout="column"
+            fxFlex="25%"
+            fxFlex.xs="100%"
+            fxFlex.sm="50%"
+            fxFlex.md="50%"
+            fxFlex.lg="25%"
+          >
+          </cva-input>
+
+          <!-- Ngày tạo -->
+          <cva-input
+            name="createdDate"
+            formControlName="createdDate"
+            [label]="'common.table.header.createdDate'"
+            [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+            [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+            [placeholder]="'common.placeholder.input'"
+            [disabled]="isView"
+            fxLayout="column"
+            fxFlex="25%"
+            fxFlex.xs="100%"
+            fxFlex.sm="50%"
+            fxFlex.md="50%"
+            fxFlex.lg="25%"
+          >
+          </cva-input>
+
+          <!-- Người cập nhật -->
+          <cva-input
+            name="lastModifiedBy"
+            formControlName="lastModifiedBy"
+            [label]="'common.table.header.lastModifiedBy'"
+            [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+            [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+            [placeholder]="'common.placeholder.input'"
+            [disabled]="isView"
+            fxLayout="column"
+            fxFlex="25%"
+            fxFlex.xs="100%"
+            fxFlex.sm="50%"
+            fxFlex.md="50%"
+            fxFlex.lg="25%"
+          >
+          </cva-input>
+
+          <!-- Ngày cập nhật -->
+          <cva-input
+            name="lastModifiedDate"
+            formControlName="lastModifiedDate"
+            [label]="'common.table.header.lastModifiedDate'"
+            [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+            [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+            [placeholder]="'common.placeholder.input'"
+            [disabled]="isView"
+            fxLayout="column"
+            fxFlex="25%"
+            fxFlex.xs="100%"
+            fxFlex.sm="50%"
+            fxFlex.md="50%"
+            fxFlex.lg="25%"
+          >
+          </cva-input>
+        }
+      </div>
+    </fieldset>
+  </div>
+</form>

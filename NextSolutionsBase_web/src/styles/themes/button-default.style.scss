@@ -1,0 +1,968 @@
+$white: #ffffff;
+$white-hover: #ffffff;
+$white-disabled: #ffffff;
+$primary: #EE0033;
+$primary-hover: #f41d4b;
+$primary-active: #e40132;
+$primary-disabled: #ffa3b7;
+$primary-outline: #EE0033;
+$primary-outline-hover: #f41d4b;
+$primary-outline-disabled: #ffa3b7;
+$secondary: #D1D3D8;
+$secondary-hover: #f4f4f4;
+$secondary-active: #c3c4c9;
+$secondary-disabled: #f3f3f3;
+$secondary-outline: #D1D3D8;
+$secondary-outline-hover: #D1D3D8;
+$secondary-outline-disabled: #D1D3D880;
+$info: #78ceff;
+$info-hover: #5fc5ff;
+$info-active: #5fc5ff;
+$info-disabled: #78ceff80;
+$danger: #508aeb;
+$danger-hover: #397be8;
+$danger-active: #397be8;
+$danger-disabled: #397be880;
+$approve: #54cc96;
+$approve-hover: #40c68a;
+$approve-active: #40c68a;
+$approve-disabled: #54cc9680;
+$state-pending: #FFA903;
+$state-rejected: #FF645C;
+$state-approved: #007DDD;
+$state-ongoing: #02AC45;
+$state-closed: #A7A7A7;
+$state-cancelled: #FF645C;
+$state-delivering: #007DDD;
+$state-delivered: #4CD964;
+$state-confirmed: #7B61FF;
+$state-returned: #A7A7A7;
+$state-waiting: #F27C0F;
+$state-active: #02AC45;
+$state-expired: #A7A7A7;
+$state-inactive: #6AC7B7;
+$icon-disabled: #bfbfbf;
+        
+button {
+  i {
+    font-weight: 300;
+  }
+
+  // Button
+  &.mdc-button {
+    height: 36px;
+    font-size: 15px;
+    margin-right: 5px;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 12px;
+    min-width: 100px;
+    padding: 8px 24px;
+    -webkit-transition: .3s;
+    -o-transition: .3s;
+    transition: .3s;
+
+    &.dashed {
+      border-style: dashed;
+    }
+
+    &.primary {
+      color: $white;
+      background-color: $primary;
+      border-color: $primary;
+
+      i {
+        color: $white;
+      }
+
+      &:focus, &:hover {
+        color: $white;
+        background-color: $primary-hover;
+        border-color: $primary-hover;
+      }
+
+      &:active {
+        color: $white;
+        background-color: $primary-active;
+        border-color: $primary-active;
+      }
+
+      &[disabled] {
+        color: $white;
+        background-color: $primary-disabled;
+        border-color: $primary-disabled;
+
+
+      }
+
+      &.outline {
+        color: $primary;
+        background-color: $white;
+        border-color: $primary;
+
+        i {
+          color: $primary;
+        }
+
+        &:focus, &:hover {
+          color: $white;
+          background-color: $primary;
+          border-color: $primary;
+
+          i {
+            color: $white;
+          }
+        }
+
+        &:active {
+          color: $white;
+          background-color: $primary;
+          border-color: $primary;
+
+          i {
+            color: $white;
+          }
+        }
+
+        &[disabled] {
+          color: $primary-disabled;
+          background-color: $white-disabled;
+          border-color: $primary-disabled;
+
+          i {
+            color: $primary-disabled;
+          }
+        }
+      }
+
+      &.dashed {
+        color: $primary;
+        background-color: $white;
+        border-color: $primary;
+
+        i {
+          color: $primary;
+        }
+
+        &:focus, &:hover {
+          color: $primary-hover;
+          background-color: $white-hover;
+          border-color: $primary-hover;
+
+          i {
+            color: $primary-hover;
+          }
+        }
+
+        &:active {
+          color: $primary-active;
+          background-color: $white;
+          border-color: $primary-active;
+
+          i {
+            color: $primary-active;
+          }
+        }
+
+        &[disabled] {
+          color: $primary-disabled;
+          background-color: $white-disabled;
+          border-color: $primary-disabled;
+
+          i {
+            color: $primary-disabled;
+          }
+        }
+      }
+    }
+
+    &.secondary {
+      color: $white;
+      background-color: $secondary;
+      border-color: $secondary;
+
+      i {
+        color: $white;
+      }
+
+      &:focus, &:hover {
+        color: $white;
+        background-color: $secondary-hover;
+        border-color: $secondary-hover;
+      }
+
+      &:active {
+        color: $white;
+        background-color: $secondary-active;
+        border-color: $secondary-active;
+      }
+
+      &[disabled] {
+        color: $white;
+        background-color: $secondary-disabled;
+        border-color: $secondary-disabled;
+      }
+
+      &.outline {
+        color: $secondary-outline;
+        background-color: $white;
+        border-color: $secondary-outline;
+
+        i {
+          color: $secondary-outline;
+        }
+
+        &:focus, &:hover {
+          color: $white;
+          background-color: $secondary-outline-hover;
+          border-color: $secondary-outline-hover;
+
+          i {
+            color: $white;
+          }
+        }
+
+        &:active {
+          color: $white;
+          background-color: $secondary-outline;
+          border-color: $secondary-outline;
+
+          i {
+            color: $white;
+          }
+        }
+
+        &[disabled] {
+          color: $secondary-outline-disabled;
+          background-color: $white-disabled;
+          border-color: $secondary-outline-disabled;
+
+          i {
+            color: $secondary-outline-disabled;
+          }
+        }
+      }
+
+      &.dashed {
+        color: $secondary;
+        background-color: $white;
+        border-color: $secondary;
+
+        i {
+          color: $secondary;
+        }
+
+        &:focus, &:hover {
+          color: $secondary-hover;
+          background-color: $white-hover;
+          border-color: $secondary-hover;
+
+          i {
+            color: $secondary-hover;
+          }
+        }
+
+        &:active {
+          color: $white;
+          background-color: $secondary-active;
+          border-color: $secondary-active;
+
+          i {
+            color: $white;
+          }
+        }
+
+        &[disabled] {
+          color: $secondary-disabled;
+          background-color: $white-disabled;
+          border-color: $secondary-disabled;
+
+          i {
+            color: $secondary-disabled;
+          }
+        }
+      }
+    }
+
+    &.gray {
+      color: $white;
+      background-color: #7A7A7A;
+      border-color: #7A7A7A;
+
+      i {
+        color: $white;
+      }
+
+      &:focus, &:hover {
+        color: $white;
+        background-color: #67676799;
+        border-color: #67676799;
+      }
+
+      &:active {
+        color: $white;
+        background-color: #F3A101;
+        border-color: #F3A101;
+      }
+
+      &[disabled] {
+        color: $white;
+        background-color: #FFA90380;
+        border-color: #FFA90380;
+      }
+
+      &.outline {
+        color: #7A7A7A;
+        background-color: $white;
+        border-color: #7A7A7A;
+
+        i {
+          color: #7A7A7A;
+        }
+
+        &:focus, &:hover {
+          color: $white;
+          background-color: #A7A7A7;
+          border-color: #A7A7A7;
+
+          i {
+            color: $white;
+          }
+        }
+
+        &:active {
+          color: $white;
+          background-color: #7A7A7A;
+          border-color: #7A7A7A;
+
+          i {
+            color: $white;
+          }
+        }
+
+        &[disabled] {
+          color: #7A7A7A80;
+          background-color: $white-disabled;
+          border-color: #7A7A7A80;
+
+          i {
+            color: #7A7A7A80;
+          }
+        }
+      }
+
+      &.dashed {
+        color: #FFBE41;
+        background-color: $white;
+        border-color: #FFBE41;
+
+        i {
+          color: #FFBE41;
+        }
+
+        &:focus, &:hover {
+          color: #FFBE4199;
+          background-color: $white-hover;
+          border-color: #FFBE4199;
+
+          i {
+            color: #FFBE4199;
+          }
+        }
+
+        &:active {
+          color: $white;
+          background-color: #FFBE41;
+          border-color: #FFBE41;
+
+          i {
+            color: $white;
+          }
+        }
+
+        &[disabled] {
+          color: #FFBE4180;
+          background-color: $white-disabled;
+          border-color: #FFBE4180;
+
+          i {
+            color: #FFBE4180;
+          }
+        }
+      }
+    }
+
+    &.info {
+      color: $white;
+      background-color: $info;
+      border-color: $info;
+
+      i {
+        color: $white;
+      }
+
+      &:focus, &:hover {
+        color: $white;
+        background-color: $info-hover;
+        border-color: $info-hover;
+      }
+
+      &:active {
+        color: $white;
+        background-color: $info-active;
+        border-color: $info-active;
+      }
+
+      &[disabled] {
+        color: $white;
+        background-color: $info-disabled;
+        border-color: $info-disabled;
+      }
+
+      &.outline {
+        color: $info;
+        background-color: $white;
+        border-color: $info;
+
+        i {
+          color: $info;
+        }
+
+        &:focus, &:hover {
+          color: $white;
+          background-color: $info;
+          border-color: $info;
+
+          i {
+            color: $white;
+          }
+        }
+
+        &:active {
+          color: $white;
+          background-color: $info-active;
+          border-color: $info-active;
+
+          i {
+            color: $white;
+          }
+        }
+
+        &[disabled] {
+          color: $info-disabled;
+          background-color: $white-disabled;
+          border-color: $info-disabled;
+
+          i {
+            color: $info-disabled;
+          }
+        }
+      }
+
+      &.dashed {
+        color: $info;
+        background-color: $white;
+        border-color: $info;
+
+        i {
+          color: $info;
+        }
+
+        &:focus, &:hover {
+          color: $info-hover;
+          background-color: $white-hover;
+          border-color: $info-hover;
+
+          i {
+            color: $info-hover;
+          }
+        }
+
+        &:active {
+          color: $info-active;
+          background-color: $white;
+          border-color: $info-active;
+
+          i {
+            color: $info-active;
+          }
+        }
+
+        &[disabled] {
+          color: $info-disabled;
+          background-color: $white-disabled;
+          border-color: $info-disabled;
+
+          i {
+            color: $info-disabled;
+          }
+        }
+      }
+    }
+
+    &.danger {
+      color: $white;
+      background-color: $danger;
+      border-color: $danger;
+
+      i {
+        color: $white;
+      }
+
+      &:focus, &:hover {
+        color: $white;
+        background-color: $danger-hover;
+        border-color: $danger-hover;
+      }
+
+      &:active {
+        color: $white;
+        background-color: $danger-active;
+        border-color: $danger-active;
+      }
+
+      &[disabled] {
+        color: $white-disabled;
+        background-color: $danger-disabled;
+        border-color: $danger-disabled;
+      }
+
+      &.outline {
+        color: $danger;
+        background-color: $white;
+        border-color: $danger;
+
+        i {
+          color: $danger;
+        }
+
+        &:focus, &:hover {
+          color: $white;
+          background-color: $danger;
+          border-color: $danger;
+
+          i {
+            color: $white;
+          }
+        }
+
+        &:active {
+          color: $white;
+          background-color: $danger-active;
+          border-color: $danger-active;
+
+          i {
+            color: $white;
+          }
+        }
+
+        &[disabled] {
+          color: $danger-disabled;
+          background-color: $white-disabled;
+          border-color: $danger-disabled;
+
+          i {
+            color: $danger-disabled;
+          }
+        }
+      }
+
+      &.dashed {
+        color: $danger;
+        background-color: $white;
+        border-color: $danger;
+
+        i {
+          color: $danger;
+        }
+
+        &:focus, &:hover {
+          color: $danger-hover;
+          background-color: $white-hover;
+          border-color: $danger-hover;
+
+          i {
+            color: $danger;
+          }
+        }
+
+        &:active {
+          color: $danger-active;
+          background-color: $white;
+          border-color: $danger-active;
+
+          i {
+            color: $danger;
+          }
+        }
+
+        &[disabled] {
+          color: $danger-disabled;
+          background-color: $white-disabled;
+          border-color: $danger-disabled;
+
+          i {
+            color: $danger-disabled;
+          }
+        }
+      }
+    }
+
+    &.approve {
+      color: $white;
+      background-color: $approve;
+      border-color: $approve;
+
+      i {
+        color: $white;
+      }
+
+      &:focus, &:hover {
+        color: $white;
+        background-color: $approve-hover;
+        border-color: $approve-hover;
+      }
+
+      &:active {
+        color: $white;
+        background-color: $approve-active;
+        border-color: $approve-active;
+      }
+
+      &[disabled] {
+        color: $white-disabled;
+        background-color: $approve-disabled;
+        border-color: $approve-disabled;
+
+        i {
+          color: $white-disabled;
+        }
+      }
+    }
+  }
+
+  // Icon
+  &.mat-icon-button {
+    background-color: transparent;
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+    line-height: initial;
+
+    i, mat-icon {
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    &.primary {
+      background-color: #DBF7E0;
+
+      i, mat-icon {
+        color: $primary;
+      }
+
+      &:focus, &:hover {
+        border: 1px solid $primary;
+
+        i, mat-icon {
+          color: $primary;
+        }
+      }
+
+      &[disabled] {
+        background-color: transparent;
+        border: none;
+
+        i, mat-icon {
+          color: $icon-disabled;
+        }
+      }
+    }
+
+    &.secondary {
+      background-color: #FFEFD2;
+
+      i, mat-icon {
+        color: $secondary;
+      }
+
+      &:focus, &:hover {
+        border: 1px solid $secondary;
+
+        i, mat-icon {
+          color: $secondary;
+        }
+      }
+
+      &[disabled] {
+        background-color: transparent;
+        border: none;
+
+        i, mat-icon {
+          color: $icon-disabled;
+        }
+      }
+    }
+
+    &.gray {
+      background-color: #676767;
+
+      i, mat-icon {
+        color: #7A7A7A;
+      }
+
+      &:focus, &:hover {
+        border: 1px solid #676767;
+
+        i, mat-icon {
+          color: #676767;
+        }
+      }
+
+      &[disabled] {
+        background-color: transparent;
+        border: none;
+
+        i, mat-icon {
+          color: $icon-disabled;
+        }
+      }
+    }
+
+    &.info {
+      background-color: #E6F2FC;
+
+      i, mat-icon {
+        color: $info;
+      }
+
+      &:focus, &:hover {
+        border: 1px solid $info;
+
+        i, mat-icon {
+          color: $info;
+        }
+      }
+
+      &[disabled] {
+        background-color: transparent;
+        border: none;
+
+        i, mat-icon {
+          color: $icon-disabled;
+        }
+      }
+    }
+
+    &.danger {
+      background-color: #FFF0EF;
+
+      i, mat-icon {
+        color: $danger;
+      }
+
+      &:focus, &:hover {
+        border: 1px solid $danger;
+
+        i, mat-icon {
+          color: $danger;
+        }
+      }
+
+      &[disabled] {
+        background-color: transparent;
+        border: none;
+
+        i, mat-icon {
+          color: $icon-disabled;
+        }
+      }
+    }
+
+    &.approve {
+      background-color: #DBF7E0;
+
+      i, mat-icon {
+        color: $approve;
+      }
+
+      &:focus, &:hover {
+        border: 1px solid $approve;
+
+        i, mat-icon {
+          color: $approve;
+        }
+      }
+
+      &[disabled] {
+        background-color: transparent;
+        border: none;
+
+        i, mat-icon {
+          color: $icon-disabled;
+        }
+      }
+    }
+  }
+
+  // State
+  &.mat-state-button {
+    font-size: 14px;
+    font-weight: bold;
+    height: 24px;
+    min-width: 100px;
+    border-radius: 15px;
+    margin-left: 5px;
+    border: none;
+    outline: none;
+
+    &.pending {
+      color: $white;
+      background-color: $state-pending;
+
+      &.rectangle {
+        color: $state-pending;
+        background-color: transparent;
+      }
+    }
+
+    &.rejected {
+      color: $white;
+      background-color: $state-rejected;
+
+      &.rectangle {
+        color: $state-rejected;
+        background-color: transparent;
+      }
+    }
+
+    &.approved {
+      color: $white;
+      background-color: $state-approved;
+
+      &.rectangle {
+        color: $state-approved;
+        background-color: transparent;
+      }
+    }
+
+    &.ongoing {
+      color: $white;
+      background-color: $state-ongoing;
+
+      &.rectangle {
+        color: $state-ongoing;
+        background-color: transparent;
+      }
+    }
+
+    &.closed {
+      color: $white;
+      background-color: $state-closed;
+
+      &.rectangle {
+        color: $state-closed;
+        background-color: transparent;
+      }
+    }
+
+    &.cancelled {
+      color: $white;
+      background-color: $state-cancelled;
+
+      &.rectangle {
+        color: $state-cancelled;
+        background-color: transparent;
+      }
+    }
+
+    &.delivering {
+      color: $white;
+      background-color: $state-delivering;
+
+      &.rectangle {
+        color: $state-delivering;
+        background-color: transparent;
+      }
+    }
+
+    &.delivered {
+      color: $white;
+      background-color: $state-delivered;
+
+      &.rectangle {
+        color: $state-delivered;
+        background-color: transparent;
+      }
+    }
+
+    &.confirmed {
+      color: $white;
+      background-color: $state-confirmed;
+
+      &.rectangle {
+        color: $state-confirmed;
+        background-color: transparent;
+      }
+    }
+
+    &.returned {
+      color: $white;
+      background-color: $state-returned;
+
+      &.rectangle {
+        color: $state-returned;
+        background-color: transparent;
+      }
+    }
+
+    &.waiting {
+      color: $white;
+      background-color: $state-waiting;
+
+      &.rectangle {
+        color: $state-waiting;
+        background-color: transparent;
+      }
+    }
+
+    &.active {
+      color: $white;
+      background-color: $state-active;
+
+      &.rectangle {
+        color: $state-active;
+        background-color: transparent;
+      }
+    }
+
+    &.expired {
+      color: $white;
+      background-color: $state-expired;
+
+      &.rectangle {
+        color: $state-expired;
+        background-color: transparent;
+      }
+    }
+
+    &.inactive {
+      color: $white;
+      background-color: $state-inactive;
+
+      &.rectangle {
+        color: $state-inactive;
+        background-color: transparent;
+      }
+    }
+
+    &.rectangle:after {
+      content: "\f111";
+      font-family: "Font Awesome 5 Pro";
+      font-size: 10px;
+      position: relative;
+      top: -1px;
+      left: 5px;
+    }
+  }
+}

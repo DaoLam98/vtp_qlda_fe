@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/modules/mdm/target/target-add-edit-detail/target-add-edit-detail.component.scss"],
+  "sourcesContent": [".view-mode {\r\n  padding-left: 10px !important;\r\n}\r\n\r\n.edit-mode {\r\n  padding-left: 1px !important;\r\n}\r\n\r\n.value-convert {\r\n  margin: 6px 0;\r\n  padding: 12px 10px;\r\n  border: 1px solid #D1D5DB;\r\n  border-radius: 10px;\r\n  background: #e5e7eb;\r\n  font-size: 14px;\r\n  font-weight: bold;\r\n  word-break: break-word;\r\n}\r\n\r\n.table-smart div.cva-multi-select-autocomplete.float_label div.cva-style-disable-text mat-label{\r\n  display: none;\r\n}\r\n"],
+  "mappings": "AAAA,CAAA,UACE,aAAA,eAGF,CAAA,UACE,aAAA,cAGF,CAAA,cARA,OASE,IAAA,EATF,QAUE,KAAA,KACA,OAAA,IAAA,MAAA,QAXF,cAYE,KACA,WAAA,QACA,UAAA,KACA,YAAA,IACA,WAAA,WAGF,CAAA,YAAA,GAAA,CAAA,6BAAA,CAAA,YAAA,GAAA,CAAA,uBAAA,UACE,QAAA",
+  "names": []
+}

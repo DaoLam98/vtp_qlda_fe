@@ -1,0 +1,264 @@
+<div fxLayout='row wrap' style="justify-content: space-between; align-items: center">
+  <cva-breadcrumb style="flex: 1"></cva-breadcrumb>
+
+  <div fxLayout='row wrap' class="vertical-divider">
+    <div class='btn-sec' style="display: flex; gap: 11px; margin-left: 33px;">
+      <!-- Quay lại -->
+      <button
+        (click)='back()'
+        class='outline Update-btn'
+        mat-button
+        type='submit'
+      >
+        <i class="fas fa-arrow-left"></i> {{ 'btnBack'|translate }}
+      </button>
+
+      <!-- Lưu -->
+      <button
+        *ngIf="!isView && (hasAddPermission || hasEditPermission)"
+        [disabled]='addEditForm.invalid'
+        class='primary Update-btn'
+        mat-button
+        type='submit'
+        (click)='onSubmit()'
+      >
+        <i class='fa fa-save'></i> {{ 'btnAddEdit'|translate }}
+      </button>
+
+      <ng-container *ngIf="isView">
+        <!-- Kích hoạt -->
+        <button
+          *ngIf="hasApprovePermission"
+          mat-button
+          type='submit'
+          class='primary Update-btn'
+          [disabled]="status === getEnumValue(BaseStatusEnum._APPROVED)"
+          (click)='onApprove()'
+        >
+          <i class='fa fa-check'></i> {{ 'btnActive'|translate }}
+        </button>
+
+        <!-- Hủy kích hoạt -->
+        <button
+          *ngIf="hasRejectPermission"
+          mat-button
+          type='submit'
+          class='primary Update-btn'
+          [disabled]='status === getEnumValue(BaseStatusEnum._REJECTED)'
+          (click)='onReject()'
+        >
+          <i class='fa fa-ban'></i> {{ 'btnInactive'|translate }}
+        </button>
+
+        <!-- Chỉnh sửa -->
+        <button
+          *ngIf="isView && hasEditPermission"
+          mat-button
+          type='submit'
+          class='primary Update-btn'
+          (click)='onRedirect()'
+        >
+          <i class='fa fa-pen'></i> {{ 'btnUpdate'|translate }}
+        </button>
+      </ng-container>
+    </div>
+  </div>
+</div>
+
+<form [formGroup]='addEditForm' class='form edit-form'>
+    <div class="row-wrap">
+      <mat-expansion-panel [expanded]="true">
+        <mat-expansion-panel-header style="background-color: unset">
+          <mat-panel-title> {{ 'mdm.role.form.common.title' | translate }} </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <div
+          class='fieldSetContent row-wrap-padding'
+          fxLayout='row wrap'
+        >
+          <!-- Tên -->
+          <cva-input
+            name='name'
+            formControlName='name'
+            [label]="moduleName+'.form.common.label.name'"
+            [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+            [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+            [placeholder]="'common.placeholder.input'"
+            [disabled]='isView'
+            [required]='!isView'
+            [maxLength]="255"
+            fxLayout='column'
+            fxFlex='25%'
+            fxFlex.lg='25%'
+            fxFlex.md='50%'
+            fxFlex.sm='50%'
+            fxFlex.xs='100%'
+          ></cva-input>
+
+          <!-- Mã -->
+          <cva-input
+            name='code'
+            formControlName='code'
+            [label]="moduleName+'.form.common.label.code'"
+            [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+            [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+            [placeholder]="'common.placeholder.input'"
+            [disabled]='isView'
+            [required]='!isView'
+            [maxLength]="255"
+            fxLayout='column'
+            fxFlex='25%'
+            fxFlex.lg='25%'
+            fxFlex.md='50%'
+            fxFlex.sm='50%'
+            fxFlex.xs='100%'
+          ></cva-input>
+
+          <!-- Mô tả -->
+          <cva-input
+            name='description'
+            formControlName='description'
+            [label]="moduleName+'.form.common.label.description'"
+            [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+            [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+            [placeholder]="'common.placeholder.input'"
+            [disabled]='isView'
+            [maxLength]="255"
+            fxLayout='column'
+            fxFlex='50%'
+            fxFlex.lg='50%'
+            fxFlex.md='50%'
+            fxFlex.sm='50%'
+            fxFlex.xs='100%'
+          ></cva-input>
+
+          @if (isView) {
+            <!-- Trạng thái -->
+            <cva-input
+              name='status'
+              formControlName='status'
+              [label]="'common.table.header.status'"
+              [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+              [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+              [placeholder]="'common.placeholder.input'"
+              [disabled]="isView"
+              fxLayout='column'
+              fxFlex='25%'
+              fxFlex.xs='100%'
+              fxFlex.sm='50%'
+              fxFlex.md='50%'
+              fxFlex.lg='25%'
+            ></cva-input>
+
+            <!-- Người tạo -->
+            <cva-input
+              name='createdBy'
+              formControlName='createdBy'
+              [label]="'common.table.header.createdBy'"
+              [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+              [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+              [placeholder]="'common.placeholder.input'"
+              [disabled]='isView'
+              fxLayout='column'
+              fxFlex='25%'
+              fxFlex.xs='100%'
+              fxFlex.sm='50%'
+              fxFlex.md='50%'
+              fxFlex.lg='25%'
+            ></cva-input>
+
+            <!-- Ngày tạo -->
+            <cva-input
+              name='createdDate'
+              formControlName='createdDate'
+              [label]="'common.table.header.createdDate'"
+              [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+              [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+              [placeholder]="'common.placeholder.input'"
+              [disabled]='isView'
+              fxLayout='column'
+              fxFlex='25%'
+              fxFlex.xs='100%'
+              fxFlex.sm='50%'
+              fxFlex.md='50%'
+              fxFlex.lg='25%'
+            ></cva-input>
+
+            <!-- Người cập nhật -->
+            <cva-input
+              name='lastModifiedBy'
+              formControlName='lastModifiedBy'
+              [label]="'common.table.header.lastModifiedBy'"
+              [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+              [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+              [placeholder]="'common.placeholder.input'"
+              [disabled]='isView'
+              fxLayout='column'
+              fxFlex='25%'
+              fxFlex.xs='100%'
+              fxFlex.sm='50%'
+              fxFlex.md='50%'
+              fxFlex.lg='25%'
+            ></cva-input>
+
+            <!-- Ngày cập nhật -->
+            <cva-input
+              name='lastModifiedDate'
+              formControlName='lastModifiedDate'
+              [label]="'common.table.header.lastModifiedDate'"
+              [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+              [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+              [placeholder]="'common.placeholder.input'"
+              [disabled]='isView'
+              fxLayout='column'
+              fxFlex='25%'
+              fxFlex.xs='100%'
+              fxFlex.sm='50%'
+              fxFlex.md='50%'
+              fxFlex.lg='25%'
+            ></cva-input>
+          }
+        </div>
+      </mat-expansion-panel>
+    </div>
+
+    <div class="margin-top-15"></div>
+
+    <!-- Danh sách quyền -->
+    <div class="row-wrap">
+      <cva-flat-tree
+        class="custom-tree"
+        formControlName='permissions'
+        [label]=""
+        [selectedLabelTitle]="moduleName+'.tree.title.permission'"
+        [disabled]="isView"
+        [fullDatasource]='permissionTree'
+        [isCollapseSelected]='false'
+        [isDisplayChooseTreeOnly]="false"
+        [isSearchOutSide]='false'
+        (selectionChange)="onChangeSelectPermission($event)"
+        [viewHeight]="300"
+        fxFlex='100%'
+        fxLayout='column'
+      ></cva-flat-tree>
+    </div>
+
+    <!-- Danh sách menu -->
+    <div class="row-wrap">
+      <cva-flat-tree
+        class="custom-tree"
+        formControlName='menus'
+        [label]=""
+        [selectedLabelTitle]="moduleName+'.tree.title.menu'"
+        [disabled]="isView"
+        [fullDatasource]='menuTree'
+        [isCollapseSelected]='false'
+        [isDisplayChooseTreeOnly]="false"
+        [isSearchOutSide]='false'
+        [viewHeight]="300"
+        (selectionChange)="onChangeSelectMenu($event)"
+        fxFlex='100%'
+        fxLayout='column'
+      ></cva-flat-tree>
+    </div>
+</form>

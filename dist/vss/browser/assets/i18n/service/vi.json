@@ -1,0 +1,61 @@
+{
+  "service": {
+    "": "Dịch vụ",
+    "table.header": {
+      "name": "Tên",
+      "description": "Mô tả",
+      "stt": "STT",
+      "status": "Trạng thái",
+      "what": "Cái gì",
+      "how": "Như thế nào",
+      "recommend": "Lưu ý",
+      "keepInMind": "Ghi nhớ",
+      "important": "Tầm quan trọng",
+      "carSystemId": "Hệ thống xe",
+      "serviceTypes": "Loại dịch vụ",
+      "services.selected": "Loại dịch vụ được chọn"
+    }
+  },
+  "car-system": {
+    "": "Hệ thống xe",
+    "table.header": {
+      "name": "Tên",
+      "description": "Mô tả",
+      "stt": "STT",
+      "status": "Trạng thái"
+    }
+  },
+  "update-price-service": {
+    "":"Cập nhật giá dịch vụ",
+    "table.header": {
+      "stt": "STT",
+      "garageId": "Ga-ra",
+      "serviceId": "Dịch vụ",
+      "price": "Giá",
+      "minPrice": "Giá nhỏ nhất",
+      "maxPrice": "Giá lớn nhất",
+      "fromDate": "Từ ngày",
+      "toDate": "Đến ngày"
+    },
+    "error": {
+      "duplicateSelectValue": "Dịch vụ đã tồn tại ở trên, xin vui lòng chọn dịch vụ khác."
+    }
+  },
+  "service-package": {
+    "": "Gói dịch vụ",
+    "table.header": {
+      "name": "Tên",
+      "description": "Mô tả",
+      "stt": "STT",
+      "status": "Trạng thái",
+      "what": "Cái gì",
+      "recommend": "Lưu ý",
+      "keepInMind": "Ghi nhớ",
+      "important": "Tầm quan trọng",
+      "serviceTypes": "Loại dịch vụ",
+      "services": "Dịch vụ",
+      "services.selected": "Loại dịch vụ được chọn"
+    }
+  }
+}
+

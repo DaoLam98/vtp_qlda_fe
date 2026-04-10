@@ -1,0 +1,304 @@
+<div fxLayout='row wrap' style="justify-content: space-between; align-items: center">
+  <cva-breadcrumb style="flex: 1"></cva-breadcrumb>
+  <div fxLayout="row wrap" class="vertical-divider">
+    <div class="btn-sec" style="display: flex; gap: 11px; margin-left: 33px;">
+      <!-- Quay lại -->
+      <button
+        mat-button
+        type="submit"
+        class="outline Update-btn"
+        (click)="back()"
+      >
+        <i class="fas fa-arrow-left"></i> {{ 'btnBack' | translate }}
+      </button>
+
+      <!-- Lưu -->
+      <button
+        *ngIf="!isView && (hasAddPermission || hasEditPermission)"
+        mat-button
+        type='submit'
+        class='primary Update-btn'
+        [disabled]='addEditForm.invalid || isView'
+        (click)='onSubmit()'
+      >
+        <i class='fa fa-save'></i> {{ 'btnAddEdit'|translate }}
+      </button>
+
+      <!-- Chỉnh sửa -->
+      <button
+        *ngIf="isView && hasEditPermission"
+        mat-button
+        type='submit'
+        class='primary Update-btn'
+        (click)='onRedirect(this.model?.id)'
+      >
+        <i class='fas fa-pencil-alt'></i> {{ 'btnUpdate'|translate }}
+      </button>
+    </div>
+  </div>
+</div>
+
+<form [formGroup]="addEditForm" class="form edit-form">
+  <mat-accordion multi>
+    <!-- Thông tin chung -->
+    <mat-expansion-panel [expanded]="true">
+      <mat-expansion-panel-header>
+        {{ 'mdm.job-position.form.general' | translate }}
+      </mat-expansion-panel-header>
+      <div
+        class="row-wrap-padding"
+        fxLayout="row wrap"
+        style="margin-top: 16px"
+      >
+        <cva-input
+          name="name"
+          formControlName="name"
+          [label]="moduleName + '.table.header.name'"
+          [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+          [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+          [placeholder]="'common.placeholder.input'"
+          [disabled]="true"
+          fxLayout="column"
+          fxFlex="25%"
+          fxFlex.xs="100%"
+          fxFlex.sm="50%"
+          fxFlex.md="50%"
+          fxFlex.lg="25%"
+        >
+        </cva-input>
+
+        <cva-input
+          name="code"
+          formControlName="code"
+          [label]="moduleName + '.table.header.code'"
+          [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+          [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+          [placeholder]="'common.placeholder.input'"
+          [disabled]="true"
+          fxLayout="column"
+          fxFlex="25%"
+          fxFlex.xs="100%"
+          fxFlex.sm="50%"
+          fxFlex.md="50%"
+          fxFlex.lg="25%"
+        >
+        </cva-input>
+
+        <cva-input
+          name="description"
+          formControlName="description"
+          [label]="moduleName + '.table.header.description'"
+          [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+          [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+          [placeholder]="'common.placeholder.input'"
+          [maxLength]="255"
+          [disabled]="isView"
+          fxLayout="column"
+          fxFlex="50%"
+          fxFlex.xs="100%"
+          fxFlex.sm="50%"
+          fxFlex.md="50%"
+          fxFlex.lg="50%"
+        >
+        </cva-input>
+
+        <cva-multi-select-autocomplete
+          name="jobPositionGroupId"
+          formControlName="jobPositionGroupId"
+          [label]="moduleName + '.table.header.jobPositionGroup'"
+          [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+          [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+          [placeholder]="'common.placeholder.select'"
+          [options]="jobPositionGroupValues"
+          [multiple]="false"
+          [required]="!isView"
+          [disabled]="isView"
+          fxLayout="column"
+          fxFlex="25%"
+          fxFlex.xs="100%"
+          fxFlex.sm="50%"
+          fxFlex.md="50%"
+          fxFlex.lg="25%"
+        >
+        </cva-multi-select-autocomplete>
+
+        @if(isView) {
+          <!-- Trạng thái -->
+          <cva-input
+            name='statusDisplay'
+            formControlName='statusDisplay'
+            [label]="'common.table.header.status'"
+            [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+            [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+            [placeholder]="'common.placeholder.input'"
+            [disabled]="isView"
+            fxLayout='column'
+            fxFlex='25%'
+            fxFlex.xs='100%'
+            fxFlex.sm='50%'
+            fxFlex.md='50%'
+            fxFlex.lg='25%'
+          >
+          </cva-input>
+
+          <!-- Người tạo -->
+          <cva-input
+            name='createdBy'
+            formControlName='createdBy'
+            [label]="'common.table.header.createdBy'"
+            [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+            [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+            [placeholder]="'common.placeholder.input'"
+            [disabled]='isView'
+            fxLayout='column'
+            fxFlex='25%'
+            fxFlex.xs='100%'
+            fxFlex.sm='50%'
+            fxFlex.md='50%'
+            fxFlex.lg='25%'
+          >
+          </cva-input>
+
+          <!-- Ngày tạo -->
+          <cva-input
+            name='createdDate'
+            formControlName='createdDate'
+            [label]="'common.table.header.createdDate'"
+            [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+            [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+            [placeholder]="'common.placeholder.input'"
+            [disabled]='isView'
+            fxLayout='column'
+            fxFlex='25%'
+            fxFlex.xs='100%'
+            fxFlex.sm='50%'
+            fxFlex.md='50%'
+            fxFlex.lg='25%'
+          >
+          </cva-input>
+
+          <!-- Người cập nhật -->
+          <cva-input
+            name='lastModifiedBy'
+            formControlName='lastModifiedBy'
+            [label]="'common.table.header.lastModifiedBy'"
+            [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+            [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+            [placeholder]="'common.placeholder.input'"
+            [disabled]='isView'
+            fxLayout='column'
+            fxFlex='25%'
+            fxFlex.xs='100%'
+            fxFlex.sm='50%'
+            fxFlex.md='50%'
+            fxFlex.lg='25%'
+          >
+          </cva-input>
+
+          <!-- Ngày cập nhật -->
+          <cva-input
+            name='lastModifiedDate'
+            formControlName='lastModifiedDate'
+            [label]="'common.table.header.lastModifiedDate'"
+            [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+            [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+            [placeholder]="'common.placeholder.input'"
+            [disabled]='isView'
+            fxLayout='column'
+            fxFlex='25%'
+            fxFlex.xs='100%'
+            fxFlex.sm='50%'
+            fxFlex.md='50%'
+            fxFlex.lg='25%'
+          >
+          </cva-input>
+        }
+      </div>
+    </mat-expansion-panel>
+
+    <div class="margin-vertical-15"></div>
+
+    <!-- Danh sách đơn vị -->
+    <mat-expansion-panel [expanded]="true">
+      
+
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <!-- Tiêu đề -->
+          {{ 'mdm.job-position.form.organizations' | translate }}
+          ({{ addEditForm.get("organizations")?.value?.length || 0 }})
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <div fxLayout="column">
+        <div style="margin-bottom: 15px;">
+          <!-- Thêm -->
+          <button
+            *ngIf="!isView  && (hasAddPermission || hasEditPermission)"
+            mat-button
+            type="button"
+            class="primary"
+            (click)="$event.stopPropagation(); onOpenOrgDialog()"
+            (keydown.enter)="$event.stopPropagation(); $event.preventDefault()"
+            (keydown.space)="$event.stopPropagation(); $event.preventDefault()"
+          >
+            <i class="fa fa-plus"></i> {{ 'mdm.service-group.form.add-row' | translate }}
+          </button>
+        </div>
+        <cva-smart-table
+          *ngIf="addEditForm.get('organizations')?.value?.length"
+          formControlName="organizations"
+          [moduleName]="'mdm.organization'"
+          [columns]="organizationColumns"
+          [buttons]="organizationButtons"
+          [isSticky]="true"
+          (clickAction)="onOrganizationsTableAction($event)"
+          fxFlex="100%"
+        ></cva-smart-table>
+      </div>
+    </mat-expansion-panel>
+
+    <div class="margin-vertical-15"></div>
+
+    <!-- Danh sách vai trò -->
+    <mat-expansion-panel [expanded]="true">
+      <mat-expansion-panel-header class="smart-table">
+        <mat-panel-title>
+          <div style="width: 100%; display: flex; justify-content: space-between; align-items: center !important;">
+            <!-- Tiêu đề -->
+            <div>
+              {{ 'mdm.job-position.form.roles' | translate }}
+              ({{ addEditForm.get("roles")?.value?.length || 0 }})
+            </div>
+
+            <!-- Thêm -->
+            <button
+              *ngIf="!isView && (hasAddPermission || hasEditPermission)"
+              mat-button
+              type="button"
+              class="primary"
+              (click)="$event.stopPropagation(); addRoleValue()"
+              (keydown.enter)="$event.stopPropagation(); $event.preventDefault()"
+              (keydown.space)="$event.stopPropagation(); $event.preventDefault()"
+            >
+              <i class="fa fa-plus"></i> {{ 'mdm.job-position.form.add-row' | translate }}
+            </button>
+          </div>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <div fxLayout="column">
+        <cva-smart-table
+          *ngIf="addEditForm.get('roles')?.value?.length"
+          formControlName="roles"
+          [moduleName]="'mdm.role'"
+          [columns]="roleColumns"
+          [buttons]="roleButtons"
+          [isSticky]="true"
+          (clickAction)="onRolesTableAction($event)"
+          fxFlex="100%"
+        ></cva-smart-table>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</form>

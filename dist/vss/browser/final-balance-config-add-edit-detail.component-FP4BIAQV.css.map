@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/modules/project-manage/final-balance-config/final-balance-config-add-edit-detail/final-balance-config-add-edit-detail.component.scss"],
+  "sourcesContent": [":host {\r\n  cva-smart-table::ng-deep {\r\n    .table-responsive table {\r\n      .mat-column-trash {\r\n        min-width: auto;\r\n      }\r\n      tr {\r\n        height: 47px !important;\r\n      }\r\n    }\r\n  }\r\n  cva-input::ng-deep {\r\n    .mat-focused {\r\n      .mat-mdc-form-field-input-control {\r\n        padding-right: 70px;\r\n      }\r\n    }\r\n  }\r\n}\r\n"],
+  "mappings": "AAGM,MAAA,eAAA,UAAA,CAAA,iBAAA,MAAA,CAAA,iBACE,UAAA,KAEF,MAAA,eAAA,UAAA,CAHA,iBAGA,MAAA,GACE,OAAA,eAMF,MAAA,SAAA,UAAA,CAAA,YAAA,CAAA,iCACE,cAAA",
+  "names": []
+}

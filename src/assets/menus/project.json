@@ -1,0 +1,51 @@
+[
+  {
+    "displayName": "Dashboard",
+    "iconName": "fas fa-chart-line",
+    "roleMenu": "project_info_manager",
+    "route": "project"
+  },
+  {
+    "displayName": "Thông tin dự án",
+    "iconName": "fas fa-info-square",
+    "roleMenu": "project_info_manager",
+    "children": [
+      {
+        "displayName": "menu.project.project-proposal",
+        "iconName": "fal fa-project-diagram",
+        "route": "project/project-proposal",
+        "roleMenu": "project_project_proposal"
+      },
+      {
+        "displayName": "menu.project.projects-info",
+        "iconName": "fal fa-tasks-alt",
+        "route": "project/projects-info",
+        "roleMenu": "project_info_prj_info"
+      },
+      {
+        "displayName": "menu.mdm.form-data-collection",
+        "iconName": "fal fa-database",
+        "route": "project/form-data-collection",
+        "roleMenu": "mdm_form_configuration"
+      },
+      {
+        "displayName": "menu.project-manage.final-balance-config",
+        "iconName": "fal fa-tasks-alt",
+        "route": "project/final-balance-config",
+        "roleMenu": "final_balance_config"
+      },
+      {
+        "displayName": "menu.project-manage.project-evaluation",
+        "iconName": "fal fa-chart-bar",
+        "route": "project/project-evaluation",
+        "roleMenu": "final_balance_config"
+      }
+    ]
+  },
+  {
+    "displayName": "menu.project.report",
+    "iconName": "fas fa-file-spreadsheet",
+    "roleMenu": "project_report",
+    "route": "project/report"
+  }
+]

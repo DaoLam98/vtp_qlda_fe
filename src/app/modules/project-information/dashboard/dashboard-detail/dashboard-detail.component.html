@@ -1,0 +1,139 @@
+<form class='form edit-form' [formGroup]="searchForm">
+  <div class="content" fxLayout fxLayoutGap="16px" style="padding: 40px 16px 24px 16px;">
+    <cva-multi-select-autocomplete
+      formControlName="projectTypeId"
+      [class]=""
+      [label]="(moduleName + '.filter.control.projectTeam' | translate)"
+      [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+      [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+      [placeholder]="'common.placeholder.select' | translate"
+      [options]="projectTeamValues"
+      [multiple]='false'
+      fxLayout='column'
+      fxFlex='25%'
+      fxFlex.xs='100%'
+      fxFlex.sm='50%'
+      fxFlex.md='50%'
+      fxFlex.lg='25%'
+    >
+    </cva-multi-select-autocomplete>
+    <cva-multi-select-autocomplete
+      formControlName="projectId"
+      [class]=""
+      [label]="(moduleName + '.filter.control.project' | translate)"
+      [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+      [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+      [placeholder]="'common.placeholder.select' | translate"
+      [options]="projectValues"
+      [multiple]='false'
+      fxLayout='column'
+      fxFlex='25%'
+      fxFlex.xs='100%'
+      fxFlex.sm='50%'
+      fxFlex.md='50%'
+      fxFlex.lg='25%'
+    >
+    </cva-multi-select-autocomplete>
+    <cva-multi-select-autocomplete
+      formControlName="organizationId"
+      [class]=""
+      [label]="(moduleName + '.filter.control.company' | translate)"
+      [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+      [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+      [placeholder]="'common.placeholder.select' | translate"
+      [options]="companyValues"
+      [multiple]='false'
+      fxLayout='column'
+      fxFlex='25%'
+      fxFlex.xs='100%'
+      fxFlex.sm='50%'
+      fxFlex.md='50%'
+      fxFlex.lg='25%'
+    >
+    </cva-multi-select-autocomplete>
+    <cva-date-picker
+      formControlName="fromDate"
+      [label]="'fromDate' | translate"
+      [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+      [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+      [placeholder]="'common.placeholder.input' | translate"
+      [disabled]='false'
+      fxLayout='column'
+      fxFlex='25%'
+      fxFlex.xs='100%'
+      fxFlex.sm='50%'
+      fxFlex.md='50%'
+      fxFlex.lg='25%'
+    >
+    </cva-date-picker>
+    <cva-date-picker
+      formControlName="toDate"
+      [label]="'common.table.header.toDate' | translate"
+      [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+      [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+      [placeholder]="'common.placeholder.input' | translate"
+      [disabled]='false'
+      fxLayout='column'
+      fxFlex='25%'
+      fxFlex.xs='100%'
+      fxFlex.sm='50%'
+      fxFlex.md='50%'
+      fxFlex.lg='25%'
+    >
+    </cva-date-picker>
+    <button
+      (click)="onSubmit()"
+      mat-button
+      type='submit'
+      class='primary'
+      [disabled]="isLoading"
+    >
+      <span *ngIf="!isLoading">{{ 'btnFilter'|translate }}</span>
+    </button>
+    <button
+      (click)="onResetFilter()"
+      mat-button
+      type='button'
+      class='outline'
+      [disabled]="isLoading"
+    >{{ 'btnReset'|translate }}
+    </button>
+  </div>
+</form>
+<div class="margin-bottom-15"></div>
+<div  fxLayout>
+  <div fxLayout="column"
+       fxFlex='100%'
+       fxFlex.xs='100%'
+       fxFlex.sm='50%'
+       fxFlex.md='50%'
+       fxFlex.lg='100%'>
+    <div [hidden]="!showChart" style=" background-color: white; padding:  10px; border-radius: 16px">
+      <h4>{{ this.tab?.name | translate }}</h4>
+      <div style="position: relative; height:400px;">
+        <canvas [id]="'lineChart-' + tabId"></canvas>
+      </div>
+    </div>
+
+  </div>
+</div>
+<div class="margin-bottom-15"></div>
+<div *ngIf="results.data.length > 0" fxLayout style="padding: 10px; background-color: white; border-radius: 16px">
+  <div fxLayout="column"
+       fxFlex='100%'
+       fxFlex.xs='100%'
+       fxFlex.sm='50%'
+       fxFlex.md='50%'
+       fxFlex.lg='100%'
+  >
+    <cva-table
+      [moduleName]="moduleName"
+      [columns]="columns"
+      [results]="results"
+      (pagingChange)="pagingChange($event)"
+      [paging]="paging"
+    >
+    </cva-table>
+  </div>
+
+</div>

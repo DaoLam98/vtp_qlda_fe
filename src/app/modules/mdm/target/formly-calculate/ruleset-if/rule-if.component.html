@@ -1,0 +1,83 @@
+<div class="ruleset-if">
+    <div class="if-row">
+        <h4>IF</h4>
+        <div class="row">
+            <div *ngFor="let f of groupedFields.if" class="field-if">
+                <formly-field [field]="f"></formly-field>
+            </div>
+            <div class="controls" *ngIf="model?.ifValue !== 'if' && model?.ifField !== '' && model?.ifValue !== '' && !isView">
+                <button type="button" mat-icon-button color="primary" (click)="addRule('if', 'ifValue')">
+                    <mat-icon>add</mat-icon>
+                </button>
+                <button type="button" mat-icon-button color="primary" (click)="addRulesetFunc('if')">
+                    <mat-icon>add_circle_outline</mat-icon>
+                </button>
+            </div>
+        </div>
+
+        <div class="row" *ngFor="let item of getRulesIf()[0]?.fieldGroup">
+            <div *ngIf=" checkFunc(item?.model, 'if')"  class="func">
+                <formly-field [field]="item"></formly-field>
+                <button mat-icon-button color="accent" type="button" *ngIf="item?.model.typeFunc !== 'if' && !isView" (click)="removeItem(item?.model)">
+                    <mat-icon>remove</mat-icon>
+                </button>
+            </div>
+        </div>
+
+        <h4>THEN</h4>
+        <div class="row">
+            <div *ngFor="let f of groupedFields.then" class="field-if">
+                <formly-field [field]="f"></formly-field>
+            </div>
+            <div class="controls" *ngIf="model?.thenValue !== 'if' && model?.thenField !== '' && model?.thenValue !== '' && !isView">
+                <button type="button" mat-icon-button color="primary" (click)="addRule('then', 'thenValue')">
+                    <mat-icon>add</mat-icon>
+                </button>
+                <button type="button" mat-icon-button color="primary" (click)="addRulesetFunc('then')">
+                    <mat-icon>add_circle_outline</mat-icon>
+                </button>
+            </div>
+        </div>
+
+        <div class="row" *ngFor="let item of getRulesIf()[0]?.fieldGroup">
+            <!--        <formly-field *ngIf="checkFunc(item?.model, 'then')" [field]="item"></formly-field>-->
+            <div *ngIf=" checkFunc(item?.model, 'then')"  class="func">
+                <formly-field [field]="item"></formly-field>
+                <button mat-icon-button color="accent" type="button" *ngIf="item?.model.typeFunc !== 'if' && !isView" (click)="removeItem(item?.model)">
+                    <mat-icon>remove</mat-icon>
+                </button>
+            </div>
+        </div>
+
+        <h4>ELSE</h4>
+        <div class="row">
+            <div *ngFor="let f of groupedFields.else" class="field-if">
+                <formly-field [field]="f"></formly-field>
+            </div>
+            <div class="controls" *ngIf="model?.elseValue !== 'if' && model?.elseField !== '' && model?.elseValue !== '' && !isView">
+                <button type="button" mat-icon-button color="primary" (click)="addRule('else', 'elseValue')">
+                    <mat-icon>add</mat-icon>
+                </button>
+                <button type="button" mat-icon-button color="primary" (click)="addRulesetFunc('else')">
+                    <mat-icon>add_circle_outline</mat-icon>
+                </button>
+            </div>
+        </div>
+
+        <div class="row" *ngFor="let item of getRulesIf()[0]?.fieldGroup">
+            <div *ngIf=" checkFunc(item?.model, 'else')"  class="func">
+                <formly-field [field]="item"></formly-field>
+                <button mat-icon-button color="accent" type="button" *ngIf="item?.model.typeFunc !== 'if' && !isView" (click)="removeItem(item?.model)">
+                    <mat-icon>remove</mat-icon>
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row" style="padding-top: 39px; height: 32px">
+        <ng-container *ngFor="let f of groupedFields.compare">
+            <formly-field [title]="getTitle(f)" [field]="f"></formly-field>
+        </ng-container>
+    </div>
+</div>

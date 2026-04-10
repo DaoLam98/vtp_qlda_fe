@@ -1,0 +1,23 @@
+<cva-loader [imgSrc]="imgSrc"></cva-loader>
+<app-top-nav class="fixed-topnav"></app-top-nav>
+<mat-sidenav-container #sideNavContainer [ngClass]="{'non-embbeded': !isEmbedded}" autosize>
+  <mat-sidenav
+    #appDrawer
+    (mouseenter)="onMouseEnter()"
+    (mouseleave)="onMouseLeave()"
+    [class.collapsed]="!isExpanded"
+    [opened]="navOpened"
+    class="sidenav"
+    mode="side"
+  >
+    <mat-nav-list>
+      <app-menu-list-item *ngFor="let item of navItems" [item]="item"></app-menu-list-item>
+    </mat-nav-list>
+    <div [class]="isExpanded ? 'toggle-button' : 'toggle-button collapsed'">
+      <button (click)="toggleSidebar()" mat-icon-button>
+        <mat-icon>{{ isExpanded ? 'chevron_left' : 'chevron_right' }}</mat-icon>
+      </button>
+    </div>
+  </mat-sidenav>
+  <router-outlet></router-outlet>
+</mat-sidenav-container>

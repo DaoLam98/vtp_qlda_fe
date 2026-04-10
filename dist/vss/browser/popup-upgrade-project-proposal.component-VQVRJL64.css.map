@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/modules/project-information/project-proposal/popup-upgrade-project-proposal/popup-upgrade-project-proposal.component.scss"],
+  "sourcesContent": [":host {\r\n  cva-input::ng-deep .text_area .mat-mdc-form-field-flex {\r\n    height: 100px;\r\n  }\r\n  .dialog_content:after {\r\n    height: 0;\r\n  }\r\n}\r\n"],
+  "mappings": "AACE,MAAA,SAAA,UAAA,CAAA,UAAA,CAAA,wBACE,OAAA,MAEF,MAAA,CAAA,cAAA,OACE,OAAA",
+  "names": []
+}

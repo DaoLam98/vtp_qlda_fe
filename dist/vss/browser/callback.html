@@ -1,0 +1,16 @@
+<!-- public/callback.html -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+      // Lấy thông tin từ URL (token, code, state...)
+      const query = window.location.search || '';
+      
+      // Redirect về Angular route, đính kèm lại query
+      window.location.href = '/#/auth/callback' + query;
+    </script>
+  </head>
+  <body>
+    <p>Đang chuyển hướng...</p>
+  </body>
+</html>

@@ -1,0 +1,9 @@
+:host {
+  cva-smart-table ::ng-deep {
+    .table-responsive table {
+      tr {
+        height: 47px !important;
+      }
+    }
+  }
+} 

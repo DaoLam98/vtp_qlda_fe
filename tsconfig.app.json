@@ -1,0 +1,18 @@
+{
+  "extends": "./tsconfig.json",
+  "files": [
+    "src/main.ts",
+    "src/polyfills.ts",
+    "src/app/bpmnjs.d.ts"
+  ],
+  "include": [
+    "src/**/*.d.ts"
+  ],
+  "exclude": [
+    "src/test.ts",
+    "src/**/*.spec.ts"
+  ],
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true
+  }
+}

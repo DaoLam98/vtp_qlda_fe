@@ -1,0 +1,8 @@
+:host {
+  cva-input::ng-deep .text_area .mat-mdc-form-field-flex {
+    height: 100px;
+  }
+  .dialog_content:after {
+    height: 0;
+  }
+}

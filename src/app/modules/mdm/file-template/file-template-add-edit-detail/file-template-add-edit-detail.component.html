@@ -1,0 +1,259 @@
+<div fxLayout='row wrap' style="justify-content: space-between; align-items: center">
+  <cva-breadcrumb style="flex: 1"></cva-breadcrumb>
+
+  <div fxLayout='row wrap' class="vertical-divider">
+    <div class='btn-sec' style="display: flex; gap: 11px; margin-left: 33px;">
+      <!-- Quay lại -->
+      <button
+        mat-button
+        type='submit'
+        class='outline'
+        (click)='back()'
+      >
+        <i class="fas fa-arrow-left"></i> {{ 'btnBack'|translate }}
+      </button>
+
+      @if (isView) {
+        <!-- Kích hoạt -->
+        <button
+          *ngIf="hasApprovePermission"
+          mat-button
+          type='submit'
+          class='primary'
+          [disabled]="checkIsActive"
+          (click)='onUpdateStatus("approve")'
+        >
+          <i class='far fa-check-circle'></i> {{ 'btnActive'|translate }}
+        </button>
+
+        <!-- Hủy kích hoạt -->
+        <button
+          *ngIf="hasRejectPermission"
+          mat-button
+          type='submit'
+          class='primary'
+          [disabled]="!checkIsActive"
+          (click)='onUpdateStatus("reject")'
+        >
+          <i class='fas fa-ban'></i> {{ 'btnInactive'|translate }}
+        </button>
+      }
+
+      <!-- Nút Lưu -->
+      <button
+        *ngIf="!isView && (hasAddPermission || hasEditPermission)"
+        mat-button
+        type='submit'
+        class='primary'
+        [disabled]='addEditForm.invalid || isView'
+        (click)='onSubmit()'
+      >
+        <i class='fa fa-save'></i> {{ 'btnAddEdit'|translate }}
+      </button>
+
+      <!-- Chỉnh sửa -->
+      <button
+        *ngIf="isView && hasEditPermission"
+        mat-button
+        type='submit'
+        class='primary'
+        (click)='onRedirect(this.model?.id)'
+      >
+        <i class='fas fa-pencil-alt'></i> {{ 'btnUpdate'|translate }}
+      </button>
+    </div>
+  </div>
+</div>
+
+<form [formGroup]='addEditForm' class='form edit-form'>
+  <div class='content' style="padding: 24px 14px">
+    <fieldset>
+      <div class='fieldSetContent row-wrap-padding' fxLayout='row wrap'>
+        <!-- Mã biểu mẫu -->
+        <cva-input
+          name='code'
+          formControlName='code'
+          [label]="moduleName+'.table.header.code'"
+          [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+          [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+          [placeholder]="'common.placeholder.input'"
+          [disabled]='isView'
+          [required]='!isView'
+          [maxLength]="255"
+          fxLayout='column'
+          fxFlex='25%'
+          fxFlex.xs='100%'
+          fxFlex.sm='50%'
+          fxFlex.md='50%'
+          fxFlex.lg='25%'
+        >
+        </cva-input>
+
+        <!-- Tên biểu mẫu -->
+        <cva-input
+          name='name'
+          formControlName='name'
+          [label]="moduleName+'.table.header.name'"
+          [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+          [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+          [placeholder]="'common.placeholder.input'"
+          [disabled]='isView'
+          [required]='!isView'
+          [maxLength]="255"
+          fxLayout='column'
+          fxFlex='25%'
+          fxFlex.xs='100%'
+          fxFlex.sm='50%'
+          fxFlex.md='50%'
+          fxFlex.lg='25%'
+        >
+        </cva-input>
+
+        <!-- Mô tả -->
+        <cva-input
+          name='description'
+          formControlName='description'
+          [label]="moduleName+'.table.header.description'"
+          [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+          [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+          [placeholder]="'common.placeholder.input'"
+          [disabled]='isView'
+          [maxLength]="255"
+          fxLayout='column'
+          fxFlex='50%'
+          fxFlex.xs='100%'
+          fxFlex.sm='50%'
+          fxFlex.md='50%'
+          fxFlex.lg='50%'
+        ></cva-input>
+
+        <!-- Phân loại -->
+        <cva-multi-select-autocomplete
+          name='type'
+          formControlName='type'
+          [label]="moduleName+'.table.header.type'"
+          [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+          [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+          [placeholder]="'common.placeholder.select'"
+          [options]='typeValues'
+          [multiple]='false'
+          [required]="!isView"
+          [disabled]='isView'
+          fxLayout='column'
+          fxFlex='25%'
+          fxFlex.xs='100%'
+          fxFlex.sm='50%'
+          fxFlex.md='50%'
+          fxFlex.lg='25%'
+        ></cva-multi-select-autocomplete>
+
+        @if(isView) {
+          <!-- Trạng thái -->
+          <cva-input
+            name='status'
+            formControlName='status'
+            [label]="'common.table.header.status'"
+            [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+            [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+            [placeholder]="'common.placeholder.input'"
+            [disabled]="isView"
+            fxLayout='column'
+            fxFlex='25%'
+            fxFlex.xs='100%'
+            fxFlex.sm='50%'
+            fxFlex.md='50%'
+            fxFlex.lg='25%'
+          >
+          </cva-input>
+
+          <!-- Người tạo -->
+          <cva-input
+            name='createdBy'
+            formControlName='createdBy'
+            [label]="'common.table.header.createdBy'"
+            [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+            [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+            [placeholder]="'common.placeholder.input'"
+            [disabled]='isView'
+            fxLayout='column'
+            fxFlex='25%'
+            fxFlex.xs='100%'
+            fxFlex.sm='50%'
+            fxFlex.md='50%'
+            fxFlex.lg='25%'
+          >
+          </cva-input>
+
+          <!-- Ngày tạo -->
+          <cva-input
+            name='createdDate'
+            formControlName='createdDate'
+            [label]="'common.table.header.createdDate'"
+            [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+            [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+            [placeholder]="'common.placeholder.input'"
+            [disabled]='isView'
+            fxLayout='column'
+            fxFlex='25%'
+            fxFlex.xs='100%'
+            fxFlex.sm='50%'
+            fxFlex.md='50%'
+            fxFlex.lg='25%'
+          >
+          </cva-input>
+
+          <!-- Người cập nhật -->
+          <cva-input
+            name='lastModifiedBy'
+            formControlName='lastModifiedBy'
+            [label]="'common.table.header.lastModifiedBy'"
+            [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+            [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+            [placeholder]="'common.placeholder.input'"
+            [disabled]='isView'
+            fxLayout='column'
+            fxFlex='25%'
+            fxFlex.xs='100%'
+            fxFlex.sm='50%'
+            fxFlex.md='50%'
+            fxFlex.lg='25%'
+          >
+          </cva-input>
+
+          <!-- Ngày cập nhật -->
+          <cva-input
+            name='lastModifiedDate'
+            formControlName='lastModifiedDate'
+            [label]="'common.table.header.lastModifiedDate'"
+            [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+            [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+            [placeholder]="'common.placeholder.input'"
+            [disabled]='isView'
+            fxLayout='column'
+            fxFlex='25%'
+            fxFlex.xs='100%'
+            fxFlex.sm='50%'
+            fxFlex.md='50%'
+            fxFlex.lg='25%'
+          >
+          </cva-input>
+        }
+
+        <!-- File đính kèm -->
+        <app-vss-files-field
+          formControlName="files"
+          [multiple]="false"
+          (downloadFiles)="onDownloadFile($event)"
+          [fileAccept]="[FileTypes.XLSX]"
+          [required]="!isView"
+          fxLayout='column'
+          fxFlex='100%'
+          fxFlex.xs='100%'
+          fxFlex.sm='100%'
+          fxFlex.md='100%'
+          fxFlex.lg='100%'
+        ></app-vss-files-field>
+      </div>
+    </fieldset>
+  </div>
+</form>

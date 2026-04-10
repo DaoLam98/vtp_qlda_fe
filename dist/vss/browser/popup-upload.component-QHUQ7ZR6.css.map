@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/shared/components/project-item-search/popup-upload/popup-upload.component.scss"],
+  "sourcesContent": [":host {\r\n  app-vss-files-field::ng-deep {\r\n    .mat-mdc-card-actions {\r\n      justify-content: center;\r\n    }\r\n    .upload-button {\r\n      width: 50% !important;\r\n    }\r\n  }\r\n}\r\n"],
+  "mappings": "AAEI,MAAA,mBAAA,UAAA,CAAA,qBACE,gBAAA,OAEF,MAAA,mBAAA,UAAA,CAAA,cACE,MAAA",
+  "names": []
+}

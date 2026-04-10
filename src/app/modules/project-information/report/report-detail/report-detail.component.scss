@@ -1,0 +1,53 @@
+:host {
+  cloud-search::ng-deep {
+    cva-header-expand-button .expand-column-header-button {
+      display: none;
+    }
+    :has(> .paging) {
+      position: sticky;
+      left: 0;
+    }
+    .mat-column-rate {
+      padding: 0;
+      position: relative;
+    }
+    .mat-column-planned,
+    .mat-column-actual,
+    .mat-column-rate {
+      .viewData {
+        min-width: 150px;
+      }
+    }
+    .mat-column-target-none-display {
+      .viewData {
+        min-width: 250px;
+      }
+    }
+    .table-responsive table {
+      border-collapse: unset;
+    }
+    .mat-column-stt,
+    .mat-column-stt-none-display {
+      position: sticky;
+      left: 0;
+      &.mat-mdc-cell {
+        background: white;
+        z-index: 2;
+      }
+    }
+    .mat-column-target,
+    .mat-column-target-none-display {
+      position: sticky;
+      left: 50px;
+      &.mat-mdc-cell {
+        background: white;
+        z-index: 2;
+      }
+    }
+    .mat-mdc-row:hover {
+      .mat-mdc-cell {
+        background: inherit;
+      }
+    }
+  }
+}

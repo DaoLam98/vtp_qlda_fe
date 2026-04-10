@@ -1,0 +1,38 @@
+<div class="slider">
+  <button class="nav prev" (click)="prev()" [disabled]="!canPrev()"><i class="fas fa-angle-left"></i></button>
+
+  <div class="viewport">
+    <div class="track" [style.transform]="transformStyle">
+      <div
+        class="item"
+        *ngFor="let it of items"
+        [style.flex]=" '0 0 ' + (100 / visible) + '%' ">
+        <ng-container *ngIf="it?.template; else projectedOrDefault">
+          <ng-container *ngTemplateOutlet="it.template; context: { $implicit: it }"></ng-container>
+        </ng-container>
+
+        <ng-template #projectedOrDefault>
+          <ng-container *ngIf="itemTpl; else defaultContent">
+            <ng-container *ngTemplateOutlet="itemTpl; context: { $implicit: it }"></ng-container>
+          </ng-container>
+        </ng-template>
+
+        <ng-template #defaultContent>
+          <div class="card">{{ it.label || it }}</div>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+
+  <button class="nav next" (click)="next()" [disabled]="!canNext()"><i class="fas fa-angle-right"></i></button>
+
+  <div class="dots">
+    <button
+      class="dot"
+      *ngFor="let p of pages"
+      (click)="goTo(p)"
+      [class.active]="p === index"
+    >
+    </button>
+  </div>
+</div>

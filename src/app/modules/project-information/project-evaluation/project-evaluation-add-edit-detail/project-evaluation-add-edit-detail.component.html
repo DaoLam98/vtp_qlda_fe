@@ -1,0 +1,120 @@
+<cva-breadcrumb></cva-breadcrumb>
+<div fxLayout='row wrap' class='row-wrap-padding edit-action'>
+  <div class="btn-sec">
+    <button mat-stroked-button type="button" class="primary outline" (click)="onOpenDialog()">
+      {{ 'btnHistory' | translate }}
+    </button>
+  </div>
+</div>
+<form [formGroup]="addEditForm" class="form edit-form" style="padding-bottom: 50px">
+  <div class="content" style="padding: 24px 14px">
+    <mat-tab-group #tabGroup class="tab-flex-grow-0">
+      <mat-tab label="{{ 'project.project-evaluation.general' | translate }}">
+        <app-project-evaluation-general [addEditForm]="addEditForm"></app-project-evaluation-general>
+      </mat-tab>
+      @if (isEdit || isView) {
+      <mat-tab label="{{ 'project.project-evaluation.investment' | translate }}">
+        <app-project-evaluation-investment
+          [addEditForm]="addEditForm"
+          [accountingAccountValues]="accountingAccountValues"
+          [assetValues]="assetValues"
+          [targetValues]="targetValues"
+          (isEmptyTabExists)="onInvestmentChange($event)"
+        ></app-project-evaluation-investment>
+      </mat-tab>
+      <mat-tab label="{{ 'project.project-evaluation.impl-status' | translate }}">
+        <app-project-evaluation-impl-status
+          [model]="model"
+          [addEditForm]="addEditForm"
+          (onExpressionChange)="onGetDetail()"
+          (isEmptyTabExists)="onImplStatusChange($event)"
+        ></app-project-evaluation-impl-status>
+      </mat-tab>
+      <mat-tab label="{{ 'project.project-evaluation.effectiveness' | translate }}">
+        <app-project-evaluation-effectiveness
+          [model]="model"
+          [addEditForm]="addEditForm"
+          (onExpressionChange)="onGetDetail()"
+          (isEmptyTabExists)="onEffectivenessChange($event)"
+        ></app-project-evaluation-effectiveness>
+      </mat-tab>
+      @if (isEdit && isShowSignTemplate && isSignValid) {
+      <mat-tab label="{{ 'mdm.project-evaluation.sign' | translate }}">
+        @if (model && !isLoading) {
+        <app-sign-template [configForm]="configForm" [addEditForm]="addEditForm" [isEdit]="isEdit" [titleDescriptionField]="'reportName'" [autoGenerateCode]="false"></app-sign-template>
+        }
+      </mat-tab>
+      } }
+    </mat-tab-group>
+  </div>
+</form>
+<div class="row-wrap-padding edit-action-bottom">
+  <div class="btn-sec">
+    <button
+      mat-stroked-button
+      type="button"
+      class="primary outline"
+      (click)="back()">
+      <i class="fa fa-arrow-left"></i> {{ 'btnBack' | translate }}
+    </button>
+    <button
+      *ngIf="!isView || tabGroup.selectedIndex == 4"
+      mat-button
+      type="button"
+      class="primary"
+      (click)="onSubmit('SAVE')"
+    >
+      <i class="fa fa-save"></i> {{ 'btnSave' | translate }}
+    </button>
+    <button *ngIf="tabGroup.selectedIndex == 4" mat-button type="button" class="primary" (click)="onSubmit('SEND_VO')">
+      {{ 'btnSign' | translate }}
+    </button>
+    <button
+      *ngIf="isView && model?.projectEvalStatus == 'WAITING' && tabGroup.selectedIndex != 4"
+      mat-button
+      type="button"
+      class="primary outline"
+      (click)="onDelete()"
+    >
+      {{ 'btnDelete' | translate }}
+    </button>
+    <button
+      *ngIf="
+        isView &&
+        (model?.projectEvalStatus== 'WAITING' ||
+          model?.projectEvalStatus == 'REJECTED' ||
+          model?.projectEvalStatus == 'REVOKED') &&
+        tabGroup.selectedIndex != 4
+      "
+      mat-button
+      type="button"
+      class="primary"
+      (click)="onRedirect(model)">{{ 'btnUpdate' | translate }}
+    </button>
+    <button
+      *ngIf="isSignValid && !isView && tabGroup.selectedIndex != 4"
+      mat-button
+      type="button"
+      class="primary"
+      (click)="onSubmit('SAVE_AND_NEXT_VO')"
+    >
+      {{ 'btnSaveAndSwitchSign' | translate }}
+    </button>
+    <button
+      *ngIf="
+        isSignValid &&
+        isView &&
+        tabGroup.selectedIndex != 4 &&
+        (model.projectEvalStatus == 'REJECTED' ||
+          model.projectEvalStatus == 'REVOKED' ||
+          model.projectEvalStatus == 'WAITING')
+      "
+      mat-button
+      type="button"
+      class="primary"
+      (click)="onSubmit('SAVE_AND_NEXT_VO', false)"
+    >
+      {{ 'btnSwitchSign' | translate }}
+    </button>
+  </div>
+</div>

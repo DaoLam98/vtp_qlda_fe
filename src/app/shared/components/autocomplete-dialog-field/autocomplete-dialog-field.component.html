@@ -1,0 +1,34 @@
+<div class="cva-autocomplete-dialog-field" fxLayout="column">
+  <mat-form-field class="example-full-width" appearance="outline" floatLabel="always">
+    <mat-label
+      >{{ label | translate }}
+      @if (required) {
+      <span class="mat-mdc-form-field-required-marker mdc-floating-label--required"></span>
+      }
+    </mat-label>
+    <input
+      #input
+      #trigger="matAutocompleteTrigger"
+      type="text"
+      matInput
+      [matAutocomplete]="auto"
+      [formControl]="selectedFormControl"
+      [placeholder]="placeholder | translate"
+      (input)="filter()"
+      (focus)="filter()"
+    />
+    <mat-hint style="color: red">
+      @if (required && selectedFormControl?.touched && ngControl?.errors?.required) {
+      {{ 'common.error.required' | translate }}
+      }
+    </mat-hint>
+    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn" requireSelection>
+      @for (option of filteredOptions; track option) {
+      <mat-option [value]="option">{{ option.displayValue }}</mat-option>
+      }
+    </mat-autocomplete>
+    <button [disabled]="disabled" mat-icon-button matSuffix (click)="onOpenPopup($event)">
+      <mat-icon>{{ 'search' }}</mat-icon>
+    </button>
+  </mat-form-field>
+</div>

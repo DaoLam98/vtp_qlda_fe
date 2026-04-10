@@ -1,0 +1,81 @@
+<div class="dialog_wrapper">
+  <div class="dialog_header">
+    <div class="dialog_title">{{ title | translate }}</div>
+    <i class="fal fa-times margin-15" style="cursor: pointer" (click)="matDialogRef.close()"></i>
+  </div>
+  <div class="dialog_content">
+    <form [formGroup]="addEditForm" class="form edit-form" style="padding: 10px 20px;">
+      <mat-expansion-panel [expanded]="true">
+        <mat-expansion-panel-header style="background-color: unset">
+          <mat-panel-title>{{ moduleName + '.form.detail.title' | translate }}</mat-panel-title>
+        </mat-expansion-panel-header>
+        <div style='margin: 0 -16px;'>
+          <div class='fieldSetContent row-wrap-padding' fxLayout='row wrap'>
+            <cva-input name='name' formControlName='name' [label]="'mdm.expression.table.detail.name'"
+              [isFloatLabel]="!environment.IS_LABEL_OUTSIDE" [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+              [placeholder]="'common.placeholder.input'" [maxLength]="255" [disabled]='isViewDetail'
+              [required]='!isViewDetail' fxLayout='column' fxFlex='50%' fxFlex.xs='100%' fxFlex.sm='50%' fxFlex.md='50%'
+              fxFlex.lg='50%'></cva-input>
+            <cva-multi-select-autocomplete name='itemType' formControlName='itemType' [label]="'mdm.expression.table.item.type'"
+              [isFloatLabel]="!environment.IS_LABEL_OUTSIDE" [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+              [placeholder]="'common.placeholder.select'" [options]='categoryTypeValues' [multiple]='false'
+              [disabled]="isViewDetail" [required]='!isViewDetail' fxLayout='column' fxFlex='50%' fxFlex.xs='100%'
+              fxFlex.sm='50%' fxFlex.md='50%' fxFlex.lg='50%'></cva-multi-select-autocomplete>
+            <cva-input type="number" [appBlockChars]="['-', '.', 'e']" name='displayOrder' formControlName='displayOrder' [label]="'mdm.expression.table.displayOrder'"
+              [isFloatLabel]="!environment.IS_LABEL_OUTSIDE" [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+              [placeholder]="'common.placeholder.input'" [disabled]='isViewDetail' [required]='!isViewDetail' 
+              [patternFilter]="displayOrderPattern" [errorMessages]="errorMessages"
+              fxLayout='column' fxFlex='50%' fxFlex.xs='100%' fxFlex.sm='50%' fxFlex.md='50%' fxFlex.lg='50%'></cva-input>
+            <cva-input name='description' formControlName='description' [label]="'mdm.expression.table.description'"
+              [isFloatLabel]="!environment.IS_LABEL_OUTSIDE" [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+              [placeholder]="'common.placeholder.input'" [maxLength]="255" [disabled]='isViewDetail' fxLayout='column'
+              fxFlex='50%' fxFlex.xs='100%' fxFlex.sm='50%' fxFlex.md='50%' fxFlex.lg='50%'></cva-input>
+          </div>
+        </div>
+      </mat-expansion-panel>
+      <div class="margin-vertical-15"></div>
+      <mat-expansion-panel [expanded]="true">
+        <mat-expansion-panel-header style="background-color: unset">
+          <mat-panel-title>{{ moduleName + '.form.item.declaration' | translate }}</mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class='fieldSetContent row-wrap-padding' fxLayout='row wrap'>
+          <div class="buttonArea" fxLayout fxLayoutAlign="end"
+            *ngIf="!isViewDetail && (hasAddPermission || hasEditPermission)">
+            <button mat-button type="button" [disabled]="!addEditForm.get('itemType')?.value" class="primary" (click)="onAddDetailItem()">
+              <i class="fa fa-plus"></i> {{ 'mdm.translation-key.form.add-row' | translate }}
+            </button>
+          </div>
+          <!-- (quantitative) -->
+          <cva-smart-table
+            *ngIf="addEditForm.get('expressionDetailDataItems')?.value?.length && addEditForm.get('itemType')?.value === 'QUANTITATIVE'"
+            formControlName="expressionDetailDataItems" [isSticky]="true" [moduleName]="moduleName"
+            [columns]="quantifierIndicatorTableColumns" [buttons]="quantifierIndicatorTableButtons"
+            (clickAction)="onIndicatorTableRowButtonClick($event)" fxFlex="100%"></cva-smart-table>
+
+          <!-- (qualitative) -->
+          <cva-smart-table
+            *ngIf="addEditForm.get('expressionDetailDataItems')?.value?.length && addEditForm.get('itemType')?.value === 'QUALITATIVE'"
+            formControlName="expressionDetailDataItems" [isSticky]="true" [moduleName]="moduleName"
+            [columns]="qualitativeIndicatorTableColumns" [buttons]="qualitativeIndicatorTableButtons"
+            (clickAction)="onIndicatorTableRowButtonClick($event)" fxFlex="100%"></cva-smart-table>
+
+          <div *ngIf="!addEditForm.get('expressionDetailDataItems')?.value?.length" 
+          style="display: flex; width: 100%; justify-content: center; align-items: center; padding-bottom: 10px;">
+          {{ "common.no-data" | translate }}</div>
+        </div>
+      </mat-expansion-panel>
+    </form>
+  </div>
+  <div class="dialog_footer">
+    <div class="dialog_footer_content">
+      <div class="dialog_buttons">
+         <button mat-button class="primary outline" (click)="matDialogRef.close()">
+          {{ 'btnBack' | translate }}
+        </button>
+        <button *ngIf="!isViewDetail" mat-button class="primary" [disabled]="addEditForm.invalid" (click)="onSubmit()">
+          {{ 'btnAddEdit' | translate }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

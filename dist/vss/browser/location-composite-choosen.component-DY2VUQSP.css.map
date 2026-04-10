@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/shared/components/location/location-composite-choosen/location-composite-choosen.component.scss"],
+  "sourcesContent": ["::ng-deep\r\napp-internal-user-composite-choosen\r\ncva-multi-select-autocomplete\r\n.cva-multi-select-autocomplete\r\nmat-form-field\r\n.mat-mdc-text-field-wrapper\r\n.mat-mdc-form-field-flex\r\n.mat-mdc-form-field-infix\r\nmat-select\r\n.mat-mdc-select-trigger {\r\n  margin-left: 30px;\r\n  max-width: calc(100% - 40px);\r\n}\r\n\r\n.button-search-composite {\r\n  position: absolute;\r\n  border: unset;\r\n  top: 0;\r\n  min-width: unset;\r\n  width: 10px;\r\n  border-top-right-radius: 0;\r\n  border-bottom-right-radius: 0;\r\n}\r\n"],
+  "mappings": "AAAA,UAAA,oCAAA,8BAAA,CAAA,8BAAA,eAAA,CAAA,2BAAA,CAAA,wBAAA,CAAA,yBAAA,WAAA,CAAA,uBAUE,YAAA,KACA,UAAA,KAAA,KAAA,EAAA,MAGF,CAAA,wBACE,SAAA,SACA,OAAA,MACA,IAAA,EACA,UAAA,MACA,MAAA,KACA,wBAAA,EACA,2BAAA",
+  "names": []
+}

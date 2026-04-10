@@ -1,0 +1,28 @@
+:host {
+  cva-smart-table::ng-deep {
+    .table-responsive table {
+      .mat-column-name {
+        width: 40%;
+      }
+      .mat-column-description {
+        width: 50%;
+      }
+    }
+  }
+  cva-input::ng-deep .text_area {
+    .mat-mdc-form-field-flex {
+      height: 100px;
+    }
+    .cva-style-disable-text div {
+      white-space: pre-line;
+      -webkit-line-clamp: 3;
+    }
+  }
+  .no-content {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 10px;
+  }
+}

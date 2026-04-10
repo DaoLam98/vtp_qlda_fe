@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/modules/mdm/user/internal/internal-user-add-edit-detail/internal-user-add-edit-detail.component.scss"],
+  "sourcesContent": [":host {\r\n  cva-smart-table ::ng-deep {\r\n    .table-responsive table {\r\n      tr {\r\n        height: 47px !important;\r\n      }\r\n    }\r\n  }\r\n} \r\n"],
+  "mappings": "AAGM,MAAA,gBAAA,UAAA,CAAA,iBAAA,MAAA,GACE,OAAA",
+  "names": []
+}

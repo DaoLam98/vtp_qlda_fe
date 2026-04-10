@@ -1,0 +1,110 @@
+<cva-breadcrumb *ngIf="!isPopup" style="display: block; margin-bottom: 12px"></cva-breadcrumb>
+<div class="organization-tree" fxLayout="row wrap" fxLayoutGap="20px">
+  <cva-flat-tree
+    (onNodeClick)="onSelectChangeAcc($event)"
+    [nodeClicked]="selectedTreeNode"
+    [fullDatasource]="accountTree"
+    [isCollapseSelected]="false"
+    [isDisplayChooseTreeOnly]="true"
+    [isSearchOutSide]="false"
+    [label]=""
+    [multiple]="false"
+    [selectedLabelTitle]="moduleName+'.table.header.organization'"
+    [viewHeight]="undefined"
+    formControlName="account"
+    fxFlex="30%"
+    fxLayout="column"
+    name="account"
+  ></cva-flat-tree>
+
+  <div fxFlex="calc(70% - 20px)" fxLayout="column" style="height: 100%">
+    <cloud-search
+      #cloudSearchRef
+      [addBtnEnabled]="hasAddPermission && !isPopup"
+      [buttons]="buttons"
+      [columns]="columns"
+      [configForm]="configForm"
+      [convertField2HttpParamFn]="convertField2HttpParamFn.bind(this)"
+      [exportBtnEnabled]="false"
+      [formAdvanceSearch]="formAdvanceSearch"
+      [isShowBreadcrum]="false"
+      [selected]="selectedOrganization"
+      [trackBy]="trackBy"
+    >
+      <ng-template appTemplate="quickFilterForm">
+        <div
+          class="select-org-tree-container"
+          style="display: flex;"
+        >
+          @if (selectedTreeNode?.displayValue) {
+          <span class="select-org-tree-node-label">{{ 'common.organizationPopupChoosen.selectedTreeNode.label' | translate }}
+            :</span>
+            <span class="select-org-tree-node-name" [matTooltip]="selectedTreeNode?.displayValue">{{ selectedTreeNode?.displayValue }}</span>
+          }
+        </div>
+      </ng-template>
+
+      <ng-template appTemplate="filterForm">
+        <div
+          [formGroup]="formAdvanceSearch"
+          class="row-wrap-padding"
+          fxLayout="row wrap"
+        >
+          <!-- Số tài khoản -->
+          <cva-input
+            [class]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'accountNumber')"
+            [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+            [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+            [label]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'accountNumber')"
+            formControlName="accountNumber"
+            fxFlex="25%"
+            fxFlex.lg="25%"
+            fxFlex.md="50%"
+            fxFlex.sm="50%"
+            fxFlex.xs="100%"
+            fxLayout="column"
+            name="code"
+            placeholder="common.placeholder.input"
+          ></cva-input>
+
+          <!-- Tên tài khoản -->
+          <cva-input
+            [class]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'name')"
+            [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+            [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+            [label]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'name')"
+            formControlName="name"
+            fxFlex="25%"
+            fxFlex.lg="25%"
+            fxFlex.md="50%"
+            fxFlex.sm="50%"
+            fxFlex.xs="100%"
+            fxLayout="column"
+            name="name"
+            placeholder="common.placeholder.input"
+          ></cva-input>
+
+          <cva-multi-select-autocomplete
+            name="parentId"
+            formControlName="parentId"
+            [label]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'parentName')"
+            [class]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'parentId')"
+            [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+            [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+            [placeholder]="'common.placeholder.select'"
+            [options]="parentValues"
+            [multiple]="false"
+            fxLayout="column"
+            fxFlex="25%"
+            fxFlex.xs="100%"
+            fxFlex.sm="50%"
+            fxFlex.md="50%"
+            fxFlex.lg="25%"
+          >
+          </cva-multi-select-autocomplete>
+
+        </div>
+      </ng-template>
+    </cloud-search>
+  </div>
+</div>

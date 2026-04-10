@@ -1,0 +1,307 @@
+<div fxLayout='row wrap' style="justify-content: space-between; align-items: center">
+  <cva-breadcrumb style="flex: 1"></cva-breadcrumb>
+
+  <div fxLayout='row wrap' class='vertical-divider'>
+    <div class='btn-sec' style="display: flex; gap: 11px; margin-left: 33px;">
+      <!-- Quay lại -->
+      <button
+        mat-button
+        type='submit'
+        class='outline'
+        (click)='back()'
+      >
+        <i class="fas fa-arrow-left"></i> {{ 'btnBack'|translate }}
+      </button>
+
+      @if (isView) {
+        <!-- Kích hoạt -->
+        <button
+          *ngIf="hasApprovePermission"
+          mat-button
+          type='submit'
+          class='primary'
+          [disabled]="checkIsActive"
+          (click)='onUpdateStatus("approve")'
+        >
+          <i class='far fa-check-circle'></i> {{ 'btnActive'|translate }}
+        </button>
+
+        <!-- Hủy kích hoạt -->
+        <button
+          *ngIf="hasRejectPermission"
+          mat-button
+          type='submit'
+          class='primary'
+          [disabled]="!checkIsActive"
+          (click)='onUpdateStatus("reject")'
+        >
+          <i class='fas fa-ban'></i> {{ 'btnInactive'|translate }}
+        </button>
+      }
+
+      <!-- Nút Lưu -->
+      <button
+        *ngIf="!isView && (hasAddPermission || hasEditPermission)"
+        mat-button
+        type='submit'
+        class='primary'
+        [disabled]='addEditForm.invalid || isView'
+        (click)='onSubmit()'
+      >
+        <i class='fa fa-save'></i> {{ 'btnAddEdit'|translate }}
+      </button>
+
+      <!-- Chỉnh sửa -->
+      <button
+        *ngIf="isView && hasEditPermission"
+        mat-button
+        type='submit'
+        class='primary'
+        (click)='onRedirect(this.model?.id)'
+      >
+        <i class='fas fa-pencil-alt'></i> {{ 'btnUpdate'|translate }}
+      </button>
+    </div>
+  </div>
+</div>
+
+<form [formGroup]='addEditForm' class='form edit-form'>
+  <div class='content' style="padding: 24px 14px">
+    <!-- Thông tin chung -->
+    <div class="row-wrap">
+        <fieldset>
+          <div
+            class="row-wrap-padding"
+            fxLayout="row wrap"
+          >
+            <!-- Tên thuộc tính  -->
+            <cva-input
+              name='name'
+              formControlName='name'
+              [label]="moduleName+'.form.common.label.name'"
+              [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+              [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+              [placeholder]="'common.placeholder.input'"
+              [disabled]='isView'
+              [required]="!isView"
+              [maxLength]="255"
+              fxLayout='column'
+              fxFlex='25%'
+              fxFlex.lg='25%'
+              fxFlex.md='50%'
+              fxFlex.sm='50%'
+              fxFlex.xs='100%'
+            >
+            </cva-input>
+
+            <!-- Kiểu dữ liệu -->
+            <cva-multi-select-autocomplete
+              #dataType
+              formControlName="datatype"
+              [label]="moduleName+'.form.common.label.dataType'"
+              [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+              [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+              [placeholder]="'common.placeholder.select'"
+              [options]="dataTypeOptions"
+              [multiple]='false'
+              [disabled]='isView'
+              [required]="!isView"
+              fxLayout="column"
+              fxFlex="25%"
+              fxFlex.lg="25%"
+              fxFlex.md="50%"
+              fxFlex.sm="50%"
+              fxFlex.xs="100%"
+            >
+            </cva-multi-select-autocomplete>
+
+            <!-- Mô tả  -->
+            <cva-input
+              name='description'
+              formControlName='description'
+              [label]="moduleName+'.form.common.label.description'"
+              [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+              [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+              [placeholder]="'common.placeholder.input'"
+              [maxLength]="255"
+              [disabled]='isView'
+              fxLayout='column'
+              fxFlex='50%'
+              fxFlex.lg='50%'
+              fxFlex.md='50%'
+              fxFlex.sm='50%'
+              fxFlex.xs='100%'
+            >
+            </cva-input>
+
+            @if(dataType.value === attributeDatatypeEnum.STRING ||
+                dataType.value === attributeDatatypeEnum.NUMBER ||
+                dataType.value === attributeDatatypeEnum.DATE ||
+                dataType.value === attributeDatatypeEnum.REFERENCE) {
+              <!-- Bắt buộc nhập -->
+              <app-vss-toggle-field
+                formControlName="require"
+                [label]="moduleName+'.form.common.label.requiredInput'"
+                [disabled]='isView'
+                fxLayout='column'
+                fxFlex='25%'
+                fxFlex.xs='100%'
+                fxFlex.sm='50%'
+                fxFlex.md='50%'
+                fxFlex.lg='25%'
+              >
+              </app-vss-toggle-field>
+            }
+
+            @if(dataType.value === attributeDatatypeEnum.NUMBER) {
+              <!-- Có thể nhập số âm -->
+              <app-vss-toggle-field
+                formControlName="allowNegative"
+                [label]="moduleName+'.form.common.label.allowNegative'"
+                [disabled]='isView'
+                fxLayout='column'
+                fxFlex='25%'
+                fxFlex.xs='100%'
+                fxFlex.sm='50%'
+                fxFlex.md='50%'
+                fxFlex.lg='25%'
+              >
+              </app-vss-toggle-field>
+            }
+
+            @if(dataType.value === attributeDatatypeEnum.STRING) {
+              <!-- Giới hạn số ký tự nhập -->
+              <cva-input type="number" [appBlockChars]="['-', '.', 'e']" name='length' formControlName='length' [label]="moduleName+'.form.common.label.maxLength'"
+                [isFloatLabel]="!environment.IS_LABEL_OUTSIDE" [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+                [placeholder]="'common.placeholder.input'" [disabled]='isView' [required]="!isView"
+                [patternFilter]="lengthPattern" [errorMessages]="errorMessages"
+                fxLayout='column' fxFlex='50%' fxFlex.xs='100%' fxFlex.sm='50%' fxFlex.md='50%' fxFlex.lg='50%'>
+              </cva-input>
+            } @else if (dataType.value === attributeDatatypeEnum.NUMBER) {
+              <!-- Giới hạn số ký tự nhập -->
+              <cva-input type="number" [appBlockChars]="['-', '.', 'e']" name='length' formControlName='length' [label]="moduleName+'.form.common.label.maxLength'"
+                [isFloatLabel]="!environment.IS_LABEL_OUTSIDE" [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+                [placeholder]="'common.placeholder.input'" [disabled]='isView' [required]="!isView"
+                [patternFilter]="lengthPattern" [errorMessages]="errorMessages"
+                fxLayout='column' fxFlex='50%' fxFlex.xs='100%' fxFlex.sm='50%' fxFlex.md='50%' fxFlex.lg='50%'>
+              </cva-input>
+            }
+
+            @if(dataType.value === attributeDatatypeEnum.REFERENCE) {
+              <!-- Bảng liên kết -->
+              <cva-multi-select-autocomplete
+                formControlName="referenceTable"
+                name="referenceTable"
+                [required]="true"
+                [multiple]='false'
+                [options]="tableOptions"
+                [label]="moduleName+'.form.common.label.connectedTable'"
+                [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+                [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+                [placeholder]="'common.placeholder.select'"
+                [disabled]='isView'
+                fxFlex="25%"
+                fxFlex.lg="25%"
+                fxFlex.md="50%"
+                fxFlex.sm="50%"
+                fxFlex.xs="100%"
+                fxLayout="column"
+              ></cva-multi-select-autocomplete>
+            }
+
+            @if(isView) {
+              <!-- Trạng thái -->
+              <cva-input
+                name='status'
+                formControlName='status'
+                [label]="'common.table.header.status'"
+                [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+                [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+                [placeholder]="'common.placeholder.input'"
+                [disabled]="isView"
+                fxLayout='column'
+                fxFlex='25%'
+                fxFlex.xs='100%'
+                fxFlex.sm='50%'
+                fxFlex.md='50%'
+                fxFlex.lg='25%'
+              >
+              </cva-input>
+
+              <!-- Người tạo -->
+              <cva-input
+                name='createdBy'
+                formControlName='createdBy'
+                [label]="'common.table.header.createdBy'"
+                [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+                [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+                [placeholder]="'common.placeholder.input'"
+                [disabled]='isView'
+                fxLayout='column'
+                fxFlex='25%'
+                fxFlex.xs='100%'
+                fxFlex.sm='50%'
+                fxFlex.md='50%'
+                fxFlex.lg='25%'
+              >
+              </cva-input>
+
+              <!-- Ngày tạo -->
+              <cva-input
+                name='createdDate'
+                formControlName='createdDate'
+                [label]="'common.table.header.createdDate'"
+                [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+                [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+                [placeholder]="'common.placeholder.input'"
+                [disabled]='isView'
+                fxLayout='column'
+                fxFlex='25%'
+                fxFlex.xs='100%'
+                fxFlex.sm='50%'
+                fxFlex.md='50%'
+                fxFlex.lg='25%'
+              >
+              </cva-input>
+
+              <!-- Người cập nhật -->
+              <cva-input
+                name='lastModifiedBy'
+                formControlName='lastModifiedBy'
+                [label]="'common.table.header.lastModifiedBy'"
+                [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+                [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+                [placeholder]="'common.placeholder.input'"
+                [disabled]='isView'
+                fxLayout='column'
+                fxFlex='25%'
+                fxFlex.xs='100%'
+                fxFlex.sm='50%'
+                fxFlex.md='50%'
+                fxFlex.lg='25%'
+              >
+              </cva-input>
+
+              <!-- Ngày cập nhật -->
+              <cva-input
+                name='lastModifiedDate'
+                formControlName='lastModifiedDate'
+                [label]="'common.table.header.lastModifiedDate'"
+                [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+                [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+                [placeholder]="'common.placeholder.input'"
+                [disabled]='isView'
+                fxLayout='column'
+                fxFlex='25%'
+                fxFlex.xs='100%'
+                fxFlex.sm='50%'
+                fxFlex.md='50%'
+                fxFlex.lg='25%'
+              >
+              </cva-input>
+            }
+          </div>
+        </fieldset>
+    </div>
+  </div>
+</form>

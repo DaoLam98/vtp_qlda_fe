@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/modules/mdm/job-position/job-position-add-edit-detail/job-position-add-edit-detail.component.scss"],
+  "sourcesContent": [":host {\r\n    cva-smart-table::ng-deep {\r\n        td button {\r\n            width: 100%;\r\n        }\r\n        .table-responsive table thead tr th [title=\"Thao t\\e1 c\"] {\r\n            padding-right: 0px;\r\n        }\r\n        .table-responsive {\r\n            table {\r\n                tbody {\r\n                    tr {\r\n                        height: 47px !important;\r\n                        td {\r\n                            color: black;\r\n                            border: 1px solid #D1CFD7;\r\n\r\n                            label {\r\n                                display: none;\r\n                            }\r\n                        }\r\n                    }\r\n                }\r\n            }\r\n        }\r\n    }\r\n}\r\n"],
+  "mappings": "iBAEQ,MAAA,eAAA,UAAA,GAAA,OACI,MAAA,KAEJ,MAAA,eAAA,UAAA,CAAA,iBAAA,MAAA,MAAA,GAAA,GAAA,CAAA,qBACI,cAAA,EAKQ,MAAA,eAAA,UAAA,CANZ,iBAMY,MAAA,MAAA,GACI,OAAA,eACA,MAAA,eAAA,UAAA,CARhB,iBAQgB,MAAA,MAAA,GAAA,GACI,MAAA,KACA,OAAA,IAAA,MAAA,QAEA,MAAA,eAAA,UAAA,CAZpB,iBAYoB,MAAA,MAAA,GAAA,GAAA,MACI,QAAA",
+  "names": []
+}

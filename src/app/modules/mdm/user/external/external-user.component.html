@@ -1,0 +1,177 @@
+<cva-breadcrumb *ngIf="!isPopup" style="display: block; margin-bottom: 12px"></cva-breadcrumb>
+<cloud-search
+  [configForm]="configForm"
+  [columns]="columns"
+  [buttons]="buttons"
+  [formAdvanceSearch]="formAdvanceSearch"
+  [selected]="selectedEmployee"
+  [trackBy]="trackBy"
+  [isShowBreadcrum]="false"
+  [addBtnEnabled]="!isPopup && hasAddPermission"
+>
+  <ng-template appTemplate="filterForm">
+    <div
+      fxLayout="row wrap"
+      class="row-wrap-padding"
+      [formGroup]="formAdvanceSearch"
+    >
+      <cva-input
+        name="code"
+        formControlName="code"
+        [class]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'code')"
+        [label]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'code')"
+        [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+        [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+        placeholder="common.placeholder.input"
+        fxLayout="column"
+        fxFlex="25%"
+        fxFlex.xs="100%"
+        fxFlex.sm="50%"
+        fxFlex.md="50%"
+        fxFlex.lg="25%"
+      >
+      </cva-input>
+
+      <cva-input
+        name="fullName"
+        formControlName="fullName"
+        [class]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'name')"
+        [label]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'name')"
+        [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+        [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+        placeholder="common.placeholder.input"
+        fxLayout="column"
+        fxFlex="25%"
+        fxFlex.xs="100%"
+        fxFlex.sm="50%"
+        fxFlex.md="50%"
+        fxFlex.lg="25%"
+      >
+      </cva-input>
+
+      <cva-input
+        name="email"
+        formControlName="email"
+        [class]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'email')"
+        [label]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'email')"
+        [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+        [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+        placeholder="common.placeholder.input"
+        fxLayout="column"
+        fxFlex="25%"
+        fxFlex.xs="100%"
+        fxFlex.sm="50%"
+        fxFlex.md="50%"
+        fxFlex.lg="25%"
+      >
+      </cva-input>
+
+      <cva-input
+        name="phoneNumber"
+        formControlName="phoneNumber"
+        [class]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'phoneNumber')"
+        [label]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'phoneNumber')"
+        [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+        [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+        placeholder="common.placeholder.input"
+        fxLayout="column"
+        fxFlex="25%"
+        fxFlex.xs="100%"
+        fxFlex.sm="50%"
+        fxFlex.md="50%"
+        fxFlex.lg="25%"
+      >
+      </cva-input>
+
+      <cva-multi-select-autocomplete
+        name="type"
+        formControlName="type"
+        [class]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'type')"
+        [label]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'type')"
+        [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+        [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+        placeholder="common.placeholder.select"
+        [options]="typeValues"
+        [multiple]="false"
+        fxLayout="column"
+        fxFlex="25%"
+        fxFlex.xs="100%"
+        fxFlex.sm="50%"
+        fxFlex.md="50%"
+        fxFlex.lg="25%"
+      >
+      </cva-multi-select-autocomplete>
+
+      <app-organization-composit-choosen
+        formControlName="organizationId"
+        [class]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'organization')"
+        [listOrg]="organizationValues$ | async"
+        fxLayout="column"
+        fxFlex.xs="100%"
+        fxFlex.sm="50%"
+        fxFlex.md="50%"
+        fxFlex.lg="25%"
+        fxFlex="25%"
+      >
+      </app-organization-composit-choosen>
+
+      <cva-multi-select-autocomplete
+        name='gender'
+        formControlName='gender'
+        [class]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'gender')"
+        [label]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'gender')"
+        [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+        [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+        [placeholder]="'common.placeholder.select'"
+        [options]='genderValue'
+        [multiple]='false'
+        fxLayout='column'
+        fxFlex='25%'
+        fxFlex.xs='100%'
+        fxFlex.sm='50%'
+        fxFlex.md='50%'
+        fxFlex.lg='25%'
+      >
+      </cva-multi-select-autocomplete>
+
+      <cva-range-date-picker
+        formControlName="dob"
+        [class]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'dob')"
+        [label]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'dob')"
+        [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+        [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+        [placeholderFromDate]="'common.placeholder.fromDate'"
+        [placeholderToDate]="'common.placeholder.toDate'"
+        [fromDateControlName]="'fromDob'"
+        [toDateControlName]="'toDob'"
+        fxLayout='column'
+        fxFlex='25%'
+        fxFlex.xs='100%'
+        fxFlex.sm='50%'
+        fxFlex.md='50%'
+        fxFlex.lg='25%'
+      >
+      </cva-range-date-picker>
+
+      <cva-multi-select-autocomplete
+        *ngIf="!isPopup"
+        name="status"
+        formControlName="status"
+        [class]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'status')"
+        [label]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'status')"
+        [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+        [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+        placeholder="common.placeholder.select"
+        [options]="statusOptions$ | async"
+        [multiple]="false"
+        fxLayout="column"
+        fxFlex="25%"
+        fxFlex.xs="100%"
+        fxFlex.sm="50%"
+        fxFlex.md="50%"
+        fxFlex.lg="25%"
+      >
+      </cva-multi-select-autocomplete>
+    </div>
+  </ng-template>
+</cloud-search>

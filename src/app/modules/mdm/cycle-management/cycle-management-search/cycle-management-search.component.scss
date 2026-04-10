@@ -1,0 +1,62 @@
+.cycle-management {
+  flex: 1;
+
+  cva-flat-tree::ng-deep {
+    margin-bottom: 0;
+
+    .cva-flat-tree {
+      height: 100%;
+    }
+
+    cva-flat-tree-node-left {
+      .isClickDiv {
+        font-weight: 500;
+        padding: 5px 10px;
+        place-content: center start !important;
+      }
+    }
+  }
+
+  cloud-search::ng-deep {
+    height: 100%;
+
+    .search-form-group {
+      height: 100%;
+    }
+
+    cva-range-date-picker::ng-deep {
+      mat-form-field {
+        .mat-mdc-form-field-icon-suffix {
+          display: none;
+        }
+
+        &:hover {
+          .mat-mdc-form-field-icon-suffix {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+
+  .select-cycle-management-container {
+    padding: 0 10px 16px;
+
+    .select-cycle-management-node-label {
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 20px;
+      margin-right: 8px;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .select-cycle-management-node-name {
+      font-size: 14px;
+      line-height: 20px;
+      padding: 6px 8px;
+      border: 1px solid #d1d3d8;
+      border-radius: 99px;
+    }
+  }
+}

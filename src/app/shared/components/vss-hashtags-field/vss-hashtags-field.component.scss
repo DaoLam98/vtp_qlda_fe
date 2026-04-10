@@ -1,0 +1,28 @@
+.hashtag-autocomplete {
+  width: 100%;
+  padding: 1rem 0;
+
+  input {
+    line-height: 40px;
+    font-size: 1.2rem;
+    border: none;
+  }
+
+  input:focus-visible {
+    outline: none;
+  }
+
+  .chip-container {
+    display: flex;
+    align-items: center;
+
+    .tag-chip {
+      margin-right: 2px;
+      // background-color: #fff;
+      // border: 1px solid #ee0033;
+      // span{
+      //     color: #ee0033 !important;
+      // }
+    }
+  }
+}

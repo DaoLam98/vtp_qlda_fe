@@ -1,0 +1,210 @@
+<form [formGroup]="addEditForm">
+  <div class="content" style="padding: 24px 14px">
+    <fieldset>
+      <div class="fieldSetContent row-wrap-padding" fxLayout="row wrap" style="margin-top: 16px">
+        <app-organization-composit-choosen
+          name="investorOrgId"
+          formControlName="investorOrgId"
+          [listOrg]="organizationValuesCopy"
+          [disabled]="isView"
+          [required]="!isView"
+          fieldName="investorOrgId"
+          fxLayout="column"
+          fxFlex="50%"
+          fxFlex.xs="100%"
+          fxFlex.sm="50%"
+          fxFlex.md="50%"
+          fxFlex.lg="50%"
+        ></app-organization-composit-choosen>
+        <cva-multi-select-autocomplete
+          name="investmentFormId"
+          formControlName="investmentFormId"
+          [label]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'investmentFormId')"
+          [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+          [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+          [placeholder]="'common.placeholder.select'"
+          [options]="investmentFormValuesCopy"
+          [multiple]="false"
+          [disabled]="isView"
+          [required]="!isView"
+          fxLayout="column"
+          fxFlex="25%"
+          fxFlex.xs="100%"
+          fxFlex.sm="25%"
+          fxFlex.md="25%"
+          fxFlex.lg="25%"
+        ></cva-multi-select-autocomplete>
+        <cva-input
+          name="investmentCapitalSource"
+          formControlName="investmentCapitalSource"
+          [label]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'investmentCapitalSource')"
+          [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+          [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+          [placeholder]="'common.placeholder.input'"
+          [maxLength]="255"
+          [disabled]="isView"
+          [required]="!isView"
+          fxLayout="column"
+          fxFlex="25%"
+          fxFlex.xs="100%"
+          fxFlex.sm="25%"
+          fxFlex.md="25%"
+          fxFlex.lg="25%"
+        ></cva-input>
+        <cva-input
+          [patternFilter]="'^\\d{0,15}(\\.\\d*)?$'"
+          [formatFunc]="formatFun"
+          name="totalInvestmentCapital"
+          [formControlName]="isView ? 'totalInvestmentCapitalDisplay' : 'totalInvestmentCapital'"
+          [label]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'totalInvestmentCapital')"
+          [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+          [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+          [placeholder]="'common.placeholder.input'"
+          [disabled]="isView"
+          [required]="!isView"
+          fxLayout="column"
+          fxFlex="25%"
+          fxFlex.xs="100%"
+          fxFlex.sm="25%"
+          fxFlex.md="25%"
+          fxFlex.lg="25%"
+        ></cva-input>
+        <cva-multi-select-autocomplete
+          name="currencyId"
+          formControlName="currencyId"
+          [label]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'currencyId')"
+          [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+          [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+          [placeholder]="'common.placeholder.select'"
+          [options]="currencyValuesCopy"
+          [multiple]="false"
+          [disabled]="isView"
+          [required]="!isView"
+          fxLayout="column"
+          fxFlex="25%"
+          fxFlex.xs="100%"
+          fxFlex.sm="25%"
+          fxFlex.md="25%"
+          fxFlex.lg="25%"
+        ></cva-multi-select-autocomplete>
+        <cva-multi-select-autocomplete
+          name="expressionInvestmentId"
+          formControlName="expressionInvestmentId"
+          [label]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'expressionInvestmentId')"
+          [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+          [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+          [placeholder]="'common.placeholder.select'"
+          [options]="expressionValuesCopy"
+          [multiple]="false"
+          [disabled]="isView || model?.isApplyInvestment"
+          [required]="!isView"
+          fxLayout="column"
+          fxFlex="50%"
+          fxFlex.xs="100%"
+          fxFlex.sm="50%"
+          fxFlex.md="50%"
+          fxFlex.lg="50%"
+        ></cva-multi-select-autocomplete>
+        <cva-multi-select-autocomplete
+          name="informationTypeInvestmentId"
+          formControlName="informationTypeInvestmentId"
+          [label]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'informationTypeInvestmentId')"
+          [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+          [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+          [placeholder]="'common.placeholder.select'"
+          [options]="informationTypeValuesCopy"
+          [multiple]="false"
+          [disabled]="isView"
+          [required]="!isView"
+          fxLayout="column"
+          fxFlex="25%"
+          fxFlex.xs="100%"
+          fxFlex.sm="25%"
+          fxFlex.md="25%"
+          fxFlex.lg="25%"
+        ></cva-multi-select-autocomplete>
+        <cva-multi-select-autocomplete
+          name="frequencyInvestment"
+          formControlName="frequencyInvestment"
+          [label]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'frequencyInvestment')"
+          [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+          [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+          [placeholder]="'common.placeholder.select'"
+          [options]="frequencyValues"
+          [multiple]="false"
+          [disabled]="isView || model?.isApplyInvestment"
+          [required]="!isView"
+          fxLayout="column"
+          fxFlex="25%"
+          fxFlex.xs="100%"
+          fxFlex.sm="25%"
+          fxFlex.md="25%"
+          fxFlex.lg="25%"
+        ></cva-multi-select-autocomplete>
+        <cva-date-picker
+          name="startDateInvestment"
+          formControlName="startDateInvestment"
+          [class]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'startDateInvestment')"
+          [label]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'startDateInvestment')"
+          [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+          [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+          [placeholder]="'DD/MM/YYYY'"
+          [disabled]="isView || model?.isApplyInvestment"
+          [required]="!isView"
+          fxLayout="column"
+          fxFlex="25%"
+          fxFlex.xs="100%"
+          fxFlex.sm="25%"
+          fxFlex.md="25%"
+          fxFlex.lg="25%"
+        ></cva-date-picker>
+        <cva-date-picker
+          name="endDateInvestment"
+          formControlName="endDateInvestment"
+          [class]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'endDateInvestment')"
+          [label]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'endDateInvestment')"
+          [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+          [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+          [placeholder]="'DD/MM/YYYY'"
+          [disabled]="isView || model?.isApplyInvestment"
+          [required]="!isView"
+          [errorMessages]="errorMessages"
+          fxLayout="column"
+          fxFlex="25%"
+          fxFlex.xs="100%"
+          fxFlex.sm="25%"
+          fxFlex.md="25%"
+          fxFlex.lg="25%"
+        ></cva-date-picker>
+        @if (!isView) {
+        <div fxLayout fxFlex="100%" fxLayoutAlign="end">
+          <button mat-button type="button" class="primary" (click)="onApply()" [disabled]="btnApplyDisabled || model?.isApplyInvestment">
+            {{ 'btnApply' | translate }}
+          </button>
+          <button mat-button type="button" class="primary outline" (click)="onReset()">
+            {{ 'btnReset' | translate }}
+          </button>
+        </div>
+        }
+        <button style="display: none"></button>
+      </div>
+    </fieldset>
+  </div>
+  <div class="margin-top-15"></div>
+  <app-project-item-search
+    #itemSearchRef
+    [frequency]="model?.frequencyInvestment"
+    [startDate]="model?.startDateInvestment"
+    [endDate]="model?.endDateInvestment"
+    [orderKey]="'expressionInvestmentOrder'"
+    [parentModelIdentityKey]="'projectProposalId'"
+    [parentModelId]="id"
+    [apiName]="'project-proposal-investment'"
+    [assetValues]="assetValues"
+    [accountingAccountValues]="accountingAccountValues"
+    [targetValues]="targetValues"
+    (isEmptyTabExists)="isEmptyTabExists.emit($event)"
+    [readonly]="isView"
+    [isDisplay]="model?.isApplyInvestment"
+  ></app-project-item-search>
+</form>

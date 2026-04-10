@@ -1,0 +1,85 @@
+<div class="dialog_wrapper" style="width: 1000px">
+  <div class="dialog_header">
+    <div class="dialog_title">{{ 'common.mdm.create' | translate }}</div>
+    <i class="fal fa-times margin-15" style="cursor: pointer" (click)="matDialogRef.close()"></i>
+  </div>
+  <div class="dialog_content">
+    <form [formGroup]="addEditForm" class="form edit-form">
+      <div>
+        <fieldset>
+          <div class="fieldSetContent row-wrap-padding" fxLayout="row wrap">
+            <cva-multi-select-autocomplete
+              name="projects"
+              formControlName="projects"
+              [class]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'projects')"
+              [label]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'project')"
+              [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+              [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+              [placeholder]="'common.placeholder.select'"
+              [options]="projectValues"
+              [multiple]="true"
+              [required]="true"
+              fxLayout="column"
+              fxFlex="100%"
+            ></cva-multi-select-autocomplete>
+
+            <cva-multi-select-autocomplete
+              name="informationTypeId"
+              formControlName="informationTypeId"
+              [class]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'informationTypeId')"
+              [label]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'dataType')"
+              [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+              [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+              [placeholder]="'common.placeholder.select'"
+              [options]="dataTypeValues"
+              [multiple]="false"
+              [required]="true"
+              fxLayout="column"
+              fxFlex="100%"
+            ></cva-multi-select-autocomplete>
+
+            <cva-multi-select-autocomplete
+              name="targetGroups"
+              formControlName="targetGroups"
+              [class]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'targetGroups')"
+              [label]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'targetGroup')"
+              [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+              [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+              [placeholder]="'common.placeholder.select'"
+              [options]="targetGroupValues"
+              [multiple]="true"
+              [required]="true"
+              fxLayout="column"
+              fxFlex="100%"
+            ></cva-multi-select-autocomplete>
+
+            <cva-multi-select-autocomplete
+              name="cycleId"
+              formControlName="cycleId"
+              [class]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'cycleId')"
+              [label]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'period')"
+              [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+              [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+              [placeholder]="'common.placeholder.select'"
+              [options]="periodValues"
+              [multiple]="false"
+              [required]="true"
+              fxLayout="column"
+              fxFlex="100%"
+            ></cva-multi-select-autocomplete>
+          </div>
+        </fieldset>
+      </div>
+    </form>
+  </div>
+  <div class="dialog_footer right">
+    <div>
+      <button mat-button class="primary outline" (click)="matDialogRef.close()">
+        {{ 'common.btnClose' | translate }}
+      </button>
+      <button mat-button class="primary" [disabled]="addEditForm.invalid" (click)="onSubmit()">
+        {{ 'common.btnAdd' | translate }}
+      </button>
+    </div>
+  </div>
+</div>

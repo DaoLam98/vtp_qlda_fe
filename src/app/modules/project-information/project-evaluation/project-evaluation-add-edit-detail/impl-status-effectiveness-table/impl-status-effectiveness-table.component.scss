@@ -1,0 +1,14 @@
+::ng-deep .mat-column-display-none{
+  display: none;
+}
+.quantitative-table {
+  ::ng-deep cva-header-expand-button .expand-column-header-button {
+    display: none;
+  }
+  ::ng-deep .table-responsive table thead tr th [title="Thao t\e1 c"] {
+    padding-right: 0px;
+  }
+  ::ng-deep .mat-column-stt:not(:first-child) {
+    display: none;
+  }
+}

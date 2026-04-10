@@ -1,0 +1,43 @@
+<div *ngIf="viewScreen == 'criteria'">
+  <div class="table-responsive tree-table">
+    <table [dataSource]="dataSource" class="mat-elevation-z8 mat-table cdk-table mat-elevation-z8 ns-table" mat-table>
+      <ng-container matColumnDef="name">
+        <th *matHeaderCellDef class="mat-header-cell cdk-header-cell cdk-column-name mat-column-name" mat-header-cell>
+          <span [style.paddingLeft.px]="40">  </span> Tên chỉ tiêu
+        </th>
+        <td *matCellDef="let data" mat-cell>
+          <button
+            (click)="treeControl.toggle(data)"
+            [style.marginLeft.px]="data.level * 32"
+            [style.visibility]="!data.expandable ? 'hidden' : ''"
+            mat-icon-button
+          >
+            <mat-icon class="mat-icon-rtl-mirror">
+              {{ treeControl.isExpanded(data) ? 'expand_more' : 'chevron_right' }}
+            </mat-icon>
+          </button>
+          {{ data.name }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="action">
+        <th *matHeaderCellDef mat-header-cell> Thao tác</th>
+        <td *matCellDef="let data" mat-cell>
+          <ng-container *ngFor="let button of actions">
+            <button
+              (click)="onButtonClick(button.click, data)" *ngIf="button.display()"
+              [ngClass]="button.className + ' button ' + button.color"
+              [title]="button.title | translate"
+              mat-button
+            >
+              <i *ngIf="button.icon" class="{{ button.icon }}"></i>
+            </button>
+          </ng-container>
+        </td>
+      </ng-container>
+
+      <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+      <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
+    </table>
+  </div>
+</div>

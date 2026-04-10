@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/layouts/menu-list-item/menu-list-item.component.scss"],
+  "sourcesContent": [":host {\r\n  display: flex;\r\n  flex-direction: column;\r\n  outline: none;\r\n  width: 100%;\r\n\r\n  .mat-list-item.active {\r\n    //background-color: mat-color($app-primary, 50);\r\n  }\r\n\r\n  &:hover,\r\n  &:focus {\r\n    > .mat-list-item:not(.expanded) {\r\n      //background-color: mat-color($app-primary, 100) !important;\r\n    }\r\n  }\r\n}\r\n\r\n.mdc-list-item__primary-text {\r\n  //padding: 0 0 0 0.5rem !important;\r\n  display: flex;\r\n  width: auto;\r\n\r\n  .routeIcon {\r\n    margin-right: 0.5rem;\r\n  }\r\n}\r\n"],
+  "mappings": "AAAA,MACE,QAAA,KACA,eAAA,OACA,QAAA,KACA,MAAA,KAcF,CAAA,4BAEE,QAAA,KACA,MAAA,KAEA,CALF,4BAKE,CAAA,UACE,aAAA",
+  "names": []
+}

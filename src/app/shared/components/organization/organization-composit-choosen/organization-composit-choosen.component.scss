@@ -1,0 +1,18 @@
+::ng-deep
+app-organization-composit-choosen
+cva-multi-select-autocomplete
+.cva-multi-select-autocomplete
+mat-form-field
+.mat-mdc-text-field-wrapper
+.mat-mdc-form-field-flex
+.mat-mdc-form-field-infix
+mat-select
+.mat-mdc-select-trigger {
+  margin-left: 30px;
+}
+
+::ng-deep
+app-organization-composit-choosen
+.mat-mdc-select-value {
+  padding-right: 60px !important;
+}

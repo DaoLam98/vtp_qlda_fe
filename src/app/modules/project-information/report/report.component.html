@@ -1,0 +1,37 @@
+<cva-breadcrumb></cva-breadcrumb>
+<div class="form edit-form" style="padding-bottom: 50px">
+  <div class="content" style="padding: 24px 14px">
+    <mat-tab-group #tabGroup class="tab-flex-grow-0">
+      <mat-tab label="{{ 'project.report.report-detail' | translate }}">
+        <app-report-detail
+          [organizationValues]="organizationValues"
+          [projectTypeValues]="projectTypeValues"
+          [projectValues]="projectValues"
+          [informationTypeValues]="informationTypeValues"
+          [frequencyValues]="frequencyValues"
+          [hasExportPermission]="hasExportPermission"
+        ></app-report-detail>
+      </mat-tab>
+      <mat-tab label="{{ 'project.report.report-summary' | translate }}">
+        <app-report-summary
+          [organizationValues]="organizationValues"
+          [projectTypeValues]="projectTypeValues"
+          [projectValues]="projectValues"
+          [informationTypeValues]="informationTypeValues"
+          [frequencyValues]="frequencyValues"
+          [hasExportPermission]="hasExportPermission"
+        ></app-report-summary>
+      </mat-tab>
+      <mat-tab label="{{ 'project.report.report-cumulative' | translate }}">
+        <app-report-cumulative
+          [organizationValues]="organizationValues"
+          [projectTypeValues]="projectTypeValues"
+          [projectValues]="projectValues"
+          [informationTypeValues]="informationTypeValues"
+          [frequencyValues]="frequencyValues"
+          [hasExportPermission]="hasExportPermission"
+        ></app-report-cumulative>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>

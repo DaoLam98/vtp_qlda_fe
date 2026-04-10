@@ -1,0 +1,286 @@
+<form [formGroup]="addEditForm">
+  <div class="content" style="padding: 24px 14px">
+    <fieldset>
+      <div class="fieldSetContent row-wrap-padding" fxLayout="row wrap" style="margin-top: 16px">
+        @if (isUpgradeRouter) {
+        <cva-input
+          name="referenceDisplay"
+          formControlName="referenceDisplay"
+          [label]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'referenceDisplay')"
+          [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+          [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+          [placeholder]="'common.placeholder.input'"
+          [disabled]="true"
+          fxLayout="column"
+          fxFlex="100%"
+          fxFlex.xs="100%"
+          fxFlex.sm="100%"
+          fxFlex.md="100%"
+          fxFlex.lg="100%"
+        ></cva-input>
+        }
+        <cva-input
+          name="name"
+          formControlName="name"
+          [label]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'name')"
+          [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+          [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+          [placeholder]="'common.placeholder.input'"
+          [maxLength]="255"
+          [disabled]="isView"
+          [required]="!isView"
+          fxLayout="column"
+          fxFlex="50%"
+          fxFlex.xs="100%"
+          fxFlex.sm="50%"
+          fxFlex.md="50%"
+          fxFlex.lg="50%"
+        ></cva-input>
+        <app-organization-composit-choosen
+          name="proposingOrgId"
+          formControlName="proposingOrgId"
+          [class]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'proposingOrgId')"
+          [listOrg]="proposingOrganizationValuesCopy"
+          [disabled]="isView"
+          [required]="!isView"
+          fieldName="proposingOrgId"
+          fxLayout="column"
+          fxFlex="50%"
+          fxFlex.xs="100%"
+          fxFlex.sm="50%"
+          fxFlex.md="50%"
+          fxFlex.lg="50%"
+        ></app-organization-composit-choosen>
+        <app-organization-composit-choosen
+          name="operatingOrgId"
+          formControlName="operatingOrgId"
+          [class]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'operatingOrgId')"
+          [listOrg]="operatingOrganizationValuesCopy"
+          [disabled]="isView"
+          [required]="!isView"
+          fieldName="operatingOrgId"
+          fxLayout="column"
+          fxFlex="50%"
+          fxFlex.xs="100%"
+          fxFlex.sm="50%"
+          fxFlex.md="50%"
+          fxFlex.lg="50%"
+        ></app-organization-composit-choosen>
+        <cva-multi-select-autocomplete
+          name="projectTypeId"
+          formControlName="projectTypeId"
+          [class]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'projectTypeId')"
+          [label]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'projectTypeId')"
+          [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+          [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+          [placeholder]="'common.placeholder.select'"
+          [options]="projectTypeValuesCopy"
+          [multiple]="false"
+          [disabled]="isView"
+          [required]="!isView"
+          fxLayout="column"
+          fxFlex="50%"
+          fxFlex.xs="100%"
+          fxFlex.sm="50%"
+          fxFlex.md="50%"
+          fxFlex.lg="50%"
+        ></cva-multi-select-autocomplete>
+        <cva-date-picker
+          name="expectedStartDate"
+          formControlName="expectedStartDate"
+          [class]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'expectedStartDate')"
+          [label]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'expectedStartDate')"
+          [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+          [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+          [placeholder]="'DD/MM/YYYY'"
+          [disabled]="isView"
+          [required]="!isView"
+          fxLayout="column"
+          fxFlex="50%"
+          fxFlex.xs="100%"
+          fxFlex.sm="50%"
+          fxFlex.md="50%"
+          fxFlex.lg="50%"
+        ></cva-date-picker>
+        <cva-date-picker
+          name="expectedEndDate"
+          formControlName="expectedEndDate"
+          [class]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'expectedEndDate')"
+          [label]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'expectedEndDate')"
+          [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+          [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+          [placeholder]="'DD/MM/YYYY'"
+          [disabled]="isView"
+          [required]="!isView"
+          [errorMessages]="errorMessages"
+          fxLayout="column"
+          fxFlex="50%"
+          fxFlex.xs="100%"
+          fxFlex.sm="50%"
+          fxFlex.md="50%"
+          fxFlex.lg="50%"
+        ></cva-date-picker>
+        <cva-input
+          name="goal"
+          formControlName="goal"
+          [label]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'goal')"
+          [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+          [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+          [placeholder]="'common.placeholder.input'"
+          [multiline]="true"
+          [maxLength]="255"
+          [disabled]="isView"
+          [required]="!isView"
+          fxLayout="column"
+          fxFlex="100%"
+          fxFlex.xs="100%"
+          fxFlex.sm="100%"
+          fxFlex.md="100%"
+          fxFlex.lg="100%"
+        ></cva-input>
+        <cva-input
+          name="scale"
+          formControlName="scale"
+          [label]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'scale')"
+          [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+          [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+          [placeholder]="'common.placeholder.input'"
+          [multiline]="true"
+          [maxLength]="255"
+          [disabled]="isView"
+          [required]="!isView"
+          fxLayout="column"
+          fxFlex="100%"
+          fxFlex.xs="100%"
+          fxFlex.sm="100%"
+          fxFlex.md="100%"
+          fxFlex.lg="100%"
+        ></cva-input>
+        <cva-multi-select-autocomplete
+          name="locationId"
+          formControlName="locationId"
+          [class]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'locationId')"
+          [label]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'locationId')"
+          [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+          [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+          [placeholder]="'common.placeholder.select'"
+          [options]="locationValues"
+          [multiple]="false"
+          [disabled]="isView"
+          [required]="!isView"
+          fxLayout="column"
+          fxFlex="50%"
+          fxFlex.xs="100%"
+          fxFlex.sm="50%"
+          fxFlex.md="50%"
+          fxFlex.lg="50%"
+        ></cva-multi-select-autocomplete>
+        <cva-input
+          name="address"
+          formControlName="address"
+          [label]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'address')"
+          [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+          [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+          [placeholder]="'common.placeholder.input'"
+          [maxLength]="255"
+          [disabled]="isView"
+          fxLayout="column"
+          fxFlex="50%"
+          fxFlex.xs="100%"
+          fxFlex.sm="50%"
+          fxFlex.md="50%"
+          fxFlex.lg="50%"
+        ></cva-input>
+        @if(isView) {
+        <cva-input
+          name="createdBy"
+          formControlName="createdBy"
+          [label]="'common.table.header.createdBy'"
+          [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+          [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+          [placeholder]="'common.placeholder.input'"
+          [disabled]="true"
+          fxLayout="column"
+          fxFlex="25%"
+          fxFlex.xs="100%"
+          fxFlex.sm="50%"
+          fxFlex.md="50%"
+          fxFlex.lg="25%"
+        ></cva-input>
+        <cva-date-picker
+          name="createdDate"
+          formControlName="createdDate"
+          [label]="'common.table.header.createdDate'"
+          [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+          [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+          [placeholder]="'common.placeholder.input'"
+          [disabled]="true"
+          fxLayout="column"
+          fxFlex="25%"
+          fxFlex.xs="100%"
+          fxFlex.sm="50%"
+          fxFlex.md="50%"
+          fxFlex.lg="25%"
+        ></cva-date-picker>
+        <cva-input
+          name="lastModifiedBy"
+          formControlName="lastModifiedBy"
+          [label]="'common.table.header.lastModifiedBy'"
+          [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+          [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+          [placeholder]="'common.placeholder.input'"
+          [disabled]="true"
+          fxLayout="column"
+          fxFlex="25%"
+          fxFlex.xs="100%"
+          fxFlex.sm="50%"
+          fxFlex.md="50%"
+          fxFlex.lg="25%"
+        ></cva-input>
+        <cva-date-picker
+          name="lastModifiedDate"
+          formControlName="lastModifiedDate"
+          [label]="'common.table.header.lastModifiedDate'"
+          [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+          [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+          [placeholder]="'common.placeholder.input'"
+          [disabled]="true"
+          fxLayout="column"
+          fxFlex="25%"
+          fxFlex.xs="100%"
+          fxFlex.sm="50%"
+          fxFlex.md="50%"
+          fxFlex.lg="25%"
+        ></cva-date-picker>
+        }
+      </div>
+    </fieldset>
+  </div>
+  <div class="margin-top-15"></div>
+  <mat-expansion-panel [expanded]="true">
+    <mat-expansion-panel-header>
+      <mat-panel-title>{{ 'mdm.project-proposal.organizations' | translate }}</mat-panel-title>
+    </mat-expansion-panel-header>
+    <div fxLayout="column">
+      <div class="buttonArea" fxLayout fxLayoutAlign="start">
+        <button *ngIf="!isView" mat-button type="button" class="primary" (click)="onAddValue()">
+          <i class="fa fa-plus"></i> {{ 'mdm.project-proposal.organizations.add' | translate }}
+        </button>
+      </div>
+      @if (addEditForm.get('organizations')?.value?.length > 0) {
+      <cva-smart-table
+        formControlName="organizations"
+        [moduleName]="'project-proposal.organization'"
+        [columns]="organizationColumns"
+        [buttons]="organizationButtons"
+        (clickAction)="onTableAction($event)"
+        fxFlex="100%"
+      ></cva-smart-table>
+      } @else {
+      <div class="no-content">
+        {{ 'common.no-data' | translate }}
+      </div>
+      }
+    </div>
+  </mat-expansion-panel>
+</form>

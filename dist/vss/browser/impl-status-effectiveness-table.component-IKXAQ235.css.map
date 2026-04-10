@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/modules/project-manage/project-evaluation/project-evaluation-add-edit-detail/impl-status-effectiveness-table/impl-status-effectiveness-table.component.scss"],
+  "sourcesContent": ["::ng-deep .mat-column-display-none{\r\n  display: none;\r\n}\r\n.quantitative-table {\r\n  ::ng-deep cva-header-expand-button .expand-column-header-button {\r\n    display: none;\r\n  }\r\n}\r\n"],
+  "mappings": "AAAA,UAAA,CAAA,wBACE,QAAA,KAGA,CAAA,mBAAA,UAAA,yBAAA,CAAA,4BACE,QAAA",
+  "names": []
+}

@@ -1,0 +1,44 @@
+.tree-table button.mat-button {
+  min-width: auto;
+  border-radius: 40px;
+  padding: 0 11px;
+  width: 40px;
+}
+
+.tree-table button.mat-button i {
+  margin: 0;
+}
+
+.icon-title {
+  font-size: 16px;
+  position: relative;
+  top: 2px;
+  width: 16px;
+  height: 16px;
+}
+
+.kpi-table .table-responsive {
+  overflow: auto;
+  max-width: 100%;
+  width: auto;
+}
+
+// .kpi-table {
+//   overflow-x: scroll;
+// }
+.kpi-table .table-responsive .mat-table {
+  min-width: 150%;
+  width: auto;
+  overflow: unset;
+}
+
+.sticky-column {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  background-color: #fff;
+}
+
+.kpi-table .table-responsive .mat-table .mat-row:nth-of-type(even) .sticky-column {
+  background-color: #f4f9ff;
+}

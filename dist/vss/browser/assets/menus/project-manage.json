@@ -1,0 +1,21 @@
+[
+  {
+    "displayName": "Quản lý dự án",
+    "iconName": "fas fa-info-square",
+    "roleMenu": "project_manager",
+    "children": [
+      {
+        "displayName": "menu.project-manage.final-balance-config",
+        "iconName": "fal fa-tasks-alt",
+        "route": "project-manage/final-balance-config",
+        "roleMenu": "final_balance_config"
+      },
+      {
+        "displayName": "menu.project-manage.project-evaluation",
+        "iconName": "fal fa-chart-bar",
+        "route": "project-manage/project-evaluation",
+        "roleMenu": "final_balance_config"
+      }
+    ]
+  }
+]

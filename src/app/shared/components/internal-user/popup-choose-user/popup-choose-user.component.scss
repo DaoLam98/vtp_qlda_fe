@@ -1,0 +1,163 @@
+.dialog_wrapper {
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+
+  .dialog_header {
+    padding: 16px;
+    height: auto;
+    z-index: 100;
+    border-bottom: 1px solid #D1D3D8;
+
+    .dialog_title {
+      font-size: 18px;
+      line-height: 24px;
+    }
+  }
+
+  .dialog_content {
+    flex: 1;
+    max-height: calc(100vh - 150px); // Trừ đi chiều cao của header và footer
+    resize: none;
+    overflow: auto;
+
+    app-user-tree::ng-deep {
+      .user-tree {
+        flex: 1;
+
+        .tree-toggle-btn {
+          top: 10px !important;
+        }
+
+        // Cây đơn vị
+        cva-flat-tree::ng-deep {
+          margin: 0 !important;
+
+          .cva-flat-tree {
+            height: 100%;
+
+            .tree-area {
+              height: 100%;
+              border: none;
+              border-radius: 0;
+              box-shadow: none;
+
+              & > div {
+                height: 100%;
+
+                .choose-area {
+                  height: 100%;
+                  padding: 16px;
+                  border-right: 1px solid #D1D3D8;
+
+                  .header-choose-area {
+                    margin-right: 0;
+                  }
+
+                  cdk-virtual-scroll-viewport {
+                    padding-right: 0;
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        // Bảng
+        cloud-search::ng-deep {
+          .search-form-group {
+            height: auto;
+            border: none;
+            border-radius: 0;
+            box-shadow: none;
+            padding: 4px 4px 0;
+
+            form {
+              padding: 10px 4px;
+            }
+          }
+        }
+
+        .select-user-tree-container {
+          //padding: 0 35px 16px;
+
+          .select-user-tree-node-label {
+            font-weight: 600;
+            font-size: 14px;
+            line-height: 20px;
+            margin-right: 8px;
+            display: inline-flex;
+            align-items: center;
+          }
+
+          .select-user-tree-node-name {
+            font-size: 14px;
+            line-height: 20px;
+            padding: 6px 8px;
+            border: 1px solid #D1D3D8;
+            border-radius: 99px
+          }
+        }
+      }
+    }
+  }
+
+  // Footer
+  .footer {
+    position: sticky;
+    bottom: 0;
+    border-top: 1px solid #D1D3D8;
+    background: white;
+    z-index: 100;
+
+    .buttonArea {
+      margin: 16px !important;
+    }
+  }
+}
+
+::ng-deep app-popup-choose-user {
+  height: calc(100vh - 150px);
+  overflow: auto;
+  display: block;
+
+  .dialog_content {
+    // max-height: 90vh;
+  }
+  .tree-area {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+
+  .table-responsive {
+    overflow: overlay;
+    height: 600px;
+    border-top: 1px #d1cfd7 solid;
+
+    div:has(> div.paging) {
+      position: sticky;
+      bottom: 0;
+      background-color: white;
+    }
+
+  }
+
+  /* Sticky cho phần header row */
+  .mat-mdc-header-row {
+    position: sticky;
+    top: 0;
+    /* nền và z-index để header nổi lên trên nội dung */
+    background-color: white;
+    z-index: 10;
+  }
+
+  /* Có thể thêm cho các ô tiêu đề để ổn định */
+  .mat-mdc-header-cell {
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 11; /* cao hơn dòng header */
+    border-bottom: 1px solid #e0e0e0; /* tuỳ chỉnh đường viền */
+  }
+}

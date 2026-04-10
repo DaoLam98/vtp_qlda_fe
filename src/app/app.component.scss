@@ -1,0 +1,34 @@
+.toggle-button {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  display: flex;
+  justify-content: right;
+}
+
+.toggle-button.collapsed {
+  justify-content: center;
+}
+
+mat-sidenav.collapsed {
+  width: 56px;
+  display: flex;
+  justify-content: center;
+
+  .routeIcon {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+  }
+;
+
+  .menu-text {
+    display: none;
+  }
+
+  /* .mat-mdc-list-item:hover{
+      .menu-text {
+          display: block;
+      }
+  } */
+}

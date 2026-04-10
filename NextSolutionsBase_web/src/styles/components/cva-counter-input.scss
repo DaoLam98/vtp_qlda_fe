@@ -1,0 +1,46 @@
+.cva-counter-input {
+  width: 100%;
+
+  .btnCounterInput {
+    width: 20px;
+    height: 20px;
+    line-height: 14px;
+    font-size: 14px;
+  }
+
+  .btnCounterInput span.mat-button-wrapper {
+    line-height: 14px;
+    padding: 0;
+  }
+
+  .btnCounterInput span.mat-button-wrapper mat-icon {
+    font-size: 14px;
+    padding: 0px;
+    margin: 4px 0px 0px -2px;
+  }
+
+  .required-label-outside {
+    color: red;
+  }
+
+  mat-form-field {
+
+    .input-area {
+      display: flex;
+      text-align: right;
+      width: 100%;
+    }
+
+    .input-suffix {
+      margin-left: 0.2rem;
+      color: grey
+    }
+
+    // hide number scrolling left type number
+    //input[type=number]::-webkit-inner-spin-button,
+    //input[type=number]::-webkit-outer-spin-button {
+    //  -webkit-appearance: none;
+    //  margin: 0;
+    //}
+  }
+}

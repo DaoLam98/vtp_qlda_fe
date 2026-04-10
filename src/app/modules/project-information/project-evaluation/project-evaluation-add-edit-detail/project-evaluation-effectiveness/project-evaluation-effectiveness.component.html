@@ -1,0 +1,87 @@
+<div fxLayout="row wrap" class="row-wrap-padding edit-action"></div>
+<form [formGroup]="addEditForm" class="form edit-form" style="padding-bottom: .5rem">
+  <div class="fieldSetContent row-wrap-padding" fxLayout="row wrap">
+    <cva-multi-select-autocomplete
+      name="effectivenessExpressionId"
+      formControlName="effectivenessExpressionId"
+      [label]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'template')"
+      [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+      [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+      [placeholder]="'common.placeholder.select'"
+      [options]="expressionValues"
+      [multiple]="false"
+      [disabled]="isView || model?.isApplyEffectiveness"
+      [required]="!isView"
+      fxLayout="column"
+      fxFlex="50%"
+      fxFlex.xs="100%"
+      fxFlex.sm="50%"
+      fxFlex.md="50%"
+      fxFlex.lg="50%"
+    ></cva-multi-select-autocomplete>
+    <cva-date-picker
+      name="effectivenessStartDate"
+      formControlName="effectivenessStartDate"
+      [class]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'fromDate')"
+      [label]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'fromDate')"
+      [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+      [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+      [placeholder]="'DD/MM/YYYY'"
+      [disabled]="isView || model?.isApplyEffectiveness"
+      [required]="!isView"
+      fxLayout="column"
+      fxFlex="25%"
+      fxFlex.xs="100%"
+      fxFlex.sm="25%"
+      fxFlex.md="25%"
+      fxFlex.lg="25%"
+    ></cva-date-picker>
+    <cva-date-picker
+      name="effectivenessEndDate"
+      formControlName="effectivenessEndDate"
+      [class]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'toDate')"
+      [label]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'toDate')"
+      [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+      [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+      [placeholder]="'DD/MM/YYYY'"
+      [disabled]="isView || model?.isApplyEffectiveness"
+      [required]="!isView"
+      [errorMessages]="errorMessages"
+      fxLayout="column"
+      fxFlex="25%"
+      fxFlex.xs="100%"
+      fxFlex.sm="25%"
+      fxFlex.md="25%"
+      fxFlex.lg="25%"
+    ></cva-date-picker>
+  </div>
+  <button type="submit" [hidden]="true"></button>
+<div class="button-apply" *ngIf="!isView">
+  <button mat-button type="button" class="primary" (click)="onApply()" [disabled]="btnApplyDisabled || model?.isApplyEffectiveness">
+    {{ 'btnApply' | translate }}
+  </button>
+  <button mat-button type="button" class="primary outline" (click)="onReset()">
+    {{ 'btnReset' | translate }}
+  </button>
+</div>
+<div>
+  <app-impl-status-effectiveness-table
+    #itemSearchRef
+    [model]="model"
+    [frequency]="model?.frequencyInvestment"
+    [startDate]="model?.effectivenessStartDate"
+    [endDate]="model?.effectivenessEndDate"
+    [orderKey]="'expressionEffectivenessOrder'"
+    [parentModelIdentityKey]="'projectEvalId'"
+    [parentModelId]="id"
+    [apiName]="'project-eval-effectiveness-item'"
+    [assetValues]="assetValues"
+    [accountingAccountValues]="accountingAccountValues"
+    [targetValues]="targetValues"
+    [readonly]="isView"
+    [isDisplay]="model?.isApplyEffectiveness"
+    (isEmptyTabExists)="isEmptyTabExists.emit($event)"
+  ></app-impl-status-effectiveness-table>
+</div>
+</form>
+

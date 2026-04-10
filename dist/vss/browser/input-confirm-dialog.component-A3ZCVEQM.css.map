@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/shared/components/dialogs/input-confirm-dialog/input-confirm-dialog.component.scss"],
+  "sourcesContent": [".dialog_wrapper {\r\n  .dialog_content {\r\n    &::after {\r\n      height: 0;\r\n    }\r\n\r\n    .message {\r\n      padding: 0 12px 16px 10px;\r\n      margin: 0;\r\n      font-weight: 600;\r\n      font-size: 14px;\r\n      line-height: 20px;\r\n    }\r\n  }\r\n}\r\n"],
+  "mappings": "AAEI,CAAA,eAAA,CAAA,cAAA,OACE,OAAA,EAGF,CAJA,eAIA,CAJA,eAIA,CAAA,QAJA,QAKE,EAAA,KAAA,KAAA,KALF,OAME,EACA,YAAA,IACA,UAAA,KACA,YAAA",
+  "names": []
+}

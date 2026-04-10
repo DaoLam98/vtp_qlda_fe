@@ -1,0 +1,78 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "declaration": false,
+    "esModuleInterop": true,
+    "module": "es2020",
+    "moduleResolution": "node",
+    "strict": true,
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "sourceMap": true,
+    "inlineSources": false,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "noImplicitAny": true,
+    "noEmitOnError": true,
+    "strictPropertyInitialization": true,
+    "strictNullChecks": true,
+    "skipLibCheck": true,
+    "target": "ES2022",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "paths": {
+      "@angular/*": [
+        "./node_modules/@angular/*"
+      ],
+      "rxjs": [
+        "./node_modules/rxjs"
+      ],
+      "rxjs/*": [
+        "./node_modules/rxjs/*"
+      ],
+      "@ngx-translate/*": [
+        "./node_modules/@ngx-translate/*"
+      ],
+      "ngx-toastr": [
+        "./node_modules/ngx-toastr"
+      ],
+      "ngx-filesaver": [
+        "./node_modules/ngx-filesaver"
+      ],
+      "jsog-typescript": [
+        "./node_modules/jsog-typescript"
+      ],
+      "@c10t/nice-component-library": [
+        "./node_modules/@c10t/nice-component-library"
+      ],
+      "ngx-quill": [
+        "./node_modules/ngx-quill"
+      ],
+      "src/*": [
+        "src/*"
+      ]
+    },
+    "lib": [
+      "es2019",
+      "dom"
+    ],
+    "useDefineForClassFields": false
+  },
+  "angularCompilerOptions": {
+    "trace": true,
+    "annotateForClosureCompiler": true,
+    "preserveWhitespaces": false,
+    /*
+    Just angular 9 down; END OF LIFE with Angular 10
+       "strictMetadataEmit": true,
+    */
+    "skipMetadataEmit": false,
+    "skipTemplateCodegen": false,
+    "fullTemplateTypeCheck": true,
+    "strictInjectionParameters": true,
+    "enableResourceInlining": false
+  }
+}

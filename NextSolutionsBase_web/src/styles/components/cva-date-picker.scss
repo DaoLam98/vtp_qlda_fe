@@ -1,0 +1,71 @@
+.cva-date-picker {
+  width: 100%;
+
+  .btnDatePicker {
+    width: 25px;
+    padding: 0px;
+
+    &.mat-mdc-button-disabled {
+      color: #a5a9b0;
+    }
+  }
+
+  .required-label-outside {
+    color: red;
+  }
+
+  mat-form-field:has(input[disabled]),
+  mat-form-field:has(button[disabled]) {
+    cursor: initial !important;
+
+    .mat-mdc-form-field-icon-prefix {
+      display: none;
+    }
+
+    .mat-mdc-form-field-flex {
+      background-color: #d1d3d8;
+      border-color: #d1d3d8;
+      border-radius: 12px;
+    }
+
+    // Đổi border cho outline khi readonly/disabled
+    .mdc-notched-outline,
+    .mdc-notched-outline__leading,
+    .mdc-notched-outline__notch,
+    .mdc-notched-outline__trailing {
+      border-color: #d1d3d8 !important;
+    }
+
+    // Đảm bảo khi hover cũng không đổi màu border
+    &:hover .mdc-notched-outline,
+    &:hover .mdc-notched-outline__leading,
+    &:hover .mdc-notched-outline__notch,
+    &:hover .mdc-notched-outline__trailing {
+      border-color: #d1d3d8 !important;
+    }
+  }
+
+  mat-form-field {
+    .mat-mdc-text-field-wrapper {
+      .mat-mdc-form-field-flex {
+        :has(input[disabled]) {
+          background-color: #d1d3d8;
+          border-color: #d1d3d8;
+          border-radius: 12px;
+        }
+
+        .mat-mdc-form-field-infix {
+          input[readonly], input[disabled] {
+            cursor: initial !important;
+          }
+        }
+      }
+    }
+  }
+
+  .mat-mdc-icon-button .mat-icon {
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+  }
+}

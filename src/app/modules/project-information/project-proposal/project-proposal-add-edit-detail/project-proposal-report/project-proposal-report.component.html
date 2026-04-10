@@ -1,0 +1,125 @@
+<form [formGroup]="addEditForm">
+  <div class="content" style="padding: 24px 14px">
+    <fieldset>
+      <div class="fieldSetContent row-wrap-padding" fxLayout="row wrap" style="margin-top: 16px">
+        <cva-multi-select-autocomplete
+          name="expressionFeasibilityReportId"
+          formControlName="expressionFeasibilityReportId"
+          [label]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'expressionFeasibilityReportId')"
+          [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+          [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+          [placeholder]="'common.placeholder.select'"
+          [options]="expressionValuesCopy"
+          [multiple]="false"
+          [disabled]="isView || model?.isApplyFeasibility"
+          [required]="!isView"
+          fxLayout="column"
+          fxFlex="50%"
+          fxFlex.xs="100%"
+          fxFlex.sm="50%"
+          fxFlex.md="50%"
+          fxFlex.lg="50%"
+        ></cva-multi-select-autocomplete>
+        <cva-multi-select-autocomplete
+          name="informationTypeFeasibilityReportId"
+          formControlName="informationTypeFeasibilityReportId"
+          [label]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'informationTypeFeasibilityReportId')"
+          [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+          [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+          [placeholder]="'common.placeholder.select'"
+          [options]="informationTypeValuesCopy"
+          [multiple]="false"
+          [disabled]="isView"
+          [required]="!isView"
+          fxLayout="column"
+          fxFlex="25%"
+          fxFlex.xs="100%"
+          fxFlex.sm="25%"
+          fxFlex.md="25%"
+          fxFlex.lg="25%"
+        ></cva-multi-select-autocomplete>
+        <cva-multi-select-autocomplete
+          name="frequencyFeasibilityReport"
+          formControlName="frequencyFeasibilityReport"
+          [label]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'frequencyFeasibilityReport')"
+          [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+          [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+          [placeholder]="'common.placeholder.select'"
+          [options]="frequencyValues"
+          [multiple]="false"
+          [disabled]="isView || model?.isApplyFeasibility"
+          [required]="!isView"
+          fxLayout="column"
+          fxFlex="25%"
+          fxFlex.xs="100%"
+          fxFlex.sm="25%"
+          fxFlex.md="25%"
+          fxFlex.lg="25%"
+        ></cva-multi-select-autocomplete>
+        <cva-date-picker
+          name="startDateFeasibilityReport"
+          formControlName="startDateFeasibilityReport"
+          [class]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'startDateFeasibilityReport')"
+          [label]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'startDateFeasibilityReport')"
+          [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+          [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+          [placeholder]="'DD/MM/YYYY'"
+          [disabled]="isView || model?.isApplyFeasibility"
+          [required]="!isView"
+          fxLayout="column"
+          fxFlex="25%"
+          fxFlex.xs="100%"
+          fxFlex.sm="25%"
+          fxFlex.md="25%"
+          fxFlex.lg="25%"
+        ></cva-date-picker>
+        <cva-date-picker
+          name="endDateFeasibilityReport"
+          formControlName="endDateFeasibilityReport"
+          [class]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'endDateFeasibilityReport')"
+          [label]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'endDateFeasibilityReport')"
+          [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+          [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+          [placeholder]="'DD/MM/YYYY'"
+          [disabled]="isView || model?.isApplyFeasibility"
+          [required]="!isView"
+          [errorMessages]="errorMessages"
+          fxLayout="column"
+          fxFlex="25%"
+          fxFlex.xs="100%"
+          fxFlex.sm="25%"
+          fxFlex.md="25%"
+          fxFlex.lg="25%"
+        ></cva-date-picker>
+        @if (!isView) {
+        <div fxLayout fxFlex="100%" fxLayoutAlign="end">
+          <button mat-button type="button" class="primary" (click)="onApply()" [disabled]="btnApplyDisabled || model?.isApplyFeasibility">
+            {{ 'btnApply' | translate }}
+          </button>
+          <button mat-button type="button" class="primary outline" (click)="onReset()">
+            {{ 'btnReset' | translate }}
+          </button>
+        </div>
+        }
+        <button style="display: none"></button>
+      </div>
+    </fieldset>
+  </div>
+  <div class="margin-top-15"></div>
+  <app-project-item-search
+    #itemSearchRef
+    [frequency]="model?.frequencyFeasibilityReport"
+    [startDate]="model?.startDateFeasibilityReport"
+    [endDate]="model?.endDateFeasibilityReport"
+    [orderKey]="'expressionFeasibilityOrder'"
+    [parentModelIdentityKey]="'projectProposalId'"
+    [parentModelId]="id"
+    [apiName]="'project-proposal-feasibility-report'"
+    [assetValues]="assetValues"
+    [accountingAccountValues]="accountingAccountValues"
+    [targetValues]="targetValues"
+    (isEmptyTabExists)="isEmptyTabExists.emit($event)"
+    [readonly]="isView"
+    [isDisplay]="model?.isApplyFeasibility"
+  ></app-project-item-search>
+</form>

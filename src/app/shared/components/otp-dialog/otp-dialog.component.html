@@ -1,0 +1,40 @@
+<div class="dialog_wrapper">
+  <div class="dialog_header">
+    <div class="dialog_title">{{ config.dialogTitle | translate }}</div>
+    <i class="fas fa-times" style="cursor: pointer" (click)="onClose()"></i>
+  </div>
+  <form [formGroup]="otpForm">
+    <div class="dialog_content" style="resize: none">
+      <div class="otp-container">
+        <p class="desc">
+          {{ 'common.otp.desc' | translate}}
+          <strong>{{ config.phone }}</strong>
+        </p>
+
+        <p class="desc sub">
+          {{ 'common.otp.desc.sub' | translate}}<br />
+          <span class="muted">(  {{ 'common.otp.expired' | translate}} {{ minuteLeft }}  {{ 'common.otp.minutes' | translate}} )</span>
+        </p>
+
+        <div class="countdown" [class.expired]="isExpired">
+          Còn lại {{ mm }}:{{ ss }}
+        </div>
+
+        <cva-input name="otp" formControlName="otp" [label]="'&nbsp;'" [placeholder]="'common.placeholder.input'"
+                   [maxLength]="otpLength" fxLayout="column" fxFlex.xs="100%" fxFlex.sm="100%" fxFlex.md="50%" fxFlex.lg="50%"
+                   fxFlex="50%"></cva-input>
+      </div>
+    </div>
+    <div class="dialog_footer center">
+      <div>
+        <button mat-button class="primary outline" [disabled]="!canResend" (click)="onResend()">
+          {{ 'btnResend' | translate }}
+        </button>
+
+        <button mat-button class="primary" [disabled]="!otp || otp.length < otpLength" (click)="onSubmit()">
+          {{ 'btnComplete' | translate }}
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

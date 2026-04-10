@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/shared/components/sign-template/sign-template.component.scss"],
+  "sourcesContent": [".sign-template {\r\n  .divider {\r\n    border-left: 2px solid #D1CFD7;\r\n  }\r\n\r\n  .list-content {\r\n    display: block !important;\r\n\r\n    .buttonArea {\r\n      display: flex;\r\n      justify-content: space-between;\r\n      align-items: center;\r\n    }\r\n  }\r\n\r\n  .table-button {\r\n    app-vss-toggle-field::ng-deep {\r\n      margin: 0;\r\n\r\n      label {\r\n        white-space: nowrap;\r\n      }\r\n    }\r\n  }\r\n}\r\n"],
+  "mappings": "AACE,CAAA,cAAA,CAAA,QACE,YAAA,IAAA,MAAA,QAGF,CAJA,cAIA,CAAA,aACE,QAAA,gBAEA,CAPF,cAOE,CAHF,aAGE,CAAA,WACE,QAAA,KACA,gBAAA,cACA,YAAA,OAKF,CAfF,cAeE,CAAA,aAAA,oBAAA,UAfF,OAgBI,EAEA,CAlBJ,cAkBI,CAHF,aAGE,oBAAA,UAAA,MACE,YAAA",
+  "names": []
+}

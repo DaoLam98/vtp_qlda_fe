@@ -1,0 +1,20 @@
+<div class="ruleset-type">
+  <header class="header">
+    <div class="select-field">
+      <formly-field [field]="field?.fieldGroup[0]"></formly-field>
+      <formly-field [field]="field?.fieldGroup[1]"></formly-field>
+    </div>
+    <div class="controls">
+      <button type="button" mat-icon-button color="primary" (click)="addRule()" *ngIf="!checkData()">
+        <mat-icon>add</mat-icon>
+      </button>
+      <button type="button" mat-icon-button color="primary" (click)="addRuleset()" *ngIf="!checkData()">
+        <mat-icon>add_circle_outline</mat-icon>
+      </button>
+    </div>
+  </header>
+
+  <section class="rules">
+    <formly-field [field]="field?.fieldGroup[2]"></formly-field>
+  </section>
+</div>

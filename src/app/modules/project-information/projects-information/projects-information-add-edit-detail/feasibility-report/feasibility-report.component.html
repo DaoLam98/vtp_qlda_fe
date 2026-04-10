@@ -1,0 +1,117 @@
+<form [formGroup]='addEditForm' class='form edit-form'>
+  <div class='content' style="padding: 24px 14px">
+    <fieldset>
+      <legend></legend>
+      <div class='fieldSetContent row-wrap-padding' fxLayout='row wrap'>
+        <cva-input
+          name="expressionFeasibilityReportName"
+          formControlName="expressionFeasibilityReportName"
+          [label]="moduleName+'.table.header.expressionFeasibilityReportName'"
+          [class]="moduleName+'.table.header.expressionFeasibilityReportName'"
+          [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+          [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+          [disabled]="true"
+          [placeholder]="'common.placeholder.select'"
+          fxLayout="column"
+          fxFlex="50%"
+          fxFlex.xs="100%"
+          fxFlex.sm="25%"
+          fxFlex.md="25%"
+          fxFlex.lg="50%"
+        >
+        </cva-input>
+
+        <cva-input
+          name="informationTypeFeasibilityReportName"
+          formControlName="informationTypeFeasibilityReportName"
+          [label]="moduleName+'.table.header.informationTypeFeasibilityReportCode'"
+          [class]="moduleName+'.table.header.informationTypeFeasibilityReportCode'"
+          [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+          [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+          [disabled]="true"
+          [placeholder]="'common.placeholder.select'"
+          fxLayout="column"
+          fxFlex="25%"
+          fxFlex.xs="100%"
+          fxFlex.sm="50%"
+          fxFlex.md="50%"
+          fxFlex.lg="25%"
+        >
+        </cva-input>
+
+        <cva-multi-select-autocomplete
+          name="frequencyFeasibilityReport"
+          formControlName="frequencyFeasibilityReport"
+          [label]="moduleName+'.table.header.frequencyFeasibilityReport'"
+          [class]="moduleName+'.table.header.frequencyFeasibilityReport'"
+          [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+          [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+          [placeholder]="'common.placeholder.select'"
+          [options]="frequencyValues"
+          [multiple]="false"
+          [disabled]="true"
+          fxLayout="column"
+          fxFlex="25%"
+          fxFlex.xs="100%"
+          fxFlex.sm="50%"
+          fxFlex.md="50%"
+          fxFlex.lg="25%"
+        >
+        </cva-multi-select-autocomplete>
+
+        <cva-date-picker
+          name='startDateFeasibilityReport'
+          formControlName='startDateFeasibilityReport'
+          [label]="'common.table.header.startDate'"
+          [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+          [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+          [placeholder]="'common.placeholder.input'"
+          [disabled]='true'
+          fxLayout='column'
+          fxFlex='25%'
+          fxFlex.xs='100%'
+          fxFlex.sm='50%'
+          fxFlex.md='50%'
+          fxFlex.lg='25%'
+        >
+        </cva-date-picker>
+
+        <cva-date-picker
+          name='endDateFeasibilityReport'
+          formControlName='endDateFeasibilityReport'
+          [label]="'common.table.header.endDate'"
+          [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+          [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+          [placeholder]="'common.placeholder.input'"
+          [disabled]='true'
+          fxLayout='column'
+          fxFlex='25%'
+          fxFlex.xs='100%'
+          fxFlex.sm='50%'
+          fxFlex.md='50%'
+          fxFlex.lg='25%'
+        >
+        </cva-date-picker>
+      </div>
+      <mat-expansion-panel [expanded]="true">
+        <mat-expansion-panel-header style="margin-bottom: 0 !important;">
+          <mat-panel-title>{{ 'project.feasibility-info.title' | translate }}</mat-panel-title>
+        </mat-expansion-panel-header>
+        <app-project-item-search
+          #itemSearchRef
+          [frequency]="addEditForm.value.frequencyFeasibilityReport"
+          [startDate]="addEditForm.value.startDateFeasibilityReport"
+          [endDate]="addEditForm.value.endDateFeasibilityReport"
+          [orderKey]="'expressionFeasibilityOrder'"
+          [parentModelIdentityKey]="'projectId'"
+          [parentModelId]="id"
+          [apiName]="'project-feasibility-report-item'"
+          [assetValues]="assetValues"
+          [accountingAccountValues]="accountingAccountValues"
+          [targetValues]="targetValues"
+          [readonly]="true"
+        ></app-project-item-search>
+      </mat-expansion-panel>
+    </fieldset>
+  </div>
+</form>

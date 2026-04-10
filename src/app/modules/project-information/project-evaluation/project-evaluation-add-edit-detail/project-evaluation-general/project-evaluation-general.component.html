@@ -1,0 +1,336 @@
+<form [formGroup]="addEditForm" class=" edit-form">
+  <div class="content" style="padding: 0">
+    <fieldset>
+      <div class="fieldSetContent row-wrap-padding" fxLayout="row wrap" style="margin-top: 16px">
+        <cva-multi-select-autocomplete
+          name='projectId'
+          formControlName='projectId'
+          [label]="'project.project-evaluation'+'.table.header.code'"
+          [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+          [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+          [placeholder]="'common.placeholder.select'"
+          [multiple]='false'
+          [required]="!isView"
+          [disabled]='isView'
+          [options]='projectList'
+          fxLayout='column'
+          fxFlex='50%'
+          fxFlex.xs='100%'
+          fxFlex.sm='50%'
+          fxFlex.md='50%'
+          fxFlex.lg='50%'
+        >
+        </cva-multi-select-autocomplete>
+
+        <cva-input
+          name="reportName"
+          formControlName="reportName"
+          [label]="'project.project-evaluation' + '.table.header.reportName'"
+          [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+          [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+          [placeholder]="'common.placeholder.input'"
+          [disabled]="isView"
+          [required]="!isView"
+          fxLayout="column"
+          fxFlex="50%"
+          fxFlex.xs="100%"
+          fxFlex.sm="50%"
+          fxFlex.md="50%"
+          fxFlex.lg="50%"></cva-input>
+
+        <cva-date-picker
+          formControlName='evaluationStartDate'
+          [label]="'common.table.header.evaluationStartDate'"
+          [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+          [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+          [placeholder]="'common.placeholder.dateRange'"
+          [disabled]='isView'
+          [required]="!isView"
+          fxLayout='column'
+          fxFlex='25%'
+          fxFlex.xs='100%'
+          fxFlex.sm='50%'
+          fxFlex.md='50%'
+          fxFlex.lg='25%'
+        >
+        </cva-date-picker>
+        <cva-date-picker
+          formControlName='evaluationEndDate'
+          [label]="'common.table.header.evaluationEndDate'"
+          [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+          [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+          [placeholder]="'common.placeholder.dateRange'"
+          [disabled]='isView'
+          [required]="!isView"
+          fxLayout='column'
+          fxFlex='25%'
+          fxFlex.xs='100%'
+          fxFlex.sm='50%'
+          fxFlex.md='50%'
+          fxFlex.lg='25%'>
+        </cva-date-picker>
+        <cva-input
+          name="description"
+          formControlName="description"
+          [label]="'project' + '.table.header.description'"
+          [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+          [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+          [placeholder]="'common.placeholder.input'"
+          [disabled]="isView"
+          [required]="false"
+          fxLayout="column"
+          fxFlex="50%"
+          fxFlex.xs="100%"
+          fxFlex.sm="50%"
+          fxFlex.md="50%"
+          fxFlex.lg="50%"></cva-input>
+      </div>
+    </fieldset>
+  </div>
+
+  @if (isShowInformation && !isLoadingProject){
+    <div class="project-info-area" style="margin-top: 16px">
+      <mat-expansion-panel [expanded]="true">
+        <mat-expansion-panel-header>
+          <mat-panel-title>{{ 'project.project-info.title' | translate }}</mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="fieldSetContent row-wrap-padding" fxLayout="row wrap">
+          <cva-input
+            name="code"
+            formControlName="code"
+            [label]="moduleName + '.table.header.code'"
+            [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+            [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+            [placeholder]="'common.placeholder.input'"
+            [disabled]="true"
+            [required]="false"
+            fxLayout="column"
+            fxFlex="25%"
+            fxFlex.xs="100%"
+            fxFlex.sm="25%"
+            fxFlex.md="25%"
+            fxFlex.lg="25%"></cva-input>
+
+          <cva-input
+            name="name"
+            formControlName="name"
+            [label]="moduleName + '.table.header.name'"
+            [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+            [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+            [placeholder]="'common.placeholder.input'"
+            [disabled]="true"
+            [required]="false"
+            fxLayout="column"
+            fxFlex="50%"
+            fxFlex.xs="100%"
+            fxFlex.sm="50%"
+            fxFlex.md="50%"
+            fxFlex.lg="50%"></cva-input>
+
+          <cva-input
+            name="sapCode"
+            formControlName="sapCode"
+            [maxLength]="255"
+            [label]="moduleName + '.table.header.sapCode'"
+            [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+            [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+            [placeholder]="'common.placeholder.input'"
+            [disabled]="true"
+            [required]="false"
+            fxLayout="column"
+            fxFlex="25%"
+            fxFlex.xs="100%"
+            fxFlex.sm="25%"
+            fxFlex.md="25%"
+            fxFlex.lg="25%"></cva-input>
+
+          <cva-input
+            name="projectTypeName"
+            formControlName="projectTypeName"
+            [label]="moduleName + '.table.header.projectType'"
+            [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+            [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+            [placeholder]="'common.placeholder.input'"
+            [disabled]="true"
+            [required]="false"
+            fxLayout="column"
+            fxFlex="50%"
+            fxFlex.xs="100%"
+            fxFlex.sm="50%"
+            fxFlex.md="50%"
+            fxFlex.lg="50%"></cva-input>
+
+          <cva-input
+            name="proposal"
+            formControlName="proposal"
+            [label]="moduleName + '.table.header.proposal'"
+            [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+            [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+            [placeholder]="'common.placeholder.input'"
+            [disabled]="true"
+            [required]="false"
+            fxLayout="column"
+            fxFlex="50%"
+            fxFlex.xs="100%"
+            fxFlex.sm="50%"
+            fxFlex.md="50%"
+            fxFlex.lg="50%"></cva-input>
+
+          <cva-input
+            name="proposingOrgName"
+            formControlName="proposingOrgName"
+            [label]="moduleName + '.table.header.proposingOrg'"
+            [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+            [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+            [placeholder]="'common.placeholder.input'"
+            [disabled]="true"
+            [required]="false"
+            fxLayout="column"
+            fxFlex="50%"
+            fxFlex.xs="100%"
+            fxFlex.sm="50%"
+            fxFlex.md="50%"
+            fxFlex.lg="50%"></cva-input>
+
+          <cva-input
+            name="operatingOrgName"
+            formControlName="operatingOrgName"
+            [label]="moduleName + '.table.header.operatingOrg'"
+            [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+            [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+            [placeholder]="'common.placeholder.input'"
+            [disabled]="true"
+            [required]="false"
+            fxLayout="column"
+            fxFlex="50%"
+            fxFlex.xs="100%"
+            fxFlex.sm="50%"
+            fxFlex.md="50%"
+            fxFlex.lg="50%"></cva-input>
+
+          <cva-date-picker
+            name="expectedStartDate"
+            formControlName="expectedStartDate"
+            [label]="moduleName + '.table.header.expectedStartDate'"
+            [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+            [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+            [placeholder]="'common.placeholder.input'"
+            [disabled]="true"
+            [required]="false"
+            fxLayout="column"
+            fxFlex="25%"
+            fxFlex.xs="100%"
+            fxFlex.sm="25%"
+            fxFlex.md="25%"
+            fxFlex.lg="25%"></cva-date-picker>
+
+          <cva-date-picker
+            name="expectedEndDate"
+            formControlName="expectedEndDate"
+            [label]="moduleName + '.table.header.expectedEndDate'"
+            [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+            [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+            [placeholder]="'common.placeholder.input'"
+            [disabled]="true"
+            [required]="false"
+            fxLayout="column"
+            fxFlex="25%"
+            fxFlex.xs="100%"
+            fxFlex.sm="25%"
+            fxFlex.md="25%"
+            fxFlex.lg="25%"></cva-date-picker>
+
+          <cva-input
+            name='goal'
+            formControlName='goal'
+            class="text_custom"
+            [label]="moduleName+'.table.header.goal'"
+            [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+            [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+            [placeholder]="'common.placeholder.input'"
+            [multiline]="false"
+            [disabled]="true"
+            [maxLength]="255"
+            fxLayout='column'
+            fxFlex='100%'
+            fxFlex.xs='100%'
+            fxFlex.sm='100%'
+            fxFlex.md='100%'
+            fxFlex.lg='100%'>
+          </cva-input>
+
+          <cva-input
+            name='scale'
+            formControlName='scale'
+            class="text_custom"
+            [label]="moduleName+'.table.header.scale'"
+            [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+            [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+            [placeholder]="'common.placeholder.input'"
+            [multiline]="false"
+            [disabled]="true"
+            [maxLength]="255"
+            fxLayout='column'
+            fxFlex='100%'
+            fxFlex.xs='100%'
+            fxFlex.sm='100%'
+            fxFlex.md='100%'
+            fxFlex.lg='100%'>
+          </cva-input>
+
+          <cva-input
+            name='locationName'
+            formControlName='locationName'
+            [label]="moduleName+'.table.header.location'"
+            [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+            [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+            [placeholder]="'common.placeholder.input'"
+            [multiline]="false"
+            [disabled]="true"
+            [maxLength]="255"
+            fxLayout='column'
+            fxFlex='50%'
+            fxFlex.xs='100%'
+            fxFlex.sm='50%'
+            fxFlex.md='50%'
+            fxFlex.lg='50%'>
+          </cva-input>
+
+          <cva-input
+            name='address'
+            formControlName='address'
+            [label]="moduleName+'.table.header.address'"
+            [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+            [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+            [placeholder]="'common.placeholder.input'"
+            [multiline]="false"
+            [disabled]="true"
+            [maxLength]="255"
+            fxLayout='column'
+            fxFlex='50%'
+            fxFlex.xs='100%'
+            fxFlex.sm='50%'
+            fxFlex.md='50%'
+            fxFlex.lg='50%'>
+          </cva-input>
+        </div>
+      </mat-expansion-panel>
+    </div>
+    <div class="org-info-area" style="margin-top: 16px">
+      <mat-expansion-panel [expanded]="true">
+        <mat-expansion-panel-header>
+          <mat-panel-title>{{ 'project.project-info.organization' | translate }}</mat-panel-title>
+        </mat-expansion-panel-header>
+        <cva-smart-table
+          *ngIf="this.addEditForm.get('organizations')?.value?.length"
+          formControlName='organizations'
+          [moduleName]="moduleName+'-organizations'"
+          [columns]='columns'
+          (clickAction)="onRowButtonClick($event)"
+          [isSticky]='true'
+          fxFlex='100%'>
+        </cva-smart-table>
+      </mat-expansion-panel>
+    </div>
+  }
+</form>

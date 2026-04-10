@@ -1,0 +1,184 @@
+.cva-smart-table {
+  mat-header-cell {
+    padding-left: 0.5rem;
+
+    div {
+      width: 100%;
+      color: rgb(99, 94, 94);
+      font-size: 12px;
+      font-weight: 700;
+    }
+  }
+
+  mat-cell {
+    padding-left: 0.5rem;
+    font-size: small;
+    display: flex;
+
+    .viewData {
+      width: 100%;
+      min-width: 100%;
+      overflow: hidden !important;
+      text-overflow: ellipsis;
+
+      display: flex;
+      place-content: flex-start;
+      align-content: center;
+
+      white-space: pre-line;
+      word-break: break-word;
+
+      &.break-word-style-view {
+        word-break: initial;
+      }
+    }
+
+    .inputNumber {
+      width: 100%;
+      min-width: 100%;
+      overflow: hidden !important;
+      text-overflow: ellipsis;
+
+      display: flex;
+      place-content: center;
+      align-content: center;
+    }
+
+    .multiSelectAutocomplete {
+      min-width: 100%;
+      width: 100%;
+      overflow: hidden !important;
+      text-overflow: ellipsis;
+      display: flex;
+    }
+  }
+
+  mat-footer-cell {
+    padding-left: 0.5rem;
+    font-size: small;
+    display: flex;
+
+    .viewData {
+      width: 100%;
+      min-width: 100%;
+      overflow: hidden !important;
+      text-overflow: ellipsis;
+
+      display: flex;
+      place-content: flex-start;
+      align-content: center;
+
+      white-space: pre-line;
+      word-break: break-word;
+    }
+  }
+
+  mat-header-cell,
+  mat-cell,
+  mat-footer-cell {
+    &:first-child {
+      padding-left: 0.5rem;
+    }
+  }
+
+  .mat-column-stt,
+  .mat-column-STT {
+    //max-width: 5%;
+    padding: 0;
+  }
+
+  mat-checkbox {
+    width: 1rem;
+  }
+
+  .checkbox-cell {
+    width: 100%;
+  }
+
+  .img-view.viewData img {
+    height: 40px;
+    //width: 40px;
+    //border: 1px solid #D3D3D3;
+    //border-radius: 6px;
+  }
+
+  mat-form-field {
+    .mat-form-field-wrapper {
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+  }
+
+  box-shadow: unset;
+
+  .mat-mdc-header-cell {
+    background-color: rgba(0, 0, 0, 0.06);
+  }
+
+  .mat-mdc-icon-button {
+
+    i {
+      font-size: 1.2rem;
+    }
+  }
+
+  .mat-mdc-cell:has(button) {
+    // text-align: center;
+    // width: 42px;
+    // max-width: 42px;
+    // min-width: 2rem;
+  }
+
+  .mat-mdc-header-cell.primary {
+    min-width: 10rem;
+    // text-align: center;
+  }
+
+  .cva-input:not(.text_area),
+  .cva-date-picker,
+  .cva-range-date-picker,
+  .cva-multi-select-autocomplete,
+  .cva-counter-input,
+  .cva-live-searching,
+  .file-item {
+    mat-form-field.mat-mdc-form-field.mat-form-field-appearance-outline {
+      .mdc-notched-outline--notched .mdc-notched-outline__notch {
+        padding-left: 0.8rem;
+      }
+    }
+
+    .mdc-floating-label--required {
+      display: none;
+    }
+  }
+}
+
+cva-smart-table {
+  &.flashSaleRangeTime {
+    .mat-header-cell {
+      background-color: #E6F6F3 !important;
+
+      > div {
+        color: #222222 !important;
+        font-weight: 500 !important;
+      }
+    }
+
+    .mat-row {
+      background-color: white !important;
+
+      .mat-cell {
+        border: 1px solid #E9E9E9;
+      }
+    }
+  }
+}
+
+//custom style td cho 1 số chức năng
+cva-smart-table {
+  .mat-column-promulgate {
+    .mdc-checkbox__native-control:disabled:checked ~ .mdc-checkbox__background {
+      background-color: #ee0033;
+    }
+  }
+}

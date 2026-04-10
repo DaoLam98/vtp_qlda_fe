@@ -1,0 +1,69 @@
+:host {
+  cloud-search::ng-deep {
+    .table-responsive table {
+      border-collapse: unset;
+      thead tr th [title='Thao tác'] {
+        padding-right: 0 !important;
+      }
+      tr:hover {
+        .mat-mdc-cell.mat-column-edit,
+        .mat-mdc-cell.mat-column-delete,
+        .mat-mdc-cell.mat-column-total {
+          background-color: #f7f7fa !important;
+        }
+      }
+    }
+
+    cva-header-expand-button .expand-column-header-button {
+      display: none;
+    }
+
+    .mat-mdc-notch-piece.mdc-notched-outline__notch {
+      width: calc(100% - 20px) !important;
+      label {
+        text-overflow: ellipsis;
+        width: 100%;
+      }
+    }
+
+    .mat-column-total {
+      position: sticky;
+      right: 162px;
+      &:not(:has(~ .mat-column-edit)):not(:has(~ .mat-column-delete)) {
+        right: 0;
+      }
+    }
+    .viewData {
+      min-width: 150px;
+    }
+
+    .mat-mdc-header-cell.mat-column-edit,
+    .mat-mdc-header-cell.mat-column-delete {
+      position: sticky;
+      right: 0;
+    }
+
+    .mat-mdc-cell.mat-column-edit {
+      position: sticky;
+      right: 81px;
+      background-color: white;
+      border-bottom: none;
+      &:not(:has(~ .mat-column-delete)) {
+        right: 0;
+      }
+    }
+    .mat-mdc-cell.mat-column-delete {
+      position: sticky;
+      right: 0;
+      background-color: white;
+      border-bottom: none;
+    }
+    .mat-mdc-cell.mat-column-total {
+      background-color: white;
+    }
+    :has(> .paging) {
+      position: sticky;
+      left: 0;
+    }
+  }
+}

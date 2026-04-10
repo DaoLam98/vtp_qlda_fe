@@ -1,0 +1,40 @@
+<div class="dialog_wrapper" style="width: 1000px">
+  <div class="dialog_header">
+    <div class="dialog_title">{{ 'project.project-proposal.sync-popup.title' | translate }}</div>
+    <i class="fal fa-times margin-15" style="cursor: pointer" (click)="matDialogRef.close()"></i>
+  </div>
+  <div class="dialog_content">
+    <form [formGroup]="addEditForm" class="form edit-form">
+      <fieldset>
+        <div class="confirm">{{ 'project.project-proposal.sync-popup.you-sure' | translate }}</div>
+        <div class="fieldSetContent row-wrap-padding" fxLayout="row wrap">
+          <app-vss-files-field
+            formControlName="files"
+            [fileTitle]="'project.project-proposal.sync-popup.attach-file-sub'"
+            class="attach-file-sub"
+            (downloadFiles)="onDownloadFile($event)"
+            [fileAccept]="[FileTypes.PDF, FileTypes.DOCX, FileTypes.XLSX]"
+            fxLayout="column"
+            fxFlex.xs="100%"
+            fxFlex.sm="100%"
+            fxFlex.md="100%"
+            fxFlex.lg="50%"
+            fxFlex="50%"
+            [fieldPerRow]="2"
+          >
+          </app-vss-files-field>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+  <div class="dialog_footer center">
+    <div>
+      <button mat-button class="primary outline" (click)="matDialogRef.close()">
+        {{ 'common.button.back' | translate }}
+      </button>
+      <button mat-button class="primary" [disabled]="addEditForm.invalid" (click)="onSubmit()">
+        {{ 'btnConfirm' | translate }}
+      </button>
+    </div>
+  </div>
+</div>

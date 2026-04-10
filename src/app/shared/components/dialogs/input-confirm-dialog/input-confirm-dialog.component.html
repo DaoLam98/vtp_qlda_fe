@@ -1,0 +1,53 @@
+<div class="dialog_wrapper">
+  <div class="dialog_header">
+    <div class="dialog_title">{{ (title || 'common.popup.confirm.title' ) | translate }}</div>
+  </div>
+  <div class="dialog_content">
+    <form [formGroup]="addEditForm" class="form edit-form">
+      @if(message) {
+        <p class="message">
+          {{ (message || 'process.confirmDialog.heading') | translate }}
+        </p>
+      }
+
+      <div class="row-wrap-padding" fxLayout="row wrap">
+        <cva-input
+          name="name"
+          formControlName="name"
+          [label]="label"
+          [placeholder]="'common.placeholder.input'"
+          [required]="required"
+          style="margin-bottom: 0"
+          [maxLength]="maxLength"
+          fxLayout="column"
+          fxFlex="100%"
+          fxFlex.xs="100%"
+          fxFlex.sm="100%"
+          fxFlex.md="100%"
+          fxFlex.lg="100%"
+        >
+        </cva-input>
+      </div>
+    </form>
+  </div>
+  <div class="dialog_footer right">
+    <div>
+      <button
+        mat-button
+        class="primary outline Update-btn"
+        (click)="matDialogRef.close()"
+      >
+        {{ (backBtnName || 'common.btnClose') | translate }}
+      </button>
+
+      <button
+        mat-button
+        class="primary"
+        [disabled]="addEditForm.invalid"
+        (click)="onSubmit()"
+      >
+        {{ (saveBtnName || 'btnAddEdit') | translate }}
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/modules/project-manage/project-evaluation/project-evaluation-add-edit-detail/project-evaluation-effectiveness/project-evaluation-effectiveness.component.scss"],
+  "sourcesContent": [".button-apply {\r\n  display: flex;\r\n  justify-content: end;\r\n}\r\n"],
+  "mappings": "AAAA,CAAA,aACE,QAAA,KACA,gBAAA",
+  "names": []
+}

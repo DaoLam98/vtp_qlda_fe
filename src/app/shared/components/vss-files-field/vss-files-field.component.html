@@ -1,0 +1,53 @@
+<div class="upload-area">
+  <div class="files-title">
+    {{ fileTitle ?? 'choose.files' | translate }}
+    <span *ngIf="required" style="color: red">*</span>
+  </div>
+
+  <cva-multi-upload
+    [placeholder]="
+    ('vss.files.title' | translate) + '\n' +
+    ('vss.files.placeholder' | translate:{ fileAccept: fileAcceptLabel, maxFileSize: maxFileSizeMB })"
+    *ngIf="!isView || isAppear"
+    [multiple]="multiple"
+    [accept]="fileAccept"
+    [files]="files"
+    [maxSize]="maxFileSize"
+    (onFileChange)="onFileSelected($event)"
+    class="custom-upload"
+  ></cva-multi-upload>
+</div>
+
+<div class="files-container" [attr.data-cols]="fullWidth ? 1 : fieldPerRow" [class.full-width]="fullWidth"
+     [style.max-width]="fileListMaxWidth">
+  <ng-container *ngFor="let file of files; let i = index">
+    <div class="file-col">
+      <div class="file-item-bar">
+        <div class="file-icon" [ngSwitch]="getFileType(file.name)">
+          <i class="fas fa-file-pdf" *ngSwitchCase="'pdf'"></i>
+          <i class="fas fa-file-word" *ngSwitchCase="'word'"></i>
+          <i class="fas fa-file-excel" *ngSwitchCase="'excel'"></i>
+          <i class="fas fa-file-image" *ngSwitchCase="'image'"></i>
+          <i class="fas fa-file" *ngSwitchDefault></i>
+        </div>
+        <div class="file-name" [title]="file.name">
+          {{ file.name }}
+        </div>
+        <div class="file-actions">
+          <i
+            *ngIf="((isView || isEdit || showDownload) && (file?.filePath || file?.pathFile)) || isDownloadLocal"
+            class="fas fa-download action-icon download-icon"
+            (click)="onDownloadFile(file); $event.stopPropagation()"
+            [title]="'common.title.download' | translate"
+          ></i>
+        </div>
+      </div>
+      <i
+        *ngIf="((!isView && !file?.undeletable) || isAppear)"
+        class="far fa-trash-alt action-icon delete-icon delete-icon-outside"
+        (click)="removeFile(i); $event.stopPropagation()"
+        [title]="'common.title.delete' | translate"
+      ></i>
+    </div>
+  </ng-container>
+</div>

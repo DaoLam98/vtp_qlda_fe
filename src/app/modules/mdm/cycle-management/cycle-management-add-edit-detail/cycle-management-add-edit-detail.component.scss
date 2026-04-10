@@ -1,0 +1,19 @@
+:host {
+  cva-smart-table::ng-deep {
+    .table-responsive table {
+      .mat-column-trash {
+        min-width: auto;
+      }
+      tr {
+        height: 47px !important;
+      }
+    }
+  }
+  cva-input::ng-deep {
+    .mat-focused {
+      .mat-mdc-form-field-input-control {
+        padding-right: 70px;
+      }
+    }
+  }
+}

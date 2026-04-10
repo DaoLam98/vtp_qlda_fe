@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["angular:styles/component:css;56aa6e398ea48579b38ecaf1dc59437123623885295aefc6ecbb06359e9bc779;D:/pj/vtp_qlda_fe/src/app/modules/mdm/investment-form/investment-form-add-edit-detail/investment-form-add-edit-detail.component.ts"],
+  "sourcesContent": ["\n      ::ng-deep .text-description mat-form-field .mat-mdc-text-field-wrapper .mat-mdc-form-field-flex {\n        height: 50px;\n      }\n    "],
+  "mappings": "AACM,UAAU,CAAC,iBAAiB,eAAe,CAAC,2BAA2B,CAAC,wBACtE,OAAQ,IACV",
+  "names": []
+}

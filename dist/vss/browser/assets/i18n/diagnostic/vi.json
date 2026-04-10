@@ -1,0 +1,30 @@
+{
+  "qa": {
+    "": "Câu hỏi và trả lời",
+    "table.header": {
+      "name": "Câu hỏi",
+      "description": "Mô tả",
+      "stt": "STT",
+      "answer": "Câu trả lời",
+      "nextQuestionId": "Câu hỏi tiếp theo",
+      "status": "Trạng thái"
+    },
+    "type": {
+      "": "Loại",
+      "radio": "Radio",
+      "checkbox": "Checkbox",
+      "text": "Text"
+    }
+  },
+  "issue": {
+    "": "Vấn đề",
+    "table.header": {
+      "stt": "STT",
+      "name": "Vấn đề",
+      "firstQuestionId": "Câu hỏi đầu tiên",
+      "status": "Trạng thái",
+      "description": "Mô tả"
+    }
+  }
+}
+

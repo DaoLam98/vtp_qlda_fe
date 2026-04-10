@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/modules/mdm/notification-template/notification-template-add-edit-detail/notification-template-add-edit-detail.scss"],
+  "sourcesContent": ["::ng-deep app-notification-template-add-edit-detail cva-quill-editor {\r\n  .ql-container {\r\n    min-height: 400px;\r\n  }\r\n\r\n  quill-editor[disabled] {\r\n    .ql-toolbar.ql-snow {\r\n      pointer-events: none;\r\n    }\r\n  }\r\n}\r\n\r\n.content-editor {\r\n  display: flex;\r\n  flex-direction: column;\r\n  gap: 5px;\r\n  padding-left: 10px;\r\n  .content-editor-label {\r\n    font-size: 14px;\r\n    font-weight: bold;\r\n  }\r\n}"],
+  "mappings": "AACE,UAAA,0CAAA,iBAAA,CAAA,aACE,WAAA,MAIA,UAAA,0CAAA,iBAAA,YAAA,CAAA,UAAA,CAAA,UAAA,CAAA,QACE,eAAA,KAKN,CAAA,eACE,QAAA,KACA,eAAA,OACA,IAAA,IACA,aAAA,KACA,CALF,eAKE,CAAA,qBACE,UAAA,KACA,YAAA",
+  "names": []
+}

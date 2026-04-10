@@ -1,0 +1,23 @@
+:host {
+  cloud-search::ng-deep {
+    cva-header-expand-button .expand-column-header-button {
+      display: none;
+    }
+    .mat-column-planned,
+    .mat-column-actual,
+    .mat-column-rate {
+      .viewData {
+        min-width: 150px;
+      }
+    }
+
+    .mat-column-target {
+      .viewData {
+        min-width: 250px;
+      }
+    }
+    .table-responsive table {
+      border-collapse: unset;
+    }
+  }
+}

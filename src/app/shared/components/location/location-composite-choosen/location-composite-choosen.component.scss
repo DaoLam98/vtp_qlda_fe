@@ -1,0 +1,23 @@
+::ng-deep
+app-internal-user-composite-choosen
+cva-multi-select-autocomplete
+.cva-multi-select-autocomplete
+mat-form-field
+.mat-mdc-text-field-wrapper
+.mat-mdc-form-field-flex
+.mat-mdc-form-field-infix
+mat-select
+.mat-mdc-select-trigger {
+  margin-left: 30px;
+  max-width: calc(100% - 40px);
+}
+
+.button-search-composite {
+  position: absolute;
+  border: unset;
+  top: 0;
+  min-width: unset;
+  width: 10px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}

@@ -1,0 +1,151 @@
+cva-input {
+  width: 100%;
+
+  .required-label-outside {
+    color: red;
+  }
+
+  mat-form-field {
+    cursor: text;
+
+    .mat-form-field-suffix {
+      .input-suffix {
+        color: grey;
+      }
+    }
+
+    &.cva-input-multiline {
+      label {
+        position: absolute;
+        top: 15px !important;
+      }
+    }
+  }
+
+  .text_area {
+    textarea {
+      min-height: 56px !important;
+      max-height: 56px !important;
+    }
+
+    mat-form-field:not(.mat-form-field-should-float) .mat-form-field-label-wrapper label {
+      margin: 5px 0 0 5px;;
+    }
+
+    .mat-form-field-underline {
+      display: none;
+    }
+
+    mat-form-field {
+      cursor: text;
+
+      .mat-form-field-suffix {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+
+        .input-suffix {
+          color: grey;
+          position: absolute;
+          bottom: 10px;
+          right: 10px;
+        }
+      }
+    }
+  }
+
+  .btnTextClear {
+    display: none !important;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0 8px;
+    outline: none;
+  }
+
+  .cva-input:hover {
+    .input-suffix {
+      display: none !important;
+    }
+
+    .mat-mdc-form-field-input-control {
+      padding-right: 40px !important;
+    }
+
+    .btnTextClear {
+      display: inline-flex !important;
+      align-items: center;
+    }
+  }
+
+  /** Khi chữ trong ô input quá dài thì không bị chữ giới hạn maxlength 255/255 hoặc 50/255 đè lên */
+  &:has(.input-suffix) {
+    .mat-mdc-form-field-input-control {
+      padding-right: 70px !important;
+    }
+  }
+
+  &.equal_height {
+    height: 100%;
+
+    .cva-input {
+      height: 100%;
+
+      mat-form-field {
+        .mat-form-field-wrapper {
+          height: 100%;
+
+          .mat-form-field-flex {
+            height: 100%;
+            padding: 14px 10px !important;
+            flex-direction: column;
+
+            .mat-form-field-infix {
+              padding: 0;
+
+              textarea {
+                height: 100% !important;
+                max-height: 100% !important;
+              }
+            }
+
+            .mat-form-field-suffix {
+              position: relative;
+              width: 100%;
+              height: initial;
+              text-align: right;
+
+              .input-suffix {
+                position: initial !important;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .mat-form-field-infix {
+      height: 75%;
+    }
+  }
+}
+
+cva-input-view {
+  &.reject {
+    .cva-input-view {
+      display: contents;
+
+      .field_name {
+        color: #FF645C;
+      }
+
+      .field_content {
+        background-color: #FFF0EF;
+        border-radius: 8px;
+        padding: 10px;
+        margin-bottom: 15px;
+        height: 100%;
+      }
+    }
+  }
+}

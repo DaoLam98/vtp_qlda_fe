@@ -1,0 +1,34 @@
+.cva-range-date-picker {
+  width: 100%;
+
+  .btnDatePicker {
+    min-width: 33px;
+    padding: 0px;
+  }
+
+  .required-label-outside {
+    color: red;
+  }
+
+  .mat-date-range-input {
+    .mat-mdc-form-field-input-control {
+      padding-right: 40px !important;
+    }
+  }
+
+  mat-form-field {
+    // .mat-date-range-input-mirror {
+    //   width: 90px;
+    // }
+
+    .mat-date-range-input-start-wrapper{
+      width: 5.5rem;
+    }
+
+    &:hover {
+      .mat-mdc-form-field-input-control {
+        padding-right: 40px !important;
+      }
+    }
+  }
+}

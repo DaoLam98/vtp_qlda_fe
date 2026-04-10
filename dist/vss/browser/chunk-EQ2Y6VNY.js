@@ -1,0 +1,2 @@
+import{Eb as a,Pd as t,_d as e}from"./chunk-3GN326AX.js";var s={moduleName:t.MDM,name:"module",filterForm:[{name:"code",label:"code",type:e.TEXT,required:!1,isHidden:!1,validate:[a.required]},{name:"name",label:"name",type:e.TEXT,required:!1,isHidden:!1,validate:[""]},{name:"status",label:"status",type:e.COMBOBOX,required:!1,isHidden:!1,validate:[""]}],sortBy:"status,lastModifiedDate",sortDirection:"asc,desc"};export{s as a};
+//# sourceMappingURL=chunk-EQ2Y6VNY.js.map

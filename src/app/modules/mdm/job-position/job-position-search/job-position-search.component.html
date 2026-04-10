@@ -1,0 +1,69 @@
+<cloud-search
+  [configForm]="configForm"
+  [columns]="columns"
+  [buttons]="buttons"
+  [formAdvanceSearch]="formAdvanceSearch"
+  [addBtnEnabled]="false"
+  [exportBtnEnabled]="false"
+>
+  <ng-template appTemplate="filterForm">
+    <div
+      fxLayout="row wrap"
+      class="row-wrap-padding"
+      [formGroup]="formAdvanceSearch"
+    >
+      <cva-input
+        name="code"
+        formControlName="code"
+        [class]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'code')"
+        [label]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'code')"
+        [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+        [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+        [placeholder]="'common.placeholder.input'"
+        fxLayout="column"
+        fxFlex="25%"
+        fxFlex.xs="100%"
+        fxFlex.sm="50%"
+        fxFlex.md="50%"
+        fxFlex.lg="25%"
+      >
+      </cva-input>
+
+      <cva-input
+        name="name"
+        formControlName="name"
+        [class]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'name')"
+        [label]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'name')"
+        [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+        [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+        [placeholder]="'common.placeholder.input'"
+        fxLayout="column"
+        fxFlex="25%"
+        fxFlex.xs="100%"
+        fxFlex.sm="50%"
+        fxFlex.md="50%"
+        fxFlex.lg="25%"
+      >
+      </cva-input>
+
+      <cva-multi-select-autocomplete
+        name="status"
+        formControlName="status"
+        [class]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'status')"
+        [label]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'status')"
+        [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+        [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+        [placeholder]="'common.placeholder.select'"
+        [options]="statusValues$ | async"
+        [multiple]="false"
+        fxLayout="column"
+        fxFlex="25%"
+        fxFlex.xs="100%"
+        fxFlex.sm="50%"
+        fxFlex.md="50%"
+        fxFlex.lg="25%"
+      >
+      </cva-multi-select-autocomplete>
+    </div>
+  </ng-template>
+</cloud-search>

@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/modules/mdm/config-vo/config-vo-add-edit-detail/config-vo-add-edit-detail.component.scss"],
+  "sourcesContent": [":host {\r\n  cva-smart-table::ng-deep {\r\n    td.mat-column-name {\r\n      width: 85%;\r\n    }\r\n  }\r\n}\r\n"],
+  "mappings": "AAEI,MAAA,eAAA,UAAA,EAAA,CAAA,gBACE,MAAA",
+  "names": []
+}

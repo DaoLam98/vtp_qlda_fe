@@ -1,0 +1,212 @@
+<cva-breadcrumb style="flex: 1"></cva-breadcrumb>
+<div fxLayout='row wrap' style="justify-content: space-between; align-items: center">
+</div>
+<form [formGroup]='addEditForm' class='form edit-form' style="padding-bottom: 50px">
+  <div class="content" style="padding: 24px 14px">
+    <fieldset>
+      <div>
+        <div class='fieldSetContent row-wrap-padding' fxLayout='row wrap'>
+
+          <cva-multi-select-autocomplete name='projectId' formControlName='projectId'
+            [label]="moduleName+'.table.header.projectName'" [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+            [isLabelOutside]="environment.IS_LABEL_OUTSIDE" [placeholder]="'common.placeholder.select'"
+            [options]='projectOptions' [multiple]='false' [disabled]="isEdit" [required]='!isEdit'
+            fxLayout='column' fxFlex='25%' fxFlex.xs='100%' fxFlex.sm='50%' fxFlex.md='50%' fxFlex.lg='50%'>
+          </cva-multi-select-autocomplete>
+
+          <app-organization-composit-choosen
+            [required]='!isEdit'
+            formControlName="organizationId"
+            [listOrg]="organizationOptions"
+            fieldName="organizationId"
+            [disabled]="isEdit"
+            fxLayout="column"
+            fxFlex="25%"
+            fxFlex.xs="100%"
+            fxFlex.sm="50%"
+            fxFlex.md="50%"
+            fxFlex.lg="25%"
+          >
+          </app-organization-composit-choosen>
+
+          <cva-multi-select-autocomplete name='expressionId' formControlName='expressionId'
+            [label]="moduleName+'.table.header.expressionName'" [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+            [isLabelOutside]="environment.IS_LABEL_OUTSIDE" [placeholder]="'common.placeholder.select'"
+            [options]='expressionOptionsValues' [multiple]='false' [disabled]="isView || model?.isApplyExpression" 
+            [required]='!(isView || model?.isApplyExpression)'
+            fxLayout='column' fxFlex='25%' fxFlex.xs='100%' fxFlex.sm='50%' fxFlex.md='50%' fxFlex.lg='50%'
+            >
+          </cva-multi-select-autocomplete>
+
+           <cva-input
+            name="expressionInformationTypeName"
+            formControlName="expressionInformationTypeName"
+            [label]="moduleName + '.table.header.expressionInformationTypeName'"
+            [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+            [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+            [placeholder]="'common.placeholder.input'"
+            [disabled]="true"
+            fxLayout="column"
+            fxFlex='25%' fxFlex.xs='100%' fxFlex.sm='50%' fxFlex.md='50%' fxFlex.lg='25%'
+          >
+          </cva-input>
+
+          <cva-multi-select-autocomplete name='frequency' formControlName='frequency'
+            [label]="moduleName+'.table.header.frequency'" [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+            [isLabelOutside]="environment.IS_LABEL_OUTSIDE" [placeholder]="'common.placeholder.select'"
+            [options]='frequencyValues' [multiple]='false' [disabled]="isView" [required]='!isView'
+            fxLayout='column' fxFlex='25%' fxFlex.xs='100%' fxFlex.sm='50%' fxFlex.md='50%' fxFlex.lg='25%' 
+            [disabled]="isView || model?.isApplyExpression">
+          </cva-multi-select-autocomplete>
+
+          <cva-date-picker
+            name="startDate"
+            formControlName="startDate"
+            [label]="'Từ ngày'"
+            [required]="true"
+            [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+            [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+            [placeholder]="'DD/MM/YYYY'"
+            [disabled]="isView"
+            fxLayout='column'
+            fxFlex='25%' fxFlex.xs='100%' fxFlex.sm='50%' fxFlex.md='50%' fxFlex.lg='25%'
+            [disabled]="isView || model?.isApplyExpression"
+            [maxDate]="startDateLimit"
+          >
+          </cva-date-picker>
+
+          <cva-date-picker
+            name="endDate"
+            formControlName="endDate"
+            [label]="'Đến ngày'"
+            [required]="true"
+            [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+            [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+            [placeholder]="'DD/MM/YYYY'"
+            [disabled]="isView"
+            fxLayout='column'
+            fxFlex='25%' fxFlex.xs='100%' fxFlex.sm='50%' fxFlex.md='50%' fxFlex.lg='25%'
+            [disabled]="isView || model?.isApplyExpression"
+            [minDate]="endDateLimit"
+          >
+          </cva-date-picker>
+
+
+          @if (isView) {
+          <!-- Trạng thái -->
+          <cva-input name='customStatus' formControlName='customStatus' [label]="'common.table.header.status'"
+            [isFloatLabel]="!environment.IS_LABEL_OUTSIDE" [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+            [placeholder]="'common.placeholder.input'" [disabled]="isView" fxLayout='column' fxFlex='25%'
+            fxFlex.xs='100%' fxFlex.sm='50%' fxFlex.md='50%' fxFlex.lg='25%'>
+          </cva-input>
+
+          <!-- Người tạo -->
+          <cva-input name='createdBy' formControlName='createdBy' [label]="'common.table.header.createdBy'"
+            [isFloatLabel]="!environment.IS_LABEL_OUTSIDE" [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+            [placeholder]="'common.placeholder.input'" [disabled]='isView' fxLayout='column' fxFlex='25%'
+            fxFlex.xs='100%' fxFlex.sm='50%' fxFlex.md='50%' fxFlex.lg='25%'>
+          </cva-input>
+
+          <!-- Ngày tạo -->
+          <cva-input name='createdDate' formControlName='createdDate' [label]="'common.table.header.createdDate'"
+            [isFloatLabel]="!environment.IS_LABEL_OUTSIDE" [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+            [placeholder]="'common.placeholder.input'" [disabled]='isView' fxLayout='column' fxFlex='25%'
+            fxFlex.xs='100%' fxFlex.sm='50%' fxFlex.md='50%' fxFlex.lg='25%'>
+          </cva-input>
+
+          <!-- Người cập nhật -->
+          <cva-input name='lastModifiedBy' formControlName='lastModifiedBy'
+            [label]="'common.table.header.lastModifiedBy'" [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+            [isLabelOutside]="environment.IS_LABEL_OUTSIDE" [placeholder]="'common.placeholder.input'"
+            [disabled]='isView' fxLayout='column' fxFlex='25%' fxFlex.xs='100%' fxFlex.sm='50%' fxFlex.md='50%'
+            fxFlex.lg='25%'>
+          </cva-input>
+
+          <!-- Ngày cập nhật -->
+          <cva-input name='lastModifiedDate' formControlName='lastModifiedDate'
+            [label]="'common.table.header.lastModifiedDate'" [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+            [isLabelOutside]="environment.IS_LABEL_OUTSIDE" [placeholder]="'common.placeholder.input'"
+            [disabled]='isView' fxLayout='column' fxFlex='25%' fxFlex.xs='100%' fxFlex.sm='50%' fxFlex.md='50%'
+            fxFlex.lg='25%'>
+          </cva-input>
+          }
+          @if (!isView) {
+          <div fxLayout fxFlex="100%" fxLayoutAlign="end">
+            <button mat-button type="button" class="primary" [disabled]="btnApplyDisabled || model?.isApplyExpression" (click)="onApply()">
+              {{ 'btnApply' | translate }}
+            </button>
+            <button mat-button type="button" class="primary outline" [disabled]="!model?.isApplyExpression" (click)="onReset()">
+              {{ 'btnReset' | translate }}
+            </button>
+          </div>
+          }
+        </div>
+        <button style="display: none"></button>
+      </div>
+    </fieldset>
+  </div>
+  <app-form-data-item-search *ngIf="model && model?.isApplyExpression" #itemSearchRef [startDate]="model?.startDate" [endDate]="model?.endDate" [parentModel]="model"
+  [frequency]="model?.frequency" [apiName]="apiDataItemSearch" [parentModelIdentityKey]="'dataGatheringId'"
+  [orderKey]="'expressionOrder'" [targetValues]="targetValues" [assetValues]="assetValues" [accountingAccountValues]="accountingAccountValues" [orgValues]="organizationOptions"
+  [readonly]="isView"
+  >
+  </app-form-data-item-search>
+</form>
+<div class="row-wrap-padding edit-action-bottom">
+  <div class="btn-sec">
+    <button mat-stroked-button type="button" class="primary outline" (click)="back()">
+      <i class="fa fa-arrow-left"></i> {{ 'btnBack' | translate }}
+    </button>
+
+    <button
+      *ngIf="displaySaveButton"
+      [disabled]='addEditForm.invalid || isView'
+      mat-button
+      type="button"
+      class="primary"
+      (click)="onSubmit(false)"
+    >
+      <i class="fa fa-save"></i> {{ 'btnSave' | translate }}
+    </button>
+
+    <button
+      *ngIf="displayCompleteButton"
+      mat-button
+      type="button"
+      class="primary"
+      [disabled]="disableCompleteButton"
+      (click)="onSubmit(true)"
+    >
+      {{ 'btnComplete' | translate }}
+    </button>
+
+    <button
+      mat-button
+      type="button"
+      class="primary"
+      (click)="onRedirect(this.model?.id)"
+      *ngIf="displayEditButton"
+    >
+      {{ 'btnUpdate' | translate }}
+    </button>
+    <button
+      *ngIf="displayApproveRejectButton"
+      mat-button
+      type="button"
+      class="primary outline"
+      (click)='onUpdateStatus("reject")'
+    >
+      {{ 'btnReject' | translate }}
+    </button>
+
+    <button
+      *ngIf="displayApproveRejectButton"
+      mat-button
+      type="button"
+      class="primary"
+      (click)='onUpdateStatus("approve")'
+    >
+      {{ 'btnApprove' | translate }}
+    </button>
+  </div>
+</div>

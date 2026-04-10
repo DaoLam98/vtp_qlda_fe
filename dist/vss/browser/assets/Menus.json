@@ -1,0 +1,36 @@
+[
+  {
+    "displayName": "menu.dashboard",
+    "iconName": "fa fa-chart-pie-alt",
+    "route": "dashboard"
+  },
+  {
+    "displayName": "menu.category.",
+    "iconName": "icon-campaign",
+    "children": [
+      {
+        "displayName": "menu.cms.gara.info.garage.",
+        "iconName": "assessment",
+        "roleMenu": "category_tracking-index",
+        "route": "category/tracking-index"
+      }
+    ]
+  },
+  {
+    "displayName": "menu.dm-test.",
+    "iconName": "icon-campaign",
+    "children": [
+      {
+        "displayName": "menu.cms.gara.info.garage.",
+        "iconName": "assessment",
+        "roleMenu": "dm-test-index",
+        "route": "dm/dm-test-index"
+      }
+    ]
+  },
+  {
+    "displayName": "menu.logout",
+    "iconName": "fa fa-power-off",
+    "route": "logout"
+  }
+]

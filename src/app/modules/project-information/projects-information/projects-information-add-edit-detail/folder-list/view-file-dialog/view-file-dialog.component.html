@@ -1,0 +1,38 @@
+<div class="dialog_wrapper">
+  <div class="dialog_header">
+    <div class="dialog_title">{{ 'project.folder.viewFileLabel' | translate }}</div>
+    <i class="fas fa-times" style="cursor: pointer" (click)="onClose()"></i>
+  </div>
+  <div class="dialog_content" style="resize: none">
+    <div fxLayout="row" fxLayoutGap="10px">
+      <div fxFlex="100%">
+        <div class="file-details" style="padding: 15px">
+          <ng2-pdfjs-viewer
+            *ngIf="!isOfficeFile"
+            #pdfViewer
+            [openFile]="false"
+            [fullScreen]="false"
+            style="width: 100%; height: 700px; display: block">
+          </ng2-pdfjs-viewer>
+          <div *ngIf="isOfficeFile" class="noti-area">
+            <span class="noti-label">Chỉ hỗ trợ xem tệp có <b>định dạng PDF</b>. Vui lòng tải xuống để xem nội dung các định dạng khác.</span>
+<!--            <button mat-button class="primary outline Update-btn"-->
+<!--                    (click)="downloadFile(data.filePath)">{{ 'btnDownload' | translate }}-->
+<!--            </button>-->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="dialog_footer right">
+    <div>
+      <button
+        mat-button
+        class="primary outline Update-btn"
+        (click)="onClose()"
+      >
+        {{ 'btnBack' | translate }}
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/modules/project-information/project-proposal/popup-sync-project-proposal/popup-sync-project-proposal.component.scss"],
+  "sourcesContent": [":host {\r\n  cva-input::ng-deep .text_area .mat-mdc-form-field-flex {\r\n    height: 100px;\r\n  }\r\n  .dialog_content:after {\r\n    height: 0;\r\n  }\r\n  app-vss-files-field {\r\n    max-width: 100% !important;\r\n    padding: 0 16px !important;\r\n    ::ng-deep {\r\n      .custom-upload .cva-multi-upload .uploadArea .upload-button {\r\n        background-color: transparent;\r\n        border: 1px dashed #EE0033;\r\n        border-radius: 10px;\r\n        width: 100%;\r\n        height: 168px;\r\n        float: left;\r\n        min-height: 45px;\r\n        margin-bottom: 10px;\r\n        padding: 10px;\r\n      }\r\n    }\r\n  }\r\n}\r\n\r\n.confirm {\r\n  padding:0 16px;\r\n  font-size: 14px;\r\n  font-weight: bold;\r\n}\r\n"],
+  "mappings": "AACE,MAAA,SAAA,UAAA,CAAA,UAAA,CAAA,wBACE,OAAA,MAEF,MAAA,CAAA,cAAA,OACE,OAAA,EAEF,MAAA,oBACE,UAAA,eAPF,QAQE,EAAA,eAEE,MAAA,oBAAA,UAAA,CAAA,cAAA,CAAA,iBAAA,CAAA,WAAA,CAAA,cACE,iBAAA,YACA,OAAA,IAAA,OAAA,QAZN,cAaM,KACA,MAAA,KACA,OAAA,MACA,MAAA,KACA,WAAA,KACA,cAAA,KAlBN,QAmBM,KAMR,CAAA,QAzBE,QA0BA,EAAA,KACA,UAAA,KACA,YAAA",
+  "names": []
+}

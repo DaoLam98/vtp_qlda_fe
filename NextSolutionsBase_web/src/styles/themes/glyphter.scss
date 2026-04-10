@@ -1,0 +1,27 @@
+@font-face {
+    font-family: 'glyphter';
+    src: url('./../fonts/glyphter.eot');
+    src: url('./../fonts/glyphter.eot?#iefix') format('embedded-opentype'),
+         url('./../fonts/glyphter.woff') format('woff'),
+         url('./../fonts/glyphter.ttf') format('truetype'),
+         url('./../fonts/glyphter.svg#glyphter') format('svg');
+    font-weight: normal;
+    font-style: normal;
+  font-display: swap;
+}
+
+[class*='icon-']:before{
+	display: inline-block;
+   font-family: 'glyphter';
+   font-style: normal;
+   font-weight: normal;
+   line-height: 1;
+   -webkit-font-smoothing: antialiased;
+   -moz-osx-font-smoothing: grayscale
+}
+
+.icon-campaign:before{content:'\0041';}
+.icon-complaint:before{content:'\0042';}
+.icon-distributor:before{content:'\0043';}
+.icon-finance:before{content:'\0044';}
+.icon-price:before{content:'\0045';}

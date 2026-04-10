@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/modules/mdm/currency/currency-add-edit-detail/currency-add-edit-detail.component.scss"],
+  "sourcesContent": ["$columns: (\r\n  toDate : 5%,\r\n  fromDate: 5%,\r\n  stt: 3%,\r\n  delete: 1%,\r\n  exchangeRate: 10%,\r\n  toCurrency: 10%,\r\n  status: 10%\r\n);\r\n\r\n\r\ncva-smart-table ::ng-deep {\r\n  @each $col, $width in $columns {\r\n    .mat-column-#{$col} {\r\n      width: $width;\r\n\r\n      .viewData {\r\n        width: 100%;\r\n      }\r\n    }\r\n  }\r\n  .table-responsive table {\r\n    thead tr th {\r\n      span[style=\"color: red;\"] {\r\n        margin-left: 5px;\r\n      }\r\n    }\r\n  }\r\n}\r\n\r\n.exchangeRate-section {\r\n  display: flex !important;\r\n  flex-direction: column !important;\r\n}\r\n"],
+  "mappings": "AAaI,gBAAA,UAAA,CAAA,kBACE,MAdI,GAgBJ,gBAAA,UAAA,CAHF,kBAGE,CAAA,SACE,MAAA,KAJJ,gBAAA,UAAA,CAAA,oBACE,MAdI,GAgBJ,gBAAA,UAAA,CAHF,oBAGE,CAAA,SACE,MAAA,KAJJ,gBAAA,UAAA,CAAA,eACE,MAdI,GAgBJ,gBAAA,UAAA,CAHF,eAGE,CAAA,SACE,MAAA,KAJJ,gBAAA,UAAA,CAAA,kBACE,MAdI,GAgBJ,gBAAA,UAAA,CAHF,kBAGE,CAAA,SACE,MAAA,KAJJ,gBAAA,UAAA,CAAA,wBACE,MAdI,IAgBJ,gBAAA,UAAA,CAHF,wBAGE,CAAA,SACE,MAAA,KAJJ,gBAAA,UAAA,CAAA,sBACE,MAdI,IAgBJ,gBAAA,UAAA,CAHF,sBAGE,CAAA,SACE,MAAA,KAJJ,gBAAA,UAAA,CAAA,kBACE,MAdI,IAgBJ,gBAAA,UAAA,CAHF,kBAGE,CAAA,SACE,MAAA,KAMF,gBAAA,UAAA,CAAA,iBAAA,MAAA,MAAA,GAAA,GAAA,IAAA,CAAA,qBACE,YAAA,IAMR,CAAA,qBACE,QAAA,eACA,eAAA",
+  "names": []
+}

@@ -1,0 +1,227 @@
+[
+  {
+    "displayName": "Quản trị hệ thống",
+    "iconName": "fas fa-user-cog",
+    "roleMenu": "mdm_parent_manage_user",
+    "children": [
+      {
+        "displayName": "menu.mdm.organization",
+        "iconName": "far fa-sitemap",
+        "route": "mdm/organization",
+        "roleMenu": "mdm_organization"
+      },
+      {
+        "displayName": "menu.mdm.internal-user",
+        "iconName": "fal fa-user",
+        "route": "mdm/internal-user",
+        "roleMenu": "mdm_internal_user"
+      },
+      {
+        "displayName": "menu.mdm.role",
+        "iconName": "fal fa-key-skeleton",
+        "route": "mdm/role",
+        "roleMenu": "mdm_role"
+      },
+      {
+        "displayName": "menu.mdm.menu-config",
+        "iconName": "fal fa-list-alt",
+        "route": "mdm/menu",
+        "roleMenu": "mdm_menu"
+      },
+      {
+        "displayName": "menu.mdm.permission",
+        "iconName": "far fa-key",
+        "route": "mdm/permissions",
+        "roleMenu": "mdm_permissions"
+      },
+      {
+        "displayName": "menu.mdm.notification-template",
+        "iconName": "fal fa-bell",
+        "route": "mdm/notification-template",
+        "roleMenu": "mdm_notification_template"
+      },
+      {
+        "displayName": "menu.mdm.file-template",
+        "iconName": "fal fa-file-alt",
+        "route": "mdm/file-template",
+        "roleMenu": "mdm_file_template"
+      },
+      {
+        "displayName": "menu.mdm.language",
+        "iconName": "far fa-language",
+        "route": "mdm/language",
+        "roleMenu": "mdm_language"
+      },
+      {
+        "displayName": "menu.mdm.translation-key",
+        "iconName": "fal fa-globe",
+        "route": "mdm/translation-key",
+        "roleMenu": "mdm_translation_key"
+      },
+      {
+        "displayName": "menu.mdm.module",
+        "iconName": "fal fa-clipboard-list",
+        "route": "mdm/module",
+        "roleMenu": "mdm_module"
+      },
+      {
+        "displayName": "menu.mdm.config-schedule",
+        "iconName": "fal fa-spinner",
+        "route": "mdm/schedule-job",
+        "roleMenu": "mdm_schedule_job"
+      }
+    ]
+  },
+  {
+    "displayName": "Danh mục",
+    "iconName": "fal fa-layer-group",
+    "roleMenu": "mdm_parent_category",
+    "children": [
+      {
+        "displayName": "menu.mdm.location",
+        "iconName": "fal fa-map-marker-alt",
+        "route": "mdm/location",
+        "roleMenu": "mdm_location"
+      },
+      {
+        "displayName": "menu.mdm.partner",
+        "iconName": "fal fa-building",
+        "route": "mdm/partner",
+        "roleMenu": "mdm_partner"
+      },
+      {
+        "displayName": "menu.mdm.unit-of-measure",
+        "iconName": "fal fa-ruler",
+        "route": "mdm/unit-of-measure",
+        "roleMenu": "mdm_unit_of_measure"
+      },
+      {
+        "displayName": "menu.mdm.attribute",
+        "iconName": "fal fa-tags",
+        "route": "mdm/attribute",
+        "roleMenu": "mdm_attribute"
+      },
+      {
+        "displayName": "menu.mdm.currency",
+        "iconName": "far fa-money-bill",
+        "route": "mdm/currency",
+        "roleMenu": "mdm_currency"
+      },
+      {
+        "displayName": "menu.mdm.job-position",
+        "iconName": "fal fa-user-tie",
+        "route": "mdm/job-position",
+        "roleMenu": "mdm_job_position"
+      },
+      {
+        "displayName": "menu.mdm.job-position-group",
+        "iconName": "fal fa-users",
+        "route": "mdm/job-position-group",
+        "roleMenu": "mdm_job_position_group"
+      },
+      {
+        "displayName": "menu.mdm.target-group",
+        "iconName": "fal fa-bullseye",
+        "route": "mdm/target-group",
+        "roleMenu": "mdm_target_group"
+      },
+      {
+        "displayName": "menu.mdm.target",
+        "iconName": "fal fa-bullseye-arrow",
+        "route": "mdm/target",
+        "roleMenu": "mdm_target"
+      },
+      {
+        "displayName": "menu.mdm.accounting-account",
+        "iconName": "fal fa-credit-card",
+        "route": "mdm/accounting-account",
+        "roleMenu": "mdm_accounting_account"
+      },
+      {
+        "displayName": "menu.mdm.property",
+        "iconName": "fas fa-wallet",
+        "route": "mdm/assets",
+        "roleMenu": "mdm_assets"
+      },
+      {
+        "displayName": "menu.mdm.property-group",
+        "iconName": "fas fa-treasure-chest",
+        "route": "mdm/asset-group",
+        "roleMenu": "mdm_asset_group"
+      },
+      {
+        "displayName": "menu.mdm.investment-form",
+        "iconName": "fas fa-file-contract",
+        "route": "mdm/investment-form",
+        "roleMenu": "mdm_investment_form"
+      },
+      {
+        "displayName": "menu.mdm.data-type",
+        "iconName": "far fa-database",
+        "route": "mdm/data-type",
+        "roleMenu": "mdm_data_type"
+      },
+      {
+        "displayName": "menu.mdm.progress-evaluation",
+        "iconName": "fal fa-tasks",
+        "route": "mdm/progress-evaluation",
+        "roleMenu": "mdm_progress_evaluation"
+      },
+      {
+        "displayName": "menu.mdm.tax",
+        "iconName": "fal fa-usd-circle",
+        "route": "mdm/tax",
+        "roleMenu": "mdm_tax"
+      },
+      {
+        "displayName": "menu.mdm.template-type",
+        "iconName": "fal fa-folder",
+        "route": "mdm/template-type",
+        "roleMenu": "mdm_template_type"
+      },
+      {
+        "displayName": "menu.mdm.project-type",
+        "iconName": "fal fa-project-diagram",
+        "route": "mdm/project-type",
+        "roleMenu": "mdm_project_type"
+      },
+      {
+        "displayName": "menu.mdm.investment-limit",
+        "iconName": "fal fa-money-check-alt",
+        "route": "mdm/investment-limit",
+        "roleMenu": "mdm_investment_limit"
+      }
+    ]
+  },
+  {
+    "displayName": "Cấu hình",
+    "iconName": "fas fa-cog",
+    "roleMenu": "mdm_parent_config",
+    "children": [
+      {
+        "displayName": "menu.mdm.config-vo",
+        "iconName": "fal fa-user-edit",
+        "route": "mdm/config-vo",
+        "roleMenu": "mdm_config_vo"
+      },
+      {
+        "displayName": "menu.mdm.consolidated-account",
+        "iconName": "fal fa-user-tag",
+        "route": "mdm/consolidated-account",
+        "roleMenu": "mdm_consolidated_account"
+      },
+      {
+        "displayName": "menu.mdm.cycle-management",
+        "iconName": "fal fa-calendar-alt",
+        "route": "mdm/cycle-management",
+        "roleMenu": "mdm_cycle_management"
+      },
+      {
+        "displayName": "menu.mdm.form-configuration",
+        "iconName": "fal fa-file",
+        "route": "mdm/form-configuration",
+        "roleMenu": "mdm_form_configuration"
+      }
+    ]
+  }
+]

@@ -1,0 +1,18 @@
+<mat-expansion-panel [expanded]="true">
+  <mat-expansion-panel-header>
+    <mat-panel-title>{{ 'project.proposals.table.title' | translate }}</mat-panel-title>
+  </mat-expansion-panel-header>
+  <form [formGroup]="displayForm">
+    <cva-smart-table
+      *ngIf="this.addEditForm.get('projectProposals')?.value?.length"
+      formControlName='projectProposals'
+      [moduleName]="moduleName"
+      [buttons]="buttons"
+      [columns]='columns'
+      (clickAction)="onRowButtonClick($event)"
+      [isSticky]='true'
+      [minRow]='1'
+      fxFlex='100%'>
+    </cva-smart-table>
+  </form>
+</mat-expansion-panel>

@@ -1,0 +1,7 @@
+<div [class]="displayType==='vertical'?'label-container':'label-container-flex'">
+  <label [ngClass]="{'label-in-form': isInForm}" class="label">{{ label | translate }}</label>
+  <label [class.disabled]="isDisabled" class="switch">
+    <input (change)="onInputChange($event)" [checked]="value" [disabled]="isDisabled" type="checkbox"/>
+    <span class="slider round"></span>
+  </label>
+</div>

@@ -1,0 +1,23 @@
+<div class="org-composit-choosen" style="position: relative;">
+  <cva-multi-select-autocomplete
+    [disabled]="disabled"
+    [formControl]="organizationControl"
+    [label]="'common.table.header.' + fieldName"
+    [multiple]="multiple"
+    [options]="listOrg"
+    [placeholder]="'common.placeholder.select'"
+    [required]="required"
+    name="organizationControl"
+  ></cva-multi-select-autocomplete>
+
+  <button
+    (click)="select()"
+    class=""
+    mat-button
+    style="position: absolute; border: unset; top: 0px; min-width: unset; width: 10px;"
+    type="button"
+    [disabled]="disabled"
+  >
+    <i *ngIf="!disabled" class="far fa-search"></i>
+  </button>
+</div>

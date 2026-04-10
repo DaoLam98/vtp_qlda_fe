@@ -1,0 +1,99 @@
+.dialog_wrapper {
+  .dialog_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    border-bottom: 1px solid #e0e0e0;
+
+    .dialog_title {
+      font-size: 18px;
+      font-weight: 700;
+    }
+  }
+
+  .dialog_content {
+    padding: 16px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .otp-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+    padding: 10px 0 10px;
+
+    .desc {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.5;
+      color: #333333;
+
+      strong {
+        font-weight: 700;
+        color: #333333;
+      }
+    }
+
+    .desc.sub {
+      margin: 0;
+      font-size: 14px;
+      color: #666666;
+
+      .muted {
+        color: #999999;
+        font-size: 12px;
+        display: block;
+        margin-top: 4px;
+      }
+    }
+
+    .countdown {
+      color: #ff1f3d;
+      font-weight: 700;
+      font-size: 14px;
+      margin: 0;
+
+      &.expired {
+        opacity: 0.6;
+      }
+    }
+
+    cva-input {
+      width: 100%;
+      max-width: 300px;
+    }
+  }
+
+}
+
+// Override cva-input styles
+::ng-deep cva-input {
+  .form-group {
+    margin-bottom: 0;
+  }
+
+  .form-control {
+    height: 40px;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    padding: 0 12px;
+    font-size: 14px;
+    width: 100%;
+    margin-bottom: 0;
+    text-align: center;
+  }
+
+  .form-control:focus {
+    border-color: #ff1f3d;
+    box-shadow: 0 0 0 2px rgba(255, 31, 61, 0.1);
+    outline: none;
+  }
+
+  .form-label {
+    display: none;
+  }
+}

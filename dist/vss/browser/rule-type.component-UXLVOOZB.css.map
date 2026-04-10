@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/modules/mdm/target/formly-calculate/rule-type/rule-type.component.scss"],
+  "sourcesContent": [".row {\r\n  display: flex;\r\n  margin: 0 -.5rem;\r\n}\r\n\r\n.col {\r\n  flex: 1;\r\n  min-width: 100px;\r\n  margin: 0 .5rem;\r\n}\r\n"],
+  "mappings": "AAAA,CAAA,IACE,QAAA,KADF,OAEE,EAAA,OAGF,CAAA,IACE,KAAA,EACA,UAAA,MAPF,OAQE,EAAA",
+  "names": []
+}

@@ -1,0 +1,6 @@
+<div *ngIf="isEmpty" class="no-data-message" style="text-align: center;">
+  <i [class]="notFoundIcon" style="font-size: 36px; margin-bottom: 20px; display: block; color: #999;"></i>
+  <p style="margin: 0; font-size: 15px; line-height: 1.5;">
+    {{ defaultEmptyMessage | translate }}
+  </p>
+</div>

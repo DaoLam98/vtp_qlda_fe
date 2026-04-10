@@ -1,0 +1,221 @@
+<div fxLayout='row wrap' style="justify-content: space-between; align-items: center">
+  <cva-breadcrumb style="flex: 1"></cva-breadcrumb>
+
+  <div fxLayout='row wrap' class="vertical-divider">
+    <div class='btn-sec' style="display: flex; gap: 11px; margin-left: 33px;">
+      <button mat-button type="submit" class="outline Update-btn" (click)="back()">
+        <i class="fas fa-arrow-left"></i> {{ 'btnBack' | translate }}
+      </button>
+      <button
+        *ngIf="isView && hasApprovePermission"
+        [disabled]="checkIsActive"
+        mat-button
+        type="submit"
+        class="primary Update-btn"
+        (click)="onUpdateStatus('approve')"
+      >
+        <i class="far fa-check-circle"></i> {{ 'btnActive' | translate }}
+      </button>
+      <button
+        *ngIf="isView && hasRejectPermission"
+        [disabled]="!checkIsActive"
+        mat-button
+        type="submit"
+        class="primary Update-btn"
+        (click)="onUpdateStatus('reject')"
+      >
+        <i class="fas fa-ban"></i> {{ 'btnInactive' | translate }}
+      </button>
+      <button
+        *ngIf="!isView && (hasAddPermission || hasEditPermission)"
+        mat-button
+        type="submit"
+        class="primary Update-btn"
+        [disabled]="addEditForm.invalid || isView"
+        (click)="onSubmit()"
+      >
+        <i class="fa fa-save"></i> {{ 'btnAddEdit' | translate }}
+      </button>
+      <button
+        *ngIf="isView && hasEditPermission"
+        mat-button
+        type="submit"
+        class="primary Update-btn"
+        (click)="onRedirect(this.model)"
+      >
+        <i class="fas fa-pencil-alt"></i> {{ 'btnUpdate' | translate }}
+      </button>
+    </div>
+    </div>
+</div>
+
+<form [formGroup]="addEditForm" class="form edit-form">
+  <div class="content" style="padding: 24px 14px">
+    <fieldset>
+      <div class="fieldSetContent row-wrap-padding" fxLayout="row wrap" style="margin-top: 16px">
+        <cva-input
+          name="code"
+          formControlName="code"
+          [label]="moduleName + '.table.header.code'"
+          [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+          [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+          [placeholder]="'common.placeholder.input'"
+          [maxLength]="255"
+          [disabled]="isView"
+          [required]="!isView"
+          fxLayout="column"
+          fxFlex="50%"
+          fxFlex.xs="100%"
+          fxFlex.sm="50%"
+          fxFlex.md="50%"
+          fxFlex.lg="50%"
+        ></cva-input>
+        <cva-input
+          name="name"
+          formControlName="name"
+          [label]="moduleName + '.table.header.name'"
+          [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+          [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+          [placeholder]="'common.placeholder.input'"
+          [maxLength]="255"
+          [disabled]="isView"
+          [required]="!isView"
+          fxLayout="column"
+          fxFlex="50%"
+          fxFlex.xs="100%"
+          fxFlex.sm="50%"
+          fxFlex.md="50%"
+          fxFlex.lg="50%"
+        ></cva-input>
+        <cva-input
+          name="description"
+          formControlName="description"
+          [label]="moduleName + '.table.header.description'"
+          [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+          [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+          [placeholder]="'common.placeholder.input'"
+          [disabled]="isView"
+          [maxLength]="255"
+          fxLayout="column"
+          fxFlex.xs="100%"
+          fxFlex.sm="50%"
+          fxFlex.md="50%"
+          fxFlex.lg="50%"
+          fxFlex="50%"
+        ></cva-input>
+
+        @if(isView) {
+        <cva-input
+          name="status"
+          formControlName="status"
+          [label]="'common.table.header.status'"
+          [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+          [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+          [placeholder]="'common.placeholder.input'"
+          [disabled]="isView"
+          fxLayout="column"
+          fxFlex="25%"
+          fxFlex.xs="100%"
+          fxFlex.sm="50%"
+          fxFlex.md="50%"
+          fxFlex.lg="25%"
+        ></cva-input>
+        <cva-input
+          name="createdBy"
+          formControlName="createdBy"
+          [label]="'common.table.header.createdBy'"
+          [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+          [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+          [placeholder]="'common.placeholder.input'"
+          [disabled]="isView"
+          fxLayout="column"
+          fxFlex="25%"
+          fxFlex.xs="100%"
+          fxFlex.sm="50%"
+          fxFlex.md="50%"
+          fxFlex.lg="25%"
+        ></cva-input>
+        <cva-date-picker
+          name="createdDate"
+          formControlName="createdDate"
+          [label]="'common.table.header.createdDate'"
+          [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+          [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+          [placeholder]="'common.placeholder.input'"
+          [disabled]="true"
+          fxLayout="column"
+          fxFlex="25%"
+          fxFlex.xs="100%"
+          fxFlex.sm="50%"
+          fxFlex.md="50%"
+          fxFlex.lg="25%"
+        ></cva-date-picker>
+        <cva-input
+          name="lastModifiedBy"
+          formControlName="lastModifiedBy"
+          [label]="'common.table.header.lastModifiedBy'"
+          [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+          [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+          [placeholder]="'common.placeholder.input'"
+          [disabled]="isView"
+          fxLayout="column"
+          fxFlex="25%"
+          fxFlex.xs="100%"
+          fxFlex.sm="50%"
+          fxFlex.md="50%"
+          fxFlex.lg="25%"
+        ></cva-input>
+        <cva-date-picker
+          name="lastModifiedDate"
+          formControlName="lastModifiedDate"
+          [label]="'common.table.header.lastModifiedDate'"
+          [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+          [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+          [placeholder]="'common.placeholder.input'"
+          [disabled]="true"
+          fxLayout="column"
+          fxFlex="25%"
+          fxFlex.xs="100%"
+          fxFlex.sm="50%"
+          fxFlex.md="50%"
+          fxFlex.lg="25%"
+        ></cva-date-picker>
+        }
+      </div>
+    </fieldset>
+    <div class="margin-top-15"></div>
+    <div class="row-wrap">
+      <mat-expansion-panel [expanded]="true">
+        <mat-expansion-panel-header style="background-color: unset">
+          <mat-panel-title>
+            {{ 'mdm.consolidated-account.form.netoff-account' | translate }}
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <div class="fieldSetContent row-wrap-padding" fxLayout="row wrap">
+          <div
+            *ngIf="!isView && (hasAddPermission || hasEditPermission)"
+            class="buttonArea"
+            fxLayout
+            fxLayoutAlign="end"
+          >
+            <button mat-button type="button" class="primary" (click)="onAddValue()">
+              <i class="fa fa-plus"></i>
+              {{ 'mdm.consolidated-account.form.add-row' | translate }}
+            </button>
+          </div>
+
+          <cva-smart-table
+            *ngIf="addEditForm.get('netoffAccounts')?.value?.length"
+            formControlName="netoffAccounts"
+            [moduleName]="moduleName + '.netoff'"
+            [columns]="netoffAccountsColumns"
+            [buttons]="netoffAccountsButtons"
+            (clickAction)="onTableAction($event)"
+            fxFlex="100%"
+          ></cva-smart-table>
+        </div>
+      </mat-expansion-panel>
+    </div>
+  </div>
+</form>

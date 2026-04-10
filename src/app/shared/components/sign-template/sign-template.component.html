@@ -1,0 +1,288 @@
+<form class="sign-template" [formGroup]="formGroup">
+  <!-- Thông tin trình ký -->
+  <mat-expansion-panel [expanded]="true">
+    <mat-expansion-panel-header>
+      <mat-panel-title>{{ moduleName + '.table.title.sign-info' | translate }}</mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <div
+      class="fieldSetContent row-wrap-padding"
+      fxLayout="row wrap"
+      style="margin-top: 16px"
+    >
+      <!-- Luồng ký -->
+      <cva-multi-select-autocomplete
+        name="configVoId"
+        formControlName="configVoId"
+        [label]="moduleName + '.sign.form.sign-flow'"
+        [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+        [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+        [placeholder]="'common.placeholder.select'"
+        [options]="flowOptions"
+        [multiple]="false"
+        [disabled]="isView"
+        fxLayout="column"
+        fxFlex="50%"
+        fxFlex.xs="100%"
+        fxFlex.sm="50%"
+        fxFlex.md="50%"
+        fxFlex.lg="50%"
+      >
+      </cva-multi-select-autocomplete>
+
+      <!-- Số hiệu -->
+      <cva-input
+        name="code"
+        formControlName="code"
+        [label]="moduleName + '.sign.form.documentCode'"
+        [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+        [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+        [placeholder]="'common.placeholder.input'"
+        [required]="!isView"
+        [disabled]="isView"
+        [maxLength]="50"
+        fxLayout="column"
+        fxFlex="50%"
+        fxFlex.xs="100%"
+        fxFlex.sm="100%"
+        fxFlex.md="50%"
+        fxFlex.lg="50%"
+      >
+      </cva-input>
+
+      <!-- Trích yếu -->
+      <cva-input
+        name="title"
+        formControlName="title"
+        [label]="moduleName + '.sign.form.documentTitle'"
+        [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+        [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+        [placeholder]="'common.placeholder.input'"
+        [required]="!isView"
+        [disabled]="isView"
+        [maxLength]="255"
+        fxLayout="column"
+        fxFlex="50%"
+        fxFlex.xs="100%"
+        fxFlex.sm="100%"
+        fxFlex.md="50%"
+        fxFlex.lg="50%"
+      ></cva-input>
+
+      <!-- Mô tả -->
+      <cva-input
+        name="description"
+        formControlName="description"
+        [label]="moduleName + '.sign.form.documentDescription'"
+        [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+        [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+        [placeholder]="'common.placeholder.input'"
+        [required]="!isView"
+        [disabled]="isView"
+        [maxLength]="255"
+        fxLayout="column"
+        fxFlex="50%"
+        fxFlex.xs="100%"
+        fxFlex.sm="100%"
+        fxFlex.md="50%"
+        fxFlex.lg="50%"
+      >
+      </cva-input>
+
+      <!-- Hình thức văn bản -->
+      <cva-multi-select-autocomplete
+        name="typeId"
+        formControlName="typeId"
+        [label]="moduleName + '.sign.form.document-format'"
+        [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+        [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+        [placeholder]="'common.placeholder.select'"
+        [multiple]="false"
+        [disabled]="isView || !!configVoId"
+        [options]="typeValues"
+        [required]="!isView"
+        fxLayout="column"
+        fxFlex.xs="100%"
+        fxFlex.sm="50%"
+        fxFlex.md="50%"
+        fxFlex.lg="25%"
+        fxFlex="25%"
+      >
+      </cva-multi-select-autocomplete>
+
+      <!-- Ngành -->
+      <cva-multi-select-autocomplete
+        name="areaId"
+        formControlName="areaId"
+        [label]="moduleName + '.sign.form.profession'"
+        [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+        [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+        [placeholder]="'common.placeholder.select'"
+        [options]="areaValues"
+        [multiple]="false"
+        [disabled]="isView || !!configVoId"
+        [required]="!isView"
+        fxLayout="column"
+        fxFlex="25%"
+        fxFlex.xs="100%"
+        fxFlex.sm="50%"
+        fxFlex.md="50%"
+        fxFlex.lg="25%"
+      >
+      </cva-multi-select-autocomplete>
+
+      <!-- Độ khẩn -->
+      <cva-multi-select-autocomplete
+        name="priorityId"
+        formControlName="priorityId"
+        [label]="moduleName + '.sign.form.priorityId'"
+        [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+        [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+        [placeholder]="'common.placeholder.select'"
+        [options]="priorityValues"
+        [multiple]="false"
+        [disabled]="isView || !!configVoId"
+        [required]="!isView"
+        fxLayout="column"
+        fxFlex="25%"
+        fxFlex.xs="100%"
+        fxFlex.sm="50%"
+        fxFlex.md="50%"
+        fxFlex.lg="25%"
+      >
+      </cva-multi-select-autocomplete>
+
+      <!-- Độ mật -->
+      <cva-multi-select-autocomplete
+        name="sTypeId"
+        formControlName="sTypeId"
+        [label]="moduleName + '.sign.form.sTypeId'"
+        [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+        [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+        [placeholder]="'common.placeholder.select'"
+        [options]="stypeValues"
+        [multiple]="false"
+        [disabled]="isView || !!configVoId"
+        [required]="!isView"
+        fxLayout="column"
+        fxFlex="25%"
+        fxFlex.xs="100%"
+        fxFlex.sm="50%"
+        fxFlex.md="50%"
+        fxFlex.lg="25%"
+      ></cva-multi-select-autocomplete>
+
+      <!-- Ban hành tự động -->
+      <app-vss-toggle-field
+        formControlName="autoPromulgateText"
+        [label]="moduleName + '.sign.form.autoPromulgateText'"
+        [isDisabled]="isView || !!configVoId"
+        fxLayout="column"
+        fxFlex="25%"
+        fxFlex.xs="100%"
+        fxFlex.sm="50%"
+        fxFlex.md="50%"
+        fxFlex.lg="25%"
+      >
+      </app-vss-toggle-field>
+    </div>
+  </mat-expansion-panel>
+
+  <div class="margin-vertical-15"></div>
+
+  <!-- File đính kèm -->
+  <mat-expansion-panel [expanded]="true">
+    <mat-expansion-panel-header>
+      <mat-panel-title>{{ moduleName + '.sign.title.attach-file' | translate }}</mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <app-vss-files-field
+      formControlName="lstFileSign"
+      [fileTitle]="moduleName + '.sign.title.attach-file-main'"
+      (downloadFiles)="onDownloadFile($event)"
+      [fileAccept]="[FileTypes.PDF]"
+      fxLayout="column"
+      fxFlex="50%"
+      fxFlex.xs="100%"
+      fxFlex.sm="100%"
+      fxFlex.md="100%"
+      fxFlex.lg="50%"
+      [fieldPerRow]="2"
+      [isAppear]="isEdit"
+      [isDownloadLocal]="true"
+    >
+    </app-vss-files-field>
+
+    <div class="divider" fxLayout="column" fxFlex="24px"></div>
+
+    <app-vss-files-field
+      formControlName="listFileSignOther"
+      [fileTitle]="moduleName + '.sign.title.attach-file-sub'"
+      class="attach-file-sub"
+      (downloadFiles)="onDownloadFile($event)"
+      [fileAccept]="[FileTypes.PDF, FileTypes.DOCX, FileTypes.XLSX]"
+      fxLayout="column"
+      fxFlex.xs="100%"
+      fxFlex.sm="100%"
+      fxFlex.md="100%"
+      fxFlex.lg="50%"
+      fxFlex="50%"
+      [fieldPerRow]="2"
+      [isAppear]="isEdit"
+      [isDownloadLocal]="true"
+    >
+    </app-vss-files-field>
+  </mat-expansion-panel>
+
+  <div class="margin-vertical-15"></div>
+
+  <!-- Danh sách cá nhân ký duyệt -->
+  <mat-expansion-panel [expanded]="true">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <div style="width: 100%; display: flex; justify-content: space-between; align-items: center !important;">
+          <!-- Tiêu đề -->
+          <div>
+            {{ moduleName + '.sign.title.lstStaff' | translate }}
+            ({{ formGroup.get("lstStaff")?.value?.length || 0 }})
+          </div>
+        </div>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <div class="buttonArea" fxLayout="row" fxLayoutAlign="space-between">
+      <!-- Trình ký song song -->
+      <app-vss-toggle-field
+        formControlName="isSignParallel"
+        [label]="moduleName + '.sign.is-parallel'"
+        [isDisabled]="isView || !!configVoId"
+        displayType="horizontal"
+        [isInForm]="false"
+      ></app-vss-toggle-field>
+
+      <!-- Chọn cá nhân ký duyệt -->
+      <button
+        *ngIf="!isView"
+        mat-button
+        type="button"
+        class="primary Update-btn"
+        (click)="onAddSigner()"
+        [disabled]="!formGroup.get('canAdd')!.value"
+      >
+        <i class="fa fa-plus"></i> {{ moduleName + '.sign.choose-user' | translate }}
+      </button>
+    </div>
+
+    <div class="list-content">
+      <cva-smart-table
+        formControlName="lstStaff"
+        (clickAction)="onRowButtonClick($event)"
+        [moduleName]="moduleName + '.sign'"
+        [columns]="approvalListColumns"
+        [buttons]="approvalListButtons"
+        [minRow]="1"
+        fxFlex="100%"
+      ></cva-smart-table>
+    </div>
+  </mat-expansion-panel>
+</form>

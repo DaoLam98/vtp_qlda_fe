@@ -1,0 +1,201 @@
+<div class="dialog_wrapper" style="width: 80vw">
+  <div class="dialog_header">
+    <div
+      class="dialog_title">
+      {{ (data?.mode === 'VIEW'
+      ? 'common.title.detail'
+      : (!isUpdate ? 'common.title.add' : 'common.title.update'))
+      | translate }}
+    </div>
+    <i class="fal fa-times margin-15" style="cursor: pointer" (click)="matDialogRef.close()"></i>
+  </div>
+  <div class="dialog_content" style="resize: none">
+    <form [formGroup]="addEditForm" class="form edit-form">
+      <div class="fieldSetContent row-wrap-padding" fxLayout="row wrap">
+        <cva-input
+          [class]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'code')"
+          [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+          [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+          [label]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'code')"
+          [required]="true"
+          [maxLength]="255"
+          [disabled]="isViewOnly"
+          formControlName="code"
+          fxFlex="50%"
+          fxFlex.lg="50%"
+          fxFlex.md="50%"
+          fxFlex.sm="50%"
+          fxFlex.xs="100%"
+          fxLayout="column"
+          name="code"
+          placeholder="common.placeholder.input"
+        ></cva-input>
+
+        <cva-input
+          [class]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'name')"
+          [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+          [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+          [label]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'name')"
+          [required]="true"
+          [maxLength]="255"
+          [disabled]="isViewOnly"
+          formControlName="name"
+          fxFlex="50%"
+          fxFlex.lg="50%"
+          fxFlex.md="50%"
+          fxFlex.sm="50%"
+          fxFlex.xs="100%"
+          fxLayout="column"
+          name="code"
+          placeholder="common.placeholder.input"
+        ></cva-input>
+
+        <cva-multi-select-autocomplete
+          [class]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'archiveType')"
+          [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+          [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+          [label]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'archiveType')"
+          [required]="true"
+          [multiple]="false"
+          [disabled]="isViewOnly || isUpdate"
+          [options]="archiveTypeOpts"
+          formControlName="archiveType"
+          fxFlex="50%"
+          fxFlex.lg="50%"
+          fxFlex.md="50%"
+          fxFlex.sm="50%"
+          fxFlex.xs="100%"
+          fxLayout="column"
+          name="code"
+          placeholder="common.placeholder.select"
+        ></cva-multi-select-autocomplete>
+        <cva-multi-select-autocomplete
+          [class]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'parentId')"
+          [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+          [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+          [label]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'parentId')"
+          [required]="false"
+          [multiple]="false"
+          [disabled]="isViewOnly"
+          [options]="parentFolderOpts"
+          formControlName="parentId"
+          fxFlex="50%"
+          fxFlex.lg="50%"
+          fxFlex.md="50%"
+          fxFlex.sm="50%"
+          fxFlex.xs="100%"
+          fxLayout="column"
+          name="code"
+          placeholder="common.placeholder.select"
+        ></cva-multi-select-autocomplete>
+        <cva-input
+          [class]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'description')"
+          [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+          [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+          [label]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'description')"
+          [maxLength]="255"
+          [disabled]="isViewOnly"
+          formControlName="description"
+          fxFlex="50%"
+          fxFlex.lg="50%"
+          fxFlex.md="50%"
+          fxFlex.sm="50%"
+          fxFlex.xs="100%"
+          fxLayout="column"
+          name="code"
+          placeholder="common.placeholder.input"
+        ></cva-input>
+        @if (isViewOnly) {
+          <!-- Ngày tạo -->
+          <cva-date-picker
+            name='createdDate'
+            formControlName='createdDate'
+            [label]="'common.table.header.createdDate'"
+            [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+            [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+            [placeholder]="'common.placeholder.input'"
+            [disabled]='true'
+            fxLayout='column'
+            fxFlex='50%'
+            fxFlex.xs='100%'
+            fxFlex.sm='50%'
+            fxFlex.md='50%'
+            fxFlex.lg='50%'
+          >
+          </cva-date-picker>
+
+          <!-- Người cập nhật -->
+          <cva-input
+            name='lastModifiedBy'
+            formControlName='lastModifiedBy'
+            [label]="'common.table.header.lastModifiedBy'"
+            [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+            [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+            [placeholder]="'common.placeholder.input'"
+            [disabled]='true'
+            fxLayout='column'
+            fxFlex='50%'
+            fxFlex.xs='100%'
+            fxFlex.sm='50%'
+            fxFlex.md='50%'
+            fxFlex.lg='50%'
+          >
+          </cva-input>
+
+          <!-- Ngày cập nhật -->
+          <cva-date-picker
+            name='lastModifiedDate'
+            formControlName='lastModifiedDate'
+            [label]="'common.table.header.lastModifiedDate'"
+            [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+            [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+            [placeholder]="'common.placeholder.input'"
+            [disabled]='true'
+            fxLayout='column'
+            fxFlex='50%'
+            fxFlex.xs='100%'
+            fxFlex.sm='50%'
+            fxFlex.md='50%'
+            fxFlex.lg='50%'
+          >
+          </cva-date-picker>
+        }
+
+        <app-vss-files-field
+          formControlName="files"
+          [multiple]="!isChooseFolder"
+          [required]="isChooseFolder"
+          [actionTypeInput]="actionType"
+          [showDownload]="hasDownloadPermission"
+          (downloadFiles)="onDownloadFile($event)"
+          [fileAccept]="[FileTypes.PDF, FileTypes.DOC, FileTypes.DOCX, FileTypes.XLSX, FileTypes.XLS]"
+          fxLayout="column"
+          fxFlex.xs="100%"
+          fxFlex.sm="100%"
+          fxFlex.md="100%"
+          fxFlex.lg="100%"
+          fxFlex="100%"></app-vss-files-field>
+      </div>
+    </form>
+  </div>
+  <div class="dialog_footer center">
+    <div>
+      <button mat-button class="primary outline" (click)="matDialogRef.close()">
+        {{ 'common.btnClose' | translate }}
+      </button>
+
+      <button *ngIf="data?.mode !== 'VIEW'" mat-button class="primary" (click)="onSubmit()"
+              [disabled]="addEditForm.invalid">
+        <!--        {{ isUpdate ? ('btnSave' | translate) : ('btnSave' | translate) }}-->
+        {{ 'btnSave' | translate }}
+      </button>
+
+      <button *ngIf="isViewOnly && isCanDelete && hasEditPermission" mat-button class="primary" (click)="onEnableInput()">
+        {{ 'btnUpdate' | translate }}
+      </button>
+      <button *ngIf="isViewOnly && isCanDelete && hasViewRejectPermission" mat-button class="primary outline" (click)="onDelete($event)">
+        {{ 'btnDelete' | translate }}
+      </button>
+    </div>
+  </div>
+</div>

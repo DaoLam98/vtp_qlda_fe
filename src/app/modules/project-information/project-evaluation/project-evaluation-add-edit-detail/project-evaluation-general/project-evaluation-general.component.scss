@@ -1,0 +1,14 @@
+:host {
+  /* Apply styles to the cva-input element when it has the text_custom class */
+  ::ng-deep cva-input.text_custom {
+    .mat-mdc-form-field-flex {
+      height: 100px;
+    }
+
+    .cva-style-disable-text div {
+      white-space: pre-line !important;
+      line-clamp: 3 !important;
+      -webkit-line-clamp: 3 !important;
+    }
+  }
+}

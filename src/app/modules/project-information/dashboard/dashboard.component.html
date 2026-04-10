@@ -1,0 +1,227 @@
+<mat-tab-group class="tab-flex-grow-0"
+               [(selectedIndex)]="selectedTabIndex"
+               (selectedIndexChange)="onTabChange($event)">
+  <mat-tab [label]="moduleName + '.overview' | translate">
+    <form class='form edit-form' style="padding: 0 0 15px 0" [formGroup]="searchForm">
+      <div class="content" fxLayout fxLayoutGap="16px" style="padding-top: 0">
+        <fieldset>
+          <div class="fieldSetContent row-wrap-padding" fxLayout="row" fxLayoutAlign="space-between center"
+               style="margin-top: 16px">
+            <cva-multi-select-autocomplete
+              formControlName="projectTeam"
+              [label]="(moduleName + '.filter.control.projectTeam' | translate)"
+              [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+              [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+              [placeholder]="'common.placeholder.select' | translate"
+              [options]="projectTeamValues"
+              [multiple]='false'
+              fxLayout='column'
+              fxFlex='25%'
+              fxFlex.xs='100%'
+              fxFlex.sm='50%'
+              fxFlex.md='50%'
+              fxFlex.lg='25%'
+            >
+            </cva-multi-select-autocomplete>
+            <cva-multi-select-autocomplete
+              formControlName="spending"
+              [class]=""
+              [label]="(moduleName + '.filter.control.spending' | translate)"
+              [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+              [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+              [placeholder]="'common.placeholder.select' | translate"
+              [options]="spendingValues"
+              [multiple]='false'
+              fxLayout='column'
+              fxFlex='25%'
+              fxFlex.xs='100%'
+              fxFlex.sm='50%'
+              fxFlex.md='50%'
+              fxFlex.lg='25%'
+            >
+            </cva-multi-select-autocomplete>
+            <cva-multi-select-autocomplete
+              formControlName="project"
+              [label]="(moduleName + '.filter.control.project' | translate)"
+              [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+              [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+              [placeholder]="'common.placeholder.select' | translate"
+              [options]="projectValues"
+              [multiple]='false'
+              fxLayout='column'
+              fxFlex='25%'
+              fxFlex.xs='100%'
+              fxFlex.sm='50%'
+              fxFlex.md='50%'
+              fxFlex.lg='25%'
+            >
+            </cva-multi-select-autocomplete>
+            <cva-multi-select-autocomplete
+              formControlName="company"
+              [label]="(moduleName + '.filter.control.company' | translate)"
+              [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+              [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+              [placeholder]="'common.placeholder.select' | translate"
+              [options]="companyValues"
+              [multiple]='false'
+              fxLayout='column'
+              fxFlex='25%'
+              fxFlex.xs='100%'
+              fxFlex.sm='50%'
+              fxFlex.md='50%'
+              fxFlex.lg='25%'
+            >
+            </cva-multi-select-autocomplete>
+            <button
+              (click)="onFilterApply()"
+              mat-button
+              type='submit'
+              class='primary'
+            >{{ 'btnFilter'|translate }}
+            </button>
+            <button
+              (click)="onResetFilter()"
+              mat-button
+              type='submit'
+              class='outline'
+              style="margin-right: 10px"
+            >{{ 'btnReset'|translate }}
+            </button>
+          </div>
+        </fieldset>
+      </div>
+    </form>
+    <div fxLayout>
+
+      <div fxLayout="row wrap" fxFlex="100%" fxLayoutGap="8px grid"
+           fxLayoutAlign="start start"
+           *ngIf="summaryData && summaryData.length > 0"
+      >
+        <ng-container *ngFor="let item of summaryData; let i = index">
+          <div fxFlex='0 0 20%'
+               fxFlex.xs='100%'
+               fxFlex.sm='100%'
+               fxFlex.md='50%'
+               fxFlex.lg='0 0 20%'
+          >
+            <div class="box-card-summary" fxFlex>
+              <div class="card-header">
+                <!--              <i [class]="item.icon"></i>-->
+                <span>{{ item.title | translate }}</span>
+              </div>
+              <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="16px">
+                <div fxLayout="column" fxLayoutGap="8px">
+                  <div class="value-container">
+                    <span class="main-value">{{ item.amount | number:'1.0-0' }}</span>
+                    <span class="amount-unit">{{ item.unitOfMeasure }}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+    <div class="margin-bottom-15"></div>
+
+    <div *ngIf="dataChart  && dataChart.datasets.length > 0" fxLayout>
+      <div fxLayout="column"
+           fxFlex='100%'
+           fxFlex.xs='100%'
+           fxFlex.sm='50%'
+           fxFlex.md='50%'
+           fxFlex.lg='100%'>
+        <div style="background-color: white; padding:  10px; border-radius: 16px">
+          <h4 style="margin-bottom: 0">{{ moduleName + '.stacked.title' | translate }}</h4>
+          <div style="position: relative; height:300px;">
+            <canvas id="canvas-revenue-expense-disbursement">{{ overViewCharBarLine }}</canvas>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="margin-bottom-15"></div>
+    <div fxLayout
+         fxFlex='100%'
+         fxFlex.xs='100%'
+         fxFlex.sm='100%'
+         fxFlex.md='100%'
+         fxFlex.lg='100%' fxLayoutGap="16px" fxLayoutAlign="start">
+      <div *ngIf="chartItems && chartItems.length > 0"
+           fxLayout="column"
+           fxFlex='55%'
+           fxFlex.xs='100%'
+           fxFlex.sm='100%'
+           fxFlex.md='100%'
+           fxFlex.lg='55%'>
+        <div fxLayout fxLayoutGap="12px" style="height: 100%;">
+          <ng-container *ngFor="let item of chartItems; let i = index">
+            <div fxFlex="33.33%"
+                 style="position: relative; background: #fff; border-radius: 8px; padding: 16px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+              <div fxLayout fxLayoutAlign="space-between center">
+                <h4 style="text-align: center; margin-bottom: 16px; font-weight: 600;">{{ item.title | translate }}</h4>
+                <i class="fas fa-external-link-alt"></i>
+              </div>
+              <canvas [id]="'doughnutChart' + i" style="max-height: 250px;"></canvas>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+      <div
+        *ngIf="rankingCards && rankingCards.length > 0"
+        fxLayout="column"
+        fxFlex='45%'
+        fxFlex.xs='100%'
+        fxFlex.sm='100%'
+        fxFlex.md='100%'
+        fxFlex.lg='45%'
+        style="overflow-x: hidden;">
+        <app-slider-top-project
+          fxLayout="column" style="height: 100%"
+          [items]="rankingCards" [visible]="1">
+          <ng-template #itemTpl let-card>
+            <div style="padding: 10px 0;">
+              <h3 class="card-title">
+                {{ card.title }}
+              </h3>
+              <div style="margin-bottom: 8px" class="ranking-item"
+                   *ngFor="let item of card.dataTables; let idx = index" fxLayout="row"
+                   fxLayoutAlign="start center"
+                   fxLayoutGap="10px">
+                <div [style.background-color]="idx < 3 ? '#FED7DF' : '#F3F4F5'"
+                     [style.color]="idx < 3 ? '#EE0033' : '#000000'"
+                     style="padding: 8px; border-radius: 6px; font-size: 16px; font-weight: 600; min-width: 36px; text-align: center;">
+                  {{ idx + 1 }}
+                </div>
+                <div fxLayout="row" fxFlex="100%" fxLayoutAlign="space-between center">
+                  <div style="font-weight: 500;">{{ item.projectName }}</div>
+                  <div fxLayout="row" fxLayoutAlign="end center">
+                    <span
+                      style="color: #666;margin-right: 4px"><strong>{{ item.amountActual | number:'1.0-0' }}</strong></span>
+                    <span style="font-size: 12px; color: #8E8E93">{{ 'unit' | translate }}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+        </app-slider-top-project>
+      </div>
+    </div>
+  </mat-tab>
+
+  <!-- Dynamic tabs từ API - Lazy loaded -->
+  <ng-container *ngFor="let tab of tabs; let i = index">
+    <mat-tab [label]="tab.name">
+      <!-- Lazy load: Component chỉ được render khi tab được click -->
+      <ng-template matTabContent>
+        <app-dashboard-detail
+          [tab]="tab"
+          [projectTeamValues]="projectTeamValues"
+          [projectValues]="projectValues"
+          [companyValues]="companyValues">
+        </app-dashboard-detail>
+      </ng-template>
+    </mat-tab>
+
+  </ng-container>
+</mat-tab-group>

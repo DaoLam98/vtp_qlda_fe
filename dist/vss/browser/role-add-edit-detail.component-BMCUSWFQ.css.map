@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/modules/mdm/role/role-add-edit-detail/role-add-edit-detail.component.scss"],
+  "sourcesContent": ["::ng-deep .custom-tree {\r\n  .tree-area {\r\n    .selected-area.hiddenTree {\r\n      padding: 13px 20px;\r\n    }\r\n    .header-area {\r\n      margin-right: 0 !important;\r\n      font-size: 14px !important;\r\n      margin-top: 8px;\r\n      margin-bottom: 8px;\r\n    }\r\n    .collapse-expand-all {\r\n      font-size: 16px;\r\n      font-weight: 700;\r\n      color: #000000;\r\n\r\n      i {\r\n        font-size: 14px;\r\n        font-weight: 600;\r\n      }\r\n    }\r\n  }\r\n}\r\n"],
+  "mappings": "AAEI,UAAA,CAAA,YAAA,CAAA,UAAA,CAAA,aAAA,CAAA,WAAA,QACE,KAAA,KAEF,UAAA,CAHA,YAGA,CAHA,UAGA,CAAA,YACE,aAAA,YACA,UAAA,eACA,WAAA,IACA,cAAA,IAEF,UAAA,CATA,YASA,CATA,UASA,CAAA,oBACE,UAAA,KACA,YAAA,IACA,MAAA,KAEA,UAAA,CAdF,YAcE,CAdF,UAcE,CALF,oBAKE,EACE,UAAA,KACA,YAAA",
+  "names": []
+}

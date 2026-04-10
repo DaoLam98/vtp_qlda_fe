@@ -1,0 +1,153 @@
+:host {
+  display: flex;
+  justify-content: center;
+  margin: 100px 0px;
+}
+
+.mat-mdc-form-field {
+  width: 100%;
+  min-width: 300px;
+}
+
+mat-card-title,
+mat-card-content {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.error {
+  color: #f44336;
+  background-color: transparent;
+  width: 100%;
+  text-align: center;
+  padding: 0;
+  font-size: 0.9rem;
+}
+
+.login_cover {
+  // background: linear-gradient(45deg,#183761 0%,#1354B6 50%,#0863EB 100%);
+  background-image: url('/assets/images/viettel-background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.title {
+  color: #B5B4B4;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0px;
+  text-align: center;
+  margin: 34px 0;
+}
+
+.login-method {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  gap: 16px;
+}
+
+.login-type-card {
+  flex: 1;
+  text-align: center;
+  border-radius: 12px;
+  border: 1px solid #B5B4B4;
+  transition: .5s;
+  cursor: pointer;
+
+  .login-type-card-body {
+    padding: 1.25rem;
+  }
+
+  .login-type-icon {
+    fill: #EE0033;
+    transition: .5s;
+  }
+
+  .login-title {
+    font-style: normal;
+    font-weight: 600;
+    line-height: 30px;
+  }
+
+  .card-title {
+    margin-bottom: .75rem;
+  }
+
+  .h5 {
+    font-size: 1.25rem;
+  }
+}
+
+.login-type-card:hover {
+  background-color: #EE0033;
+  color: #fff;
+
+  .login-type-icon {
+    fill: #fff;
+  }
+}
+
+.guest-login {
+  width: 100%;
+
+  .title {
+    text-align: center;
+    font-size: x-large;
+    font-weight: 700;
+  }
+
+  .button {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    button {
+      width: 100%;
+    }
+
+    button.light {
+      border: none;
+    }
+  }
+}
+
+.sso-redirect {
+  position: absolute;
+  bottom: -60px;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  padding: 8px 18px;
+  -webkit-transition: .4s;
+  transition: .4s;
+  color: #000;
+  border-radius: 12px;
+  background-color: #fff;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  cursor: pointer;
+  transition: .5s;
+  font-weight: 600;
+  font-style: normal;
+
+  .login-type-icon {
+    fill: #EE0033;
+    transition: .5s;
+  }
+}
+
+.sso-redirect:hover {
+  background-color: #EE0033;
+  color: #fff;
+
+  .login-type-icon {
+    fill: #fff;
+  }
+}

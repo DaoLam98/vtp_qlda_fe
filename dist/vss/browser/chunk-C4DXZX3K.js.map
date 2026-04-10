@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/shared/enums/action.type.enum.ts"],
+  "sourcesContent": ["export enum ActionTypeEnum {\r\n  '_ADD' = 'add',\r\n  '_EDIT' = 'edit',\r\n  '_VIEW' = 'view'\r\n}\r\n"],
+  "mappings": "AAAA,IAAYA,EAAZ,SAAYA,EAAc,CACxBA,OAAAA,EAAA,KAAA,MACAA,EAAA,MAAA,OACAA,EAAA,MAAA,OAHUA,CAIZ,EAJYA,GAAc,CAAA,CAAA",
+  "names": ["ActionTypeEnum"]
+}

@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/shared/components/autocomplete-dialog-field/autocomplete-dialog-field.component.scss"],
+  "sourcesContent": [".cva-autocomplete-dialog-field {\r\n  ::ng-deep {\r\n    mat-form-field {\r\n      .mat-mdc-form-field-flex {\r\n        height: 36px;\r\n      }\r\n    }\r\n  }\r\n}\r\n"],
+  "mappings": "AAGM,CAAA,8BAAA,UAAA,eAAA,CAAA,wBACE,OAAA",
+  "names": []
+}

@@ -1,0 +1,108 @@
+<cloud-search
+  [buttons]="buttons"
+  [columns]="propertyColumns"
+  [configForm]="configForm"
+  [formAdvanceSearch]="formAdvanceSearch"
+  [addBtnEnabled]="hasAddPermission"
+>
+  <ng-template appTemplate="filterForm">
+    <div
+      [formGroup]="formAdvanceSearch"
+      class="row-wrap-padding"
+      fxLayout="row wrap"
+    >
+      <!-- Tên thuộc tính -->
+      <cva-input
+        formControlName="name"
+        [class]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'name')"
+        [label]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'name')"
+        [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+        [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+        [placeholder]="'common.placeholder.input'"
+        fxLayout="column"
+        fxFlex="25%"
+        fxFlex.lg="25%"
+        fxFlex.md="50%"
+        fxFlex.sm="50%"
+        fxFlex.xs="100%"
+      >
+      </cva-input>
+
+      <!-- Kiểu dữ liệu -->
+      <cva-multi-select-autocomplete
+        formControlName="datatype"
+        [class]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'datatype')"
+        [label]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'datatype')"
+        [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+        [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+        [placeholder]="'common.placeholder.select'"
+        [options]="datatypeOptions"
+        [multiple]='false'
+        fxLayout="column"
+        fxFlex="25%"
+        fxFlex.lg="25%"
+        fxFlex.md="50%"
+        fxFlex.sm="50%"
+        fxFlex.xs="100%"
+      >
+      </cva-multi-select-autocomplete>
+
+      <!-- Bắt buộc nhập -->
+      <cva-multi-select-autocomplete
+        formControlName="require"
+        [class]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'require')"
+        [label]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'require')"
+        [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+        [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+        [placeholder]="'common.placeholder.select'"
+        [options]="requireOptions"
+        [multiple]='false'
+        fxLayout="column"
+        fxFlex="25%"
+        fxFlex.lg="25%"
+        fxFlex.md="50%"
+        fxFlex.sm="50%"
+        fxFlex.xs="100%"
+      >
+      </cva-multi-select-autocomplete>
+
+      <!-- Bảng liên kết -->
+      <cva-multi-select-autocomplete
+        formControlName="referenceTable"
+        [class]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'referenceTable')"
+        [label]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'referenceTable')"
+        [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+        [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+        [placeholder]="'common.placeholder.select'"
+        [options]="referenceTableOptions"
+        [multiple]='false'
+        fxLayout="column"
+        fxFlex="25%"
+        fxFlex.lg="25%"
+        fxFlex.md="50%"
+        fxFlex.sm="50%"
+        fxFlex.xs="100%"
+      >
+      </cva-multi-select-autocomplete>
+
+      <!-- Trạng thái -->
+      <cva-multi-select-autocomplete
+        formControlName="status"
+        [class]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'status')"
+        [label]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'status')"
+        [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+        [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+        [placeholder]="'common.placeholder.select'"
+        [options]="statusOptions$ | async"
+        [multiple]='false'
+        fxLayout="column"
+        fxFlex="25%"
+        fxFlex.lg="25%"
+        fxFlex.md="50%"
+        fxFlex.sm="50%"
+        fxFlex.xs="100%"
+      >
+      </cva-multi-select-autocomplete>
+    </div>
+  </ng-template>
+</cloud-search>

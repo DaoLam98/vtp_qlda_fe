@@ -1,0 +1,69 @@
+<div class="dialog_wrapper" style="width: 600px">
+  <div class="dialog_header">
+    <div class="dialog_title">{{ title | translate }}</div>
+    <i class="fal fa-times margin-15" style="cursor: pointer" (click)="matDialogRef.close()"></i>
+  </div>
+  <div class="dialog_content">
+    <form [formGroup]="addEditForm" class="form edit-form">
+      <div>
+        <fieldset>
+          <div class="fieldSetContent row-wrap-padding" fxLayout="row wrap">
+            <cva-input
+              name="fromValue"
+              formControlName="fromValue"
+              [class]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'from')"
+              [label]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'from')"
+              [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+              [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+              [errorMessages]="errorMessages"
+              [placeholder]="'common.placeholder.input'"
+              [required]="true"
+              fxLayout="column"
+              fxFlex="100%"
+              [formatFunc]="formatFun"
+              [patternFilter]="'^(?=.{0,15}$)\\d*[.]?\\d*$'"
+              [appBlockMaxLength]="16"
+            ></cva-input>
+
+            <cva-input
+              name="toValue"
+              formControlName="toValue"
+              [class]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'to')"
+              [label]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'to')"
+              [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+              [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+              [errorMessages]="errorMessages"
+              [placeholder]="'common.placeholder.input'"
+              [required]="true"
+              fxLayout="column"
+              fxFlex="100%"
+              [formatFunc]="formatFun"
+              [patternFilter]="'^(?=.{0,15}$)\\d*[.]?\\d*$'"
+              [appBlockMaxLength]="16"
+            ></cva-input>
+
+            <div style="padding: 0 10px">
+              <label for="background">{{ 'mdm.module.table.header.color' | translate }}: </label>
+              <input style="padding: 3px; height: 30px; width: 30px; border-radius: 50%; margin-right: 10px"
+                formControlName="color"
+                type="color"
+                id="background"
+                name="background"
+                value="#e66465"/>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+    </form>
+  </div>
+  <div class="dialog_footer right">
+    <div>
+      <button mat-button class="primary outline" (click)="matDialogRef.close()">
+        {{ 'common.button.back' | translate }}
+      </button>
+      <button mat-button class="primary" [disabled]="addEditForm.invalid" (click)="onSubmit()">
+        {{ btnSave | translate }}
+      </button>
+    </div>
+  </div>
+</div>

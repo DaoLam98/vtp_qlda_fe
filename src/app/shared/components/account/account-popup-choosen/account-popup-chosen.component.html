@@ -1,0 +1,40 @@
+<div class="dialog_wrapper no_footer">
+  <div class="dialog_header">
+    <!-- Tiêu đề -->
+    <div class="dialog_title">{{ title | translate }}</div>
+    <!-- Đóng -->
+    <i
+      (click)="matDialogRef.close()"
+      class="fas fa-times"
+      style="cursor: pointer; font-weight: 400; color: #4C515B; padding: 4px 8px;"
+    ></i>
+  </div>
+
+  <div class="dialog_content">
+    <app-account-tree #accountTree></app-account-tree>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer" fxLayout="row wrap">
+    <div class="buttonArea">
+      <!-- Quay lại -->
+      <button
+        (click)="matDialogRef.close()"
+        class="outline"
+        mat-button
+        type="button"
+      >
+        {{ 'btnExportExcel' | translate }}
+      </button>
+
+      <!-- Xác nhận -->
+      <button
+        (click)="chooseAccount()"
+        class="primary reset-btn"
+        mat-button
+      >
+        {{ 'btnAdd'| translate }}
+      </button>
+    </div>
+  </div>
+</div>

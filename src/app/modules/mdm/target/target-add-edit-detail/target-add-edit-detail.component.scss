@@ -1,0 +1,22 @@
+.view-mode {
+  padding-left: 10px !important;
+}
+
+.edit-mode {
+  padding-left: 1px !important;
+}
+
+.value-convert {
+  margin: 6px 0;
+  padding: 12px 10px;
+  border: 1px solid #D1D5DB;
+  border-radius: 10px;
+  background: #e5e7eb;
+  font-size: 14px;
+  font-weight: bold;
+  word-break: break-word;
+}
+
+.table-smart div.cva-multi-select-autocomplete.float_label div.cva-style-disable-text mat-label{
+  display: none;
+}

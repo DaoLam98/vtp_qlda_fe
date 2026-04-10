@@ -1,0 +1,20 @@
+{
+  "extends": "../../MSTORE_WEB/tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../MSTORE_WEB/dist/out-tsc/lib",
+    "target": "es2015",
+    "declaration": true,
+    "inlineSources": true,
+    "types": [],
+    "lib": [
+      "dom",
+      "es2018"
+    ],
+    "baseUrl": "../../MSTORE_WEB/",
+    "paths": {
+      "*": [
+        "../../MSTORE_WEB/node_modules/*"
+      ]
+    }
+  }
+}

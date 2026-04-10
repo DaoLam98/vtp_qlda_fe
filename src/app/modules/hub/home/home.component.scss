@@ -1,0 +1,104 @@
+.dashboard-container {
+  height: 100%;
+
+  .header-menu {
+    margin-bottom: 10px;
+
+    .menu-card {
+      height: 128px;
+      color: white;
+      background-color: #fd6e77;
+      border: none;
+      border-radius: 4px;
+      box-shadow: 1px 0 20px rgba(0,0,0,.05);
+      margin-bottom: 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      cursor: pointer;
+      transition: 0.3s;
+
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+  .main-content {
+    height: calc(100% - 128px - 16px);
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+
+    .sidebar {
+      display: none;
+      width: calc(30% - (16px / 2));
+      background: #fff;
+      border: none;
+      border-radius: 4px;
+      box-shadow: 1px 0 20px rgba(0,0,0,.05);
+      box-sizing: border-box;
+      padding: 16px;
+      height: 100%;
+      
+      .search-box {
+        width: 100%;
+        .mat-mdc-text-field-wrapper {
+          /* border-radius: 12px; */
+          .mdc-notched-outline__leading {
+            /* border-top-left-radius: 12px;
+            border-bottom-left-radius: 12px; */
+          }
+          .mdc-notched-outline__trailing {
+            /* border-top-right-radius: 12px;
+            border-bottom-right-radius: 12px; */
+          }
+        }
+      }
+      .task-count {
+        display: inline-block;
+        width: 20px;
+        background-color: #d1fadf;
+        text-align: center;
+        color: #12b76a;
+        margin-left: 5px;
+      }
+      .task{
+        cursor: pointer;
+      }
+    }
+    .charts {
+      width: calc(70% - (16px / 2));
+      max-height: 100%;
+      box-sizing: border-box;
+      display: none;
+      grid-template-columns: repeat(2, calc(50% - 8px));
+      grid-template-rows: repeat(2, calc(50% - 8px));
+      gap: 16px;
+      
+      .chart-container {
+        padding: 16px;
+        background: #fff;
+        border: none;
+        border-radius: 4px;
+        box-shadow: 1px 0 20px rgba(0,0,0,.05);
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .dashboard-container{
+    .main-content {
+      gap: unset;
+      overflow-y: scroll;
+      .sidebar,
+      .charts {
+        width: 100%;
+        margin-bottom: 16px;
+      }
+    }
+  }
+}

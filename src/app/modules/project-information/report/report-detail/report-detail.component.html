@@ -1,0 +1,166 @@
+<div class="content" style="padding: 24px 14px">
+  <form [formGroup]="formAdvanceSearch">
+    <fieldset>
+      <div class="fieldSetContent row-wrap-padding" fxLayout="row wrap" style="margin-top: 16px">
+        <cva-multi-select-autocomplete
+          name="organizationIds"
+          formControlName="organizationIds"
+          [label]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'organizationIds')"
+          [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+          [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+          [placeholder]="'common.placeholder.select'"
+          [options]="organizationValues"
+          fxLayout="column"
+          fxFlex="25%"
+          fxFlex.xs="100%"
+          fxFlex.sm="25%"
+          fxFlex.md="25%"
+          fxFlex.lg="25%"
+        ></cva-multi-select-autocomplete>
+        <cva-multi-select-autocomplete
+          name="projectTypeIds"
+          formControlName="projectTypeIds"
+          [label]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'projectTypeIds')"
+          [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+          [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+          [placeholder]="'common.placeholder.select'"
+          [options]="projectTypeValues"
+          fxLayout="column"
+          fxFlex="25%"
+          fxFlex.xs="100%"
+          fxFlex.sm="25%"
+          fxFlex.md="25%"
+          fxFlex.lg="25%"
+        ></cva-multi-select-autocomplete>
+        <cva-multi-select-autocomplete
+          name="projectIds"
+          formControlName="projectIds"
+          [label]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'projectIds')"
+          [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+          [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+          [placeholder]="'common.placeholder.select'"
+          [options]="projectValuesFiltered"
+          fxLayout="column"
+          fxFlex="25%"
+          fxFlex.xs="100%"
+          fxFlex.sm="25%"
+          fxFlex.md="25%"
+          fxFlex.lg="25%"
+        ></cva-multi-select-autocomplete>
+        <cva-multi-select-autocomplete
+          name="expressionInformationTypeId"
+          formControlName="expressionInformationTypeId"
+          [label]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'expressionInformationTypeId')"
+          [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+          [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+          [placeholder]="'common.placeholder.select'"
+          [options]="informationTypeValues"
+          [required]="true"
+          [multiple]="false"
+          fxLayout="column"
+          fxFlex="25%"
+          fxFlex.xs="100%"
+          fxFlex.sm="25%"
+          fxFlex.md="25%"
+          fxFlex.lg="25%"
+        ></cva-multi-select-autocomplete>
+        <cva-multi-select-autocomplete
+          name="frequency"
+          formControlName="frequency"
+          [label]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'frequency')"
+          [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+          [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+          [placeholder]="'common.placeholder.select'"
+          [options]="frequencyValues"
+          [multiple]="false"
+          [required]="true"
+          fxLayout="column"
+          fxFlex="25%"
+          fxFlex.xs="100%"
+          fxFlex.sm="25%"
+          fxFlex.md="25%"
+          fxFlex.lg="25%"
+        ></cva-multi-select-autocomplete>
+        <cva-date-picker
+          name="startDate"
+          formControlName="startDate"
+          [class]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'startDate')"
+          [label]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'startDate')"
+          [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+          [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+          [placeholder]="'DD/MM/YYYY'"
+          [required]="true"
+          fxLayout="column"
+          fxFlex="25%"
+          fxFlex.xs="100%"
+          fxFlex.sm="25%"
+          fxFlex.md="25%"
+          fxFlex.lg="25%"
+        ></cva-date-picker>
+        <cva-date-picker
+          name="endDate"
+          formControlName="endDate"
+          [class]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'endDate')"
+          [label]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'endDate')"
+          [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+          [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+          [placeholder]="'DD/MM/YYYY'"
+          [required]="true"
+          fxLayout="column"
+          fxFlex="25%"
+          fxFlex.xs="100%"
+          fxFlex.sm="25%"
+          fxFlex.md="25%"
+          fxFlex.lg="25%"
+        ></cva-date-picker>
+        <app-vss-toggle-field
+          formControlName="isConsolidated"
+          [label]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'isConsolidated')"
+          fxLayout="column"
+          fxFlex="25%"
+          fxFlex.xs="100%"
+          fxFlex.sm="25%"
+          fxFlex.md="25%"
+          fxFlex.lg="25%"
+        ></app-vss-toggle-field>
+        <div fxLayout fxFlex="100%" fxLayoutAlign="end">
+          <button mat-button type="button" class="primary" [disabled]="formAdvanceSearch.invalid" (click)="onSearch()">
+            {{ 'btnSearch' | translate }}
+          </button>
+          <button mat-button type="button" class="primary outline" (click)="onReset()">
+            {{ 'btnReset' | translate }}
+          </button>
+        </div>
+        @if (hasExportPermission && isShowTable) {
+        <div class="margin-top-15" fxLayout fxFlex="100%" fxLayoutAlign="end">
+          <button mat-button type="button" class="primary outline" (click)="onDownload()">
+            <i class="fas fa-download action-icon download-icon"></i>
+            {{ 'btnDownload' | translate }}
+          </button>
+        </div>
+        }
+      </div>
+    </fieldset>
+  </form>
+
+  @if (isShowTable) {
+  <cloud-search
+    #cloudSearch
+    [configForm]="configForm"
+    [columns]="columns"
+    [superHeaders]="superHeaders"
+    [formAdvanceSearch]="formAdvanceSearch"
+    [exportBtnEnabled]="false"
+    [addBtnEnabled]="false"
+    [isShowBreadcrum]="false"
+    [isShowQuickSearch]="false"
+    [isShowAuditField]="false"
+    [isAdvancedSearch]="false"
+    [convertField2HttpParamFn]="convertField2HttpParamFn"
+  >
+    <ng-template appTemplate="filterForm">
+      <div fxLayout="row wrap" class="row-wrap-padding" [formGroup]="formAdvanceSearch"></div>
+    </ng-template>
+  </cloud-search>
+  }
+</div>

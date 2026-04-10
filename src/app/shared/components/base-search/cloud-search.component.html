@@ -1,0 +1,247 @@
+<cva-breadcrumb
+  *ngIf="!isPopup && isShowBreadcrum && !configForm?.isOnlyViewTable && !configForm?.isHideBreadCrum"
+  style="display: block; margin-bottom: 12px"
+></cva-breadcrumb>
+
+<div [ngClass]="!configForm?.isOnlyViewTable ? 'search-form-group' : ''">
+  <form (ngSubmit)="onSubmit()" *ngIf="!configForm?.isOnlyViewTable" [formGroup]="searchForm" class="form">
+    <ng-container *ngTemplateOutlet="quickFilterTemplate"></ng-container>
+    <div class="result-area" fxLayout fxLayoutAlign="end center">
+      <div class="result-count margin-right-10">
+        <span *ngIf="this.checkboxColumn" class="selected">
+          <span class="number">{{ selected?.length || 0 }}</span>
+          {{ 'common.selected'| translate }}
+        </span>
+        <span class="number">{{ paging.totalElements }}</span> {{ ' ' + ('common.results'| translate) }}
+      </div>
+
+      <!-- Tìm kiếm nhanh -->
+      <div class="search-area">
+        <div [class]="isAdvancedSearch || !isShowQuickSearch?'input-hide':'input-show'">
+          <cva-input
+            [formControlName]="'keyword'"
+            [placeholder]="'common.placeholder.input'"
+            class="non-label input-search"
+            name="model"
+            style="display: block; width: 320px;"
+            suffixFontAwesomeClass="far fa-search"
+            (keydown.enter)="$event.stopPropagation(); $event.preventDefault(); onSubmit()"
+          >
+          </cva-input>
+        </div>
+
+        <!-- Đóng / mở Tìm kiếm nâng cao -->
+        <div class="button-area" fxLayout>
+          <button (click)="toggleAdvancedSearch()" class="primary Update-btn" mat-icon-button type="button">
+            <img alt="" src="assets/advanced.svg"/>
+          </button>
+
+          <button
+            (click)="handleOpenPreviewPopup($event)"
+            *ngIf="viewBtnEnabled"
+            class="primary outline"
+            mat-icon-button
+            type="button"
+          >
+            <img alt="" src="assets/ic-view.svg"/>
+          </button>
+
+
+          <button
+            (click)="addBtnFunction ? addBtnFunction() : addOrEdit()"
+            *ngIf="addBtnEnabled"
+            class="primary reset-btn"
+            mat-icon-button
+            type="button"
+          >
+            <img alt="" src="assets/add.svg"/>
+          </button>
+
+          <button
+            (click)="onExport($event)"
+            *ngIf="exportBtnEnabled"
+            class="primary outline"
+            mat-icon-button
+            type="button">
+            <img alt="" src="assets/ic-export.svg"/>
+          </button>
+
+          <button
+            (click)="onDownload()"
+            *ngIf="downloadBtnEnabled"
+            class="primary outline"
+            mat-icon-button
+            type="button">
+            <img alt="" src="assets/ic-cloud-download.png"/>
+          </button>
+
+          <button
+            (click)="onUpload()"
+            *ngIf="uploadBtnEnabled"
+            class="primary outline"
+            mat-icon-button
+            type="button">
+            <img alt="" src="assets/ic-cloud-upload.svg"/>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div [class]="isAdvancedSearch?'advansearch-show':'advansearch-hide'">
+      <div *ngIf="isShowAuditField" class="row-wrap-padding" fxLayout="row wrap">
+        <!-- Ngày tạo -->
+        <cva-range-date-picker
+          name="field.name"
+          [formControlName]="'createdDate'"
+          [label]="'common.table.header.createdDate'"
+          [fromDateControlName]="'fromCreatedDate'"
+          [placeholderFromDate]="'DD/MM/YYYY'"
+          [toDateControlName]="'toCreatedDate'"
+          [placeholderToDate]="'DD/MM/YYYY'"
+          [required]="false"
+          fxLayout="column"
+          fxFlex="25%"
+          fxFlex.lg="25%"
+          fxFlex.md="50%"
+          fxFlex.sm="50%"
+          fxFlex.xs="100%"
+        >
+        </cva-range-date-picker>
+
+        <!-- Người tạo -->
+        <app-internal-user-composite-choosen
+          formControlName="createdBy"
+          [fieldName]="'createdBy'"
+          [listUser]="listUser"
+          fxLayout="column"
+          fxFlex="25%"
+          fxFlex.lg="25%"
+          fxFlex.md="50%"
+          fxFlex.sm="50%"
+          fxFlex.xs="100%"
+        >
+        </app-internal-user-composite-choosen>
+
+        <!-- Ngày cập nhật -->
+        <cva-range-date-picker
+          name="field.name"
+          [formControlName]="'lastModifiedDate'"
+          [label]="'common.table.header.lastModifiedDate'"
+          [fromDateControlName]="'fromLastModifiedDate'"
+          [placeholderFromDate]="'DD/MM/YYYY'"
+          [toDateControlName]="'toLastModifiedDate'"
+          [placeholderToDate]="'DD/MM/YYYY'"
+          [required]="false"
+          fxLayout="column"
+          fxFlex="25%"
+          fxFlex.lg="25%"
+          fxFlex.md="50%"
+          fxFlex.sm="50%"
+          fxFlex.xs="100%"
+        >
+        </cva-range-date-picker>
+
+        <!-- Người cập nhật -->
+        <app-internal-user-composite-choosen
+          formControlName="lastModifiedBy"
+          [fieldName]="'lastModifiedBy'"
+          [listUser]="listUser"
+          fxLayout="column"
+          fxFlex="25%"
+          fxFlex.lg="25%"
+          fxFlex.md="50%"
+          fxFlex.sm="50%"
+          fxFlex.xs="100%"
+        >
+        </app-internal-user-composite-choosen>
+      </div>
+
+      <ng-container *ngIf="!filterTemplate">
+        <div class="row-wrap-padding ss" fxLayout="row wrap">
+          <ng-container *ngFor="let field of fields; let i = index">
+            <ng-container [ngSwitch]="field.type">
+              <ng-container *ngSwitchCase="FieldType.TEXT">
+                <cva-input
+                  [formControlName]="field.name"
+                  [placeholder]="moduleName+'.table.header.'+field.name"
+                  class="{{Utils.getKeyTrans(configForm?.moduleName, configForm?.name, field.name)}}"
+                  fxFlex="25%"
+                  fxFlex.lg="25%"
+                  fxFlex.md="50%"
+                  fxFlex.sm="50%"
+                  fxFlex.xs="100%"
+                  fxLayout="column"
+                  name="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, field.name)"
+                >
+                </cva-input>
+              </ng-container>
+              <ng-container *ngSwitchCase="FieldType.NUMBER">
+                <cva-counter-input
+                  [formControlName]="field.name" [placeholder]="moduleName+'.table.header.'+field.name"
+                  fxFlex="25%"
+                  fxFlex.lg="25%" fxFlex.md="50%"
+                  fxFlex.sm="50%" fxFlex.xs="100%" fxLayout="column" name="model"
+                >
+                </cva-counter-input>
+              </ng-container>
+
+              <ng-container *ngSwitchCase="FieldType.DATE">
+                <cva-date-picker
+                  [formControlName]="field.name"
+                  [label]="moduleName + '.form.'+ 'field.name'"
+                  [required]="true"
+                  fxFlex="25%"
+                  fxFlex.lg="25%" fxFlex.md="50%"
+                  fxFlex.sm="50%" fxFlex.xs="100%"
+                  fxLayout="column" name="field.name"
+                >
+                </cva-date-picker>
+              </ng-container>
+              <ng-container *ngSwitchDefault></ng-container>
+            </ng-container>
+          </ng-container>
+        </div>
+      </ng-container>
+      <ng-container *ngTemplateOutlet="filterTemplate"></ng-container>
+    </div>
+
+    <div [class]="isAdvancedSearch?'advansearch-show buttonArea right':'advansearch-hide right'" class="buttonArea">
+      <button [disabled]="searchForm.invalid" class="primary Update-btn" mat-button type="submit">
+        {{ 'btnSearch'|translate }}
+      </button>
+      <button
+        (click)="onResetForm()" class="primary outline reset-btn" mat-button
+        type="button"
+      >
+        {{ 'btnReset'|translate }}
+      </button>
+    </div>
+  </form>
+
+  @if (configForm?.isViewDataWithSmartTable) {
+    <cva-smart-table
+      [formControl]="smartTableControl"
+      (clickAction)="onRowButtonClick($event)"
+      [isSticky]="true"
+      [moduleName]="moduleName"
+      [buttons]="buttons"
+      [columns]="columns"
+      [minRow]="1"
+    ></cva-smart-table>
+  } @else {
+    <cva-table
+      #table
+      (clickAction)="onRowButtonClick($event)"
+      (onChangeDisplayColumn)="onChangeDisplayColumnInternal($event)"
+      (pagingChange)="pagingChange($event)"
+      [buttons]="buttons"
+      [columns]="columns"
+      [superHeaders]="superHeaders"
+      [expandHeaderButton]="expandHeaderButton"
+      [moduleName]="moduleName"
+      [paging]="paging"
+      [results]="results"
+      style="position: relative"
+    ></cva-table>
+  }
+</div>

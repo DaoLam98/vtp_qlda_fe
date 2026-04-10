@@ -1,0 +1,29 @@
+<div class="hashtag-autocomplete">
+  <div class="chip-container">
+    <mat-chip
+      (removed)="remove(option)"
+      *ngFor="let option of selectedOptions"
+      [disabled]="isView"
+      [removable]="true"
+      class="tag-chip"
+      color="primary"
+    >
+      #{{ option.name }}
+      <mat-icon matChipRemove>close</mat-icon>
+    </mat-chip>
+
+    <input
+      (keydown.enter)="handleManualAdd()"
+      *ngIf="!isView"
+      [formControl]="tagCtrl"
+      [matAutocomplete]="auto"
+      placeholder="Thêm hashtag..."
+    />
+  </div>
+
+  <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selectOption($event.option.value)">
+    <mat-option *ngFor="let option of filteredTags" [value]="option">
+      #{{ option.name }}
+    </mat-option>
+  </mat-autocomplete>
+</div>

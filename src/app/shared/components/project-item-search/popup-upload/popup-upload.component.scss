@@ -1,0 +1,10 @@
+:host {
+  app-vss-files-field::ng-deep {
+    .mat-mdc-card-actions {
+      justify-content: center;
+    }
+    .upload-button {
+      width: 50% !important;
+    }
+  }
+}

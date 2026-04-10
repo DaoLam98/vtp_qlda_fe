@@ -1,0 +1,37 @@
+<div class="dialog_wrapper no_footer">
+  <div class="dialog_header">
+    <!-- Tiêu đề -->
+    <div class="dialog_title">{{ (title || 'employee.table.header.btnChooseEmployee') | translate }}</div>
+    <!-- Đóng -->
+    <i class="fas fa-times" style="cursor: pointer; font-weight: 400; color: #4C515B; padding: 4px 8px;" (click)="matDialogRef.close()"></i>
+  </div>
+
+  <div class="dialog_content">
+    <app-location-tree #locationTree></app-location-tree>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer" fxLayout="row wrap">
+    <div class="buttonArea">
+      <!-- Quay lại -->
+      <button
+        mat-button
+        type="button"
+        class="outline"
+        (click)="this.matDialogRef.close()"
+      >
+        {{ 'btnBack' | translate }}
+      </button>
+
+      <!-- Xác nhận -->
+      <button
+        mat-button
+        class="primary reset-btn"
+        (click)="chooseLocation()"
+      >
+        {{ 'btnAdd'|translate }}
+      </button>
+    </div>
+  </div>
+
+</div>

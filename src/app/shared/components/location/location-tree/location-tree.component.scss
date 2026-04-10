@@ -1,0 +1,64 @@
+.location-tree {
+  flex: 1;
+  position: relative;
+  height: 100%;
+
+  cva-flat-tree::ng-deep {
+    margin-bottom: 0;
+    height: 100%;
+
+    .cva-flat-tree {
+      height: 100%;
+
+      .tree-area {
+        width: 100%;
+        .isClickDiv.label-area.ng-star-inserted:not(:has(> span)) {
+          display: block !important;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          padding: 10px;
+
+          button {
+            display: none;
+          }
+        }
+        .isClickDiv.label-area.ng-star-inserted {
+          width: 100%;
+          justify-content: flex-start!important;
+          span {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: normal;
+          }
+        }
+        > div:first-child {
+          height: 100%;
+
+          .choose-area.ng-star-inserted {
+            height: 100%;
+            > div:first-child {
+              margin-bottom: 10px;
+            }
+            cdk-virtual-scroll-viewport {
+                flex: 1;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  cloud-search::ng-deep {
+    height: 100%;
+
+    .search-form-group {
+      height: 100% !important;
+      overflow: auto;
+    }
+  }
+}

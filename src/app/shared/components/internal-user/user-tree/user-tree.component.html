@@ -1,0 +1,177 @@
+<cva-breadcrumb *ngIf="!isPopup" style="display: block; margin-bottom: 12px"></cva-breadcrumb>
+<div fxLayout="row wrap" fxLayoutGap="20px" class="user-tree">
+    <cva-flat-tree
+      name='organization'
+      formControlName='organization'
+      [label]=""
+      [multiple]="false"
+      [nodeClicked]="selectedTreeNode"
+      [fullDatasource]='organizationTree'
+      [isCollapseSelected]='false'
+      [isSearchOutSide]='false'
+      [isDisplayChooseTreeOnly]="true"
+      (onNodeClick)="onChooseOrg($event)"
+      [selectedLabelTitle]="moduleName+'.table.header.organization'"
+      [viewHeight]="660"
+      fxLayout='column'
+      class="tree-container"
+      [class.tree-hidden]="!isTreeVisible"
+      fxFlex='30%'
+    >
+    </cva-flat-tree>
+
+  <div fxLayout='column' fxFlex="calc(70% - 20px)" [class.full-width]="!isTreeVisible">
+    <cloud-search
+      #cloudSearchRef
+      [configForm]="configForm"
+      [columns]="columns"
+      [buttons]="buttons"
+      [isShowBreadcrum]="false"
+      [formAdvanceSearch]="formAdvanceSearch"
+      [addBtnEnabled]="false"
+      [exportBtnEnabled]="false"
+      [selected]="selectedEmployee"
+      [trackBy]="trackBy"
+      [mapBy]="mapBy"
+      [convertField2HttpParamFn]="convertField2HttpParamFn.bind(this)"
+    >
+      <ng-template appTemplate="quickFilterForm">
+        <div class="select-user-tree-container" style="display: flex;">
+            <button
+              mat-icon-button
+              class="tree-toggle-btn"
+              type="button"
+              (click)="$event.preventDefault(); onExpandTree()"
+              [matTooltip]="isTreeVisible ? ('common.tree.hide' | translate) : ('common.tree.show' | translate)"
+              matTooltipPosition="above">
+              <!--            <i class="far" [class.fa-chevron-double-left]="isTreeVisible" [class.fa-chevron-double-right]="!isTreeVisible"></i>-->
+              <img [src]="isTreeVisible ? 'assets/hide.svg' : 'assets/expand.svg'" alt="" style="width: 18px;">
+            </button>
+          <div class="selected-org" style="display: flex">
+            <span class="select-user-tree-node-label">
+            {{ 'common.organizationPopupChoosen.selectedTreeNode.label' | translate }}:
+            </span>
+            @if (selectedTreeNode?.displayValue) {
+              <span
+                class="select-user-tree-node-name"
+                [matTooltip]="selectedTreeNode?.displayValue"
+                matTooltipPosition="above">
+              {{ selectedTreeNode?.displayValue }}
+            </span>
+            }
+          </div>
+        </div>
+
+        <div style="display: block; position: absolute">
+          <cva-radiobutton
+            *ngIf="allowExternalUser"
+            [formControl]="typeControl"
+            [options]="typeValues"
+            style="align-items: flex-start"
+            [direction]="'horizontal'"
+            fxLayout="column"
+            fxFlex.xs="100%"
+            fxFlex.sm="100%"
+            fxFlex.md="100%"
+            fxFlex.lg="100%"
+            fxFlex="100%"
+          ></cva-radiobutton>
+        </div>
+      </ng-template>
+
+      <ng-template appTemplate="filterForm">
+        <div
+          fxLayout="row wrap"
+          class="row-wrap-padding"
+          [formGroup]="formAdvanceSearch"
+        >
+          <!-- Mã nhân viên -->
+          <cva-input
+            name="code"
+            formControlName="code"
+            [class]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'code')"
+            [label]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'code')"
+            [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+            [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+            [placeholder]="'common.placeholder.input'"
+            fxLayout="column"
+            fxFlex="25%"
+            fxFlex.xs="100%"
+            fxFlex.sm="50%"
+            fxFlex.md="50%"
+            fxFlex.lg="25%"
+          ></cva-input>
+
+          <!-- Họ tên -->
+          <cva-input
+            name="fullName"
+            formControlName="fullName"
+            [class]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'name')"
+            [label]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'name')"
+            [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+            [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+            [placeholder]="'common.placeholder.input'"
+            fxLayout="column"
+            fxFlex="25%"
+            fxFlex.xs="100%"
+            fxFlex.sm="50%"
+            fxFlex.md="50%"
+            fxFlex.lg="25%"
+          ></cva-input>
+
+          <!-- Email -->
+          <cva-input
+            name="email"
+            formControlName="email"
+            [class]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'email')"
+            [label]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'email')"
+            [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+            [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+            [placeholder]="'common.placeholder.input'"
+            fxLayout="column"
+            fxFlex="25%"
+            fxFlex.xs="100%"
+            fxFlex.sm="50%"
+            fxFlex.md="50%"
+            fxFlex.lg="25%"
+          ></cva-input>
+
+          <!-- Số điện thoại -->
+          <cva-input
+            name="phoneNumber"
+            formControlName="phoneNumber"
+            [class]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'phoneNumber')"
+            [label]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'phoneNumber')"
+            [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+            [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+            [placeholder]="'common.placeholder.input'"
+            fxLayout="column"
+            fxFlex="25%"
+            fxFlex.xs="100%"
+            fxFlex.sm="50%"
+            fxFlex.md="50%"
+            fxFlex.lg="25%"
+          ></cva-input>
+
+          <cva-multi-select-autocomplete
+            name="jobPositionId"
+            formControlName="jobPositionId"
+            [class]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'jobPosition')"
+            [label]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'jobPosition')"
+            [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+            [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+            [placeholder]="'common.placeholder.select'"
+            [options]="jobPositionValues"
+            [multiple]="false"
+            fxLayout="column"
+            fxFlex="25%"
+            fxFlex.xs="100%"
+            fxFlex.sm="50%"
+            fxFlex.md="50%"
+            fxFlex.lg="25%"
+          ></cva-multi-select-autocomplete>
+        </div>
+      </ng-template>
+    </cloud-search>
+  </div>
+</div>

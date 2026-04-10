@@ -1,0 +1,12 @@
+<div class="fields">
+    <div class="field" *ngFor="let item of field.fieldGroup; let i = index">
+        <formly-field [field]="item"></formly-field>
+        <button [ngStyle]="{'padding-top': item.fieldGroup[0]?.type === 'rule-and-or' ? '16px' : '10px'}"
+                   *ngIf="item.fieldGroup[0]?.type !== 'rule-if' && !isView" mat-icon-button color="accent" type="button" (click)="remove(i)">
+            <mat-icon>remove</mat-icon>
+        </button>
+<!--        <button *ngIf="item.fieldGroup[0]?.type === 'rule'" mat-icon-button color="accent" type="button" (click)="addCal(i)">-->
+<!--            <mat-icon>add</mat-icon>-->
+<!--        </button>-->
+    </div>
+</div>

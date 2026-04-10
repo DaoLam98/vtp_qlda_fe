@@ -1,0 +1,326 @@
+{
+  "car": {
+    "": "xe",
+    "image": "Hình ảnh",
+    "table.header": {
+      "stt": "STT",
+      "model": "Dòng xe",
+      "engine": "Động cơ",
+      "gear": "Hộp số",
+      "origin": "Xuất xứ",
+      "startYear": "Năm bắt đầu",
+      "endYear": "Năm kết thúc",
+      "horsepower": "Mã lực",
+      "seat": "Số chỗ ngồi",
+      "brand": "Hãng",
+      "bodyStyle": "Kiểu dáng",
+      "fuel": "Nhiên liệu",
+      "status": "Trạng thái"
+    }
+  },
+  "brand": {
+    "": "Thương hiệu xe",
+    "logo": "Hình ảnh",
+    "table.header": {
+      "stt": "STT",
+      "name": "Thương hiệu",
+      "logo": "Logo",
+      "status": "Trạng thái"
+    }
+  },
+  "bodystyle": {
+    "": "Kiểu dáng xe",
+    "image": "Hình ảnh",
+    "table.header": {
+      "stt": "STT",
+      "name": "Kiểu dáng",
+      "image": "Hình ảnh",
+      "status": "Trạng thái"
+    }
+  },
+  "fuel": {
+    "": "Nhiên liệu xe",
+    "table.header": {
+      "stt": "STT",
+      "name": "Tên",
+      "status": "Trạng thái"
+    }
+  },
+  "utility": {
+    "": "Tiện ích",
+    "table.header": {
+      "stt": "STT",
+      "name": "Tên",
+      "type": "Loại",
+      "status": "Trạng thái"
+    },
+    "type": {
+      "all": "Tất cả",
+      "both": "Cả hai",
+      "driver": "Lái xe",
+      "garage": "Ga-ra"
+    }
+  },
+  "area": {
+    "": "Địa bàn",
+    "image": "Hình ảnh",
+    "table.header": {
+      "stt": "STT",
+      "code": "Mã",
+      "name": "Tên",
+      "type": "Cấp",
+      "parent": "Địa bàn cha",
+      "status": "Trạng thái"
+    },
+    "type": {
+      "all": "Tất cả",
+      "province": "Tỉnh/Thành Phố",
+      "district": "Quận/Huyện",
+      "ward": "Xã/Phường"
+    }
+  },
+  "driver": {
+    "": "người dùng",
+    "table.header": {
+      "stt": "STT",
+      "name": "Họ và tên",
+      "reminiscentName": "Tên gợi nhớ",
+      "username": "Tài khoản",
+      "phone": "Số điện thoại",
+      "email": "Hòm thư",
+      "identifiedCard": "CMT/CCCD",
+      "contractEpassId": "Mã hợp đồng Epass",
+      "gender": "Giới tính",
+      "birthday": "Ngày sinh",
+      "status": "Trạng thái",
+      "utilities": "Danh sách tiện ích",
+      "utilities.selected": "Danh sách tiện ích đã chọn",
+      "provinceId": "Tỉnh/Thành phố",
+      "districtId": "Quận/ Huyện",
+      "wardId": "Phường/Xã",
+      "address": "Địa chỉ",
+      "isDefault": "Mặc định",
+      "carId": "",
+      "country": "Xuất xứ",
+      "chooseCar": "Xe",
+      "btnChooseCar": "Chọn xe",
+      "chassisNumber": "Số khung",
+      "engineNumber": "Số máy",
+      "licensePlate": "Biển số xe",
+      "logo": "Hình ảnh",
+      "manufacturedYear": "Năm sản xuất",
+      "color": "Màu sắc",
+      "origin": "Xuất xứ"
+    }
+  },
+  "cancel.reason": {
+    "": "Lý do hủy",
+    "table.header": {
+      "stt": "STT",
+      "reason": "Lý do",
+      "apply.for": "Dành cho",
+      "status": "Trạng thái"
+    },
+    "type": {
+      "all": "Tất cả",
+      "service": "Dịch vụ",
+      "request": "Yêu cầu"
+    }
+  },
+  "garage-group": {
+    "": "Ga-ra tổng",
+    "table.header": {
+      "stt": "STT",
+      "name": "Tên",
+      "phone": "Số điện thoại",
+      "website": "Trang web",
+      "email": "Hòm thư",
+      "tax.code": "Mã số thuế",
+      "description": "Miêu tả",
+      "status": "Trạng thái",
+      "management_exp": "Kinh nghiệm quản lí",
+      "insurance_partner": "Đối tác bảo hiểm"
+    },
+    "type": {
+      "all": "Tất cả",
+      "service": "Dịch vụ",
+      "request": "Yêu cầu"
+    }
+  },
+  "garage": {
+    "": "Ga-ra",
+    "table.header": {
+      "stt": "STT",
+      "contactPointName": "Tên người đại diện",
+      "name": "Tên",
+      "contactPointPhone": "Số điện thoại người đại diện",
+      "imageDetails": "Hình ảnh xe",
+      "contactPointEmail": "Hòm thư người đại diện",
+      "contractDate": "Ngày hợp đồng",
+      "contractFromDate": "Từ ngày hợp đồng",
+      "image": "Hình ảnh",
+      "contractToDate": "Đến ngày hợp đồng",
+      "latitude": "Vĩ độ",
+      "longitude": "Kinh độ",
+      "description": "Mô tả",
+      "status": "Trạng thái",
+      "contracts": "Hợp đồng",
+      "address": "Địa chỉ",
+      "supportSos": "Hỗ trợ cứu hộ",
+      "utilities.selected": "Danh sách tiện ích đã chọn",
+      "brands.selected": "Danh sách dòng xe đã chọn",
+      "utilities": "Danh sách tiện ích",
+      "servicePackages": "Danh sách gói dịch vụ",
+      "brands": "Danh sách dòng xe",
+      "services": "Danh sách dịch vụ",
+      "services.selected": "Danh sách dịch vụ đã chọn",
+      "provinceId": "Tỉnh/Thành phố",
+      "districtId": "Quận/ Huyện",
+      "wardId": "Phường/Xã",
+      "maxCapacity": "Công suất tối đa",
+      "garageGroupId": "Gara-tổng",
+      "carLift": "Số cầu nâng",
+      "contractStatus": "Trạng thái hợp đồng",
+      "garageType": "Loại hình ga-ra",
+      "serviceTime": "Phục vụ 24/7",
+      "maxTonnage": "Trọng tải xe kéo tối đa",
+      "numberGatheringPoints": "Số điểm tập kết",
+      "openTime": "Giờ mở cửa",
+      "closeTime": "Giờ đóng cửa",
+      "policyAndTerm": "Chính sách và điều khoản",
+      "gara-group": {
+        "name": "Tên",
+        "phone": "Số điện thoại",
+        "email": "Hòm thư",
+        "status": "Trạng thái",
+        "taxcode": "Mã số thuế",
+        "website": "Trang web",
+        "description": "Mô tả"
+      }
+    }
+  },
+  "garage-owner": {
+    "": "Chủ gara",
+    "table.header": {
+      "stt": "STT",
+      "name": "Họ và tên",
+      "username": "Tài khoản",
+      "phone": "Số điện thoại",
+      "email": "Hòm thư",
+      "gender": "Giới tính",
+      "birthday": "Ngày sinh",
+      "avatar": "Ảnh đại diện",
+      "status": "Trạng thái"
+    }
+  },
+  "garage-promote": {
+    "": "Đề xuất ga-ra",
+    "table.header": {
+      "stt": "STT",
+      "garage": "Tên ga-ra",
+      "budget": "Giá tiền",
+      "promotionType": "Loại đề xuất",
+      "promoteDate": "Thời gian đề xuất",
+      "fromDate": "Từ ngày",
+      "toDate": "Đến ngày",
+      "status": "Trạng thái",
+      "provinceId": "Tỉnh/Thành phố",
+      "successBooking": "Số lượng đặt thành công"
+    }
+  },
+  "garage-employee": {
+    "": "Nhân viên ga-ra",
+    "table.header": {
+      "stt": "STT",
+      "name": "Họ và tên",
+      "username": "Tài khoản",
+      "phone": "Số điện thoại",
+      "email": "Hòm thư",
+      "gender": "Giới tính",
+      "birthday": "Ngày sinh",
+      "avatar": "Ảnh đại diện",
+      "gara": "Ga-ra",
+      "gara-owner": "Chủ gara",
+      "status": "Trạng thái"
+    }
+  },
+  "garage-contract": {
+    "": "Hợp đồng ga-ra",
+    "table.header": {
+      "stt": "STT",
+      "garage": "Ga-ra",
+      "garageId": "Ga-ra",
+      "garageName": "Ga-ra",
+      "garagroup-name": "Ga-ra tổng",
+      "garagroup-phone": "Số điện thoại",
+      "garagroup-address": "Địa chỉ",
+      "garagroup-website": "Trang web",
+      "contract": "Ngày hợp đồng",
+      "contractFromDate": "Từ ngày hợp đồng",
+      "contractToDate": "Đến ngày hợp đồng",
+      "contractStatus": "Trạng thái hợp đồng",
+      "description": "Mô tả"
+    }
+  },
+  "expert": {
+    "": "Chuyên gia",
+    "table.header": {
+      "stt": "STT",
+      "name": "Họ và tên",
+      "username": "Tài khoản",
+      "phone": "Số điện thoại",
+      "email": "Hòm thư",
+      "gender": "Giới tính",
+      "birthday": "Ngày sinh",
+      "identifiedCard": "CMT/CCCD",
+      "educationLevel": "Trình độ học vấn",
+      "contractType": "Loại hợp đồng",
+      "workplace": "Nơi làm việc",
+      "expYears": "Năm kinh nghiệm",
+      "province": "Tỉnh/Thành phố",
+      "district": "Quận/Huyện",
+      "ward": "Phường/Xã",
+      "address": "Địa chỉ",
+      "bank": "Ngân hàng",
+      "accountNumber": "Số tài khoản",
+      "avatar": "Ảnh đại diện",
+      "status": "Trạng thái"
+    }
+  },
+  "operator": {
+    "": "Người điều hành",
+    "table.header": {
+      "stt": "STT",
+      "name": "Họ và tên",
+      "username": "Tài khoản",
+      "phone": "Số điện thoại",
+      "email": "Hòm thư",
+      "gender": "Giới tính",
+      "birthday": "Ngày sinh",
+      "identifiedCard": "CMT/CCCD",
+      "contractType": "Loại hợp đồng",
+      "workplace": "Nơi làm việc",
+      "expYears": "Năm kinh nghiệm",
+      "province": "Tỉnh/Thành Phố",
+      "district": "Quận/Huyện",
+      "ward": "Phường/Xã",
+      "address": "Địa chỉ",
+      "bank": "Ngân hàng",
+      "accountNumber": "Số tài khoản",
+      "avatar": "Ảnh đại diện",
+      "status": "Trạng thái"
+    }
+  },
+  "garage-day-off": {
+    "": "Lịch nghỉ của ga-ra",
+    "table.header": {
+      "garage": "Ga-ra",
+      "date": "Ngày nghỉ",
+      "fromDayOff": "Từ ngày",
+      "toDayOff": "Đến ngày",
+      "stt": "STT",
+      "garageName": "Tên ga-ra"
+    }
+  }
+}
+

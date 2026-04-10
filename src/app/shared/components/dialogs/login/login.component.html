@@ -1,0 +1,54 @@
+<div class="login_cover">
+  <mat-card>
+    <mat-card-content>
+      <!-- Logo -->
+      <div class="login-header">
+        <img
+          alt="logo-viettel"
+          src="assets/images/logo-viettel.png"
+        />
+      </div>
+
+
+      <!-- Form Đăng nhập -->
+      <ng-container>
+        <div class="guest-login">
+          <div class="title">{{ 'common.sso.login' | translate }}</div>
+          <form
+            [formGroup]="form"
+          >
+            <p>
+              <cva-input
+                formControlName="userName"
+                placeholder="{{ 'login.username' | translate }}"
+              >
+              </cva-input>
+            </p>
+            <p>
+              <cva-input
+                formControlName="pass"
+                placeholder="{{ 'login.password' | translate }}"
+                type="password"
+              >
+              </cva-input>
+            </p>
+
+            <p *ngIf="error" class="error">{{ error }}</p>
+
+            <div class="button">
+              <!-- Đăng nhập -->
+              <button
+                (click)="submit()"
+                class="primary"
+                mat-button
+                type="submit"
+              >
+                {{ 'common.login' | translate }}
+              </button>
+            </div>
+          </form>
+        </div>
+      </ng-container>
+    </mat-card-content>
+  </mat-card>
+</div>

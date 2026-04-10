@@ -1,0 +1,27 @@
+:host {
+    cva-smart-table::ng-deep {
+        td button {
+            width: 100%;
+        }
+        .table-responsive table thead tr th [title="Thao t\e1 c"] {
+            padding-right: 0px;
+        }
+        .table-responsive {
+            table {
+                tbody {
+                    tr {
+                        height: 47px !important;
+                        td {
+                            color: black;
+                            border: 1px solid #D1CFD7;
+
+                            label {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

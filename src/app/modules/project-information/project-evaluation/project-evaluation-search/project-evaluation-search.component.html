@@ -1,0 +1,92 @@
+<cloud-search
+  #cloudSearchRef
+  [configForm]="configForm"
+  [columns]="columns"
+  [buttons]="buttons"
+  [formAdvanceSearch]="formAdvanceSearch"
+  [exportBtnEnabled]="false"
+  [addBtnEnabled]="hasAddPermission"
+  [convertField2HttpParamFn]="convertField2HttpParamFn"
+>
+  <ng-template appTemplate="filterForm">
+    <div fxLayout="row wrap" class="row-wrap-padding" [formGroup]="formAdvanceSearch">
+      <cva-multi-select-autocomplete
+        name="projectName"
+        formControlName="projectId"
+        [class]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'projectName')"
+        [label]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'projectName')"
+        [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+        [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+        [placeholder]="'common.placeholder.select'"
+        [options]="projectValues"
+        [multiple]="false"
+        fxLayout="column"
+        fxFlex="25%"
+        fxFlex.xs="100%"
+        fxFlex.sm="50%"
+        fxFlex.md="50%"
+        fxFlex.lg="25%"
+      ></cva-multi-select-autocomplete>
+      <cva-input
+        name="reportName"
+        formControlName="reportName"
+        [class]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'reportName')"
+        [label]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'reportName')"
+        [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+        [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+        [placeholder]="'common.placeholder.input'"
+        fxLayout="column"
+        fxFlex="25%"
+        fxFlex.xs="100%"
+        fxFlex.sm="50%"
+        fxFlex.md="50%"
+        fxFlex.lg="25%"
+      ></cva-input>
+      <cva-date-picker
+        formControlName="evaluationStartDate"
+        [class]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'evaluationStartDate')"
+        [label]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'evaluationStartDate')"
+        [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+        [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+        [placeholder]="'DD/MM/YYYY'"
+        fxLayout="column"
+        fxFlex="25%"
+        fxFlex.xs="100%"
+        fxFlex.sm="50%"
+        fxFlex.md="50%"
+        fxFlex.lg="25%"
+      ></cva-date-picker>
+      <cva-date-picker
+        formControlName="evaluationEndDate"
+        [class]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'evaluationEndDate')"
+        [label]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'evaluationEndDate')"
+        [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+        [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+        [placeholder]="'DD/MM/YYYY'"
+        fxLayout="column"
+        fxFlex="25%"
+        fxFlex.xs="100%"
+        fxFlex.sm="50%"
+        fxFlex.md="50%"
+        fxFlex.lg="25%"
+      ></cva-date-picker>
+      <cva-multi-select-autocomplete
+        name="status"
+        formControlName="projectEvalStatus"
+        [class]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'status')"
+        [label]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'status')"
+        [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+        [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+        [placeholder]="'common.placeholder.select'"
+        [options]="statusValues"
+        [multiple]="false"
+        fxLayout="column"
+        fxFlex="25%"
+        fxFlex.xs="100%"
+        fxFlex.sm="50%"
+        fxFlex.md="50%"
+        fxFlex.lg="25%"
+      ></cva-multi-select-autocomplete>
+    </div>
+  </ng-template>
+</cloud-search>

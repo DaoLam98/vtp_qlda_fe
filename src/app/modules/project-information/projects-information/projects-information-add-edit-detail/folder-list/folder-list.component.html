@@ -1,0 +1,124 @@
+<div class="folder-tree" fxLayout="row wrap" fxLayoutGap="20px">
+  <cva-flat-tree
+    (onNodeClick)="onSelectChangeFolder($event)"
+    [fullDatasource]="folderTree"
+    [isCollapseSelected]="false"
+    [isDisplayChooseTreeOnly]="true"
+    [isSearchOutSide]="false"
+    [label]=""
+    [multiple]="false"
+    [selectedLabelTitle]="moduleName+'.table.header.folder'"
+    formControlName="folder"
+    [viewHeight]="660"
+    fxFlex="30%"
+    fxLayout="column"
+    class="tree-container"
+    [class.tree-hidden]="!isTreeVisible"
+  ></cva-flat-tree>
+
+  <div fxFlex="calc(70% - 20px)" fxLayout="column" [class.full-width]="!isTreeVisible" style="height: 100%">
+    <cloud-search
+      #cloudSearchRef
+      [addBtnEnabled]="!isViewFolder && hasAddPermission"
+      [buttons]="buttons"
+      [columns]="columns"
+      [configForm]="configForm"
+      [convertField2HttpParamFn]="convertField2HttpParamFn.bind(this)"
+      [exportBtnEnabled]="false"
+      [formAdvanceSearch]="formAdvanceSearch"
+      [isShowBreadcrum]="false"
+      [selected]="selectedFolder"
+      [addBtnFunction]="addBtnFunction"
+      [showPopupViewEdit]="showPopupViewAddEdit.bind(this)"
+      (downloadItemOnTable)="onDownloadItemOnTable($event)"
+      (viewProcess)="onViewProcess($event)">
+      <ng-template appTemplate="quickFilterForm">
+        <div class="select-folder-tree-container" style="display: flex;">
+          <button
+            mat-icon-button
+            type="button"
+            class="tree-toggle-btn"
+            (click)="$event.preventDefault(); onExpandTree()"
+            [attr.aria-label]="isTreeVisible ? 'Hide tree' : 'Show tree'"
+            [matTooltip]="isTreeVisible ? ('common.tree.hide' | translate) : ('common.tree.show' | translate)"
+            matTooltipPosition="above">
+            <img [src]="isTreeVisible ? 'assets/hide.svg' : 'assets/expand.svg'" alt="" style="width: 18px;">
+          </button>
+
+          <div class="selected-folder" style="display: flex">
+             <span class="select-folder-tree-node-label">
+               {{ 'common.folderChosen.selectedTreeNode.label' | translate }}:
+             </span>
+            @if (selectedTreeNode?.displayValue) {
+              <span
+                class="select-folder-tree-node-name"
+                [matTooltip]="selectedTreeNode?.displayValue"
+                matTooltipPosition="above">
+                {{ selectedTreeNode?.displayValue }}
+              </span>
+            }
+          </div>
+        </div>
+      </ng-template>
+
+      <ng-template appTemplate="filterForm">
+        <div
+          [formGroup]="formAdvanceSearch"
+          class="row-wrap-padding"
+          fxLayout="row wrap"
+        >
+          <!-- Mã đơn vị -->
+          <cva-input
+            [class]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'code')"
+            [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+            [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+            [label]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'code')"
+            formControlName="code"
+            fxFlex="25%"
+            fxFlex.lg="25%"
+            fxFlex.md="50%"
+            fxFlex.sm="50%"
+            fxFlex.xs="100%"
+            fxLayout="column"
+            name="code"
+            placeholder="common.placeholder.input"
+          ></cva-input>
+
+          <!-- Tên đơn vị -->
+          <cva-input
+            [class]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'name')"
+            [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+            [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+            [label]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'name')"
+            formControlName="name"
+            fxFlex="25%"
+            fxFlex.lg="25%"
+            fxFlex.md="50%"
+            fxFlex.sm="50%"
+            fxFlex.xs="100%"
+            fxLayout="column"
+            name="name"
+            placeholder="common.placeholder.input"
+          ></cva-input>
+          <cva-multi-select-autocomplete
+            [class]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'archiveType')"
+            [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+            [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+            [label]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'archiveType')"
+            formControlName="archiveType"
+            [options]="archiveTypeOpts"
+            [multiple]="false"
+            fxFlex="25%"
+            fxFlex.lg="25%"
+            fxFlex.md="50%"
+            fxFlex.sm="50%"
+            fxFlex.xs="100%"
+            fxLayout="column"
+            name="name"
+            placeholder="common.placeholder.input"
+          ></cva-multi-select-autocomplete>
+        </div>
+      </ng-template>
+    </cloud-search>
+  </div>
+</div>

@@ -1,0 +1,37 @@
+.sign-template {
+  .divider {
+    border-left: 2px solid #d1cfd7;
+  }
+
+  .list-content {
+    display: block !important;
+
+    .buttonArea {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  .table-button {
+    app-vss-toggle-field::ng-deep {
+      margin: 0;
+
+      label {
+        white-space: nowrap;
+      }
+    }
+  }
+
+  cva-smart-table::ng-deep {
+    .mat-column-staffCode {
+      min-width: 200px;
+    }
+  }
+
+  cva-multi-select-autocomplete::ng-deep {
+    .cva-style-disable-text div {
+      word-break: break-word;
+    }
+  }
+}

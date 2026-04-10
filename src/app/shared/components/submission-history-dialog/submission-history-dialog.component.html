@@ -1,0 +1,72 @@
+<div class="dialog_wrapper">
+  <div class="dialog_header">
+    <div class="dialog_title">{{ dialogTitle | translate }}</div>
+    <i class="fas fa-times" style="cursor: pointer" (click)="onClose()"></i>
+  </div>
+  <div class="dialog_content" style="resize: none">
+    <div class="content-slider" [class.slide-left]="showSecondContent">
+      <!-- First content -->
+      <div class="content-page">
+        <div class="text-right" *ngIf="historyType === 'VOFFICE_HISTORY'">
+          <button mat-stroked-button type="button" class="primary outline" (click)="toggleContent()">
+            {{ 'btnViewFileSign' | translate }}
+          </button>
+        </div>
+        <form [formGroup]="displayForm">
+          <div>
+            <cva-smart-table
+              *ngIf="displayForm.get('processHistory')?.value?.length > 0"
+              formControlName="processHistory"
+              [buttons]="buttons"
+              [columns]="columns"
+              [moduleName]="moduleTranslationKey"
+              [isStickyFooter]="true"
+              [isSticky]="true"
+              fxFlex="100%"
+            >
+            </cva-smart-table>
+          </div>
+        </form>
+
+      </div>
+
+      <!-- Second content -->
+      <div class="content-page second-content" *ngIf="historyType === 'VOFFICE_HISTORY'">
+        <div fxLayout="row" fxLayoutGap="10px">
+          <div fxLayout="column" fxFlex="30%">
+            <cva-flat-tree
+              [formControl]="treeFormControl"
+              [multiple]="false"
+              [fullDatasource]="fileSignTree"
+              [isCollapseSelected]="false"
+              [isSearchOutSide]="false"
+              [isDisplayChooseTreeOnly]="true"
+              [viewHeight]="treeViewHeight"
+              [itemSize]="null"
+              (onNodeClick)="onNodeClick($event)"
+            ></cva-flat-tree>
+          </div>
+          <div fxFlex="70%" *ngIf="selectedFile">
+            <div class="file-details">
+              <ng2-pdfjs-viewer
+                #pdfViewer
+                [openFile]="false"
+                [fullScreen]="false"
+                [style.width]="'100%'"
+                [style.height.px]="pdfViewerHeight"
+                style="display: block">
+              </ng2-pdfjs-viewer>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="dialog_footer right" *ngIf="showSecondContent">
+    <div>
+      <button mat-stroked-button type="button" class="outline Update-btn" (click)="toggleContent()">
+        {{ 'btnBack' | translate }}
+      </button>
+    </div>
+  </div>
+</div>

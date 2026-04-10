@@ -1,0 +1,247 @@
+<div fxLayout='row wrap' style="justify-content: space-between; align-items: center">
+  <cva-breadcrumb style="flex: 1"></cva-breadcrumb>
+
+  <div fxLayout='row wrap' class="vertical-divider">
+    <div class='btn-sec' style="display: flex; gap: 11px; margin-left: 33px;">
+      <!-- Quay lại -->
+      <button
+        mat-button
+        type='submit'
+        class='outline'
+        (click)='back()'
+      >
+        <i class="fas fa-arrow-left"></i> {{ 'btnBack'|translate }}
+      </button>
+
+      @if (isView) {
+      <!-- Kích hoạt -->
+        <button
+          *ngIf="hasApprovePermission"
+          mat-button
+          type='submit'
+          class='primary'
+          [disabled]="checkIsActive"
+          (click)='onUpdateStatus("approve")'
+        >
+        <i class='far fa-check-circle'></i> {{ 'btnActive'|translate }}
+      </button>
+
+      <!-- Hủy kích hoạt -->
+        <button
+          *ngIf="hasRejectPermission"
+          mat-button
+          type='submit'
+          class='primary'
+          [disabled]="!checkIsActive"
+          (click)='onUpdateStatus("reject")'
+        >
+        <i class='fas fa-ban'></i> {{ 'btnInactive'|translate }}
+      </button>
+      }
+
+      <!-- Nút Lưu -->
+      <button
+        *ngIf="!isView && (hasAddPermission || hasEditPermission)"
+        mat-button
+        type='submit'
+        class='primary'
+        [disabled]='addEditForm.invalid || isView'
+        (click)='onSubmit()'
+      >
+        <i class='fa fa-save'></i> {{ 'btnAddEdit'|translate }}
+      </button>
+
+      <!-- Chỉnh sửa -->
+      <button
+        *ngIf="isView && hasEditPermission"
+        mat-button
+        type='submit'
+        class='primary'
+        (click)='onRedirect(this.model?.id)'
+      >
+        <i class='fas fa-pencil-alt'></i> {{ 'btnUpdate'|translate }}
+      </button>
+    </div>
+  </div>
+</div>
+
+<form [formGroup]='addEditForm' class='form edit-form'>
+  <!-- Thông tin chung -->
+  <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
+    <!-- Thông tin chung -->
+    <mat-tab [label]="'mdm.translation-key.form.general' | translate">
+      <mat-expansion-panel [expanded]="true">
+        <mat-expansion-panel-header style="background-color: unset">
+          <mat-panel-title> {{ moduleName + '.form.common.title' | translate }}</mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <div style='margin: 0 -16px;'>
+          <div class='fieldSetContent row-wrap-padding' fxLayout='row wrap'>
+
+            <cva-input name='code' formControlName='code' [label]="moduleName+'.form.code'"
+              [isFloatLabel]="!environment.IS_LABEL_OUTSIDE" [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+              [placeholder]="'common.placeholder.input'" [maxLength]="255" [disabled]='isView' [required]='!isView'
+              fxLayout='column' fxFlex='25%' fxFlex.xs='100%' fxFlex.sm='50%' fxFlex.md='50%' fxFlex.lg='25%'>
+            </cva-input>
+
+            <cva-input name='name' formControlName='name' [label]="moduleName+'.form.name'"
+              [isFloatLabel]="!environment.IS_LABEL_OUTSIDE" [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+              [placeholder]="'common.placeholder.input'" [maxLength]="255" [disabled]='isView' [required]='!isView'
+              fxLayout='column' fxFlex='50%' fxFlex.xs='100%' fxFlex.sm='50%' fxFlex.md='50%' fxFlex.lg='50%'>
+            </cva-input>
+
+            <cva-multi-select-autocomplete name='expressionTypeId' formControlName='expressionTypeId'
+              [label]="moduleName+'.form.expressionTypeId'" [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+              [isLabelOutside]="environment.IS_LABEL_OUTSIDE" [placeholder]="'common.placeholder.select'"
+              [options]='expressionTypeOptionsValues' [multiple]='false' [disabled]="isView"
+              [required]='!isView' fxLayout='column' fxFlex='25%' fxFlex.xs='100%' fxFlex.sm='50%' fxFlex.md='50%'
+              fxFlex.lg='25%'>
+            </cva-multi-select-autocomplete>
+
+            <cva-multi-select-autocomplete name='informationTypeId' formControlName='informationTypeId'
+              [label]="moduleName+'.form.informationTypeId'" [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+              [isLabelOutside]="environment.IS_LABEL_OUTSIDE" [placeholder]="'common.placeholder.select'"
+              [options]='informationTypeOptionsValues' [multiple]='false' [disabled]="isView"
+              [required]='!isView' fxLayout='column' fxFlex='25%' fxFlex.xs='100%' fxFlex.sm='50%' fxFlex.md='50%'
+              fxFlex.lg='25%'>
+            </cva-multi-select-autocomplete>
+
+            <cva-multi-select-autocomplete name='projectTypes' formControlName='projectTypes'
+              [label]="moduleName+'.form.projectTypes'" [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+              [isLabelOutside]="environment.IS_LABEL_OUTSIDE" [placeholder]="'common.placeholder.select'"
+              [options]='projectTypeOptionsValues' [multiple]='true' [disabled]="isView" [required]='!isView'
+              fxLayout='column' fxFlex='25%' fxFlex.xs='100%' fxFlex.sm='50%' fxFlex.md='50%' fxFlex.lg='25%'>
+            </cva-multi-select-autocomplete>
+
+            <cva-input name='description' formControlName='description' [label]="moduleName+'.form.description'"
+              [isFloatLabel]="!environment.IS_LABEL_OUTSIDE" [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+              [placeholder]="'common.placeholder.input'" [maxLength]="255" [disabled]='isView' fxLayout='column'
+              fxFlex='50%' fxFlex.xs='100%' fxFlex.sm='50%' fxFlex.md='50%' fxFlex.lg='50%'>
+            </cva-input>
+
+            @if (isView) {
+            <!-- Trạng thái -->
+            <cva-input name='status' formControlName='status' [label]="'common.table.header.status'"
+              [isFloatLabel]="!environment.IS_LABEL_OUTSIDE" [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+              [placeholder]="'common.placeholder.input'" [disabled]="isView" fxLayout='column' fxFlex='25%'
+              fxFlex.xs='100%' fxFlex.sm='50%' fxFlex.md='50%' fxFlex.lg='25%'>
+            </cva-input>
+
+            <!-- Người tạo -->
+            <cva-input name='createdBy' formControlName='createdBy' [label]="'common.table.header.createdBy'"
+              [isFloatLabel]="!environment.IS_LABEL_OUTSIDE" [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+              [placeholder]="'common.placeholder.input'" [disabled]='isView' fxLayout='column' fxFlex='25%'
+              fxFlex.xs='100%' fxFlex.sm='50%' fxFlex.md='50%' fxFlex.lg='25%'>
+            </cva-input>
+
+            <!-- Ngày tạo -->
+            <cva-input name='createdDate' formControlName='createdDate' [label]="'common.table.header.createdDate'"
+              [isFloatLabel]="!environment.IS_LABEL_OUTSIDE" [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+              [placeholder]="'common.placeholder.input'" [disabled]='isView' fxLayout='column' fxFlex='25%'
+              fxFlex.xs='100%' fxFlex.sm='50%' fxFlex.md='50%' fxFlex.lg='25%'>
+            </cva-input>
+
+            <!-- Người cập nhật -->
+            <cva-input name='lastModifiedBy' formControlName='lastModifiedBy'
+              [label]="'common.table.header.lastModifiedBy'" [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+              [isLabelOutside]="environment.IS_LABEL_OUTSIDE" [placeholder]="'common.placeholder.input'"
+              [disabled]='isView' fxLayout='column' fxFlex='25%' fxFlex.xs='100%' fxFlex.sm='50%' fxFlex.md='50%'
+              fxFlex.lg='25%'>
+            </cva-input>
+
+            <!-- Ngày cập nhật -->
+            <cva-input name='lastModifiedDate' formControlName='lastModifiedDate'
+              [label]="'common.table.header.lastModifiedDate'" [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+              [isLabelOutside]="environment.IS_LABEL_OUTSIDE" [placeholder]="'common.placeholder.input'"
+              [disabled]='isView' fxLayout='column' fxFlex='25%' fxFlex.xs='100%' fxFlex.sm='50%' fxFlex.md='50%'
+              fxFlex.lg='25%'>
+            </cva-input>      
+            }
+
+            <!-- Nhập liệu? -->
+            <app-vss-toggle-field
+              formControlName="isUserInput"
+              [disabled]="isView"
+              [label]="moduleName + '.form.common.label.isUserInput'"
+              fxLayout="column"
+              fxFlex="25%"
+              fxFlex.xs="100%"
+              fxFlex.sm="50%"
+              fxFlex.md="50%"
+              fxFlex.lg="25%"
+            >
+            </app-vss-toggle-field>
+          </div>
+        </div>
+      </mat-expansion-panel>
+
+      <div class="margin-vertical-15"></div>
+
+      <!-- Danh sách đơn vị -->
+      <mat-expansion-panel [expanded]="true">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <!-- Tiêu đề -->
+            {{ 'mdm.service-group.form.organizations' | translate }}
+            ({{ addEditForm.get("organizations")?.value?.length || 0 }})
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <div fxLayout="column">
+          <div *ngIf="!isView && (hasAddPermission || hasEditPermission)" class="buttonArea" fxLayout
+            fxLayoutAlign="start">
+            <!-- Chọn đơn vị áp dụng -->
+            <button mat-button type="button" class="primary" (click)="onAddOrg()">
+              <i class="fa fa-plus"></i> {{ 'mdm.service-group.form.add-row' | translate }}
+            </button>
+          </div>
+            @if (addEditForm.get('organizations')?.value?.length) {
+             <cva-smart-table *ngIf="addEditForm.get('organizations')?.value?.length"
+              class="unit-table" formControlName="organizations"
+              [isSticky]="true" [moduleName]="'mdm.organization'" [columns]="orgColumns" [buttons]="orgButtons"
+              (clickAction)="onRowButtonClick($event)" fxFlex="100%"></cva-smart-table>
+            }
+            @else {
+              <div class="no-content">
+                {{"common.no-data" | translate}}
+              </div>
+            }
+        </div>
+      </mat-expansion-panel>
+    </mat-tab>
+    <!-- Chi tiết biểu mẫu -->
+    <mat-tab [label]="'mdm.translation-key.form.detail' | translate">
+
+      <mat-expansion-panel [expanded]="true">
+        <mat-expansion-panel-header style="background-color: unset">
+          <mat-panel-title>{{ moduleName + '.form.detail.title' | translate }}</mat-panel-title>
+        </mat-expansion-panel-header>
+        <div fxLayout="column">
+          <div *ngIf="!isView && (hasAddPermission || hasEditPermission)" fxLayout
+            fxLayoutAlign="end" style="margin-bottom: 10px;">
+            <button
+              mat-icon-button
+              type="button"
+              (click)="onOpenExpressionDetails()"
+              style="padding: 0px; height: 36px; width: 36px;"
+            >
+              <img alt="" src="assets/add.svg" style="width: 36px; height: 36px;"/>
+            </button>
+          </div>
+          @if (addEditForm.get('expressionDetails')?.value?.length) {
+              <cva-smart-table *ngIf="addEditForm.get('expressionDetails')?.value?.length"
+              class="expression-table"
+              formControlName="expressionDetails" [isSticky]="true" [moduleName]="moduleName"
+              [columns]="expressionDetailsColumns" [buttons]="expressionDetailsButtons"
+              (clickAction)="onRowButtonClick($event)" fxFlex="100%"></cva-smart-table>
+          }
+          @else {
+            <div class="no-content">
+              {{"common.no-data" | translate}}
+            </div>
+          }
+        </div>
+      </mat-expansion-panel>
+    </mat-tab>
+  </mat-tab-group>
+</form>

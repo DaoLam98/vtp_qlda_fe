@@ -1,0 +1,79 @@
+.ruleset-if {
+  display: flex;
+  margin: 0px -0.5rem 12px 0;
+  gap: 40px;
+  padding: 10px;
+  h4 {
+    font-size: 14px;
+    margin: 6px 0;
+    padding: 4px 10px;
+    border: 1px solid #D1D5DB;
+    border-radius: 10px;
+    background: #E5E7EB;
+  }
+
+  .row {
+    display: flex;
+    gap: 6px;
+
+    .func {
+      position: relative;
+      display: flex;
+      align-items: start;
+      padding: 1rem;
+      margin-left: 1rem;
+      margin-bottom: 20px;
+      margin-top: 4px;
+      border: 1px solid rgba(0, 0, 0, .2);
+      border-radius: 10px;
+    }
+    //.func::before {
+    //  position: absolute;
+    //  content: "";
+    //  top: -4px;
+    //  right: 100%;
+    //  border-color: #ccc;
+    //  border-style: solid;
+    //  width: 9px;
+    //  height: calc(50% + 36px);
+    //  border-width: 0 0 2px 2px;
+    //}
+  }
+
+  .controls {
+    min-width: 80px;
+  }
+
+  .col {
+    flex: 1;
+    min-width: 100px;
+    margin: 0 .5rem;
+  }
+  .if-row {
+    //display: flex;
+    margin: 0 -.5rem;
+    gap: 40px;
+  }
+  .mat-mdc-text-field-wrapper {
+    min-width: 130px;
+  }
+
+  .mat-mdc-form-field {
+    height: 30px;
+    border: 1px solid #D1D5DB;
+    border-radius: 4px;
+  }
+
+  .mdc-line-ripple{
+    display: none;
+  }
+
+  .mat-mdc-select-value {
+    padding-top: 6px;
+  }
+
+  input {
+    padding-top: 6px;
+  }
+
+}

@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/modules/project-information/project-proposal/project-proposal-add-edit-detail/project-proposal-general/project-proposal-general.component.scss"],
+  "sourcesContent": [":host {\r\n  cva-smart-table::ng-deep {\r\n    .table-responsive table {\r\n      .mat-column-name {\r\n        width: 40%;\r\n      }\r\n      .mat-column-description {\r\n        width: 50%;\r\n      }\r\n    }\r\n  }\r\n  cva-input::ng-deep .text_area {\r\n    .mat-mdc-form-field-flex {\r\n      height: 100px;\r\n    }\r\n    .cva-style-disable-text div {\r\n      white-space: pre-line;\r\n      -webkit-line-clamp: 3;\r\n    }\r\n  }\r\n  .no-content {\r\n    display: flex;\r\n    width: 100%;\r\n    justify-content: center;\r\n    align-items: center;\r\n    padding-bottom: 10px;\r\n  }\r\n}\r\n"],
+  "mappings": "AAGM,MAAA,eAAA,UAAA,CAAA,iBAAA,MAAA,CAAA,gBACE,MAAA,IAEF,MAAA,eAAA,UAAA,CAHA,iBAGA,MAAA,CAAA,uBACE,MAAA,IAKJ,MAAA,SAAA,UAAA,CAAA,UAAA,CAAA,wBACE,OAAA,MAEF,MAAA,SAAA,UAAA,CAHA,UAGA,CAAA,uBAAA,IACE,YAAA,SACA,mBAAA,EAGJ,MAAA,CAAA,WACE,QAAA,KACA,MAAA,KACA,gBAAA,OACA,YAAA,OACA,eAAA",
+  "names": []
+}

@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/modules/project-information/projects-information/projects-information-add-edit-detail/projects-information-add-edit-detail.component.scss"],
+  "sourcesContent": ["::ng-deep .text-description mat-form-field .mat-mdc-text-field-wrapper .mat-mdc-form-field-flex {\r\n  height: 100px;\r\n}\r\n"],
+  "mappings": "AAAA,UAAA,CAAA,iBAAA,eAAA,CAAA,2BAAA,CAAA,wBACE,OAAA",
+  "names": []
+}

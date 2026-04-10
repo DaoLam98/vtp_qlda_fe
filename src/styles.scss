@@ -1,0 +1,177 @@
+@use '@angular/material' as mat;
+@use 'sass:map';
+@use "../NextSolutionsBase_web/src/styles/base.theme";
+@import 'quill/dist/quill.core.css';
+@import 'quill/dist/quill.bubble.css';
+@import 'quill/dist/quill.snow.css';
+// Thêm các đường dẫn CSS khác nếu cần
+
+@include mat.core();
+// @include mat.dialog();
+
+////////////////////////////////////////////////////////////////////
+// CORE NOT CHANGE :(
+////////////////////////////////////////////////////////////////////
+
+//TODO: Uncomment when base.theme exists
+// @import "base.theme";
+
+// td.mat-column-stt,
+// td.mat-column-edit,
+// td.mat-column-detail,
+// td.mat-column-accept,
+// td.mat-column-reject {
+//   width: 50px;
+//   max-width: 50px !important;
+// }
+
+// .default .table-responsive .mat-table .mat-row .mat-cell.mat-column-status {
+//   width: auto;
+//   font-weight: bold;
+// }
+
+// .default .go-to-page .mat-mdc-button-base,
+// .default .mat-primary .mat-option.mat-selected:not(.mat-option-disabled),
+// .default .mat-datepicker-toggle-active,
+// .default ns-flat-tree .collapse-expand-all {
+//   color: #183761;
+// }
+
+// .default .mat-checkbox-checked.mat-primary .mat-checkbox-background,
+// .default mat-paginator .mat-form-field-appearance-legacy .mat-form-field-underline,
+// .default .mat-drawer {
+//   background-color: #183761;
+// }
+
+// .default .mat-primary .mat-pseudo-checkbox-checked {
+//   background-color: #183761;
+//   border-color: #183761;
+// }
+
+// .default app-menu-list-item .mat-list-item {
+//   &:hover .mat-icon,
+//   &:hover .mat-list-item-content,
+//   &.active .mat-icon,
+//   &.active .mat-list-item-content {
+//     color: #f8db00;
+//   }
+
+//   border-bottom: 1px solid lightblue;
+// }
+
+// .default mat-form-field {
+//   .mat-form-field-wrapper {
+//     .mat-form-field-flex {
+//       &:hover .mat-form-field-outline {
+//         border: 1px solid gray;
+//       }
+//     }
+//   }
+
+//   .mat-form-field-suffix {
+//     .mat-icon-button {
+//       .mat-icon {
+//         color: #183761;
+//       }
+//     }
+//   }
+// }
+
+// .default button.mdc-button.primary {
+//   background-color: #183761;
+//   border-color: #183761;
+
+//   &:hover, &:focus {
+//     background-color: #183761;
+//     border-color: #183761;
+//   }
+
+//   &:disabled {
+//     background-color: gray;
+//     border-color: gray;
+//   }
+// }
+
+// .default button.mdc-button.primary.outline {
+//   background-color: #183761;
+//   border-color: #183761;
+//   color: #fff;
+
+//   &:hover, &:focus {
+//     background-color: #183761;
+//     border-color: #183761;
+//   }
+
+//   &:disabled {
+//     background-color: gray;
+//     border-color: gray;
+//   }
+
+//   i {
+//     color: #fff;
+//   }
+// }
+
+// .default button.mat-icon-button.primary {
+//   background-color: #183761;
+//   border-color: #183761;
+
+//   &:hover, &:focus {
+//     background-color: #183761;
+//     border-color: darkblue;
+
+//     i {
+//       color: lightblue;
+//     }
+//   }
+
+//   &:disabled {
+//     background-color: transparent;
+
+//     i {
+//       color: #bfbfbf;
+//     }
+//   }
+
+//   i {
+//     color: #FFFFFF;
+//   }
+// }
+
+// .advanced-search .show_advance {
+//   color: #183761;
+// }
+
+// #toast-container .toast-success {
+//   background-color: #183761;
+// }
+
+// .default {
+//   mat-tab-group {
+//     .mat-tab-header {
+//       .mat-tab-label-container {
+//         .mat-tab-list {
+//           .mat-tab-labels {
+//             .mat-tab-label {
+//               .mat-tab-label-content {
+//                 &:hover {
+//                   color: #183761;
+//                   border-bottom: 4px solid #183761;
+//                 }
+//               }
+
+//               &.mat-tab-label-active .mat-tab-label-content {
+//                 color: #f8db00;
+//                 font-weight: 600;
+//                 background-color: #183761;
+//                 box-shadow: none;
+//                 border-bottom: 4px solid #f8db00;
+//                 padding: 10px;
+//               }
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// }

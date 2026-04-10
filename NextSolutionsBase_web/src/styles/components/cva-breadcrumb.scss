@@ -1,0 +1,45 @@
+.cva-breadcrumb {
+  margin: 0;
+  padding-inline-start: 0;
+
+  .breadcrumbList {
+    li {
+      display: inline;
+
+      &:first-child {
+        display: none;
+      }
+
+      a {
+        font-size: 14px;
+        font-weight: 600;
+        text-decoration: none;
+      }
+
+      a:hover {
+
+      }
+
+      .separator {
+        color: #9CA1AA;
+        font-size: 14px;
+        margin-left: 5px;
+        margin-right: 5px;
+
+        i {
+          font-weight: 400;
+        }
+      }
+
+      .currentAction {
+        color: #EE0033;
+        font-size: 14px;
+        font-weight: 600;
+      }
+    }
+
+  }
+
+
+}
+

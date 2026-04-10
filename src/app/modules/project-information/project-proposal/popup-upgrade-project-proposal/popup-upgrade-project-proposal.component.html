@@ -1,0 +1,54 @@
+<div class="dialog_wrapper" style="width: 1000px">
+  <div class="dialog_header">
+    <div class="dialog_title">{{ 'project.project-proposal.upgrade-popup.title' | translate }}</div>
+    <i class="fal fa-times margin-15" style="cursor: pointer" (click)="matDialogRef.close()"></i>
+  </div>
+  <div class="dialog_content">
+    <form [formGroup]="addEditForm" class="form edit-form">
+      <fieldset>
+        <div class="fieldSetContent row-wrap-padding" fxLayout="row wrap">
+          <cva-input
+            name="reasonUpgrade"
+            formControlName="reasonUpgrade"
+            [label]="'project.project-proposal.upgrade-popup.reasonUpgrade'"
+            [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+            [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+            [placeholder]="'common.placeholder.input'"
+            [multiline]="true"
+            [maxLength]="4000"
+            fxLayout="column"
+            fxFlex="100%"
+            fxFlex.xs="100%"
+            fxFlex.sm="100%"
+            fxFlex.md="100%"
+            fxFlex.lg="100%"
+          ></cva-input>
+
+          <cva-radiobutton
+            formControlName="isOnlyVtpApproved"
+            style="align-items: flex-start"
+            [options]="options"
+            [direction]="'horizontal'"
+            [disabled]="isView"
+            fxLayout="column"
+            fxFlex="100%"
+            fxFlex.xs="100%"
+            fxFlex.sm="100%"
+            fxFlex.md="100%"
+            fxFlex.lg="100%"
+          ></cva-radiobutton>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+  <div class="dialog_footer center">
+    <div>
+      <button mat-button class="primary outline" (click)="matDialogRef.close()">
+        {{ 'common.btnClose' | translate }}
+      </button>
+      <button mat-button class="primary" [disabled]="addEditForm.invalid" (click)="onSubmit()">
+        {{ 'btnConfirm' | translate }}
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,161 @@
+.dialog_wrapper {
+  display: flex;
+  flex-direction: column;
+  max-height: 90vh;
+  height: 800px;
+
+  .dialog_header {
+    padding: 16px;
+    height: auto;
+    z-index: 100;
+    border-bottom: 1px solid #D1D3D8;
+
+    .dialog_title {
+      font-size: 18px;
+      line-height: 24px;
+    }
+  }
+
+  .dialog_content {
+    flex: 1;
+    max-height: initial;
+    resize: none;
+    overflow: hidden;
+
+    app-organization-tree::ng-deep {
+      .organization-tree {
+        flex: 1;
+
+        // Cây đơn vị
+        cva-flat-tree::ng-deep {
+          margin: 0 !important;
+
+          .cva-flat-tree {
+            height: 100%;
+
+            .tree-area {
+              height: 100%;
+              border: none;
+              border-radius: 0;
+              box-shadow: none;
+
+              & > div {
+                height: 100%;
+
+                .choose-area {
+                  height: 100%;
+                  padding: 16px;
+                  border-right: 1px solid #D1D3D8;
+
+                  .header-choose-area {
+                    margin-right: 0;
+                  }
+
+                  cdk-virtual-scroll-viewport {
+                    padding-right: 0;
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        // Bảng
+        cloud-search::ng-deep {
+          .search-form-group {
+            height: auto;
+            border: none;
+            border-radius: 0;
+            box-shadow: none;
+            padding: 4px 4px 0;
+
+            form {
+              padding: 20px 4px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // Footer
+  .footer {
+    position: sticky;
+    bottom: 0;
+    border-top: 1px solid #D1D3D8;
+    background: white;
+    z-index: 100;
+
+    .buttonArea {
+      margin: 16px !important;
+    }
+  }
+}
+
+.organization-tree {
+  .select-org-tree-container {
+    padding: 0 16px 16px 16px;
+
+    .select-org-tree-node-label {
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 20px;
+      margin-right: 8px;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .select-org-tree-node-name {
+      font-size: 14px;
+      line-height: 20px;
+      padding: 6px 8px;
+      border: 1px solid #D1D3D8;
+      border-radius: 99px
+    }
+  }
+}
+
+::ng-deep app-organization-popup-choosen {
+  .dialog_content {
+    max-height: 85vh
+  }
+
+  .tree-area {
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+  }
+
+  .table-responsive {
+    overflow: overlay;
+    height: 600px;
+    border-top: 1px #d1cfd7 solid;
+
+
+  }
+
+  /* Sticky cho phần header row */
+  .mat-mdc-header-row {
+    position: sticky;
+    top: 0;
+    /* nền và z-index để header nổi lên trên nội dung */
+    background-color: white;
+    z-index: 10;
+  }
+
+  /* Có thể thêm cho các ô tiêu đề để ổn định */
+  .mat-mdc-header-cell {
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 11; /* cao hơn dòng header */
+    border-bottom: 1px solid #e0e0e0; /* tuỳ chỉnh đường viền */
+  }
+
+  .buttonArea {
+    margin-top: 0.5rem;
+  }
+}
+
+::ng-deep cva-header-expand-button .expand-column-header-button{
+   display: none !important;
+}

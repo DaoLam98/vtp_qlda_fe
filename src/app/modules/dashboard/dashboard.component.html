@@ -1,0 +1,114 @@
+<div class='searchFormGroup'>
+  <form [formGroup]='searchForm' class='form'>
+    <div fxLayout="column" class='dashboard-fit-screen'>
+      <div fxLayout='row wrap' class="row-wrap-padding">
+        <h2 class="dashboard-title" fxFlex="65%">{{'dashboard.title' | translate}}</h2>
+        <cva-range-date-picker name="rangeDate"
+                              formControlName="rangeDate"
+                              [isFloatLabel]="false"
+                              [requiredToDate]="false"
+                              [requiredFromDate]="false"
+                              [placeholderFromDate]="'fromDate'"
+                              [placeholderToDate]="'toDate'"
+                              [fromDateControlName]="'rangeFromDate'"
+                              [toDateControlName]="'rangeToDate'"
+                              (onChange)="onRangeDateChange($event)"
+                              fxLayout="column" fxFlex="35%"
+                              class="dashboard-rangeDate">
+        </cva-range-date-picker>
+      </div>
+      <div fxFlex="100%">
+        <mat-tab-group (selectedIndexChange)="tabChange($event)" (selectedTabChange)="onTabChanged($event)">
+          <mat-tab label="{{'dashboard.overview' | translate}}">
+            <ng-template matTabContent>
+              <div fxLayout='row wrap' class="row-wrap-padding">
+                <div fxLayout='row wrap' fxFlex="75%">
+                  <div fxFlex="33%" class="dashboard-scorecard" style="background-color: #3949AB">
+                    <h3>{{scoreCard.totalClicks}}</h3>
+                    <h6>{{"dashboard.score-card.total-click" | translate}}</h6>
+                  </div>
+                  <div fxFlex="33%" class="dashboard-scorecard" style="background-color: #F46D27">
+                    <h3>{{scoreCard.clickCallGarage}}</h3>
+                    <h6>{{"dashboard.score-card.total-click-garage" | translate}}</h6>
+                  </div>
+                  <div fxFlex="33%" class="dashboard-scorecard" style="background-color: #892E50">
+                    <h3>{{scoreCard.clickCallSwitchboard}}</h3>
+                    <h6>{{"dashboard.score-card.total-click-switchboard" | translate}}</h6>
+                  </div>
+                  <div fxFlex="33%" class="dashboard-scorecard" style="background-color: #438E3C">
+                    <h3>{{scoreCard.uniqueUserNumber}}</h3>
+                    <h6>{{"dashboard.score-card.total-unique-user" | translate}}</h6>
+                  </div>
+                  <div fxFlex="33%" class="dashboard-scorecard" style="background-color: #F24536">
+                    <h3>{{scoreCard.ratioClick}}</h3>
+                    <h6>{{"dashboard.score-card.total-click-per-unique-user" | translate}}</h6>
+                  </div>
+                  <div fxFlex="33%" class="dashboard-scorecard" style="background-color: #827719">
+                    <h3>{{scoreCard.numberOfRescues}}</h3>
+                    <h6>{{"dashboard.score-card.total-confirm" | translate}}</h6>
+                  </div>
+                </div>
+                <div fxFlex="25%" fxLayout="column">
+                  <div fxFlex="100%" fxLayout="column" class="dashboard-scorecard" style="background-color: #F24536">
+                    <div>
+                      <h3>{{scoreCard.successRateOfCare}} %</h3>
+                      <h6>{{"dashboard.score-card.percent-success" | translate}}</h6>
+                    </div>
+                  </div>
+                </div>
+                <div fxFlex="100%" fxLayout="column">
+                  <cva-radiobutton formControlName="groupByType"
+                                  name="groupByType"
+                                  [options]="groupByTypeOptions"
+                                  [placeholder]="'dashboard.group.'"
+                                  (onChange)="onGroupByTypeChange($event)"
+                                  [direction]="'horizontal'"
+                                  fxLayout="column" fxFlex="100%"
+                                  fxFlex.xs="100%" fxFlex.sm="100%" fxFlex.md="100%" fxFlex.lg="100%"
+                  ></cva-radiobutton>
+                </div>
+                <div fxFlex="50%" fxLayout="column">
+                  <canvas id="canvas-overview-stacked-bar">{{overviewStackedBarChart}}</canvas>
+                </div>
+                <div fxFlex="50%" fxLayout="column">
+                  <canvas id="canvas-overview-bar-line">{{overviewBarLineChart}}</canvas>
+                </div>
+              </div>
+            </ng-template>
+          </mat-tab>
+          <mat-tab label="{{'dashboard.details' | translate}}">
+            <ng-template matTabContent>
+              <div fxLayout='row wrap' class="row-wrap-padding">
+                <div fxLayout='column' fxFlex="30%">
+                  <cva-smart-table name='statusOrders' formControlName='statusOrders'
+                                  [isSticky]='true'
+                                  [moduleName]='moduleName'
+                                  [columns]='statusOrdersColumns'
+                                  [minRow]='1'
+                                  fxFlex='100%'>
+                  </cva-smart-table>
+                </div>
+                <div fxLayout='column' fxFlex="70%">
+                  <cva-smart-table name='statusOrdersUniqueUser' formControlName='statusOrdersUniqueUser'
+                                  [isSticky]='true'
+                                  [moduleName]='moduleName'
+                                  [columns]='statusOrdersUniqueUserColumns'
+                                  [minRow]='1'
+                                  fxFlex='100%'>
+                  </cva-smart-table>
+                </div>
+              </div>
+            </ng-template>
+          </mat-tab>
+          <mat-tab label="{{'dashboard.advance' | translate}}">
+            <ng-template matTabContent>
+              <div style="width: 50%">
+                <canvas id="canvas-advance-funnel"></canvas>
+              </div>
+            </ng-template>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+    </div>
+  </form>
+</div>

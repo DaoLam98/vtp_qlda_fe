@@ -1,0 +1,99 @@
+<cloud-search
+  #cloudSearchRef
+  [addBtnEnabled]="hasAddPermission"
+  [buttons]="buttons"
+  [columns]="columns"
+  [configForm]="configForm"
+  [formAdvanceSearch]="formAdvanceSearch"
+  [trackBy]="trackBy"
+  [isShowBreadcrum]="isShowBreadcrum"
+  [convertField2HttpParamFn]="convertField2HttpParamFn"
+>
+  <ng-template appTemplate="filterForm">
+    <div
+      [formGroup]="formAdvanceSearch"
+      class="row-wrap-padding"
+      fxLayout="row wrap"
+    >
+      <!-- Dự án -->
+      <cva-multi-select-autocomplete
+        name="projectId"
+        formControlName="projectId"
+        [class]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'projectId')"
+        [label]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'projectName')"
+        [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+        [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+        [placeholder]="'common.placeholder.select'"
+        [multiple]="false"
+        [options]="projectOptions"
+        fxLayout="column"
+        fxFlex="25%"
+        fxFlex.lg="25%"
+        fxFlex.md="50%"
+        fxFlex.sm="50%"
+        fxFlex.xs="100%"
+      >
+      </cva-multi-select-autocomplete>
+
+      <!-- Đơn vị -->
+      <cva-multi-select-autocomplete
+        name="organizationId"
+        formControlName="organizationId"
+        [class]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'organizationId')"
+        [label]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'organizationName')"
+        [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+        [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+        [placeholder]="'common.placeholder.select'"
+        [multiple]="false"
+        [options]="organizationOptions"
+        fxLayout="column"
+        fxFlex="25%"
+        fxFlex.lg="25%"
+        fxFlex.md="50%"
+        fxFlex.sm="50%"
+        fxFlex.xs="100%"
+      >
+      </cva-multi-select-autocomplete>
+
+      <!-- Loại dữ liệu -->
+      <cva-multi-select-autocomplete
+        name="expressionInformationTypeId"
+        formControlName="expressionInformationTypeId"
+        [class]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'expressionInformationTypeId')"
+        [label]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'expressionInformationTypeName')"
+        [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+        [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+        [placeholder]="'common.placeholder.select'"
+        [options]="informationTypeOptions"
+        [multiple]="false"
+        fxLayout="column"
+        fxFlex="25%"
+        fxFlex.lg="25%"
+        fxFlex.md="50%"
+        fxFlex.sm="50%"
+        fxFlex.xs="100%"
+      >
+      </cva-multi-select-autocomplete>
+
+      <!-- Trạng thái -->
+      <cva-multi-select-autocomplete
+        name="dataGatheringStatus"
+        formControlName="dataGatheringStatus"
+        [class]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'status')"
+        [label]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'status')"
+        [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+        [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+        [placeholder]="'common.placeholder.select'"
+        [options]="mapStatusOptions"
+        [multiple]="false"
+        fxLayout="column"
+        fxFlex="25%"
+        fxFlex.lg="25%"
+        fxFlex.md="50%"
+        fxFlex.sm="50%"
+        fxFlex.xs="100%"
+      >
+      </cva-multi-select-autocomplete>
+    </div>
+  </ng-template>
+</cloud-search>

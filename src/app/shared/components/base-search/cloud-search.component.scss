@@ -1,0 +1,217 @@
+.search-form-group {
+  background-color: white;
+  border: 1px solid #D1D3D8;
+  border-radius: 16px;
+  box-shadow: 1px 0 20px rgba(0, 0, 0, .05);
+  display: flex;
+  flex-direction: column;
+
+  cva-table::ng-deep {
+    mat-paginator {
+      .mat-mdc-paginator-container {
+        min-height: auto;
+
+        .mat-mdc-paginator-page-size {
+          align-items: center !important;
+
+          mat-form-field {
+            width: 50px;
+            height: 32px;
+
+            .mat-mdc-text-field-wrapper {
+              height: 100%;
+
+              .mat-mdc-form-field-flex {
+                height: 100%;
+
+                .mdc-notched-outline {
+                  width: 100%;
+                  height: 100%;
+                }
+
+                .mat-mdc-form-field-infix {
+                  text-align: center;
+                  padding: 0;
+                  min-height: auto !important;
+                  height: 100%;
+                  width: 100%;
+                  min-width: auto !important;
+
+                  .mat-mdc-select-value {
+                    height: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                  }
+
+                  .input-area {
+                    text-align: center;
+
+                    .mat-mdc-input-element {
+                      text-align: center !important;
+                    }
+                  }
+                }
+              }
+            }
+          }
+
+        }
+
+        .mat-mdc-paginator-range-actions {
+          button {
+            width: 32px !important;
+            height: 32px !important;
+            padding: 0;
+            margin: 0 !important;
+
+            svg {
+              width: 32px !important;
+              height: 32px !important;
+            }
+
+            &:nth-child(2 ) {
+              margin-right: 8px !important;
+            }
+          }
+        }
+      }
+    }
+
+    .go-to-page {
+      mat-label:first-child {
+        white-space: nowrap;
+      }
+    }
+
+    table {
+      thead {
+        tr {
+          th {
+            &:last-child {
+              min-width: 150px !important;
+            }
+          }
+        }
+      }
+    }  
+  }
+}
+
+.result-area {
+  padding: 0 10px;
+}
+
+.input-hide {
+  width: 0;
+  overflow: hidden;
+  transition: .5s;
+}
+
+.input-show {
+  width: 320px;
+  transition: .5s;
+  overflow: hidden;
+  margin-right: 4px;
+}
+
+
+.result-count {
+  color: black;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+
+  .selected {
+    margin-right: 6px;
+  }
+
+  .number {
+    font-weight: 700;
+  }
+}
+
+.search-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 25px;
+
+  .button-area {
+    display: flex;
+    align-items: center;
+    color: rgb(238, 0, 51);
+
+    button {
+      height: 36px;
+      width: 36px;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 36px;
+      min-height: 36px;
+
+      img {
+        width: 36px;
+        height: 36px;
+      }
+
+      & + button {
+        margin-left: 8px;
+      }
+    }
+  }
+
+  cva-input::ng-deep {
+    .mat-mdc-form-field-infix {
+      padding-right: 32px;
+    }
+
+    &:hover .mat-mdc-form-field-input-control {
+      padding-right: 16px !important;
+    }
+  }
+}
+
+.advansearch-hide {
+  max-height: 0;
+  overflow: hidden;
+  transition: .5s;
+}
+
+.advansearch-show {
+  max-height: 300vh;
+  transition: .5s;
+  overflow: hidden;
+
+  &.buttonArea {
+    margin-bottom: 0;
+
+    button:last-child {
+      margin-right: 12px;
+    }
+  }
+
+  &:not(.buttonArea) {
+    margin-top: 20px;
+    padding-top: 15px;
+  }
+}
+
+// Hover vào ô Ngày tạo và Ngày cập nhật thì mới hiện nút X
+.row-wrap-padding {
+  cva-range-date-picker::ng-deep {
+    mat-form-field {
+      .mat-mdc-form-field-icon-suffix {
+        display: none;
+      }
+
+      &:hover {
+        .mat-mdc-form-field-icon-suffix {
+          display: block;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,54 @@
+:host {
+    cva-smart-table::ng-deep {
+        td button {
+            width: 100%;
+        }
+        .table-responsive table {
+            .mat-column-trash {
+                min-width: auto;
+            }
+            thead tr th [title="Thao t\e1 c"] {
+                padding-right: 0px;
+            }
+            thead tr th {
+                span[style="color: red;"] {
+                    margin-left: 5px;
+                }
+            }
+            tbody {
+                tr {
+                    td {
+                        color: black;
+                        border: 1px solid #D1CFD7;
+                        &.mat-column-delete {
+                            border: inherit;
+                        }
+                    }
+                }
+            }
+        }
+    }
+  .no-content {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 10px;
+  }
+  .dialog_footer {
+    box-shadow: none;
+    .dialog_footer_content {
+      margin-right: 20px;
+      padding-left: 20px;
+      .dialog_buttons {
+          display: flex;
+          justify-content: end;
+          width: 100%;
+          gap: 10px;
+          border: 1px solid #D1D3D8;
+          border-radius: 16px;
+          padding: 10px;
+        }
+      }
+  }
+}

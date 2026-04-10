@@ -1,0 +1,44 @@
+import {Config} from 'src/app/common/models/config.model';
+import {ModuleNameEnum} from 'src/app/shared/enums/module.name.enum';
+import {FieldType} from 'src/app/common/models/field.model';
+
+export const FORM_CONFIG: Config = {
+  moduleName: ModuleNameEnum.MDM,
+  name: 'config-vo',
+  filterForm: [
+    {
+      name: 'code',
+      label: 'code',
+      type: FieldType.TEXT,
+      required: false,
+      isHidden: false,
+      validate: [''],
+    },
+    {
+      name: 'title',
+      label: 'title',
+      type: FieldType.TEXT,
+      required: false,
+      isHidden: false,
+      validate: [''],
+    },
+    {
+      name: 'menuId',
+      label: 'menuId',
+      type: FieldType.COMBOBOX,
+      required: false,
+      isHidden: false,
+      validate: [''],
+    },
+    {
+      name: 'status',
+      label: 'status',
+      type: FieldType.COMBOBOX,
+      required: false,
+      isHidden: false,
+      validate: [''],
+    },
+  ],
+  sortBy: 'status,lastModifiedDate',
+  sortDirection: 'asc,desc'
+};

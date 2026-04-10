@@ -1,0 +1,105 @@
+cva-live-searching {
+  width: 100%;
+
+  .required-label-outside {
+    color: red;
+  }
+
+  mat-form-field:has(input[readonly]),
+  mat-form-field:has(input[disabled]) {
+    cursor: initial !important;
+
+    // Đổi border cho outline khi readonly/disabled
+    .mdc-notched-outline,
+    .mdc-notched-outline__leading,
+    .mdc-notched-outline__notch,
+    .mdc-notched-outline__trailing {
+      border-color: #d1d3d8 !important;
+    }
+
+    // Đảm bảo khi hover cũng không đổi màu border
+    &:hover .mdc-notched-outline,
+    &:hover .mdc-notched-outline__leading,
+    &:hover .mdc-notched-outline__notch,
+    &:hover .mdc-notched-outline__trailing {
+      border-color: #d1d3d8 !important;
+    }
+  }
+
+  mat-form-field {
+    cursor: text;
+
+    .mat-mdc-text-field-wrapper {
+      .mat-mdc-form-field-flex {
+        :has(input[readonly]),
+        :has(input[disabled]) {
+          background-color: #d1d3d8;
+          border-color: #d1d3d8;
+          border-radius: 12px;
+        }
+
+        .mat-mdc-form-field-infix {
+          input {
+            width: calc(100% - 40px);
+          }
+
+          input[readonly], input[disabled] {
+            cursor: initial !important;
+          }
+        }
+      }
+    }
+
+    .mat-form-field-suffix {
+      .input-suffix {
+        color: grey;
+      }
+    }
+
+  }
+
+  &.equal_height {
+    height: 100%;
+
+    .cva-live-searching {
+      height: 100%;
+
+      mat-form-field {
+        .mat-form-field-wrapper {
+          height: 100%;
+
+          .mat-form-field-flex {
+            height: 100%;
+            padding: 14px 10px !important;
+            flex-direction: column;
+
+            .mat-form-field-infix {
+              padding: 0;
+
+              textarea {
+                height: 100% !important;
+                max-height: 100% !important;
+              }
+            }
+
+            .mat-form-field-suffix {
+              position: relative;
+              width: 100%;
+              height: initial;
+              text-align: right;
+
+              .input-suffix {
+                position: initial !important;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .mat-form-field-infix {
+      height: 75%;
+    }
+  }
+}
+

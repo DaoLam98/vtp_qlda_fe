@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/shared/components/vss-hashtags-field/vss-hashtags-field.component.scss"],
+  "sourcesContent": [".hashtag-autocomplete {\r\n  width: 100%;\r\n  padding: 1rem 0;\r\n\r\n  input {\r\n    line-height: 40px;\r\n    font-size: 1.2rem;\r\n    border: none;\r\n  }\r\n\r\n  input:focus-visible {\r\n    outline: none;\r\n  }\r\n\r\n  .chip-container {\r\n    display: flex;\r\n    align-items: center;\r\n\r\n    .tag-chip {\r\n      margin-right: 2px;\r\n      // background-color: #fff;\r\n      // border: 1px solid #ee0033;\r\n      // span{\r\n      //     color: #ee0033 !important;\r\n      // }\r\n    }\r\n  }\r\n}\r\n"],
+  "mappings": "AAAA,CAAA,qBACE,MAAA,KADF,QAEE,KAAA,EAEA,CAJF,qBAIE,MACE,YAAA,KACA,UAAA,OACA,OAAA,KAGF,CAVF,qBAUE,KAAA,eACE,QAAA,KAGF,CAdF,qBAcE,CAAA,eACE,QAAA,KACA,YAAA,OAEA,CAlBJ,qBAkBI,CAJF,eAIE,CAAA,SACE,aAAA",
+  "names": []
+}

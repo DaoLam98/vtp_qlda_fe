@@ -1,0 +1,70 @@
+[
+  {
+    "displayName": "Thông tin dự án",
+    "iconName": "fas fa-info-square",
+    "roleMenu": "project_info_manager",
+    "children": [
+      {
+        "displayName": "menu.project.projects-info",
+        "iconName": "fal fa-tasks-alt",
+        "route": "project/projects-info",
+        "roleMenu": "project_info_prj_info"
+      },
+      {
+        "displayName": "menu.project.project-proposal",
+        "iconName": "fal fa-project-diagram",
+        "route": "project/project-proposal",
+        "roleMenu": "project_project_proposal"
+      }
+    ]
+  },
+  {
+    "displayName": "Dashboard",
+    "iconName": "fas fa-info-square",
+    "roleMenu": "project_info_manager",
+    "children": [
+      {
+        "displayName": "menu.project.dashboard-project-payback-over-time",
+        "iconName": "fal fa-tasks-alt",
+        "route": "project/dashboard/payback-project-over-time",
+        "roleMenu": "project_info_prj_info"
+      },
+      {
+        "displayName": "menu.project.dashboard-project-payback-snapshot",
+        "iconName": "fal fa-project-diagram",
+        "route": "project/dashboard/payback-project-snapshot",
+        "roleMenu": "project_project_proposal"
+      },
+      {
+        "displayName": "menu.project.dashboard-productivity-person",
+        "iconName": "fal fa-project-diagram",
+        "route": "project/dashboard/productivity-person",
+        "roleMenu": "project_project_proposal"
+      },
+      {
+        "displayName": "menu.project.dashboard-production-output",
+        "iconName": "fal fa-project-diagram",
+        "route": "project/dashboard/production-output",
+        "roleMenu": "project_project_proposal"
+      },
+      {
+        "displayName": "menu.project.dashboard-revenue-inventory",
+        "iconName": "fal fa-project-diagram",
+        "route": "project/dashboard/revenue-inventory",
+        "roleMenu": "project_project_proposal"
+      },
+      {
+        "displayName": "menu.project.dashboard-cost-plan",
+        "iconName": "fal fa-project-diagram",
+        "route": "project/dashboard/cost-plan",
+        "roleMenu": "project_project_proposal"
+      },
+      {
+        "displayName": "menu.project.dashboard-cash-flow-plan",
+        "iconName": "fal fa-project-diagram",
+        "route": "project/dashboard/cash-flow-plan",
+        "roleMenu": "project_project_proposal"
+      }
+    ]
+  }
+]

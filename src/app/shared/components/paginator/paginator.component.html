@@ -1,0 +1,35 @@
+@if (length > 0) {
+  <div fxLayout fxLayoutAlign="space-between center" class="paging custom-paginator">
+    <mat-paginator
+      [pageIndex]="pageIndex"
+      [length]="length"
+      [pageSize]="pageSize"
+      [pageSizeOptions]="pageSizeOptions"
+      (page)="pageChange($event)"
+    >
+    </mat-paginator>
+    <div fxLayout fxLayoutGap="0.3rem" fxLayoutAlign="start baseline" class="go-to-page">
+      <mat-label>{{ 'common.gotopage' | translate }}</mat-label>
+      <cva-counter-input
+        [formControl]="pageIndexFormControl"
+        (onEnter)="pageIndexChange()"
+        [min]="1"
+        [max]="totalPages"
+        [errorMessages]="errorMessages"
+      >
+      </cva-counter-input>
+      <mat-label>/ {{ totalPages }}</mat-label>
+      <button
+        mat-flat-button
+        mat-ripple-loader-uninitialized
+        mat-ripple-loader-class-name="mat-mdc-button-ripple"
+        class="mdc-button mdc-button--unelevated mat-mdc-unelevated-button mat-unthemed mat-mdc-button-base"
+        (click)="pageIndexChange()"
+      >
+        <span class="mat-mdc-button-persistent-ripple mdc-button__ripple"> </span>
+        <span class="mdc-button__label">{{ 'common.go' | translate }} </span>
+        <span class="mat-focus-indicator"></span><span class="mat-mdc-button-touch-target"></span>
+      </button>
+    </div>
+  </div>
+}

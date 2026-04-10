@@ -1,0 +1,15 @@
+<div style="position: relative;">
+  <cva-multi-select-autocomplete
+    [disabled]="disabled"
+    [formControl]="locationControl"
+    [label]="'mdm.location.table.header.' + fieldName"
+    [multiple]="multiple"
+    [options]="listLocation"
+    [placeholder]="'common.placeholder.select'"
+    [required]="required"
+    name="locationControl"
+  ></cva-multi-select-autocomplete>
+  <button (click)="select()" [disabled]="disabled" class="button-search-composite" mat-button type="button">
+    <i *ngIf="!disabled" class="far fa-search"></i>
+  </button>
+</div>

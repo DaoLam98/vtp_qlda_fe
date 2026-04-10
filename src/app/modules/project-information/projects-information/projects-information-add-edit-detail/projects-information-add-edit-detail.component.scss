@@ -1,0 +1,12 @@
+:host {
+
+  cva-input::ng-deep .text_area {
+    .mat-mdc-form-field-flex {
+      height: 100px;
+    }
+    .cva-style-disable-text div {
+      white-space: pre-line;
+      -webkit-line-clamp: 3;
+    }
+  }
+}

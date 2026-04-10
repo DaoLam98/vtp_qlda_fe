@@ -1,0 +1,15 @@
+<div style="position: relative;">
+  <cva-multi-select-autocomplete
+    [disabled]="disabled"
+    [formControl]="internalUserControl"
+    [label]="'common.table.header.' + fieldName"
+    [multiple]="multiple"
+    [options]="listUser"
+    [placeholder]="'common.placeholder.select'"
+    [required]="required"
+    name="internalUserControl"
+  ></cva-multi-select-autocomplete>
+  <button (click)="select()" [disabled]="disabled" class="button-search-composite" mat-button type="button">
+    <i *ngIf="!disabled" class="far fa-search"></i>
+  </button>
+</div>

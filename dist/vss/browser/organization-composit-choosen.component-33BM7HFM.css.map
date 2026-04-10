@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/shared/components/organization/organization-composit-choosen/organization-composit-choosen.component.scss"],
+  "sourcesContent": ["::ng-deep\r\napp-organization-composit-choosen\r\ncva-multi-select-autocomplete\r\n.cva-multi-select-autocomplete\r\nmat-form-field\r\n.mat-mdc-text-field-wrapper\r\n.mat-mdc-form-field-flex\r\n.mat-mdc-form-field-infix\r\nmat-select\r\n.mat-mdc-select-trigger {\r\n  margin-left: 30px;\r\n}\r\n\r\n::ng-deep\r\napp-organization-composit-choosen\r\n.mat-mdc-select-value {\r\n  padding-right: 60px !important;\r\n}\r\n"],
+  "mappings": "AAAA,UAAA,kCAAA,8BAAA,CAAA,8BAAA,eAAA,CAAA,2BAAA,CAAA,wBAAA,CAAA,yBAAA,WAAA,CAAA,uBAUE,YAAA,KAGF,UAAA,kCAAA,CAAA,qBAGE,cAAA",
+  "names": []
+}

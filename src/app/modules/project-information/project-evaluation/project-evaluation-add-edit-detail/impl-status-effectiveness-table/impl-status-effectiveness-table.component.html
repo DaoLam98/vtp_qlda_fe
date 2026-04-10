@@ -1,0 +1,138 @@
+@if (isDisplay) {
+  <mat-tab-group #tabGroup class="tab-flex-grow-0">
+    @for (item of expressionDetails; track item) {
+      <mat-tab label="{{ item.name }}">
+        @switch (item.itemType) { @case ( 'QUALITATIVE' ) {
+          <cloud-search
+            #cloudSearchRef
+            [columns]="columnsMaps[item.id!]"
+            [buttons]="buttons"
+            [configForm]="configFormMaps[item.id!]"
+            [formAdvanceSearch]="formAdvanceSearchMaps[item.id!]"
+            [isShowBreadcrum]="false"
+            [afterSearchFn]="afterSearchFnMaps[item.id!]"
+            [convertField2HttpParamFn]="convertField2HttpParamFnMaps[item.id!]"
+            [addBtnFunction]="addRow"
+            [addBtnEnabled]="!readonly && hasAddPermission"
+            [isShowQuickSearch]="false"
+            [isShowAuditField]="false"
+            class="quantitative-table"
+          >
+            <ng-template appTemplate="filterForm">
+              <div fxLayout="row wrap" class="row-wrap-padding" [formGroup]="formAdvanceSearchMaps[item.id!]">
+                @for (filter of configFormMaps[item.id!].filterForm; track filter) { @if (!filter.isHidden) { @switch
+                (filter.type) { @case (FieldType.COMBOBOX) { @if (filter.options == undefined) {
+                  <cva-input
+                    [title]="filter.label"
+                    [formControlName]="filter.name"
+                    [label]="filter.label"
+                    [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+                    [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+                    [placeholder]="'common.placeholder.input'"
+                    fxLayout="column"
+                    fxFlex="25%"
+                    fxFlex.xs="100%"
+                    fxFlex.sm="50%"
+                    fxFlex.md="50%"
+                    fxFlex.lg="25%"
+                  ></cva-input>
+                } @else {
+                  <cva-multi-select-autocomplete
+                    [title]="filter.label"
+                    [formControlName]="filter.name"
+                    [label]="filter.label"
+                    [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+                    [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+                    [placeholder]="'common.placeholder.select'"
+                    [options]="filter.options"
+                    [multiple]="false"
+                    fxLayout="column"
+                    fxFlex="25%"
+                    fxFlex.xs="100%"
+                    fxFlex.sm="50%"
+                    fxFlex.md="50%"
+                    fxFlex.lg="25%"
+                  ></cva-multi-select-autocomplete
+                  >} } @case (FieldType.DATE_RANGE) {
+                  <cva-range-date-picker
+                    [title]="filter.label"
+                    [formControlName]="filter.name"
+                    [label]="filter.label"
+                    [fromDateControlName]="'from' + filter.name.at(0)!.toUpperCase() + filter.name.slice(1)"
+                    [toDateControlName]="'to' + filter.name.at(0)!.toUpperCase() + filter.name.slice(1)"
+                    [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+                    [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+                    [placeholderFromDate]="'DD/MM/YYYY'"
+                    [placeholderToDate]="'DD/MM/YYYY'"
+                    fxLayout="column"
+                    fxFlex="25%"
+                    fxFlex.xs="100%"
+                    fxFlex.sm="50%"
+                    fxFlex.md="50%"
+                    fxFlex.lg="25%"
+                  ></cva-range-date-picker>
+                } @case (FieldType.NUMBER) {
+                  <cva-input
+                    [title]="filter.label"
+                    [patternFilter]="'^\\d{0,15}(\\.\\d*)?$'"
+                    [formatFunc]="formatFun"
+                    name="totalInvestmentCapital"
+                    [formControlName]="filter.name"
+                    [label]="filter.label"
+                    [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+                    [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+                    [placeholder]="'common.placeholder.input'"
+                    fxLayout="column"
+                    fxFlex="25%"
+                    fxFlex.xs="100%"
+                    fxFlex.sm="25%"
+                    fxFlex.md="25%"
+                    fxFlex.lg="25%"
+                  ></cva-input>
+                } } } }
+              </div>
+            </ng-template>
+          </cloud-search>
+        } @case ('QUANTITATIVE') {
+          <cloud-search
+            #cloudSearchRef
+            [columns]="columnsMaps[item.id!]"
+            [buttons]="[]"
+            [superHeaders]="supColumnQuantitative"
+            [configForm]="configFormMaps[item.id!]"
+            [formAdvanceSearch]="formAdvanceSearchMaps[item.id!]"
+            [exportBtnEnabled]="hasExportPermission"
+            [isShowBreadcrum]="false"
+            [afterSearchFn]="afterSearchFnMaps[item.id!]"
+            [convertField2HttpParamFn]="convertField2HttpParamFnMaps[item.id!]"
+            [addBtnEnabled]="false"
+            [isShowAuditField]="false"
+            (handleExport)="onExportData('PROJECT_EVAL_EXPORT_QUANTITATIVE_DATA')"
+            class="quantitative-table"
+          >
+            <ng-template appTemplate="filterForm">
+              <div fxLayout="row wrap" class="row-wrap-padding" [formGroup]="formAdvanceSearchMaps[item.id!]">
+                <cva-multi-select-autocomplete
+                  formControlName="targetId"
+                  [label]="Utils.getKeyTrans(configFormMaps[item.id!]?.moduleName, configFormMaps[item.id!]?.name, 'target')"
+                  [title]="Utils.getKeyTrans(configFormMaps[item.id!]?.moduleName, configFormMaps[item.id!]?.name, 'target') | translate"
+                  [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+                  [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+                  [placeholder]="'common.placeholder.select'"
+                  [options]="targetValues"
+                  [multiple]="false"
+                  fxLayout="column"
+                  fxFlex="25%"
+                  fxFlex.xs="100%"
+                  fxFlex.sm="50%"
+                  fxFlex.md="50%"
+                  fxFlex.lg="25%"
+                ></cva-multi-select-autocomplete>
+              </div>
+            </ng-template>
+          </cloud-search>
+        } }
+      </mat-tab>
+    }
+  </mat-tab-group>
+}

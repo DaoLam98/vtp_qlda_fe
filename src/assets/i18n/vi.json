@@ -1,0 +1,230 @@
+{
+  "common": {
+    "login": "Đăng nhập",
+    "status": "Trạng thái",
+    "garages": "Danh sách Gara",
+    "ok": "Đồng ý",
+    "OK": "Đồng ý",
+    "cancel": "Hủy",
+    "Cancel": "Hủy",
+    "results": "Kết quả",
+    "label.done": "Xong",
+    "expand.menu.header.label": "Chọn cột hiển thị",
+    "accept.success": "Duyệt thành công",
+    "cancel.success": "Hủy thành công",
+    "edit.success": "Sửa thành công",
+    "add.success": "Thêm mới thành công",
+    "update.success": "Cập nhật thành công",
+    "delete.success": "Xóa thành công",
+    "reset-password.success": "Đặt lại mật khẩu mặc định thành công",
+    "import-excel.success": "Nhập liệu thành công",
+    "import-excel.error": "Có lỗi xảy ra",
+    "gotopage": "Đến trang",
+    "go": "Đến",
+    "required": "Chưa nhập thông tin",
+    "button.import.file": "Kéo thả file hoặc bấm vào để chọn",
+    "searchText": "Tìm kiếm",
+    "changePassword": "Đổi mật khẩu",
+    "confirmSave": "Bọn có chắc muốn cập nhật?",
+    "search": "Tìm kiếm",
+    "clientId": "Ứng dụng",
+    "others": "khác",
+    "only.allow.excel": "Chỉ hỗ trợ nhập liệu từ Excel",
+    "reject": {
+      "reason": "Lý do từ chối",
+      "success": "Từ chối thành công"
+    },
+    "advanced.search": {
+      "collapse": "Thu gọn",
+      "expand": "Mở rộng"
+    },
+    "confirm": {
+      "accept": "Bạn có chắc muốn duyệt thông tin {0}?",
+      "reject": "Bạn có chắc muốn từ chối thông tin {0}?",
+      "add": "Bạn có chắc muốn thêm mới thông tin {0}?",
+      "update": "Bạn có chắc muốn cập nhật thông tin {0}?",
+      "edit": "Bạn có chắc muốn cập nhật thông tin {0}?",
+      "reset-password": "Bạn có chắc muốn đặt lại mật khẩu mặc định cho {0}?",
+      "import-excel": "Bạn có chắc muốn nhập liệu từ file?",
+      "delete": "Bạn có chắc muốn xóa?",
+      "customer": "Bạn có chắc đã xác nhận thông tin với khách hàng?",
+      "customer.success": "Xác nhận thông tin khách hàng thành công"
+    },
+    "title": {
+      "edit": "Sửa",
+      "detail": "Chi tiết",
+      "accept": "Duyệt",
+      "reject": "Từ chối",
+      "expand.column": "Mở rộng cột",
+      "clear": "Xóa",
+      "add": "Thêm mới",
+      "cancel": "Hủy",
+      "update": "Cập nhật",
+      "edit.permission": "Sửa quyền"
+    },
+    "error": {
+      "required": "Chưa nhập thông tin",
+      "pattern": "Vui lòng nhập đúng thông tin",
+      "time": "Thời gian đóng cửa phải lớn hơn thời gian mở cửa",
+      "minlength": "Chưa đủ số kí tự tối thiểu"
+    },
+    "selected.tree": {
+      "label": "Giá trị đã chọn",
+      "collapse": "Thu gọn",
+      "expandAll": "Mở rộng"
+    },
+    "password": {
+      "current": "Mật khẩu hiện tại",
+      "new": "Mật khẩu mới",
+      "confirm.new": "Xác nhận mật khẩu mới"
+    },
+    "import.excel": {
+      "": "Nhập liệu từ excel",
+      "drag.drop": "Kéo thả file hoặc bấm vào để chọn",
+      "not.have.template": "Bạn chưa có file mẫu? ",
+      "download.template": " Tải file mẫu",
+      "download.error.file": "Tải file lỗi"
+    },
+    "is": {
+      "not-accept": "Tệp tải lên không đúng định dạng(.pdf)",
+      "over-size": "Tệp tải lên quá lớn"
+    },
+    "checkConfirmFalse": "Mật khẩu không trùng khớp",
+    "sameOldPassword": "Mật khẩu mới không được trùng mật khẩu cũ"
+    ,
+    "placeholder": {
+      "select": "Chọn giá trị",
+      "input": "Nhập giá trị"
+    },
+    "combobox": {
+      "option": {
+        "default": "Chọn giá trị"
+      }
+    },
+    "table": {
+      "header": {
+        "toDate": "Đến ngày"
+      }
+    }
+  },
+  "btnFilter": "Lọc",
+  "btnReset": "Xóa điều kiện tìm kiếm",
+  "unit": "VND",
+  "menu": {
+    "dashboard": "Bảng điều khiển",
+    "logout": "Đăng xuất",
+    "category": {
+      "": "Danh mục",
+      "tracking-index": {
+        "": "Danh mục chỉ số theo dõi",
+        "add": "Thêm mới chỉ số theo dõi",
+        "edit": "Cập nhật chỉ số theo dõi",
+        "detail": "Chi tiết chỉ số theo dõi"
+      }
+    },
+    "cms": {
+      "gara.info": {
+        "": "Thông tin ga-ra",
+        "garage": {
+          "": "Danh mục ga-ra",
+          "add": "Thêm mới thông tin ga-ra",
+          "edit": "Cập nhật thông tin ga-ra",
+          "detail": "Thông tin chi tiết ga-ra"
+        }
+      }
+    }
+  },
+  "super.status": {
+    "all": "Tất cả",
+    "draft": "Chưa duyệt",
+    "accepted": "Đã duyệt",
+    "rejected": "Đã từ chối"
+  },
+  "gara.type": {
+    "all": "Tất cả",
+    "pullback": "Kéo về",
+    "roving": "Lưu động",
+    "pullbackAndRoving": "Kéo về và lưu động"
+  },
+  "MatPaginator": {
+    "itemsPerPageLabel": "Số bản ghi trên trang",
+    "previousPageLabel": "Trang trước",
+    "nextPageLabel": "Trang sau"
+  },
+  "login": {
+    "username": "Tài khoản",
+    "password": "Mật khẩu",
+    "error": "Sai thông tin đăng nhập"
+  },
+  "dashboard": {
+    "title": "BÁO CÁO HOẠT ĐỘNG CỨU HỘ",
+    "overview": "Tổng quan",
+    "stacked": {
+      "title": "Giải ngân / Kế hoạch"
+    },
+    "details": "Chi tiết",
+    "advance": "Nâng cao",
+    "filter": {
+      "control": {
+        "projectTeam": "Nhóm dự án",
+        "spending": "Khoản mục",
+        "project": "Dự án",
+        "company": "Đơn vị"
+      }
+    },
+    "table": {
+      "header": {
+        "STT": "STT",
+        "projectCode": "Mã dự án",
+        "projectName": "Tên dự án",
+        "amountPlanned": "Kế hoạch",
+        "amountActual": "Thực hiện",
+        "amountAccumulated": "Lũy kế"
+      }
+    },
+    "group": {
+      "": "Nhóm dữ liệu",
+      "date": "Ngày",
+      "week": "Tuần",
+      "month": "Tháng"
+    },
+    "score-card": {
+      "total-click": "Click",
+      "total-click-garage": "Click gọi garage",
+      "total-click-switchboard": "Click gọi tổng đài",
+      "total-unique-user": "Unique user",
+      "total-click-per-unique-user": "Click / unique user",
+      "total-confirm": "Lượt cứu hộ",
+      "percent-success": "Chăm sóc thành công"
+    },
+    "table.header": {
+      "ordinalNumber": "",
+      "title": "Trạng thái đơn hàng",
+      "total": "Số lượng",
+      "customerPhone": "SDT user",
+      "amountCustomerClick": "1. Click thử",
+      "amountCustomerRequested": "2. Ghi nhận thông tin",
+      "amountRequestedGarage": "3. Đã gọi cứu hộ",
+      "amountConfirmCustomer": "4.1. Cứu hộ đã đến",
+      "amountCustomerCancel": "4.2. Khách hàng hủy",
+      "amountGarageReject": "4.3. Cứu hộ từ chối"
+    }
+  },
+  "btnSearch": "Tìm kiếm",
+  "btnReset": "Xóa điều kiện tìm kiếm",
+  "btnAdd": "Thêm mới",
+  "btnAddEdit": "Cập nhật",
+  "btnBack": "Quay lại",
+  "btnAccept": "Duyệt",
+  "btnReject": "Từ chối",
+  "btnResetPassword": "Đặt mật khẩu mặc định",
+  "btnExportExcel": "Xuất excel",
+  "btnImportExcel": "Nhập liệu từ excel",
+  "btnCancel": "Hủy",
+  "btnImport": "Nhập",
+  "btnRefresh": "Làm mới dữ liệu",
+  "fromDate": "Từ ngày",
+  "toDate": "Đến ngày",
+  "validation.change.password.fail": "Thay đổi mật khẩu thất bại",
+  "validation.change.password.success": "Đổi mật khẩu thành công"
+}

@@ -1,0 +1,52 @@
+app-user-tree:host {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+
+  cloud-search::ng-deep {
+    form {
+      position: relative;
+    }
+  }
+}
+
+.user-tree {
+  flex: 1;
+
+  cva-flat-tree::ng-deep {
+    margin-bottom: 0;
+
+    .cva-flat-tree {
+      height: 100%;
+    }
+  }
+
+  cloud-search::ng-deep {
+    height: 100%;
+
+    .search-form-group {
+      height: 100%;
+    }
+  }
+
+  .select-user-tree-container {
+    padding: 0 10px 16px;
+
+    .select-user-tree-node-label {
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 20px;
+      margin-right: 8px;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .select-user-tree-node-name {
+      font-size: 14px;
+      line-height: 20px;
+      padding: 6px 8px;
+      border: 1px solid #D1D3D8;
+      border-radius: 99px
+    }
+  }
+}

@@ -1,0 +1,22 @@
+::ng-deep app-notification-template-add-edit-detail cva-quill-editor {
+  .ql-container {
+    min-height: 400px;
+  }
+
+  quill-editor[disabled] {
+    .ql-toolbar.ql-snow {
+      pointer-events: none;
+    }
+  }
+}
+
+.content-editor {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding-left: 10px;
+  .content-editor-label {
+    font-size: 14px;
+    font-weight: bold;
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/app.component.scss"],
+  "sourcesContent": [".toggle-button {\r\n  position: absolute;\r\n  width: 100%;\r\n  bottom: 0;\r\n  display: flex;\r\n  justify-content: right;\r\n}\r\n\r\n.toggle-button.collapsed {\r\n  justify-content: center;\r\n}\r\n\r\nmat-sidenav.collapsed {\r\n  width: 56px;\r\n  display: flex;\r\n  justify-content: center;\r\n\r\n  .routeIcon {\r\n    margin: auto;\r\n    display: flex;\r\n    justify-content: center;\r\n  }\r\n;\r\n\r\n  .menu-text {\r\n    display: none;\r\n  }\r\n\r\n  /* .mat-mdc-list-item:hover{\r\n      .menu-text {\r\n          display: block;\r\n      }\r\n  } */\r\n}\r\n"],
+  "mappings": "AAAA,CAAA,cACE,SAAA,SACA,MAAA,KACA,OAAA,EACA,QAAA,KACA,gBAAA,MAGF,CARA,aAQA,CAAA,UACE,gBAAA,OAGF,WAAA,CAJA,UAKE,MAAA,KACA,QAAA,KACA,gBAAA,OAEA,WAAA,CATF,UASE,CAAA,UAjBF,OAkBI,KACA,QAAA,KACA,gBAAA,OAIF,WAAA,CAhBF,UAgBE,CAAA,UACE,QAAA",
+  "names": []
+}

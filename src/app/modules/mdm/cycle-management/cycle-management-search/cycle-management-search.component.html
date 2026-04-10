@@ -1,0 +1,122 @@
+<cva-breadcrumb></cva-breadcrumb>
+<div fxLayout="row wrap" fxLayoutGap="20px" class="cycle-management margin-top-10">
+  <cva-flat-tree
+    #treeRef
+    name="year"
+    formControlName="year"
+    [label]=""
+    [multiple]="false"
+    [fullDatasource]="yearTree"
+    [isCollapseSelected]="false"
+    [isSearchOutSide]="false"
+    [isDisplayChooseTreeOnly]="true"
+    (onNodeClick)="onChooseYear($event)"
+    [selectedLabelTitle]="'.table.header.year'"
+    [viewHeight]="660"
+    fxLayout="column"
+    fxFlex="23%"
+  >
+  </cva-flat-tree>
+
+  <div fxLayout="column" fxFlex="calc(77% - 20px)">
+    <cloud-search
+      #cloudSearchRef
+      [configForm]="configForm"
+      [columns]="columns"
+      [buttons]="buttons"
+      [formAdvanceSearch]="formAdvanceSearch"
+      [isShowBreadcrum]="false"
+      [addBtnEnabled]="hasAddPermission"
+      [exportBtnEnabled]="false"
+      [addBtnFunction]="addBtnFunction"
+      [convertField2HttpParamFn]="convertField2HttpParamFn.bind(this)"
+    >
+      <ng-template appTemplate="quickFilterForm">
+        <div class="select-cycle-management-container" style="display: block">
+          <span class="select-cycle-management-node-label">
+            {{ 'common.periodChosen.selectedTreeNode.label' | translate }}:
+          </span>
+          @if (selectedTreeNode?.displayValue) {
+          <span class="select-cycle-management-node-name">{{ selectedTreeNode?.displayValue }}</span>
+          }
+        </div>
+      </ng-template>
+
+      <ng-template appTemplate="filterForm">
+        <div fxLayout="row wrap" class="row-wrap-padding" [formGroup]="formAdvanceSearch">
+          <cva-input
+            name="period"
+            formControlName="periodCode"
+            [class]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'period')"
+            [label]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'period')"
+            [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+            [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+            [placeholder]="'common.placeholder.input'"
+            fxLayout="column"
+            fxFlex="25%"
+            fxFlex.xs="100%"
+            fxFlex.sm="50%"
+            fxFlex.md="50%"
+            fxFlex.lg="25%"
+          ></cva-input>
+
+          <cva-range-date-picker
+            name="startDate"
+            formControlName="startDate"
+            [fromDateControlName]="'fromStartDate'"
+            [toDateControlName]="'toStartDate'"
+            [class]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'startDate')"
+            [label]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'startDate')"
+            [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+            [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+            [placeholderFromDate]="'DD/MM/YYYY'"
+            [placeholderToDate]="'DD/MM/YYYY'"
+            fxLayout="column"
+            fxFlex="25%"
+            fxFlex.xs="100%"
+            fxFlex.sm="50%"
+            fxFlex.md="50%"
+            fxFlex.lg="25%"
+          ></cva-range-date-picker>
+
+          <cva-range-date-picker
+            name="endDate"
+            formControlName="endDate"
+            [fromDateControlName]="'fromEndDate'"
+            [toDateControlName]="'toEndDate'"
+            [class]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'endDate')"
+            [label]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'endDate')"
+            [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+            [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+            [placeholderFromDate]="'DD/MM/YYYY'"
+            [placeholderToDate]="'DD/MM/YYYY'"
+            fxLayout="column"
+            fxFlex="25%"
+            fxFlex.xs="100%"
+            fxFlex.sm="50%"
+            fxFlex.md="50%"
+            fxFlex.lg="25%"
+          ></cva-range-date-picker>
+
+          <cva-multi-select-autocomplete
+            name="status"
+            formControlName="cycleStatus"
+            [class]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'status')"
+            [label]="Utils.getKeyTrans(configForm?.moduleName, configForm?.name, 'status')"
+            [isFloatLabel]="!environment.IS_LABEL_OUTSIDE"
+            [isLabelOutside]="environment.IS_LABEL_OUTSIDE"
+            [placeholder]="'common.placeholder.select'"
+            [options]="statusValues"
+            [multiple]="false"
+            fxLayout="column"
+            fxFlex="25%"
+            fxFlex.xs="100%"
+            fxFlex.sm="50%"
+            fxFlex.md="50%"
+            fxFlex.lg="25%"
+          ></cva-multi-select-autocomplete>
+        </div>
+      </ng-template>
+    </cloud-search>
+  </div>
+</div>
