@@ -13,7 +13,6 @@ jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
     env:
-      # Loại bỏ hoàn toàn cảnh báo Node.js 20 deprecated
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
       - name: Checkout
@@ -28,13 +27,15 @@ jobs:
         run: npm install --legacy-peer-deps
 
       - name: Build
-        # Giữ nguyên base-href theo tên Repository của bạn trên GitHub
+        # Đảm bảo /vtp_qlda_fe/ đúng là tên repo của bạn trên GitHub
         run: npx ng build --configuration production --base-href /vtp_qlda_fe/
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist/vss
+          # THỬ NGHIỆM 1: Nếu vẫn lỗi 404, bạn hãy thử đổi thành './dist/vss' (bỏ /browser)
+          # Nhưng với log build trước đó của bạn, đường dẫn này là khả thi nhất:
+          path: ./dist/vss/browser
 
       - name: Deploy to GitHub Pages
         id: deployment
