@@ -12,6 +12,8 @@ permissions:
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -19,7 +21,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 22 # Dùng bản 22 để ổn định
+          node-version: 24 # Lên hẳn bản 24 cho đồng bộ với server 2026
 
       - name: Install
         run: npm install --legacy-peer-deps
@@ -30,8 +32,8 @@ jobs:
       - name: Upload
         uses: actions/upload-pages-artifact@v3
         with:
-          # Kiểm tra lại folder này trong máy bạn sau khi build xong
-          path: ./dist/vtp_qlda_fe/browser
+          # TÔI ĐÃ SỬA DÒNG NÀY: Bỏ /browser để khớp với đa số cấu hình Angular mặc định
+          path: ./dist/vtp_qlda_fe
 
       - name: Deploy
         uses: actions/deploy-pages@v4
