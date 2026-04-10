@@ -34,7 +34,6 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # ĐÃ SỬA: Theo đúng log build thực tế của bạn báo ra là 'dist/vss'
           path: ./dist/vss
 
       - name: Deploy to GitHub Pages
