@@ -12,6 +12,8 @@ permissions:
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true # Khử cảnh báo Node.js
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -19,13 +21,14 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 22 # Sử dụng bản LTS ổn định nhất hiện tại
+          node-version: 24 # Dùng bản mới nhất để khớp với runner
 
       - name: Install dependencies
-        run: npm install --legacy-peer-deps # Thêm flag này để tránh lỗi xung đột thư viện
+        # Dùng --legacy-peer-deps để tránh lỗi version thư viện không khớp
+        run: npm install --legacy-peer-deps
 
       - name: Build
-        # Thay vtp_qlda_fe bằng tên repo chính xác của bạn nếu có khác biệt
+        # Thay vtp_qlda_fe bằng tên repo của bạn
         run: npx ng build --configuration production --base-href /vtp_qlda_fe/
 
       - name: Setup Pages
@@ -34,10 +37,10 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Kiểm tra kỹ: Angular 17+ thường là dist/[project-name]/browser
-          # Nếu lỗi 'Path not found', hãy thử đổi thành ./dist/vtp_qlda_fe
+          # QUAN TRỌNG: Kiểm tra thư mục dist trong máy bạn
+          # Nếu Angular 17+ thường là: ./dist/vtp_qlda_fe/browser
+          # Nếu bản cũ hơn thường là: ./dist/vtp_qlda_fe
           path: ./dist/vtp_qlda_fe/browser
 
       - name: Deploy to GitHub Pages
-        id: deployment
         uses: actions/deploy-pages@v4
