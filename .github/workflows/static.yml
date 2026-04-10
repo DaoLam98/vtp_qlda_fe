@@ -1,0 +1,43 @@
+name: Deploy Angular to GitHub Pages
+
+on:
+  push:
+    branches: ["main"]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true # Khử cảnh báo Node.js 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24 # Dùng bản mới nhất luôn cho "máu"
+
+      - name: Install dependencies
+        run: npm install # Dùng install cho linh hoạt hơn ci
+
+      - name: Build
+        run: npx ng build --configuration production --base-href /vtp_qlda_fe/
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # THAY ĐỔI TẠI ĐÂY: Kiểm tra kỹ folder dist của bạn
+          path: ./dist/vtp_qlda_fe/browser 
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
