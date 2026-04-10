@@ -1,4 +1,4 @@
-name: Deploy Angular
+name: Deploy Angular to GitHub Pages
 
 on:
   push:
@@ -13,6 +13,7 @@ jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
     env:
+      # Loại bỏ hoàn toàn cảnh báo Node.js 20 deprecated
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
       - name: Checkout
@@ -21,19 +22,21 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 24 # Lên hẳn bản 24 cho đồng bộ với server 2026
+          node-version: 24
 
-      - name: Install
+      - name: Install dependencies
         run: npm install --legacy-peer-deps
 
       - name: Build
+        # Giữ nguyên base-href theo tên Repository của bạn trên GitHub
         run: npx ng build --configuration production --base-href /vtp_qlda_fe/
 
-      - name: Upload
+      - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # TÔI ĐÃ SỬA DÒNG NÀY: Bỏ /browser để khớp với đa số cấu hình Angular mặc định
-          path: ./dist/vtp_qlda_fe
+          # ĐÃ SỬA: Theo đúng log build thực tế của bạn báo ra là 'dist/vss'
+          path: ./dist/vss
 
-      - name: Deploy
+      - name: Deploy to GitHub Pages
+        id: deployment
         uses: actions/deploy-pages@v4
