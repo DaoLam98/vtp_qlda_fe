@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a66f9f4a-1ecc-4515-8fb8-d1d09591ed2d" name="Changes" comment="init" />
+    <list default="true" id="a66f9f4a-1ecc-4515-8fb8-d1d09591ed2d" name="Changes" comment="init">
+      <change beforePath="$PROJECT_DIR$/.github/workflows/static.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/static.yml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -75,6 +77,7 @@
       <updated>1775815106564</updated>
       <workItem from="1775815107577" duration="84000" />
       <workItem from="1775815199330" duration="2587000" />
+      <workItem from="1775819580713" duration="435000" />
     </task>
     <servers />
   </component>

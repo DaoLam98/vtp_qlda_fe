@@ -1,4 +1,4 @@
-name: Deploy Angular to GitHub Pages
+name: Deploy Angular
 
 on:
   push:
@@ -12,8 +12,6 @@ permissions:
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
-    env:
-      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -21,16 +19,19 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 24 # Dùng thẳng bản 24 để hết báo deprecated
+          node-version: 22 # Dùng bản 22 để ổn định
 
-      - name: Install dependencies
+      - name: Install
         run: npm install --legacy-peer-deps
 
       - name: Build
         run: npx ng build --configuration production --base-href /vtp_qlda_fe/
 
-      - name: Upload artifact
+      - name: Upload
         uses: actions/upload-pages-artifact@v3
         with:
-          # Thử để path rộng hơn nếu bạn không chắc chắn
+          # Kiểm tra lại folder này trong máy bạn sau khi build xong
           path: ./dist/vtp_qlda_fe/browser
+
+      - name: Deploy
+        uses: actions/deploy-pages@v4
