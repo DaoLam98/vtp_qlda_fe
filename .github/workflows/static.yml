@@ -13,7 +13,7 @@ jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
     env:
-      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true # Khử hoàn toàn cảnh báo Node.js bạn đang gặp
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -21,21 +21,16 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 24 # Khớp với môi trường mới nhất của GitHub
+          node-version: 24 # Dùng thẳng bản 24 để hết báo deprecated
 
       - name: Install dependencies
         run: npm install --legacy-peer-deps
 
       - name: Build
-        # Lưu ý: Đảm bảo vtp_qlda_fe đúng là tên Repository của bạn
         run: npx ng build --configuration production --base-href /vtp_qlda_fe/
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # THỬ NGHIỆM: Nếu vẫn lỗi, bạn hãy thử đổi đường dẫn bên dưới
-          # xóa chữ /browser nếu bạn dùng bản Angular cũ
+          # Thử để path rộng hơn nếu bạn không chắc chắn
           path: ./dist/vtp_qlda_fe/browser
-
-      - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v4
